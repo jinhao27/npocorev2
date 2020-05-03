@@ -3,8 +3,13 @@ import React, { useState } from 'react';
 // COMPONENTS
 import Modal from "react-bootstrap/Modal";
 
+// IMPORTS
+import firebase from '../firebase.js';
+
+
 function AddNPO() {
   const [isOpen, setIsOpen] = useState(false); // MODAL VARIABLES
+  const organizationsRef = firebase.database().ref("organizations") // FIREBASE
 
   // FORM VARIABLES
   const [orgName, setOrgName] = useState("");
@@ -24,6 +29,13 @@ function AddNPO() {
     event.preventDefault();
 
     setIsOpen(false);
+
+    // SAVE TO FIREBASE
+    organizationsRef.push({
+      name: orgName,
+      email: orgEmail,
+      description: orgDescription,
+    })
   }
 
   return (
