@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // IMPORTS
 import firebase from '../firebase.js';
@@ -9,6 +9,7 @@ function Organizations() {
   const organizationsRef = firebase.database().ref("organizations"); // FIREBASE
 
   const getOrganizations = () => {
+    console.log("boi");
     let tempOrganizations = [];
     organizationsRef.once("value").then((snapshot) => {
       for (let organizationObj of Object.entries(snapshot.val())) {
@@ -19,7 +20,9 @@ function Organizations() {
     });
   }
 
-  getOrganizations(); // GET ALL ORGS ON LOAD
+  useEffect(() => {
+      getOrganizations(); // GET ALL ORGS ON LOAD
+  }, []);
 
   return (
     <div>
