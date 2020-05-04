@@ -5,11 +5,13 @@ import firebase from '../firebase.js';
 
 
 function Organizations() {
-  let [organizations, setOrganizations] = useState([]);
   const organizationsRef = firebase.database().ref("organizations"); // FIREBASE
+  const [organizations, setOrganizations] = useState([]);
+
+  // FILTERING VARIABLES
+  const [searchText, setSearchText] = useState("");
 
   const getOrganizations = () => {
-    console.log("boi");
     let tempOrganizations = [];
     organizationsRef.once("value").then((snapshot) => {
       for (let organizationObj of Object.entries(snapshot.val())) {
@@ -24,10 +26,28 @@ function Organizations() {
       getOrganizations(); // GET ALL ORGS ON LOAD
   }, []);
 
+  // FILTERING FUNCTIONS
+  const filterOrganizationsBySearch = (event) => {
+    const currentSearchText = event.target.value;
+    
+    // SETTING SEARCH TEXT
+    setSearchText(currentSearchText);
+
+    if (currentSearchText == "") {
+      getOrganizations();
+    } else {
+      // FILTERING ORGANIZATIONS
+      const filteredOrganizations = organizations.filter(organization => organization.name.includes(currentSearchText));
+      setOrganizations(filteredOrganizations);
+    }
+  }
+
   return (
     <div>
       <h1>Organizations</h1>
       <button onClick={getOrganizations}>Get Organizations</button>
+
+      <input type="text" placeholder="Filter" onChange={filterOrganizationsBySearch} />
 
       <div className="organizations">
         {organizations.map((organization, key) =>
