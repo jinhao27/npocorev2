@@ -1,4 +1,6 @@
 .home-container {
+  padding: 100px 0;
+  
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 50px;
@@ -14,5 +16,16 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 5px;
     width: 100%;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .home-container {
+    display: block;
+
+    & img {
+      display: none;
+    }
   }
 }

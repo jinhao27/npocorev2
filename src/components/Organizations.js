@@ -75,10 +75,10 @@ function Organizations() {
   }
 
   return (
-    <div>
-      <h1>Organizations</h1>
+    <div className="pb-5">
+      <h1 className="">Organizations</h1>
 
-      <div className="filters">
+      <div className="filters mt-3">
         <input className="form-control search-bar" type="text" placeholder="Filter" onChange={filterOrganizationsBySearch} />
 
         <select onChange={filterOrganizationsByGender} required>
@@ -127,7 +127,7 @@ function Organizations() {
             <h3>{organization.name}</h3>
             <div><strong>Gender:</strong> {organization.gender}</div>
             <div><strong>Cause:</strong> {organization.cause}</div>
-            <p>{organization.description}</p>
+            <p><strong>Description:</strong> {organization.description}</p>
             <div className="organization-interests">
               {organization.interests.map((interest, key) =>
                 <small>{interest}</small>

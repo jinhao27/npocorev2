@@ -10,17 +10,8 @@ body {
   width: 100%;
   height: 100%;
   background-color: #12c3c3;
-  clip-path: polygon(0 78%, 100% 13%, 100% 100%, 0% 100%); }
-
-.hover-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 80%;
-  width: 90%;
-  padding: 30px;
-  border-radius: 10px; }
+  clip-path: polygon(0 78%, 100% 13%, 100% 100%, 0% 100%);
+  z-index: -1; }
 
 .solid-cta-button {
   background-color: #f28c41;
@@ -53,6 +44,7 @@ body {
     border: 2px solid #f28c41; }
 
 .home-container {
+  padding: 100px 0;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 50px;
@@ -66,6 +58,12 @@ body {
     grid-gap: 5px;
     width: 100%; }
 
+@media (max-width: 600px) {
+  .home-container {
+    display: block; }
+    .home-container img {
+      display: none; } }
+
 .organizations {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -78,7 +76,8 @@ body {
     background-color: white; }
     .organizations .organization-interests {
       display: flex;
-      flex-direction: row; }
+      flex-direction: row;
+      flex-wrap: wrap; }
       .organizations .organization-interests small {
         background-color: #f28c41;
         color: white;
@@ -112,6 +111,18 @@ body {
       .filters .refresh-organizations img:hover {
         transform: rotate(-180deg); }
 
+@media (max-width: 800px) {
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100%);
+    grid-gap: 10px; }
+    .filters .search-bar {
+      width: 100%; } }
+
+@media (max-width: 600px) {
+  .organizations {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); } }
+
 label:not(:first-child) {
   margin-top: 10px; }
 
@@ -121,3 +132,10 @@ label:not(:first-child) {
   grid-gap: 10px; }
   .looking-for-checkboxes label {
     margin-top: 0 !important; }
+
+.npo-button {
+  margin-left: 15px; }
+
+@media (max-width: 600px) {
+  .npo-button {
+    margin-left: 0 !important; } }

@@ -11,3 +11,14 @@ label:not(:first-child) {
     margin-top: 0 !important;
   }
 }
+
+.npo-button {
+  margin-left: 15px;
+}
+
+
+@media (max-width: 600px) {
+  .npo-button {
+    margin-left: 0 !important;
+  }
+}
