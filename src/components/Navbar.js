@@ -9,7 +9,9 @@ class Navbar extends React.Component {
     return (
       <nav className="navbar navbar-expand-sm navbar-light">
         <div className="container">
-          <a className="navbar-brand" href="/">NPO Core</a>
+          <Link className="navbar-brand" to="/">
+            <img className="npocore-logo" src="img/npocore.png" alt="" />
+          </Link>
           <button className="navbar-toggler" data-toggle="collapse" data-target="#navbar-target">
             <span className="navbar-toggler-icon"></span>
           </button>

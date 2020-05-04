@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 // COMPONENTS
 import Modal from "react-bootstrap/Modal";
 
 // IMPORTS
+import alertify from "alertifyjs";
 import firebase from '../firebase.js';
 
 
 function AddNPO() {
   const [isOpen, setIsOpen] = useState(false); // MODAL VARIABLES
   const organizationsRef = firebase.database().ref("organizations") // FIREBASE
+  const [organizations, setOrganizations] = useState([]); // NPO ORGANIZATIONS
 
   // FORM VARIABLES
   const [orgName, setOrgName] = useState("");
@@ -44,13 +46,24 @@ function AddNPO() {
     setOrgInterests(tempOrgInterests);
   }
 
+  // VALIDATION FUNCTIONS
+  const validateOrganizationUniqueness = (newOrganization) => {
+    for (let organization of organizations) {
+      if (organization.name == newOrganization.name) {
+        return "name";
+      } else if (organization.email == newOrganization.email) {
+        return "email";
+      }
+    }
+
+    return true;
+  }
+
   const addNPO = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // STOP FORM SUBMISSION
 
-    setIsOpen(false);
-
-    // SAVE TO FIREBASE
-    organizationsRef.push({
+    // CREATE NEW ORGANIZATION
+    const newOrganization = {
       name: orgName,
       email: orgEmail,
       description: orgDescription,
@@ -58,8 +71,41 @@ function AddNPO() {
       gender: orgGender,
       cause: orgCause,
       interests: orgInterests
-    })
+    }
+
+    const unique = validateOrganizationUniqueness(newOrganization);
+
+    if (unique == true) {
+      // SAVE TO FIREBASE
+      organizationsRef.push(newOrganization)
+
+      // CLOSE MODAL
+      setIsOpen(false);
+    } else {
+      if (unique == "name") {
+        alertify.error("That organization name has been used already.");
+      } else if (unique == "email") {
+        alertify.error("That organization email has been used already.");
+      }
+    }
   }
+
+  const getOrganizations = () => {
+    let tempOrganizations = [];
+    organizationsRef.once("value").then((snapshot) => {
+      if (snapshot.val()) {
+        for (let organizationObj of Object.entries(snapshot.val())) {
+          tempOrganizations.push(organizationObj[1]);
+        }
+      }
+
+      setOrganizations(tempOrganizations);
+    });
+  }
+
+  useEffect(() => {
+    getOrganizations();
+  })
 
   return (
     <div>

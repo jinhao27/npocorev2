@@ -20,6 +20,9 @@ body {
   transform: translateX(-50%);
   color: white; }
 
+.npocore-logo {
+  height: 30px; }
+
 .solid-cta-button {
   background-color: #f28c41;
   color: white;
