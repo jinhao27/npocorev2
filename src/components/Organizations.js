@@ -129,7 +129,7 @@ function Organizations() {
             <div><strong>Cause:</strong> {organization.cause}</div>
             <p><strong>Description:</strong> {organization.description}</p>
             <div className="organization-interests">
-              {organization.interests.map((interest, key) =>
+              {(organization.interests || []).map((interest, key) =>
                 <small>{interest}</small>
               )}
             </div>

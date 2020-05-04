@@ -35,7 +35,6 @@ function AddNPO() {
   const onOrgCauseChange = (event) => { setOrgCause(event.target.value); }
   const onOrgInterestChange = (event) => {
     const interestValue = event.target.value;
-
     let tempOrgInterests = orgInterests;
     if (interestValue in orgInterests) { // IF VALUE WAS ALREADY ADDED, REMOVE IT
       orgInterests.filter(interest => interest !== interestValue);
