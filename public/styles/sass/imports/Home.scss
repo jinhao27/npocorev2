@@ -1,8 +1,18 @@
 .home-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px;
+  height: 100%;
 
   & img {
+    width: 100%;
+    align-self: flex-end;
+  }
+
+  .cta-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
     width: 100%;
   }
 }

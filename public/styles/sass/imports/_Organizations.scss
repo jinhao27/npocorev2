@@ -16,7 +16,8 @@
       flex-direction: row;
 
       & small {
-        background-color: lightblue;
+        background-color: $color-primary;
+        color: white;
         padding: 5px 10px;
         border-radius: 3px;
         margin: 2.5px;

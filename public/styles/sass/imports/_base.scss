@@ -1,3 +1,6 @@
+$color-primary: rgb(242, 140, 65);
+$color-primary-dark: rgb(238, 113, 21);
+
 body {
   position: relative;
   background-color: #eee;
@@ -15,7 +18,7 @@ body {
 }
 
 .hover-container {
-  background-color: white;
+  // background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -24,5 +27,5 @@ body {
   width: 90%;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 5px 40px rgba(0,0,0,.3);
+  // box-shadow: 0 5px 40px rgba(0,0,0,.3);
 }

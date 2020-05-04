@@ -63,7 +63,7 @@ function AddNPO() {
 
   return (
     <div>
-      <button class="btn btn-success ml-2" onClick={showModal}>Add NPO</button>
+      <button class="btn btn-success ml-2" onClick={showModal}>Add your NPO!</button>
 
       <Modal show={isOpen} onHide={hideModal}>
         <Modal.Header>

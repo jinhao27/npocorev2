@@ -13,7 +13,6 @@ body {
   clip-path: polygon(0 78%, 100% 13%, 100% 100%, 0% 100%); }
 
 .hover-container {
-  background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -21,13 +20,50 @@ body {
   height: 80%;
   width: 90%;
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.3); }
+  border-radius: 10px; }
+
+.solid-cta-button {
+  background-color: #f28c41;
+  color: white;
+  text-align: center;
+  padding: 10px 15px;
+  font-size: 20px;
+  border-radius: 4px;
+  border: 2px solid #f28c41;
+  transition: all .2s; }
+  .solid-cta-button:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #ee7115;
+    border: 2px solid #ee7115; }
+
+.ghost-cta-button {
+  background-color: transparent;
+  border: 2px solid #f28c41;
+  color: #f28c41;
+  text-align: center;
+  padding: 10px 15px;
+  font-size: 20px;
+  border-radius: 4px;
+  transition: all .2s; }
+  .ghost-cta-button:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #f28c41;
+    border: 2px solid #f28c41; }
 
 .home-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); }
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px;
+  height: 100%; }
   .home-container img {
+    width: 100%;
+    align-self: flex-end; }
+  .home-container .cta-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
     width: 100%; }
 
 .organizations {
@@ -44,7 +80,8 @@ body {
       display: flex;
       flex-direction: row; }
       .organizations .organization-interests small {
-        background-color: lightblue;
+        background-color: #f28c41;
+        color: white;
         padding: 5px 10px;
         border-radius: 3px;
         margin: 2.5px; }
