@@ -127,7 +127,7 @@ function AddNPO() {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <input class="btn btn-info" type="submit" value="Submit"/>
+            <input class="btn btn-info" type="submit" value="Submit your NPO!"/>
           </Modal.Footer>
         </form>
       </Modal>

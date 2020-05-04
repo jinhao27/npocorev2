@@ -13,6 +13,13 @@ body {
   clip-path: polygon(0 78%, 100% 13%, 100% 100%, 0% 100%);
   z-index: -1; }
 
+.copyright {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white; }
+
 .solid-cta-button {
   background-color: #f28c41;
   color: white;
