@@ -15,8 +15,10 @@ function Organizations() {
   const getOrganizations = () => {
     let tempOrganizations = [];
     organizationsRef.once("value").then((snapshot) => {
-      for (let organizationObj of Object.entries(snapshot.val())) {
-        tempOrganizations.push(organizationObj[1]);
+      if (snapshot.val()) {
+        for (let organizationObj of Object.entries(snapshot.val())) {
+          tempOrganizations.push(organizationObj[1]);
+        }
       }
 
       setOrganizations(tempOrganizations);
@@ -51,12 +53,25 @@ function Organizations() {
 
       <input type="text" placeholder="Filter" onChange={filterOrganizationsBySearch} />
 
-      <div className="organizations">
+      <div className="organizations mt-5">
         {organizations.map((organization, key) =>
           <div className="organization" key={key}>
             <h3>{organization.name}</h3>
+            <div><strong>Gender:</strong> {organization.gender}</div>
             <p>{organization.description}</p>
-            <small>{organization.email}</small>
+            <div className="organization-interests">
+              {organization.interests.map((interest, key) =>
+                <small>{interest}</small>
+              )}
+            </div>
+            <div className="organization-resources">
+              <a href="mailto:{organization.email}" target="_">
+                <img src="/img/email.svg" alt="" />
+              </a>
+              <a href={organization.website} target="_">
+                <img src="/img/link.svg" alt="" />
+              </a>
+            </div>
           </div>
         )}
       </div>

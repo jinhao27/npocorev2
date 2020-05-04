@@ -2,4 +2,42 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 15px;
+
+  .organization {
+    position: relative;
+
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 5px 30px rgba(0,0,0,.2);
+    background-color: white;
+
+    &-interests {
+      display: flex;
+      flex-direction: row;
+
+      & small {
+        background-color: lightblue;
+        padding: 5px 10px;
+        border-radius: 3px;
+        margin: 2.5px;
+      }
+    }
+
+    &-resources {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+
+      display: grid;
+      grid-template-columns: repeat(2, 25px);
+      grid-gap: 10px;
+      align-items: center;
+
+      & a {
+        & img {
+          width: 100%;
+        }
+      }
+    }
+  }
 }

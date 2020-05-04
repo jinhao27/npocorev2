@@ -35,9 +35,9 @@ function AddNPO() {
     const interestValue = event.target.value;
 
     let tempOrgInterests = orgInterests;
-    if (interestValue in orgInterests) {
+    if (interestValue in orgInterests) { // IF VALUE WAS ALREADY ADDED, REMOVE IT
       orgInterests.filter(interest => interest != interestValue);
-    } else {
+    } else { // ELSE ADD IT
       tempOrgInterests.push(interestValue);
     }
 
@@ -57,7 +57,7 @@ function AddNPO() {
       website: orgWebsite,
       gender: orgGender,
       cause: orgCause,
-      interest: orgInterests
+      interests: orgInterests
     })
   }
 
