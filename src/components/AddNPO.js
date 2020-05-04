@@ -63,7 +63,7 @@ function AddNPO() {
 
   return (
     <div>
-      <button class="btn btn-success ml-2" onClick={showModal}>Add your NPO!</button>
+      <button class="btn btn-info ml-2" onClick={showModal}>Add your NPO!</button>
 
       <Modal show={isOpen} onHide={hideModal}>
         <Modal.Header>
@@ -127,7 +127,7 @@ function AddNPO() {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <input class="btn btn-success" type="submit" value="Submit"/>
+            <input class="btn btn-info" type="submit" value="Submit"/>
           </Modal.Footer>
         </form>
       </Modal>
