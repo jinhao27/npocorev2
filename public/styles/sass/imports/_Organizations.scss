@@ -41,3 +41,24 @@
     }
   }
 }
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .refresh-organizations {
+    background-color: transparent;
+    border: none;
+    transition: all .2s;
+
+    & img {
+      width: 30px;
+      transition: all .2s;
+
+      &:hover {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+}
