@@ -15,6 +15,10 @@ function AddNPO() {
   const [orgName, setOrgName] = useState("");
   const [orgEmail, setOrgEmail] = useState("");
   const [orgDescription, setOrgDescription] = useState("");
+  const [orgWebsite, setOrgWebsite] = useState("");
+  const [orgGender, setOrgGender] = useState("");
+  const [orgCause, setOrgCause] = useState("");
+  const [orgInterests, setOrgInterests] = useState([]);
 
   // MODAL FUNCTIONS
   const showModal = () => { setIsOpen(true); };
@@ -24,6 +28,21 @@ function AddNPO() {
   const onOrgNameChange = (event) => { setOrgName(event.target.value); }
   const onOrgEmailChange = (event) => { setOrgEmail(event.target.value); }
   const onOrgDescriptionChange = (event) => { setOrgDescription(event.target.value); }
+  const onOrgWebsiteChange = (event) => { setOrgWebsite(event.target.value); }
+  const onOrgGenderChange = (event) => { setOrgGender(event.target.value); }
+  const onOrgCauseChange = (event) => { setOrgCause(event.target.value); }
+  const onOrgInterestChange = (event) => {
+    const interestValue = event.target.value;
+
+    let tempOrgInterests = orgInterests;
+    if (interestValue in orgInterests) {
+      orgInterests.filter(interest => interest != interestValue);
+    } else {
+      tempOrgInterests.push(interestValue);
+    }
+
+    setOrgInterests(tempOrgInterests);
+  }
 
   const addNPO = (event) => {
     event.preventDefault();
@@ -35,6 +54,10 @@ function AddNPO() {
       name: orgName,
       email: orgEmail,
       description: orgDescription,
+      website: orgWebsite,
+      gender: orgGender,
+      cause: orgCause,
+      interest: orgInterests
     })
   }
 
@@ -58,11 +81,12 @@ function AddNPO() {
             <textarea className="form-control mb-2" rows="5" onChange={onOrgDescriptionChange} required />
 
             <label>Organization Website:</label>
-            <input className="form-control mb-2" type="url" onChange={onOrgNameChange} required />
+            <input className="form-control mb-2" type="url" onChange={onOrgWebsiteChange} required />
 
             <label className="mt-3">Gender: (that your organization targets)</label>
             <br/>
-            <select>
+            <select onChange={onOrgGenderChange} required>
+              <option value="">----------</option>
               <option value="Everyone">Everyone</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
@@ -71,8 +95,30 @@ function AddNPO() {
 
             <br/>
 
+            <label className="mt-3">Cause:</label>
+            <br/>
+            <select onChange={onOrgCauseChange} required>
+              <option value="">----------</option>
+              <option value="Animal Welfare">Animal Welfare</option>
+              <option value="Arts and Culture">Arts and Culture</option>
+              <option value="Children">Children</option>
+              <option value="Civil Rights and Social Action">Civil Rights and Social Action</option>
+              <option value="Disaster Relief">Disaster Relief</option>
+              <option value="Economic Empowerment">Economic Empowerment</option>
+              <option value="Education">Education</option>
+              <option value="Environment">Environment</option>
+              <option value="Health">Health</option>
+              <option value="Human Rights">Human Rights</option>
+              <option value="Politics">Politics</option>
+              <option value="Poverty Alleviation">Poverty Alleviation</option>
+              <option value="Science and Technology">Science and Technology</option>
+              <option value="Social Services">Social Services</option>
+            </select>
+
+            <br/>
+
             <label className="mt-4">Looking for:</label>
-            <div className="looking-for-checkboxes">
+            <div className="looking-for-checkboxes" onChange={onOrgInterestChange}>
               <div><input type="checkbox" value="Members"/> <label>Members</label></div>
               <div><input type="checkbox" value="Partnerships"/> <label>Partnerships</label></div>
               <div><input type="checkbox" value="Sponsors"/> <label>Sponsors</label></div>
