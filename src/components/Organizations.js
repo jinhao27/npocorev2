@@ -85,10 +85,10 @@ function Organizations() {
       <h1>Organizations</h1>
 
       <div className="filters">
-        <input type="text" placeholder="Filter" onChange={filterOrganizationsBySearch} />
+        <input className="form-control search-bar" type="text" placeholder="Filter" onChange={filterOrganizationsBySearch} />
 
         <select onChange={filterOrganizationsByGender} required>
-          <option value="">----------</option>
+          <option value="">Gender</option>
           <option value="Everyone">Everyone</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
@@ -96,7 +96,7 @@ function Organizations() {
         </select>
 
         <select onChange={filterOrganizationsByCause} required>
-          <option value="">----------</option>
+          <option value="">Cause</option>
           <option value="Animal Welfare">Animal Welfare</option>
           <option value="Arts and Culture">Arts and Culture</option>
           <option value="Children">Children</option>
@@ -114,7 +114,7 @@ function Organizations() {
         </select>
 
         <select onChange={filterOrganizationsByInterest} required>
-          <option value="">----------</option>
+          <option value="">Interest</option>
           <option value="Members">Members</option>
           <option value="Partnerships">Partnerships</option>
           <option value="Sponsors">Sponsors</option>

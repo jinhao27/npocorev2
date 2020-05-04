@@ -47,6 +47,10 @@
   flex-direction: row;
   justify-content: space-between;
 
+  .search-bar {
+    width: 400px;
+  }
+
   .refresh-organizations {
     background-color: transparent;
     border: none;
