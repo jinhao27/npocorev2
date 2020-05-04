@@ -9,9 +9,6 @@ function Organizations() {
   const [baseOrganizations, setBaseOrganizations] = useState([]);
   const [organizations, setOrganizations] = useState([]);
 
-  // FILTERING VARIABLES
-  const [searchText, setSearchText] = useState("");
-
   const getOrganizations = () => {
     let tempOrganizations = [];
     organizationsRef.once("value").then((snapshot) => {
@@ -34,10 +31,7 @@ function Organizations() {
   const filterOrganizationsBySearch = (event) => {
     const currentSearchText = event.target.value;
 
-    // SETTING SEARCH TEXT
-    setSearchText(currentSearchText);
-
-    if (currentSearchText == "") {
+    if (currentSearchText === "") {
       getOrganizations();
     } else {
       // FILTERING ORGANIZATIONS
@@ -50,7 +44,7 @@ function Organizations() {
     const genderValue = event.target.value;
 
     if (genderValue) {
-      setOrganizations(baseOrganizations.filter(organization => organization.gender == genderValue));
+      setOrganizations(baseOrganizations.filter(organization => organization.gender === genderValue));
     } else {
       getOrganizations();
     }
@@ -60,7 +54,7 @@ function Organizations() {
     const causeValue = event.target.value;
 
     if (causeValue) {
-      setOrganizations(baseOrganizations.filter(organization => organization.cause == causeValue));
+      setOrganizations(baseOrganizations.filter(organization => organization.cause === causeValue));
     } else {
       getOrganizations();
     }

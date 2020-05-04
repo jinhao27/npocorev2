@@ -7,7 +7,7 @@ import AddNPO from './AddNPO.js';
 class Navbar extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-sm navbar-light bg-light">
+      <nav className="navbar navbar-expand-sm navbar-light">
         <div className="container">
           <a className="navbar-brand" href="/">NPO Core</a>
           <button className="navbar-toggler" data-toggle="collapse" data-target="#navbar-target">

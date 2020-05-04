@@ -36,7 +36,7 @@ function AddNPO() {
 
     let tempOrgInterests = orgInterests;
     if (interestValue in orgInterests) { // IF VALUE WAS ALREADY ADDED, REMOVE IT
-      orgInterests.filter(interest => interest != interestValue);
+      orgInterests.filter(interest => interest !== interestValue);
     } else { // ELSE ADD IT
       tempOrgInterests.push(interestValue);
     }
