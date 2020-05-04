@@ -29,13 +29,15 @@ function Organizations() {
       <h1>Organizations</h1>
       <button onClick={getOrganizations}>Get Organizations</button>
 
-      {organizations.map((organization, key) =>
-        <div className="organization" key={key}>
-          <h3>{organization.name}</h3>
-          <p>{organization.description}</p>
-          <small>{organization.email}</small>
-        </div>
-      )}
+      <div className="organizations">
+        {organizations.map((organization, key) =>
+          <div className="organization" key={key}>
+            <h3>{organization.name}</h3>
+            <p>{organization.description}</p>
+            <small>{organization.email}</small>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
