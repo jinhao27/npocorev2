@@ -40,18 +40,48 @@ function AddNPO() {
 
   return (
     <div>
-      <button onClick={showModal}>Add NPO</button>
+      <button class="btn btn-success ml-2" onClick={showModal}>Add NPO</button>
 
       <Modal show={isOpen} onHide={hideModal}>
-        <Modal.Header>Hi</Modal.Header>
+        <Modal.Header>
+          <h3>Add your nonprofit organization</h3>
+        </Modal.Header>
         <form onSubmit={addNPO}>
           <Modal.Body>
-            <input type="text" placeholder="Organization Name" onChange={onOrgNameChange} required />
-            <input type="email" placeholder="Organization Email" onChange={onOrgEmailChange} required />
-            <textarea row="5" placeholder="Organization Description" onChange={onOrgDescriptionChange} required />
+            <label>Organization Name:</label>
+            <input className="form-control mb-2" type="text" onChange={onOrgNameChange} required />
+
+            <label>Organization Email:</label>
+            <input className="form-control mb-2" type="email" onChange={onOrgEmailChange} required />
+
+            <label>Organization Description:</label>
+            <textarea className="form-control mb-2" rows="5" onChange={onOrgDescriptionChange} required />
+
+            <label>Organization Website:</label>
+            <input className="form-control mb-2" type="url" onChange={onOrgNameChange} required />
+
+            <label className="mt-3">Gender: (that your organization targets)</label>
+            <br/>
+            <select>
+              <option value="Everyone">Everyone</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Non-binary">Non-binary</option>
+            </select>
+
+            <br/>
+
+            <label className="mt-4">Looking for:</label>
+            <div className="looking-for-checkboxes">
+              <div><input type="checkbox" value="Members"/> <label>Members</label></div>
+              <div><input type="checkbox" value="Partnerships"/> <label>Partnerships</label></div>
+              <div><input type="checkbox" value="Sponsors"/> <label>Sponsors</label></div>
+              <div><input type="checkbox" value="Clients"/> <label>Clients</label></div>
+              <div><input type="checkbox" value="Opportunities"/> <label>Opportunities</label></div>
+            </div>
           </Modal.Body>
           <Modal.Footer>
-            <input type="submit" value="Submit"/>
+            <input class="btn btn-success" type="submit" value="Submit"/>
           </Modal.Footer>
         </form>
       </Modal>

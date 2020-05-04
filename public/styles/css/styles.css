@@ -2,3 +2,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 15px; }
+
+label:not(:first-child) {
+  margin-top: 10px; }
+
+.looking-for-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 10px; }
+  .looking-for-checkboxes label {
+    margin-top: 0 !important; }
