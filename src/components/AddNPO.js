@@ -20,7 +20,6 @@ function AddNPO() {
   const [orgWebsite, setOrgWebsite] = useState("");
   const [orgGender, setOrgGender] = useState("");
   const [orgCause, setOrgCause] = useState("");
-  const [orgInterests, setOrgInterests] = useState([]);
 
   // MODAL FUNCTIONS
   const showModal = () => { setIsOpen(true); };
@@ -33,17 +32,6 @@ function AddNPO() {
   const onOrgWebsiteChange = (event) => { setOrgWebsite(event.target.value); }
   const onOrgGenderChange = (event) => { setOrgGender(event.target.value); }
   const onOrgCauseChange = (event) => { setOrgCause(event.target.value); }
-  const onOrgInterestChange = (event) => {
-    const interestValue = event.target.value;
-    let tempOrgInterests = orgInterests;
-    if (interestValue in orgInterests) { // IF VALUE WAS ALREADY ADDED, REMOVE IT
-      orgInterests.filter(interest => interest !== interestValue);
-    } else { // ELSE ADD IT
-      tempOrgInterests.push(interestValue);
-    }
-
-    setOrgInterests(tempOrgInterests);
-  }
 
   // VALIDATION FUNCTIONS
   const validateOrganizationUniqueness = (newOrganization) => {
@@ -61,6 +49,12 @@ function AddNPO() {
   const addNPO = (event) => {
     event.preventDefault(); // STOP FORM SUBMISSION
 
+    // GET ALL INTERESTS
+    let interests = [];
+    for (let checkbox of document.querySelectorAll("input[type=checkbox]:checked")) {
+      interests.push(checkbox.value);
+    }
+
     // CREATE NEW ORGANIZATION
     const newOrganization = {
       name: orgName,
@@ -69,7 +63,7 @@ function AddNPO() {
       website: orgWebsite,
       gender: orgGender,
       cause: orgCause,
-      interests: orgInterests
+      interests: interests
     }
 
     const unique = validateOrganizationUniqueness(newOrganization);
@@ -80,6 +74,9 @@ function AddNPO() {
 
       // CLOSE MODAL
       setIsOpen(false);
+
+      // MAKE ALERT
+      alertify.success("Your organization has been added! Hit the refresh button to see your organization!")
     } else {
       if (unique === "name") {
         alertify.error("That organization name has been used already.");
@@ -163,7 +160,7 @@ function AddNPO() {
             <br/>
 
             <label className="mt-4">Looking for:</label>
-            <div className="looking-for-checkboxes" onChange={onOrgInterestChange}>
+            <div className="looking-for-checkboxes">
               <div><input type="checkbox" value="Members"/> <label>Members</label></div>
               <div><input type="checkbox" value="Partnerships"/> <label>Partnerships</label></div>
               <div><input type="checkbox" value="Sponsors"/> <label>Sponsors</label></div>
