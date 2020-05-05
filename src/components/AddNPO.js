@@ -48,9 +48,9 @@ function AddNPO() {
   // VALIDATION FUNCTIONS
   const validateOrganizationUniqueness = (newOrganization) => {
     for (let organization of organizations) {
-      if (organization.name == newOrganization.name) {
+      if (organization.name === newOrganization.name) {
         return "name";
-      } else if (organization.email == newOrganization.email) {
+      } else if (organization.email === newOrganization.email) {
         return "email";
       }
     }
@@ -74,16 +74,16 @@ function AddNPO() {
 
     const unique = validateOrganizationUniqueness(newOrganization);
 
-    if (unique == true) {
+    if (unique === true) {
       // SAVE TO FIREBASE
       organizationsRef.push(newOrganization)
 
       // CLOSE MODAL
       setIsOpen(false);
     } else {
-      if (unique == "name") {
+      if (unique === "name") {
         alertify.error("That organization name has been used already.");
-      } else if (unique == "email") {
+      } else if (unique === "email") {
         alertify.error("That organization email has been used already.");
       }
     }

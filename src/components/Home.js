@@ -9,8 +9,8 @@ function Home() {
         <h1 class="display-2">NPO Core</h1>
         <h4>NPO Core is an online platform for nonprofit organizations to promote their brand, form partnerships, and reach out to anyone!</h4>
         <div className="cta-buttons mt-4">
-          <Link className="ghost-cta-button" to="/cohort">Join our cohort!</Link>
-          <Link className="solid-cta-button" to="/organizations">Our organizations!</Link>
+          <Link className="ghost-cta-button" to="/organizations">Our organizations!</Link>
+          <a class="solid-cta-button" href="https://join.slack.com/t/npocore/shared_invite/zt-edvzljn4-6uEFvoqG2D2CZ3dNApL~IA" target="_">Join the Slack!</a>
         </div>
       </div>
       <img src="/img/illustration.png"/>
