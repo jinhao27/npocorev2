@@ -11,6 +11,19 @@
     box-shadow: 0 5px 30px rgba(0,0,0,.2);
     background-color: white;
 
+    &-header {
+      display: grid;
+      grid-template-columns: 80% 1fr;
+      grid-gap: 15px;
+    }
+
+    &-description {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+	    overflow: hidden;
+      margin-bottom: 0 !important;
+    }
+
     &-interests {
       display: flex;
       flex-direction: row;

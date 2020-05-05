@@ -51,7 +51,7 @@ function AddNPO() {
 
     // GET ALL INTERESTS
     let interests = [];
-    for (let checkbox of document.querySelectorAll("input[type=checkbox]:checked")) {
+    for (let checkbox of document.querySelectorAll("interest-checkbox:checked")) {
       interests.push(checkbox.value);
     }
 
@@ -161,11 +161,17 @@ function AddNPO() {
 
             <label className="mt-4">Looking for:</label>
             <div className="looking-for-checkboxes">
-              <div><input type="checkbox" value="Members"/> <label>Members</label></div>
-              <div><input type="checkbox" value="Partnerships"/> <label>Partnerships</label></div>
-              <div><input type="checkbox" value="Sponsors"/> <label>Sponsors</label></div>
-              <div><input type="checkbox" value="Clients"/> <label>Clients</label></div>
-              <div><input type="checkbox" value="Opportunities"/> <label>Opportunities</label></div>
+              <div><input className="interest-checkbox" type="checkbox" value="Members"/> <label>Members</label></div>
+              <div><input className="interest-checkbox" type="checkbox" value="Partnerships"/> <label>Partnerships</label></div>
+              <div><input className="interest-checkbox" type="checkbox" value="Sponsors"/> <label>Sponsors</label></div>
+              <div><input className="interest-checkbox" type="checkbox" value="Clients"/> <label>Clients</label></div>
+              <div><input className="interest-checkbox" type="checkbox" value="Opportunities"/> <label>Opportunities</label></div>
+            </div>
+
+            <label className="mt-4">Legal:</label>
+            <div className="legal-checkboxes">
+              <div><input type="checkbox" required/> <label><small>I am the founder/owner of the nonprofit organization OR I have gotten explicit permissions from the founder/owner to submit this nonprofit organization.</small></label></div>
+              <div><input type="checkbox" required/> <label><small>I have read the Terms and Agreements.</small></label></div>
             </div>
           </Modal.Body>
           <Modal.Footer>

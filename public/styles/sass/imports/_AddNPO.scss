@@ -2,12 +2,13 @@ label:not(:first-child) {
   margin-top: 10px;
 }
 
-.looking-for-checkboxes {
+.looking-for-checkboxes, .legal-checkboxes {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-gap: 10px;
 
   & label {
+    display: inline;
     margin-top: 0 !important;
   }
 }

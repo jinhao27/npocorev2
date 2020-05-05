@@ -29,13 +29,13 @@ function Organizations() {
 
   // FILTERING FUNCTIONS
   const filterOrganizationsBySearch = (event) => {
-    const currentSearchText = event.target.value;
+    const currentSearchText = event.target.value.toLowerCase();
 
     if (currentSearchText === "") {
       getOrganizations();
     } else {
-      // FILTERING ORGANIZATIONS
-      const filteredOrganizations = baseOrganizations.filter(organization => organization.name.includes(currentSearchText));
+      // FILTERING ORGANIZATIONS BY LOWERCASE SEARCH FILTER
+      const filteredOrganizations = baseOrganizations.filter(organization => organization.name.toLowerCase().includes(currentSearchText));
       setOrganizations(filteredOrganizations);
     }
   }
@@ -65,13 +65,17 @@ function Organizations() {
 
     if (interestValue) {
       setOrganizations(baseOrganizations.filter(organization => {
-        console.log(interestValue)
-        console.log(organization.interests)
         return organization.interests.includes(interestValue)
       }));
     } else {
       getOrganizations();
     }
+  }
+
+  const readMore = (event) => {
+    const readMoreButton = event.target;
+    readMoreButton.parentNode.style.display = "none";
+    readMoreButton.parentNode.parentNode.parentNode.querySelector("p").className = "";
   }
 
   return (
@@ -124,22 +128,29 @@ function Organizations() {
       <div className="organizations mt-5">
         {organizations.map((organization, key) =>
           <div className="organization" key={key}>
-            <h3>{organization.name}</h3>
+            <div className="organization-header">
+              <h5>{organization.name}</h5>
+              <div className="organization-resources">
+                <a href="mailto:{organization.email}" target="_">
+                  <img src="/img/email.svg" alt="" />
+                </a>
+                <a href={organization.website} target="_">
+                  <img src="/img/link.svg" alt="" />
+                </a>
+              </div>
+            </div>
             <div><strong>Gender:</strong> {organization.gender}</div>
             <div><strong>Cause:</strong> {organization.cause}</div>
-            <p><strong>Description:</strong> {organization.description}</p>
+            <p className="organization-description"><strong>Description:</strong> {organization.description}</p>
+            <div className="text-right mb-2">
+              <button className="btn btn-link p-0" onClick={readMore}>
+                <small>Read More</small>
+              </button>
+            </div>
             <div className="organization-interests">
               {(organization.interests || []).map((interest, key) =>
                 <small>{interest}</small>
               )}
-            </div>
-            <div className="organization-resources">
-              <a href="mailto:{organization.email}" target="_">
-                <img src="/img/email.svg" alt="" />
-              </a>
-              <a href={organization.website} target="_">
-                <img src="/img/link.svg" alt="" />
-              </a>
             </div>
           </div>
         )}
