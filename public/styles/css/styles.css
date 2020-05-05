@@ -1,6 +1,6 @@
 body {
   position: relative;
-  background-color: #eee;
+  background-color: #eee !important;
   min-height: 100vh; }
 
 #diagonal-bottom {
@@ -73,6 +73,17 @@ body {
     display: block; }
     .home-container img {
       display: none; } }
+
+.contact-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 500px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.3); }
 
 .organizations {
   display: grid;
