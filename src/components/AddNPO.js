@@ -38,7 +38,7 @@ function AddNPO() {
     for (let organization of organizations) {
       if (organization.name === newOrganization.name) {
         return "name";
-      } else if (organization.email === newOrganization.email) {
+      } else if (organization.email === newOrganization.email && newOrganization.email != "") {
         return "email";
       }
     }
@@ -51,7 +51,7 @@ function AddNPO() {
 
     // GET ALL INTERESTS
     let interests = [];
-    for (let checkbox of document.querySelectorAll("interest-checkbox:checked")) {
+    for (let checkbox of document.querySelectorAll(".interest-checkbox:checked")) {
       interests.push(checkbox.value);
     }
 
