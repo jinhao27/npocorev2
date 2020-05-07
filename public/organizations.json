@@ -1,0 +1,246 @@
+{
+  "organizations" : [
+    {
+      "cause" : "Science and Technology",
+      "description" : "Launch Tech is a SaaS product holding company, dedicated to launching real-world software applications.",
+      "email" : "hello@launchtechllc.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "Launch Tech LLC",
+      "website" : "https://www.launchtechllc.com/"
+    },
+    {
+      "cause" : "Education",
+      "description" : "Simply Neuroscience is dedicated to fostering students' interdisciplinary interests in the brain through neuroscience and psychology education, outreach, and awareness.",
+      "email" : "info@simplyneuroscience.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "Simply Neuroscience",
+      "website" : "https://simplyneuroscience.org/"
+    },
+    {
+      "cause" : "Social Services",
+      "description" : "Explicit Gesture is an IOS App that makes daily tasks on your device easier such as calling, messaging, email, and more.\nDownload for free!",
+      "email" : "sprothia935@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Clients" ],
+      "name" : "Explicit Gesture",
+      "website" : "https://apps.apple.com/us/app/explicit-gesture/id1502176334"
+    },
+    {
+      "cause" : "Human Rights",
+      "description" : "Youth initiative promoting menstrual equity, reforming period education, and dismantling the stigma.",
+      "email" : "thestudentperiodmovement@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "The Student Period Movement",
+      "website" : "http://thestudentperiodmovement.org/"
+    },
+    {
+      "cause" : "Environment",
+      "description" : "Established in 2018, CMP is a global awareness organization that helps students promote grassroots initiatives in their own communities. ",
+      "email" : "hello@cleanmyplanet.xyz",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Opportunities" ],
+      "name" : "Clean My Planet",
+      "website" : "https://cleanmyplanet.xyz"
+    },
+    {
+      "cause" : "Health",
+      "description" : "Modern Divergence is a youth led nonprofit  organization that promotes awareness for how mental health stigma impacts pediatric healthcare and combat the effect of diagnosis in kids and teens. We create podcasts, conduct research, write articles, and connect with local hospitals to promote patient wellbeing. Modern Divergence has received grants and awards from GripTape and Riley’s Way Call For Kindness. ",
+      "email" : "moderndivergence@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors" ],
+      "name" : "Modern Divergence",
+      "website" : "https://moderndivergence.wixsite.com/modiv"
+    },
+    {
+      "cause" : "Science and Technology",
+      "description" : "BitHacks is the platform for AI projects that lead to social change. It is an online, technology-based event that seeks to foster an environment in which hackers can learn freely while maintaining a competitive spirit. There will be activities, workshops, and the main event: a coding competition. Participants will be able to work in groups of up to four people, and compete against other groups with their technology-based projects. Judges will assess projects and winners will be announced for various categories. Winners will receive prizes.",
+      "email" : "contact@bithacks.io",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Sponsors" ],
+      "name" : "BitHacks",
+      "website" : "https://www.bithacks.io/"
+    },
+    {
+      "cause" : "Arts and Culture",
+      "description" : "Lilac is a space where youth from all around the world explore and discuss topics surrounding what they are passionate about through Writing and Art. \nSo far, we have 100+ team members from all around the world. \nWe hope to use this site to increase awareness around important global issues in STEM, Humanities, and Life that need to be discussed!\n\nWe aim to create a tightly-knit community of writers, poets, and artists who use their work to empower youth and create profound, societal change.\nOur main goals as an organization are 1. Community 2. Skill Development and 3. Impact.\n\nWe hope to empower youth by giving them an organized platform to use their voice and make sure that it is heard!",
+      "email" : "thelilacmagazine@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "Lilac",
+      "website" : "https://thelilac.blog/"
+    },
+    {
+      "cause" : "Education",
+      "description" : "A casual server for programmers (and gamers) in high school and college to chill and discuss code, and help each other out. We would be glad to have you.",
+      "email" : "gspam275@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Sponsors" ],
+      "name" : "Solace",
+      "website" : "https://discord.gg/gKYSMeJ"
+    },
+    {
+      "cause" : "Social Services",
+      "description" : "We are dedicated to helping 4th-8th graders learn how to program in a fun and conceptual manner, hosting online workshops every week and creating online resources for Python, HTML, and more!",
+      "email" : "ycw.alameda@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Sponsors" ],
+      "name" : "Youth Coding Workshops",
+      "website" : "https://ycwalameda.weebly.com/"
+    },
+    {
+      "cause" : "Education",
+      "description" : "We explain mathematical concepts through short, compelling original songs in order to prepare students for STEM-related careers.",
+      "email" : "melodiesformath@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "Melodies for Math",
+      "website" : "https://melodiesformath.wixsite.com/mfm1"
+    },
+    {
+      "cause" : "Education",
+      "description" : "Irvine LIGHTS began with three goals in mind.\n\nFirst, we wanted to make learning better and easier for kids. As high schoolers ourselves, we could easily think of ways we can contribute and help make difficult concepts simpler. With the joint efforts of multiple schools and after-school programs, we formulated the Infinity project.\n\nSecond, we wanted people to feel empowered to make a difference and make changes in their community. There is a lot of ideas that high schoolers have that could potentially change the world someday and we found Irvine LIGHTS as the perfect opportunity to give a platform for those students and ideas. That's how the Beyond project came about.\n\nLastly, we wanted to spark collaboration. It wasn't enough to make this a club at just one school. This needed to be a way for people passionate about a topic to express themselves. Through diligent advertising and different marketing strategies, we were able to get the attention of hundreds of students in our community. That's why we pushed out: Irvine LIGHTS chapters. Bring the fun to your school!",
+      "email" : "hello@irvinelights.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "Irvine LIGHTS",
+      "website" : "https://irvinelights.org"
+    },
+    {
+      "cause" : "Science and Technology",
+      "description" : "Girl Genius is a 501(c)(3) striving to connect, inspire, and empower female change-makers worldwide.  Since 2018, our initiative seeks to ensure females (non-binary and trans-inclusive) and people of color are given a voice through our three mediums: magazine issues, blog posts, and YouTube videos.",
+      "email" : "girlgeniusmagazine@gmail.com",
+      "gender" : "Female",
+      "interests" : [ "Members", "Partnerships", "Sponsors" ],
+      "name" : "Girl Genius",
+      "website" : "https://girlgeniusmagazine.wixsite.com/official"
+    },
+    {
+      "cause" : "Education",
+      "description" : "A Bay Area-based hackathon organized by local high school students to raise awareness about Artificial Intelligence and Machine Learning. By dispelling the myth around AI and ML, we want our fellow high school students to become familiar with these powerful tools to help them in their careers and life.",
+      "email" : "neuralhacks@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors" ],
+      "name" : "Neural Hacks",
+      "website" : "https://www.google.com/"
+    },
+    {
+      "cause" : "Education",
+      "description" : "Specialists in running Innovation Programmes (challenges/ contests/competitions/campaigns) learning experiences and engagements for pre-primary, primary and high schools as well as child-based and student organizations. \n\nWe also provide education-innovation insights, tools and services to corporates and SMEs that they use for their social investment initiatives.",
+      "email" : "innotechsmartkids@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "InnotechSmartkids",
+      "website" : "https://www.innotechsmartkids.co.za"
+    },
+    {
+      "cause" : "Children",
+      "description" : "YoungArts’ signature program is an application-based award for emerging artists ages 15–18 or in grades 10–12 from across the United States. Selected through a blind adjudication process conducted by an independent panel of highly accomplished artists, YoungArts winners receive valuable support, including financial awards of up to $10,000, professional development and educational experiences working with renowned mentors, and performance and exhibition opportunities at some of the nation’s leading cultural institutions. Joining a 20,000-strong alumni community, they receive creative and professional development opportunities and connect with an extraordinarily rich network of peers.",
+      "email" : "contact@yougnarts.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members" ],
+      "name" : "National Youngarts Foundation",
+      "website" : "http://www.youngarts.org/"
+    },
+    {
+      "cause" : "Children",
+      "description" : "Last year, after going to Paideia and Stanford Summer Humanity Institute, my friends and I created an online humanities journal called HOPE: www.hopehumanities.org\n\nWe published our first issue yesterday and in fact, we are world-wide, student-run, and non-profit. Most importantly, we publish academic papers, editorials, art, and literature, basically any kinds related to humanities.\n\nWe hope to gain support from you all. If you are interested to become a student representative for a school to collect submission, you could email hophumanities@gmail.com\n\nIf you want to submit, you could visit our website submission page to take a look. Thank you all for your support! We currently have more than 40 schools affiliated around the world!",
+      "email" : "hophumanities@mail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members" ],
+      "name" : "Summer Humanity Institute",
+      "website" : "https://www.hopehumanities.com/"
+    },
+    {
+      "cause" : "Civil Rights and Social Action",
+      "description" : "Helloo World is an organization where coding and social impact overlap. We aim to explore how technology can be used to solve social issues big and small. We promote these initiatives through posts, videos, games, educational material, and by other means. Let’s change the world together - through one line of code at a time!",
+      "email" : "hellooworldsite@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "Helloo World ",
+      "website" : "https://helloo-world.com"
+    },
+    {
+      "cause" : "Education",
+      "description" : "hk_youth_opps is an Instagram account that aims to bridge the gap in access to educational resources and opportunities in Hong Kong. hk_youth_opps seeks to bring opportunities to youth regardless of their gender, race, socio-economic background, religion, sexual orientation, etc. hk_youth_opps promotes opportunities such as NGO opportunities, academic competitions, educational conferences, webinars/podcasts, exam resources, journalism opportunities, internship opportunities, and leadership opportunities. ",
+      "email" : "hkyouthopps@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "hk_youth_opps",
+      "website" : "https://linktr.ee/hk_youth_opps"
+    },
+    {
+      "cause" : "Science and Technology",
+      "description" : "DemocracyLab empowers people who use technology to advance the public good by connecting skilled volunteers to tech-for-good projects.",
+      "email" : "hello@democracylab.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "DemocracyLab",
+      "website" : "https://democracylab.org/"
+    },
+    {
+      "cause" : "Education",
+      "description" : "Ideality's mission is to combine, facilitate and create a business environment for the students as a means to help them turn their ideas into reality and make them financially aware about the importance of saving, borrowing, and investing.\n\nThis server is a platform to express the inner creativity that is hidden from the world, and to build confidence to help an individual face challenges they might face in the outside world.\n\nIt is a journey, that we, as a team, inspire and engage for. \nWe, here help to:\n- create a skilled workplace for today and our tomorrow\n- build a thriving community dedicated to innovative skill \n  development and business\n- innovate to repair and sustain our planet",
+      "email" : "ideality.info@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "Ideality",
+      "website" : " https://discord.gg/WEUu64v"
+    },
+    {
+      "cause" : "Education",
+      "description" : "StudentPort is a Discord server for networking between students looking to find extra-curriculars, or scale their own! We have members who run internationally scaled service initiatives, teens who founded national non-profits, students who spoke at the UN, young entrepreneurs, and more!\n\nJoin us and:\n- Advertise your extracurricular opportunity\n- Find potential partners for your organization\n- Be a part of an up and coming organization\n- Network with really cool students!",
+      "email" : "maccu2515@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "StudentPort",
+      "website" : "https://discord.gg/qPYhReX"
+    },
+    {
+      "cause" : "Education",
+      "description" : "The Stemodity Initiative is a youth organization focused around STEM and the Humanities. We're a student journalism initiative that encourages the deeper diving of youth minds into the world of STEM through self-engagement and exploration.",
+      "email" : "seth.stemodity@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "The Stemodity Initiative",
+      "website" : "https://www.stemodity.org/"
+    },
+    {
+      "cause" : "Education",
+      "description" : "ObjectiveCode is a non-profit organization focused on serving elementary and middle schoolers and teaching them essential technical skills needed in the modern workforce. Our goal is to spark passion and influence kids to take initiative to learn what they are interested in.\nT",
+      "email" : "support@objectivecode.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "ObjectiveCode",
+      "website" : "https://www.objectivecode.org"
+    },
+    {
+      "cause" : "Health",
+      "description" : "Dementia Insight is a non-profit entity whose goal is to bring attention and awareness about dementia. Various articles about the signs and symptoms of dementia are provided for users' perusal on the website. Facts on the different disorders that cause dementia including Alzheimer's, Lewy Body Dementia, and Vascular Dementia are included as well. Information regarding signs of dementia, dementia stages, dementia symptoms, prevention, and resources such as non-profit organizations are also given. Weekly blogs about the new dementia-related technologies, caregiver and lifestyle tips are available as well. We want to keep you informed so that you can help your loved one in the best way possible.",
+      "email" : "romaanky@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Opportunities" ],
+      "name" : "Dementia Insight",
+      "website" : "https://www.dementiainsight.org"
+    },
+    {
+      "cause" : "Science and Technology",
+      "description" : "Bay Area Hacks is a 24-hour hackathon where middle school and high school students from all around California will be able to display any software/hardware projects that they have made. At absolutely no cost at all, Bay Area Hacks will provide students with food, drinks, snacks, a great venue, prizes, and unique opportunities to network with large companies in Silicon Valley through workshops as well as recruiting booths.",
+      "email" : "bayareahacks2020@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients" ],
+      "name" : "Bay Area Hacks",
+      "website" : "https://www.bayareahacks.com"
+    },
+    {
+      "cause" : "Science and Technology",
+      "description" : "NorcalHacks is a student-led 501(c)(3) nonprofit hackathon. Our goal is to inspire and help aspiring programmers of all backgrounds to learn and hone skills in the field of computer science. Our event is all-inclusive to any high schooler and aims to help underrepresented communities in STEM fields. We are dedicated to helping not only the majority population of this field, but also minorities and women - many of whom have not had the same level of exposure or chances regarding this field. NorcalHacks strives to empower students of all types by providing a supporting environment for them to prosper and thrive in this new technological era. We want to create a supportive environment for both those who are new and familiar with computer science and inspire them to go out into the world and create their mark!",
+      "email" : "team@norcalhacks.tech",
+      "gender" : "Everyone",
+      "name" : "NorcalHacks",
+      "website" : "https://norcalhacks.weebly.com/"
+    }
+  ]
+}
