@@ -1,8 +1,13 @@
 import React from 'react';
+import { Helmet } from "react-helmet";
 
-class Contact extends React.Component {
-  render() {
-    return (
+function Contact() {
+  return (
+    <div>
+      <Helmet>
+        <title>NPO Core - Contact us!</title>
+        <meta name="description" content="Contact us for questions on nonprofit organizations, NPO information, joining, and getting in contact with NPO Core, or any of the nonprofit organizations listed here!" />
+      </Helmet>
       <div className="contact-container">
         <h1>Contact</h1>
         <form action="https://formspree.io/hello@launchtechllc.com" method="POST">
@@ -23,8 +28,8 @@ class Contact extends React.Component {
           <small>Or, you can email us at <a href="hello@launchtechllc.com">hello@launchtechllc.com</a>.</small>
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default Contact;
