@@ -1,30 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
 // IMPORTS
-import firebase from '../firebase.js';
+import organizationJSON from '../organizations.json';
 
 
 function Organizations() {
-  const organizationsRef = firebase.database().ref("organizations"); // FIREBASE
   const [baseOrganizations, setBaseOrganizations] = useState([]);
   const [organizations, setOrganizations] = useState([]);
 
   const getOrganizations = () => {
-    let tempOrganizations = [];
-    organizationsRef.once("value").then((snapshot) => {
-      if (snapshot.val()) {
-        for (let organizationObj of Object.entries(snapshot.val())) {
-          tempOrganizations.push(organizationObj[1]);
-        }
-      }
-
-      setOrganizations(tempOrganizations);
-      setBaseOrganizations(tempOrganizations);
-    });
+    setOrganizations(Object.values(organizationJSON["organizations"]));
+    setBaseOrganizations(Object.values(organizationJSON["organizations"]));
   }
 
   useEffect(() => {
-      getOrganizations(); // GET ALL ORGS ON LOAD
+    getOrganizations(); // GET ALL ORGS ON LOAD
   }, []);
 
   // FILTERING FUNCTIONS
