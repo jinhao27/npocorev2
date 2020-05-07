@@ -126,7 +126,7 @@ function Organizations() {
               <h5>{organization.name}</h5>
               <div className="organization-resources">
                 <a href="mailto:{organization.email}" target="_">
-                  <img src="/img/email.svg" alt="" />
+                  {organization.email ? <img src="/img/email.svg" alt="" /> : null}
                 </a>
                 <a href={organization.website} target="_">
                   <img src="/img/link.svg" alt="" />

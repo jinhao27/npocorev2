@@ -117,7 +117,7 @@ function AddNPO() {
             <input className="form-control mb-2" type="text" onChange={onOrgNameChange} required />
 
             <label>Organization Email:</label>
-            <input className="form-control mb-2" type="email" onChange={onOrgEmailChange} required />
+            <input className="form-control mb-2" type="email" onChange={onOrgEmailChange} />
 
             <label>Organization Description:</label>
             <textarea className="form-control mb-2" rows="5" onChange={onOrgDescriptionChange} required />
