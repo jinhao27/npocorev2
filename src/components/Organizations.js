@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 // IMPORTS
 import organizationJSON from '../organizations.json';
@@ -70,7 +71,10 @@ function Organizations() {
 
   return (
     <div className="pb-5">
-      <h1 className="">Organizations</h1>
+      <h1 className="mt-4">Organizations</h1>
+      <small>
+        If you would like your nonprofit organization removed from NPO Core, please <Link to="/contact">contact us</Link>.
+      </small>
 
       <div className="filters mt-3">
         <input className="form-control search-bar" type="text" placeholder="Filter" onChange={filterOrganizationsBySearch} />

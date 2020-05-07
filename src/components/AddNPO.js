@@ -169,10 +169,7 @@ function AddNPO() {
             </div>
 
             <label className="mt-4">Legal:</label>
-            <div className="legal-checkboxes">
-              <div><input type="checkbox" required/> <label><small>I am the founder/owner of the nonprofit organization OR I have gotten explicit permissions from the founder/owner to submit this nonprofit organization.</small></label></div>
-              <div><input type="checkbox" required/> <label><small>I have read the Launch Tech LLC <a href="https://www.launchtechllc.com/corporate/terms-of-service" target="_">Terms of Service</a>.</small></label></div>
-            </div>
+            <div><input type="checkbox" required/> <label><small>I have read the Launch Tech LLC <a href="https://www.launchtechllc.com/corporate/terms-of-service" target="_">Terms of Service</a>.</small></label></div>
           </Modal.Body>
           <Modal.Footer>
             <input class="btn btn-info" type="submit" value="Submit your NPO!"/>
