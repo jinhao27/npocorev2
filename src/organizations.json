@@ -473,6 +473,120 @@
       "gender" : "Everyone",
       "name" : "Liberal Writes",
       "website" : "https://www.instagram.com/liberalwrites/"
+    },
+    "-M6kFZLyz98qfAj77aHr" : {
+      "cause" : "Arts and Culture",
+      "description" : "United Under Arts is a global student-led community service organization dedicated to providing underprivileged communities and vulnerable populations, particularly the elderly and children, around the world with opportunities and experiences in the arts. We run free arts-based events and fundraisers such as concerts and workshops to bring joy and meaning to these underserved groups and facilitate connections across all ages and backgrounds. ",
+      "email" : "info@unitedunderarts.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "United Under Arts",
+      "website" : "https://www.unitedunderarts.org/"
+    },
+    "-M6lmZZIgKcD_YAdOEEB" : {
+      "cause" : "Children",
+      "description" : "Motivate to Educate is a student lead initiative to provide underprivileged kids free tutoring and access to different classes/skills they wouldn’t normally get exposure to. This is a nonprofit organization geared towards allowing any child to learn what desire whether that be reading music or graphic design even if they don’t have the resources. ",
+      "email" : "motivatetoeducatetutors@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "Motivate to Educate",
+      "website" : "https://motivatetoeducatet.wixsite.com/site"
+    },
+    "-M6ly-is1-ORzI0BWgmG" : {
+      "cause" : "Civil Rights and Social Action",
+      "description" : "Inspiring women in engineering & science + college student advice",
+      "email" : "",
+      "gender" : "Female",
+      "name" : "Passioneering",
+      "website" : "https://www.instagram.com/passioneering/"
+    },
+    "-M6lyUQnCbl2LDxUteCB" : {
+      "cause" : "Science and Technology",
+      "description" : "GeomHacks aims to empower students in their computer science pursuits while making sure they stay safe during quarantine.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "GeomHacks",
+      "website" : "http://geomhacks.com/"
+    },
+    "-M6lygaFiTyEW-MoiUbj" : {
+      "cause" : "Science and Technology",
+      "description" : "aking A Difference (MAD) in the lives of girls passionate about science, technology, engineering, and mathematics (STEM). Official Launch June 2020.",
+      "email" : "",
+      "gender" : "Female",
+      "name" : "Mad STEM",
+      "website" : "https://www.madstem.com/"
+    },
+    "-M6lyxJRhPnmeBAXUEdf" : {
+      "cause" : "Education",
+      "description" : "We try to help decrease the learning gap for children from low-income families by creating hands-on STEM projects for them.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "STEM Days",
+      "website" : "https://purbashamajee.wixsite.com/stemdays"
+    },
+    "-M6lztXjyQcDEx8r5IBG" : {
+      "cause" : "Education",
+      "description" : "Here at STEMTeen Seattle Chapter, we know that sometimes all it takes to change the world is a little support. We are part of a greater organization STEMTeen, but our mission is still the same: to bring free workshops and learning opportunities for all!",
+      "email" : "stemteenseattle@gmail.com",
+      "gender" : "Everyone",
+      "name" : "STEM Teen",
+      "website" : "https://stemteenseattle.wixsite.com/washington"
+    },
+    "-M6m-6mPMbwqla7ZAGeq" : {
+      "cause" : "Education",
+      "description" : "Our goal is to inspire future generations, from different socioeconomic backgrounds, that STEM is a growing field which they can take advantage of in order to change our future. ",
+      "email" : "stemcloudbusiness@gmail.com",
+      "gender" : "Everyone",
+      "name" : "STEM Cloud",
+      "website" : "https://stemcloud.wixsite.com/thefuture"
+    },
+    "-M6m-eFl1XCtb0JLgrr6" : {
+      "cause" : "Civil Rights and Social Action",
+      "description" : "Empowering youth to make their voices heard!",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Hear Youth Voices",
+      "website" : "https://www.instagram.com/hearyouthvoices/"
+    },
+    "-M6m-uw41rZOtuKEwfC7" : {
+      "cause" : "Economic Empowerment",
+      "description" : "A platform aiming to connect high school students with resources that will expose them to real-world STEAM opportunities.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "STEAM Find",
+      "website" : "https://steamfind.sharetribe.com/"
+    },
+    "-M6m05RDN2E5KsvMiPrG" : {
+      "cause" : "Education",
+      "description" : "Take a Class, Save a Life. 100% of proceeds go to COVID relief!",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Quarantine Coders",
+      "website" : "https://www.instagram.com/quarantinecoders/"
+    },
+    "-M6m0LVtAemRHDUE4wWM" : {
+      "cause" : "Education",
+      "description" : "The Quarantine Skillshare is working to help students who may need some extra help during this period. Many students relied on one on one help from teacheers, which is now unavailable. Here students can join livestreams where other students can help them figure out how to do certain subjects.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Quarantine Skillshare",
+      "website" : "https://quarantineskillshare.wixsite.com/quarantineskill"
+    },
+    "-M6m0TmvBbIHhEJD9Ar3" : {
+      "cause" : "Education",
+      "description" : "A free platform to connect young people with mentors for any degree, career, passion, and curiosoity. Changing the word one connection at a time.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Mentor Corps",
+      "website" : "https://www.instagram.com/mentor_corps/"
+    },
+    "-M6m0c0jgPvdjGEFSy8y" : {
+      "cause" : "Education",
+      "description" : "Teaching people to code through the media.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Code Watcher",
+      "website" : "https://www.instagram.com/code_watcher/"
     }
   }
 }
