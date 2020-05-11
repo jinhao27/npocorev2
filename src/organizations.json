@@ -239,6 +239,7 @@
       "description" : "NorcalHacks is a student-led 501(c)(3) nonprofit hackathon. Our goal is to inspire and help aspiring programmers of all backgrounds to learn and hone skills in the field of computer science. Our event is all-inclusive to any high schooler and aims to help underrepresented communities in STEM fields. We are dedicated to helping not only the majority population of this field, but also minorities and women - many of whom have not had the same level of exposure or chances regarding this field. NorcalHacks strives to empower students of all types by providing a supporting environment for them to prosper and thrive in this new technological era. We want to create a supportive environment for both those who are new and familiar with computer science and inspire them to go out into the world and create their mark!",
       "email" : "team@norcalhacks.tech",
       "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors" ],
       "name" : "NorcalHacks",
       "website" : "https://norcalhacks.weebly.com/"
     },
