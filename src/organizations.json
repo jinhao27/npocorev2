@@ -588,6 +588,15 @@
       "gender" : "Everyone",
       "name" : "Code Watcher",
       "website" : "https://www.instagram.com/code_watcher/"
+    },
+    "-M6m0c0jgPvdjGEFSy8y" : {
+      "cause" : "Education",
+      "description" : "Hello everyone, we are HexaHacks, a non-profit striving to bring hackathons accessible to everyone and improve computer science education by making hard things easy. If you are interested in what we are doing and partner with us, go to https://hexahacks.tech or email us, any feedback is appreciated.",
+      "email" : "ask@hexahacks.tech",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "HexaHacks",
+      "website" : "https://hexahacks.tech/"
     }
   }
 }
