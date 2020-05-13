@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 // COMPONENTS
 import Modal from "react-bootstrap/Modal";
@@ -109,6 +110,22 @@ function AddNPO() {
 
       <Modal show={isOpen} onHide={hideModal}>
         <Modal.Header>
+          <h3>Our Database is Down!</h3>
+        </Modal.Header>
+        <Modal.Body>
+          <p>
+            We're sorry! We've recently received a DoS (Denial of Service) attack on our database, so our database is temporarily shut down. If you'd like to add your nonprofit organization, please <Link onClick={hideModal} to="/contact">contact us</Link>.
+            <br/><br/>
+            Sorry for the inconvenience.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Link class="btn btn-info" onClick={hideModal} to="/contact">Contact us!</Link>.
+        </Modal.Footer>
+      </Modal>
+
+      {/* <Modal show={isOpen} onHide={hideModal}>
+        <Modal.Header>
           <h3>Add your nonprofit organization</h3>
         </Modal.Header>
         <form onSubmit={addNPO}>
@@ -175,7 +192,7 @@ function AddNPO() {
             <input class="btn btn-info" type="submit" value="Submit your NPO!"/>
           </Modal.Footer>
         </form>
-      </Modal>
+      </Modal> */}
     </div>
   )
 }
