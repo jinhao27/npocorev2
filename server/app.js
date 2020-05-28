@@ -8,16 +8,20 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+app.get("/contact", (req, res) => {
+  res.send("Contact");
+});
+
 
 // Setting up server for production
-const devProduction = false;  // Variable to allow React.js redirects if testing production functionality
+const devProduction = true;  // Variable to allow React.js redirects if testing production functionality
 if (process.env.NODE_ENV == "production" || devProduction) {
   // Listing /public directory as static
-  app.use(express.static(__dirname + "/public"));
+  app.use(express.static(__dirname + "/build"));
 
   // Redirecting pages not caught by above Express calls to Vue
   app.get(/.*/, (req, res) => {
-    res.sendFile(__dirname + "/public/index.html");
+    res.sendFile(__dirname + "/build/index.html");
   });
 }
 

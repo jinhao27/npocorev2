@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // COMPONENTS
 import Navbar from './components/Navbar.js';
-import Home from './components/Home.js';
-import Contact from './components/Contact.js';
 import Organizations from './components/Organizations.js';
 
 function App() {
