@@ -6,11 +6,19 @@ function Organizations() {
   const [baseOrganizations, setBaseOrganizations] = useState([]);
   const [organizations, setOrganizations] = useState([]);
 
-  const getOrganizations = () => {
+  const getOrganizations = async () => {
     // SAVE MONGODB ORGS TO PROPS
-    console.log("save");
-    // setOrganizations(Object.values(organizationJSON["organizations"]));
-    // setBaseOrganizations(Object.values(organizationJSON["organizations"]));
+    // const organizations = await fetch("http://localhost:3000/api/get-organizations", {
+    //   mode: 'cors'
+    // });
+    fetch("http://localhost:3000/api/get-organizations", {
+      mode: 'no-cors'
+    }).then((response) => {
+      return response.data;
+    }).then((organizations) => {
+      setOrganizations(organizations);
+      setBaseOrganizations(organizations);
+    });
   }
 
   useEffect(() => {
@@ -125,7 +133,7 @@ function Organizations() {
         </div>
 
         <div className="organizations mt-5">
-          {organizations.map((organization, key) =>
+          {organizations ? organizations.map((organization, key) =>
             <div className="organization" key={key}>
               <div className="organization-header">
                 <h5>{organization.name}</h5>
@@ -152,7 +160,11 @@ function Organizations() {
                 )}
               </div>
             </div>
-          )}
+          ) :
+          <div className="text-center">
+            <small>No organizations yet!</small>
+          </div>
+        }
         </div>
       </div>
     </div>
