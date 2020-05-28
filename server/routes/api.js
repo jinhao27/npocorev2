@@ -23,4 +23,13 @@ module.exports = function(app) {
     newOrganization.save((err, organization) => { if (err) throw err; });
   });
 
+  app.get("/api/get-organization", async (req, res) => {
+    const organization = organizationModel.findOne({
+      email: req.query.email,
+      password: req.query.password
+    });
+
+    return organization;
+  })
+
 }

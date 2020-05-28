@@ -10,7 +10,8 @@ const organizationModel = mongoose.model("Organization", new mongoose.Schema({
     required: false
   },
   name: String,
-  website: String
+  website: String,
+  password: String
 }));
 
 module.exports = { organizationModel };

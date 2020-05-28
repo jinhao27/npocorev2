@@ -34,9 +34,23 @@ app.get("/contact", (req, res) => {
   res.render("contact.html");
 });
 
-app.get("/login", (req, res) => {
-  res.render("login.html");
-});
+app.route("/login")
+  .get((req, res) => {
+    res.render("login.html");
+  })
+  .post(async (req, res) => {
+    const organization = await organizationModel.findOne({
+      email: req.body.email,
+      password: req.body.password
+    });
+
+    if (organization) {
+      res.cookie("organization", organization);
+      res.redirect("/");
+    } else {
+      res.send("Invalid credentials.");
+    }
+  });
 
 app.route("/register")
   .get((req, res) => {
@@ -45,8 +59,16 @@ app.route("/register")
   .post(async (req, res) => {
     const newOrganization = new organizationModel(req.body);
     newOrganization.save((err, organization) => { if (err) throw err; });
+
+    res.cookie("organization", req.body);
+
     res.redirect("/");
   });
+
+app.get("/logout", (req, res) => {
+  res.clearCookie("organization");
+  res.redirect("/");
+});
 
 require("./routes/api")(app);
 
