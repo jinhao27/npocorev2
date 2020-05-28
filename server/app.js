@@ -1,9 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
 const axios = require("axios");
 const { organizationModel } = require("./models");
 
 app = express();
+
+// Configuring cookie parser with express
+app.use(cookieParser())
 
 // Setting JSON parsing methods for POST request data
 app.use(express.urlencoded()); // HTML forms
@@ -39,7 +43,8 @@ app.route("/register")
     res.render("register.html");
   })
   .post(async (req, res) => {
-    await axios.post("/api/add-organization", req.body);
+    const newOrganization = new organizationModel(req.body);
+    newOrganization.save((err, organization) => { if (err) throw err; });
     res.redirect("/");
   });
 
