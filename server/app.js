@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const { organizationModel } = require("./models"); 
+const { organizationModel } = require("./models");
 
 app = express();
 
@@ -27,6 +27,14 @@ app.get("/", (req, res) => {
 
 app.get("/contact", (req, res) => {
   res.render("contact.html");
+});
+
+app.get("/login", (req, res) => {
+  res.render("login.html");
+});
+
+app.get("/register", (req, res) => {
+  res.render("register.html");
 });
 
 require("./routes/api")(app);
