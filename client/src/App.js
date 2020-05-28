@@ -17,8 +17,6 @@ function App() {
           <Switch>
             <div className="container">
               <div className="hover-container">
-                <Route exact={true} path="/" component={Home}/>
-                <Route exact={true} path="/contact" component={Contact}/>
                 <Route path="/organizations" component={Organizations}/>
               </div>
             </div>
