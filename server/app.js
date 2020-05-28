@@ -3,13 +3,29 @@ const mongoose = require("mongoose");
 
 app = express();
 
+// Setting JSON parsing methods for POST request data
+app.use(express.urlencoded()); // HTML forms
+app.use(express.json()); // API clients
+
+// Setting view rendering engine
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
+app.use('/static', express.static(__dirname + '/static'))
+app.engine('html', require('ejs').renderFile);
+
+// Mongoose configuration
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost:27017/npocore";
+mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
+mongoose.set('useFindAndModify', false);
+
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.render("index.html");
 });
 
 app.get("/contact", (req, res) => {
-  res.send("Contact");
+  res.render("contact.html");
 });
 
 
