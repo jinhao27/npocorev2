@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const axios = require("axios");
 const { organizationModel } = require("./models");
 
 app = express();
@@ -33,9 +34,14 @@ app.get("/login", (req, res) => {
   res.render("login.html");
 });
 
-app.get("/register", (req, res) => {
-  res.render("register.html");
-});
+app.route("/register")
+  .get((req, res) => {
+    res.render("register.html");
+  })
+  .post(async (req, res) => {
+    await axios.post("/api/add-organization", req.body);
+    res.redirect("/");
+  });
 
 require("./routes/api")(app);
 

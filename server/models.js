@@ -5,7 +5,10 @@ const organizationModel = mongoose.model("Organization", new mongoose.Schema({
   description: String,
   email: String,
   gender: String,
-  interests: Array,
+  interests: {
+    type: Array,
+    required: false
+  },
   name: String,
   website: String
 }));

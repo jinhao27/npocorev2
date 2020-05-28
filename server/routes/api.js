@@ -9,7 +9,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/add-organization", async (req, res) => {
-    const organization = req.body.organization;
+    const organization = req.body;
     const newOrganization = await new organizationModel(organization);
     await newOrganization.save((err, organization) => { if (err) throw err; });
   });
