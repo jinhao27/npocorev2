@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const { organizationModel } = require("./models"); 
 
 app = express();
 
@@ -27,6 +28,8 @@ app.get("/", (req, res) => {
 app.get("/contact", (req, res) => {
   res.render("contact.html");
 });
+
+require("./routes/api")(app);
 
 
 // Setting up server for production
