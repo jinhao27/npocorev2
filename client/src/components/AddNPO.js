@@ -6,12 +6,10 @@ import Modal from "react-bootstrap/Modal";
 
 // IMPORTS
 import alertify from "alertifyjs";
-import firebase from '../firebase.js';
 
 
 function AddNPO() {
-  const [isOpen, setIsOpen] = useState(false); // MODAL VARIABLES
-  const organizationsRef = firebase.database().ref("organizations") // FIREBASE
+  const [isOpen, setIsOpen] = useState(false); // MODAL VARIABLESE
   const [organizations, setOrganizations] = useState([]); // NPO ORGANIZATIONS
 
   // FORM VARIABLES
@@ -70,8 +68,7 @@ function AddNPO() {
     const unique = validateOrganizationUniqueness(newOrganization);
 
     if (unique === true) {
-      // SAVE TO FIREBASE
-      organizationsRef.push(newOrganization)
+      // SAVE TO MONGODB
 
       // CLOSE MODAL
       setIsOpen(false);
@@ -88,16 +85,9 @@ function AddNPO() {
   }
 
   const getOrganizations = () => {
-    let tempOrganizations = [];
-    organizationsRef.once("value").then((snapshot) => {
-      if (snapshot.val()) {
-        for (let organizationObj of Object.entries(snapshot.val())) {
-          tempOrganizations.push(organizationObj[1]);
-        }
-      }
-
-      setOrganizations(tempOrganizations);
-    });
+    // GET ORGANIZATIONS FROM MONGODB
+    // setOrganizations([]);
+    console.log("hi");
   }
 
   useEffect(() => {

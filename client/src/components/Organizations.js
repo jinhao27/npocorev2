@@ -2,17 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-// IMPORTS
-import organizationJSON from '../organizations.json';
-
-
 function Organizations() {
   const [baseOrganizations, setBaseOrganizations] = useState([]);
   const [organizations, setOrganizations] = useState([]);
 
   const getOrganizations = () => {
-    setOrganizations(Object.values(organizationJSON["organizations"]));
-    setBaseOrganizations(Object.values(organizationJSON["organizations"]));
+    // SAVE MONGODB ORGS TO PROPS
+    console.log("save");
+    // setOrganizations(Object.values(organizationJSON["organizations"]));
+    // setBaseOrganizations(Object.values(organizationJSON["organizations"]));
   }
 
   useEffect(() => {
