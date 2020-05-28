@@ -1,0 +1,172 @@
+body {
+  position: relative;
+  background-color: #eee !important;
+  min-height: 100vh; }
+
+#diagonal-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #12c3c3;
+  clip-path: polygon(0 78%, 100% 13%, 100% 100%, 0% 100%);
+  z-index: -1; }
+
+.copyright {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white; }
+
+.npocore-logo {
+  height: 30px; }
+
+.solid-cta-button {
+  background-color: #f28c41;
+  color: white;
+  text-align: center;
+  padding: 10px 15px;
+  font-size: 20px;
+  border-radius: 4px;
+  border: 2px solid #f28c41;
+  transition: all .2s; }
+  .solid-cta-button:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #ee7115;
+    border: 2px solid #ee7115; }
+
+.ghost-cta-button {
+  background-color: transparent;
+  border: 2px solid #f28c41;
+  color: #f28c41;
+  text-align: center;
+  padding: 10px 15px;
+  font-size: 20px;
+  border-radius: 4px;
+  transition: all .2s; }
+  .ghost-cta-button:hover {
+    color: white;
+    text-decoration: none;
+    background-color: #f28c41;
+    border: 2px solid #f28c41; }
+
+.home-container {
+  padding: 100px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 50px;
+  height: 100%; }
+  .home-container img {
+    width: 100%;
+    align-self: flex-end; }
+  .home-container .cta-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5px;
+    width: 100%; }
+
+@media (max-width: 600px) {
+  .home-container {
+    display: block; }
+    .home-container img {
+      display: none; } }
+
+.contact-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 500px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.3); }
+
+.organizations {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 15px; }
+  .organizations .organization {
+    position: relative;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+    background-color: white; }
+    .organizations .organization-header {
+      display: grid;
+      grid-template-columns: 80% 1fr;
+      grid-gap: 15px; }
+    .organizations .organization-description {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-bottom: 0 !important; }
+    .organizations .organization-interests {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap; }
+      .organizations .organization-interests small {
+        background-color: #f28c41;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 3px;
+        margin: 2.5px; }
+    .organizations .organization-resources {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: grid;
+      grid-template-columns: repeat(2, 25px);
+      grid-gap: 10px;
+      align-items: center; }
+      .organizations .organization-resources a img {
+        width: 100%; }
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+  .filters .search-bar {
+    width: 400px; }
+  .filters .refresh-organizations {
+    background-color: transparent;
+    border: none;
+    transition: all .2s; }
+    .filters .refresh-organizations img {
+      width: 30px;
+      transition: all .2s; }
+      .filters .refresh-organizations img:hover {
+        transform: rotate(-180deg); }
+
+@media (max-width: 800px) {
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100%);
+    grid-gap: 10px; }
+    .filters .search-bar {
+      width: 100%; } }
+
+@media (max-width: 600px) {
+  .organizations {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); } }
+
+label:not(:first-child) {
+  margin-top: 10px; }
+
+.looking-for-checkboxes, .legal-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 10px; }
+  .looking-for-checkboxes label, .legal-checkboxes label {
+    display: inline;
+    margin-top: 0 !important; }
+
+.npo-button {
+  margin-left: 15px; }
+
+@media (max-width: 600px) {
+  .npo-button {
+    margin-left: 0 !important; } }

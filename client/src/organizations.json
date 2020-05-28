@@ -1,0 +1,602 @@
+{
+  "organizations" : {
+    "-M6Xmef1AdaypMGGDGHW" : {
+      "cause" : "Science and Technology",
+      "description" : "Launch Tech is a SaaS product holding company, dedicated to launching real-world software applications.",
+      "email" : "hello@launchtechllc.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "Launch Tech LLC",
+      "website" : "https://www.launchtechllc.com/"
+    },
+    "-M6XnGsPulkvIJpBaGaB" : {
+      "cause" : "Education",
+      "description" : "Simply Neuroscience is dedicated to fostering students' interdisciplinary interests in the brain through neuroscience and psychology education, outreach, and awareness.",
+      "email" : "info@simplyneuroscience.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "Simply Neuroscience",
+      "website" : "https://simplyneuroscience.org/"
+    },
+    "-M6Xo1Hx2WWQ0jSwr5YH" : {
+      "cause" : "Social Services",
+      "description" : "Explicit Gesture is an IOS App that makes daily tasks on your device easier such as calling, messaging, email, and more.\nDownload for free!",
+      "email" : "sprothia935@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Clients" ],
+      "name" : "Explicit Gesture",
+      "website" : "https://apps.apple.com/us/app/explicit-gesture/id1502176334"
+    },
+    "-M6Xr8Owv3FNHhiIxqmK" : {
+      "cause" : "Human Rights",
+      "description" : "Youth initiative promoting menstrual equity, reforming period education, and dismantling the stigma.",
+      "email" : "thestudentperiodmovement@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "The Student Period Movement",
+      "website" : "http://thestudentperiodmovement.org/"
+    },
+    "-M6XuuGAKz1KyRd7OUgy" : {
+      "cause" : "Environment",
+      "description" : "Established in 2018, CMP is a global awareness organization that helps students promote grassroots initiatives in their own communities. ",
+      "email" : "hello@cleanmyplanet.xyz",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Opportunities" ],
+      "name" : "Clean My Planet",
+      "website" : "https://cleanmyplanet.xyz"
+    },
+    "-M6XvUNusLNpigwRZWTI" : {
+      "cause" : "Health",
+      "description" : "Modern Divergence is a youth led nonprofit  organization that promotes awareness for how mental health stigma impacts pediatric healthcare and combat the effect of diagnosis in kids and teens. We create podcasts, conduct research, write articles, and connect with local hospitals to promote patient wellbeing. Modern Divergence has received grants and awards from GripTape and Riley’s Way Call For Kindness. ",
+      "email" : "moderndivergence@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors" ],
+      "name" : "Modern Divergence",
+      "website" : "https://moderndivergence.wixsite.com/modiv"
+    },
+    "-M6Xz7BW_JtyMITv4GBn" : {
+      "cause" : "Science and Technology",
+      "description" : "BitHacks is the platform for AI projects that lead to social change. It is an online, technology-based event that seeks to foster an environment in which hackers can learn freely while maintaining a competitive spirit. There will be activities, workshops, and the main event: a coding competition. Participants will be able to work in groups of up to four people, and compete against other groups with their technology-based projects. Judges will assess projects and winners will be announced for various categories. Winners will receive prizes.",
+      "email" : "contact@bithacks.io",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Sponsors" ],
+      "name" : "BitHacks",
+      "website" : "https://www.bithacks.io/"
+    },
+    "-M6Y3BDpi_niyCyuC59d" : {
+      "cause" : "Arts and Culture",
+      "description" : "Lilac is a space where youth from all around the world explore and discuss topics surrounding what they are passionate about through Writing and Art. \nSo far, we have 100+ team members from all around the world. \nWe hope to use this site to increase awareness around important global issues in STEM, Humanities, and Life that need to be discussed!\n\nWe aim to create a tightly-knit community of writers, poets, and artists who use their work to empower youth and create profound, societal change.\nOur main goals as an organization are 1. Community 2. Skill Development and 3. Impact.\n\nWe hope to empower youth by giving them an organized platform to use their voice and make sure that it is heard!",
+      "email" : "thelilacmagazine@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "Lilac",
+      "website" : "https://thelilac.blog/"
+    },
+    "-M6YCY1BPgeU0gImsUZz" : {
+      "cause" : "Education",
+      "description" : "A casual server for programmers (and gamers) in high school and college to chill and discuss code, and help each other out. We would be glad to have you.",
+      "email" : "gspam275@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Sponsors" ],
+      "name" : "Solace",
+      "website" : "https://discord.gg/gKYSMeJ"
+    },
+    "-M6YD0QIZqH4ZZ8ZYn0l" : {
+      "cause" : "Social Services",
+      "description" : "We are dedicated to helping 4th-8th graders learn how to program in a fun and conceptual manner, hosting online workshops every week and creating online resources for Python, HTML, and more!",
+      "email" : "ycw.alameda@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Sponsors" ],
+      "name" : "Youth Coding Workshops",
+      "website" : "https://ycwalameda.weebly.com/"
+    },
+    "-M6YJXz3R5QKHePj-1Po" : {
+      "cause" : "Education",
+      "description" : "We explain mathematical concepts through short, compelling original songs in order to prepare students for STEM-related careers.",
+      "email" : "melodiesformath@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "Melodies for Math",
+      "website" : "https://melodiesformath.wixsite.com/mfm1"
+    },
+    "-M6YNSV2UetxroUwC-AV" : {
+      "cause" : "Education",
+      "description" : "Irvine LIGHTS began with three goals in mind.\n\nFirst, we wanted to make learning better and easier for kids. As high schoolers ourselves, we could easily think of ways we can contribute and help make difficult concepts simpler. With the joint efforts of multiple schools and after-school programs, we formulated the Infinity project.\n\nSecond, we wanted people to feel empowered to make a difference and make changes in their community. There is a lot of ideas that high schoolers have that could potentially change the world someday and we found Irvine LIGHTS as the perfect opportunity to give a platform for those students and ideas. That's how the Beyond project came about.\n\nLastly, we wanted to spark collaboration. It wasn't enough to make this a club at just one school. This needed to be a way for people passionate about a topic to express themselves. Through diligent advertising and different marketing strategies, we were able to get the attention of hundreds of students in our community. That's why we pushed out: Irvine LIGHTS chapters. Bring the fun to your school!",
+      "email" : "hello@irvinelights.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "Irvine LIGHTS",
+      "website" : "https://irvinelights.org"
+    },
+    "-M6YPbH2MGunfAeIjWzz" : {
+      "cause" : "Science and Technology",
+      "description" : "Girl Genius is a 501(c)(3) striving to connect, inspire, and empower female change-makers worldwide.  Since 2018, our initiative seeks to ensure females (non-binary and trans-inclusive) and people of color are given a voice through our three mediums: magazine issues, blog posts, and YouTube videos.",
+      "email" : "girlgeniusmagazine@gmail.com",
+      "gender" : "Female",
+      "interests" : [ "Members", "Partnerships", "Sponsors" ],
+      "name" : "Girl Genius",
+      "website" : "https://girlgeniusmagazine.wixsite.com/official"
+    },
+    "-M6Ym9pCnOqWfKrA4k4d" : {
+      "cause" : "Education",
+      "description" : "A Bay Area-based hackathon organized by local high school students to raise awareness about Artificial Intelligence and Machine Learning. By dispelling the myth around AI and ML, we want our fellow high school students to become familiar with these powerful tools to help them in their careers and life.",
+      "email" : "neuralhacks@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors" ],
+      "name" : "Neural Hacks",
+      "website" : "https://www.google.com/"
+    },
+    "-M6YqBzN1209edJp-5JT" : {
+      "cause" : "Education",
+      "description" : "Specialists in running Innovation Programmes (challenges/ contests/competitions/campaigns) learning experiences and engagements for pre-primary, primary and high schools as well as child-based and student organizations. \n\nWe also provide education-innovation insights, tools and services to corporates and SMEs that they use for their social investment initiatives.",
+      "email" : "innotechsmartkids@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "InnotechSmartkids",
+      "website" : "https://www.innotechsmartkids.co.za"
+    },
+    "-M6Z3eX6O19MKCH7Ewes" : {
+      "cause" : "Children",
+      "description" : "YoungArts’ signature program is an application-based award for emerging artists ages 15–18 or in grades 10–12 from across the United States. Selected through a blind adjudication process conducted by an independent panel of highly accomplished artists, YoungArts winners receive valuable support, including financial awards of up to $10,000, professional development and educational experiences working with renowned mentors, and performance and exhibition opportunities at some of the nation’s leading cultural institutions. Joining a 20,000-strong alumni community, they receive creative and professional development opportunities and connect with an extraordinarily rich network of peers.",
+      "email" : "contact@yougnarts.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members" ],
+      "name" : "National Youngarts Foundation",
+      "website" : "http://www.youngarts.org/"
+    },
+    "-M6ZCJl3pvpGnEYJETbm" : {
+      "cause" : "Children",
+      "description" : "Last year, after going to Paideia and Stanford Summer Humanity Institute, my friends and I created an online humanities journal called HOPE: www.hopehumanities.org\n\nWe published our first issue yesterday and in fact, we are world-wide, student-run, and non-profit. Most importantly, we publish academic papers, editorials, art, and literature, basically any kinds related to humanities.\n\nWe hope to gain support from you all. If you are interested to become a student representative for a school to collect submission, you could email hophumanities@gmail.com\n\nIf you want to submit, you could visit our website submission page to take a look. Thank you all for your support! We currently have more than 40 schools affiliated around the world!",
+      "email" : "hophumanities@mail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members" ],
+      "name" : "Summer Humanity Institute",
+      "website" : "https://www.hopehumanities.com/"
+    },
+    "-M6ZtG6jJtnZ7q1atk40" : {
+      "cause" : "Civil Rights and Social Action",
+      "description" : "Helloo World is an organization where coding and social impact overlap. We aim to explore how technology can be used to solve social issues big and small. We promote these initiatives through posts, videos, games, educational material, and by other means. Let’s change the world together - through one line of code at a time!",
+      "email" : "hellooworldsite@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "Helloo World ",
+      "website" : "https://helloo-world.com"
+    },
+    "-M6_BPuqtmtuCUfMJsBt" : {
+      "cause" : "Education",
+      "description" : "hk_youth_opps is an Instagram account that aims to bridge the gap in access to educational resources and opportunities in Hong Kong. hk_youth_opps seeks to bring opportunities to youth regardless of their gender, race, socio-economic background, religion, sexual orientation, etc. hk_youth_opps promotes opportunities such as NGO opportunities, academic competitions, educational conferences, webinars/podcasts, exam resources, journalism opportunities, internship opportunities, and leadership opportunities. ",
+      "email" : "hkyouthopps@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "hk_youth_opps",
+      "website" : "https://linktr.ee/hk_youth_opps"
+    },
+    "-M6_ZJtZMFaMnKFhubLT" : {
+      "cause" : "Science and Technology",
+      "description" : "DemocracyLab empowers people who use technology to advance the public good by connecting skilled volunteers to tech-for-good projects.",
+      "email" : "hello@democracylab.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "DemocracyLab",
+      "website" : "https://democracylab.org/"
+    },
+    "-M6_stkXsQrCl9qezgOi" : {
+      "cause" : "Education",
+      "description" : "Ideality's mission is to combine, facilitate and create a business environment for the students as a means to help them turn their ideas into reality and make them financially aware about the importance of saving, borrowing, and investing.\n\nThis server is a platform to express the inner creativity that is hidden from the world, and to build confidence to help an individual face challenges they might face in the outside world.\n\nIt is a journey, that we, as a team, inspire and engage for. \nWe, here help to:\n- create a skilled workplace for today and our tomorrow\n- build a thriving community dedicated to innovative skill \n  development and business\n- innovate to repair and sustain our planet",
+      "email" : "ideality.info@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "Ideality",
+      "website" : " https://discord.gg/WEUu64v"
+    },
+    "-M6_uFDGBILITdSrK4CV" : {
+      "cause" : "Education",
+      "description" : "StudentPort is a Discord server for networking between students looking to find extra-curriculars, or scale their own! We have members who run internationally scaled service initiatives, teens who founded national non-profits, students who spoke at the UN, young entrepreneurs, and more!\n\nJoin us and:\n- Advertise your extracurricular opportunity\n- Find potential partners for your organization\n- Be a part of an up and coming organization\n- Network with really cool students!",
+      "email" : "maccu2515@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "StudentPort",
+      "website" : "https://discord.gg/qPYhReX"
+    },
+    "-M6a1DeN7gflNwimT0np" : {
+      "cause" : "Education",
+      "description" : "The Stemodity Initiative is a youth organization focused around STEM and the Humanities. We're a student journalism initiative that encourages the deeper diving of youth minds into the world of STEM through self-engagement and exploration.",
+      "email" : "seth.stemodity@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "The Stemodity Initiative",
+      "website" : "https://www.stemodity.org/"
+    },
+    "-M6aBkzWNa-n9laqkib7" : {
+      "cause" : "Education",
+      "description" : "ObjectiveCode is a non-profit organization focused on serving elementary and middle schoolers and teaching them essential technical skills needed in the modern workforce. Our goal is to spark passion and influence kids to take initiative to learn what they are interested in.\nT",
+      "email" : "support@objectivecode.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "ObjectiveCode",
+      "website" : "https://www.objectivecode.org"
+    },
+    "-M6alkC2lOGpBQu_rYml" : {
+      "cause" : "Health",
+      "description" : "Dementia Insight is a non-profit entity whose goal is to bring attention and awareness about dementia. Various articles about the signs and symptoms of dementia are provided for users' perusal on the website. Facts on the different disorders that cause dementia including Alzheimer's, Lewy Body Dementia, and Vascular Dementia are included as well. Information regarding signs of dementia, dementia stages, dementia symptoms, prevention, and resources such as non-profit organizations are also given. Weekly blogs about the new dementia-related technologies, caregiver and lifestyle tips are available as well. We want to keep you informed so that you can help your loved one in the best way possible.",
+      "email" : "romaanky@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Partnerships", "Opportunities" ],
+      "name" : "Dementia Insight",
+      "website" : "https://www.dementiainsight.org"
+    },
+    "-M6aqKhr1qOlHdIS2z0b" : {
+      "cause" : "Science and Technology",
+      "description" : "Bay Area Hacks is a 24-hour hackathon where middle school and high school students from all around California will be able to display any software/hardware projects that they have made. At absolutely no cost at all, Bay Area Hacks will provide students with food, drinks, snacks, a great venue, prizes, and unique opportunities to network with large companies in Silicon Valley through workshops as well as recruiting booths.",
+      "email" : "bayareahacks2020@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients" ],
+      "name" : "Bay Area Hacks",
+      "website" : "https://www.bayareahacks.com"
+    },
+    "-M6b2Rk4XINrQwTf5s8O" : {
+      "cause" : "Science and Technology",
+      "description" : "NorcalHacks is a student-led 501(c)(3) nonprofit hackathon. Our goal is to inspire and help aspiring programmers of all backgrounds to learn and hone skills in the field of computer science. Our event is all-inclusive to any high schooler and aims to help underrepresented communities in STEM fields. We are dedicated to helping not only the majority population of this field, but also minorities and women - many of whom have not had the same level of exposure or chances regarding this field. NorcalHacks strives to empower students of all types by providing a supporting environment for them to prosper and thrive in this new technological era. We want to create a supportive environment for both those who are new and familiar with computer science and inspire them to go out into the world and create their mark!",
+      "email" : "team@norcalhacks.tech",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors" ],
+      "name" : "NorcalHacks",
+      "website" : "https://norcalhacks.weebly.com/"
+    },
+    "-M6gwwc4pNWmQVJWH4Eb" : {
+      "cause" : "Health",
+      "description" : "A youth-led app aiming to provide concise, non-partisan and credible information regarding critical health issues, in turn helping to eliminate fake news. This content will be shown in short articles and videos and will include various accommodation options for the elderly and disabled in order for important health facts to be accessible for all. ",
+      "email" : "healthyou.mobile@gmail.com",
+      "gender" : "Everyone",
+      "name" : "Healthyou",
+      "website" : "https://www.instagram.com/healthyouapp/"
+    },
+    "-M6hTrZdPc4k3ydk9Dk9" : {
+      "cause" : "Education",
+      "description" : "Your One-Stop STEM shop that offers the latest PreK-12 STEM products for every teacher, classroom, makerspace, and afterschool program.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "STEMFinity",
+      "website" : "https://www.instagram.com/stemfinity/"
+    },
+    "-M6hUEWZM5eCsvmSYN2W" : {
+      "cause" : "Education",
+      "description" : "Science Starz is a mobile lab that provides hands-on, fun science experiment & investigation programmes to primary and nursery-aged children. We deliver programmes in schools, at community events, festivals, summer schemes, after-school clubs and birthday parties.",
+      "email" : "info@sciencestarz.com",
+      "gender" : "Everyone",
+      "name" : "Science Starz",
+      "website" : "https://www.sciencestarz.com/"
+    },
+    "-M6hUW3kilBYq4lWUCqE" : {
+      "cause" : "Education",
+      "description" : "Welcome to the BrainSTEM Alliance, STEM Education and Outreach consulting solutions for educational institutions and non-profit organizations.",
+      "email" : "info@brainstemalliance.com",
+      "gender" : "Everyone",
+      "name" : "Brain STEM Alliance",
+      "website" : "https://brainstemalliance.com/"
+    },
+    "-M6hUnS5e3gp-EjL4UO-" : {
+      "cause" : "Education",
+      "description" : "STEAM Powered Kids is a company dedicated to providing learning enrichment programs for students in all aspects of STEAM (Science, Technology, Engineering, Arts and Mathematics). Our services include STEM courses, After school STEM clubs, Themed workshops, Robotics, Science parties and Incursions (schools, kindergartens and private venues).",
+      "email" : "contact@steampoweredkids.com.au",
+      "gender" : "Everyone",
+      "name" : "STEAM Powered Kids",
+      "website" : "https://www.steampoweredkids.com.au/"
+    },
+    "-M6hVAcEFfcLdJaLzgt_" : {
+      "cause" : "Civil Rights and Social Action",
+      "description" : "Zenerations is a collection of stories centered around people in Generation Z, showcasing our talents, achievements, thoughts, lifestyles, and experiences. We aim to establish a sense of community, diversity, and positivity. Ranging from articles on Gen Z life, art, music, photography, politics, school, pop culture, and interviews with accomplished teens, Zenerations has something for everyone.",
+      "email" : "zenerationsmag@gmail.com",
+      "gender" : "Everyone",
+      "name" : "Zenerations",
+      "website" : "https://zenerations.wordpress.com/"
+    },
+    "-M6hWfPmJ0TOXwuQ4OnY" : {
+      "cause" : "Education",
+      "description" : "ExploreLearning is supporting schools and communities impacted by the outbreak with extended free, full-access trials.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Science4Us",
+      "website" : "https://web.science4us.com/s4u-instagram-links/"
+    },
+    "-M6hXMI-_x-NldM6iyjS" : {
+      "cause" : "Education",
+      "description" : "At Simply Smart Tutoring, we value our customer's education and growth the most. We are a group of high school students who have a passion for learning and teaching others all that we know. Education should be available for everyone, so we pride ourselves in having affordable tutoring sessions.",
+      "email" : "education.simplysmart@gmail.com",
+      "gender" : "Everyone",
+      "name" : "Simply Smart Tutoring",
+      "website" : "https://simplysmarttutoring.wixsite.com/education"
+    },
+    "-M6hY7MTMfWsHJhWKr9O" : {
+      "cause" : "Civil Rights and Social Action",
+      "description" : "She Did That! is a site to empower girls of the future with today's successes. Hopefully seeing these influential and successful women in their careers will help girls see that no dreams aren't worth pursuing.",
+      "email" : "shedidthatblog@gmail.com",
+      "gender" : "Female",
+      "name" : "She Did That!",
+      "website" : "https://www.she-did-that.com/"
+    },
+    "-M6hYRMNS69zZPviCbwy" : {
+      "cause" : "Health",
+      "description" : "First Aid Comes First is a nonprofit organization dedicated to providing underprivileged areas with our handmade first aid kits and medical supplies.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "First Aid Comes First",
+      "website" : "https://www.instagram.com/firstaidcomesfirst_/"
+    },
+    "-M6hYgysI2NqAzruaKKt" : {
+      "cause" : "Education",
+      "description" : "Providing educational access in science, technology, engineering, the arts, and math to those who need it most when they need it most.",
+      "email" : "steampowertutors@gmail.com",
+      "gender" : "Everyone",
+      "name" : "STEAM Power",
+      "website" : "https://www.steampowerca.org/"
+    },
+    "-M6hZ-nOCBzSuKsvE1WI" : {
+      "cause" : "Environment",
+      "description" : "A nonprofit dedicated to educating children about environmental awareness through STEM. Children need to be educated about the environment and it's issues, so they can help our planet. By incorporating STEM into helping the environment, we hope to give children an educational experience in a fun organized manner.",
+      "email" : "saveourearth.stem@gmail.com",
+      "gender" : "Everyone",
+      "name" : "SOEAP",
+      "website" : "https://saveourearthstem.wixsite.com/soeap"
+    },
+    "-M6hZF08389oWsYOYpSc" : {
+      "cause" : "Education",
+      "description" : "Teaching Kindergarteners-Fifth Graders how to be problem solvers! STEAMgineering. STEAM education.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "STEAMgineer",
+      "website" : "https://www.instagram.com/steamgineer/"
+    },
+    "-M6hZR8girzBqdYarcrF" : {
+      "cause" : "Education",
+      "description" : "We create 21st century STEAM focused programs beyond the bell for grades K - 5th that cultivate critical thinkers and global problem solvers.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "The STEAM Chasers",
+      "website" : "https://www.instagram.com/thesteamchasers/"
+    },
+    "-M6hZnUtWPF7VXGiHRan" : {
+      "cause" : "Education",
+      "description" : "Mindset & Milestones seeks to address the problems of opportunity deficits and lack of self-efficacy and confidence in girls by introducing them to entrepreneurial learning curriculum. Entrepreneurship not only exercises problem-solving skills, but it also allows girls to find the value in their ideas and find a way to succeed in the face of adversity. ",
+      "email" : "",
+      "gender" : "Female",
+      "name" : "Mindset & Milestones",
+      "website" : "https://www.mindsetnmilestones.com/"
+    },
+    "-M6h_Pk6_x9rGAc106Rg" : {
+      "cause" : "Education",
+      "description" : "SparkathonBuildingBridges is an intense, exciting, fast paced problem-solving event during which youth (13-19) work virtually in teams of 5-6. SparkathonBuildingBridges is open to all youth around the world to come together virtually to solve some of the most pressing issues of our time.",
+      "email" : "sparkathonbuildingbridges@gmail.com",
+      "gender" : "Everyone",
+      "name" : "Sparkathon Building Bridges",
+      "website" : "http://sparkathonbuildingbridges.com/"
+    },
+    "-M6haD7Ie3UZG_J6Hr3N" : {
+      "cause" : "Social Services",
+      "description" : "Youth Activist Voice focuses on getting the youth's voice heard, through social media and marketing.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Youth Activist Voice",
+      "website" : "https://www.instagram.com/youthactivistvoice/"
+    },
+    "-M6hab_ADkz3s1gUKoCH" : {
+      "cause" : "Science and Technology",
+      "description" : "GirlTechBoss is an official 501 (c) (3) nonprofit that aims to empower middle school through high school aged girls to pursue entrepreneurship in the STEM field by providing them with resources and support from the existing community.",
+      "email" : "girltechboss@gmail.com",
+      "gender" : "Female",
+      "name" : "Girl Tech Boss",
+      "website" : "https://www.girltechboss.com/"
+    },
+    "-M6han4UiHuIszpiKr5B" : {
+      "cause" : "Social Services",
+      "description" : "Peerify is a youth-run organization and national initiative dedicated to promoting the power of coexistence. Through this program based in Canada, with bi-weekly meetings and various services/programmings, we strive to celebrate mutual lived experiences among, us, youth.",
+      "email" : "info@peerify.org",
+      "gender" : "Everyone",
+      "name" : "Peerify",
+      "website" : "https://peerify.wixsite.com/peerify"
+    },
+    "-M6hbYWqa9bSjS8b2uUJ" : {
+      "cause" : "Education",
+      "description" : "Closing the gender gap by encouraging young girls to participate in science, technology, engineering, and math (STEM).",
+      "email" : "",
+      "gender" : "Female",
+      "name" : "Get Girls in STEM",
+      "website" : "https://getgirlsinstem.wixsite.com/stemactivities"
+    },
+    "-M6hbjXE1SFCdpZTegXK" : {
+      "cause" : "Education",
+      "description" : "Students helping students access and achieve in science, technology, engineering, arts, and math",
+      "email" : "thesteamonteam@gmail.com",
+      "gender" : "Everyone",
+      "name" : "STEAM On",
+      "website" : "https://www.steam-on.org/"
+    },
+    "-M6hbyGqaw7_C6KBRu_m" : {
+      "cause" : "Education",
+      "description" : "GirlsGotSTEAM is a student-run initiative based in Orlando, Florida with a goal to increase girls and underprivileged youth in STEAM fields. Students that lack resources are those who are unable to build fundamental skills for their future careers, especially in STEAM. In order to develop these skills, we build curriculum for STEAM educators and hold workshops in Central Florida.",
+      "email" : "girlsgotsteamorl@gmail.com",
+      "gender" : "Female",
+      "name" : "Girls Got STEAM",
+      "website" : "https://girlsgotsteamorl.wixsite.com/girlsgotsteam"
+    },
+    "-M6hcoJIbK7W8utjb0R_" : {
+      "cause" : "Education",
+      "description" : "The purpose of Youth Science Connection is to allow young people to embrace their curiosity and explore science. Youth Science Connection accomplishes this through skill-building, labs, and communities.",
+      "email" : "youthscienceconnection@gmail.com",
+      "gender" : "Everyone",
+      "name" : "Youth Science Connection",
+      "website" : "https://youthscienceconnec.wixsite.com/ysconnection"
+    },
+    "-M6hczlH0fo-BKqabWH7" : {
+      "cause" : "Education",
+      "description" : "A student-led initiative, educating children & teens about unfamiliar but important subjects that our members are passionate about to teach",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Students2Learn",
+      "website" : "https://www.instagram.com/students2learn/"
+    },
+    "-M6hdBEh7UPTSpgCF2wp" : {
+      "cause" : "Education",
+      "description" : "Helping promote and empower women in steam and beyond & breaking gender barriers one girl at a time",
+      "email" : "",
+      "gender" : "Female",
+      "name" : "Code Gals",
+      "website" : "https://linktr.ee/codegals"
+    },
+    "-M6hdJuWFtkT9LCFhhvU" : {
+      "cause" : "Science and Technology",
+      "description" : "Helping girls BLOSSOM an interest for science, one video at a time!",
+      "email" : "",
+      "gender" : "Female",
+      "name" : "Science Blossoms",
+      "website" : "https://www.instagram.com/scienceblossoms/"
+    },
+    "-M6hdSmn8XlhhTd7fFMH" : {
+      "cause" : "Education",
+      "description" : "HoR is a new online student organization working to create a website for academic resources for high school students!",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Heart of Review",
+      "website" : "https://heartofreview.wixsite.com/home"
+    },
+    "-M6hdk7CNm6ZBkAWFddE" : {
+      "cause" : "Arts and Culture",
+      "description" : "We are a youth-driven platform amplifying the voices of under-served young artists in professional spaces through gallery events and education.",
+      "email" : "studentartspaces@gmail.com",
+      "gender" : "Everyone",
+      "name" : "Student Art Spaces",
+      "website" : "https://www.studentartspaces.org/"
+    },
+    "-M6hdxb3rKf1bFbXuAvf" : {
+      "cause" : "Civil Rights and Social Action",
+      "description" : "A digital magazine working with the liberals of our generation. A new magazine, we are in dire need for writers and contributors.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Liberal Writes",
+      "website" : "https://www.instagram.com/liberalwrites/"
+    },
+    "-M6kFZLyz98qfAj77aHr" : {
+      "cause" : "Arts and Culture",
+      "description" : "United Under Arts is a global student-led community service organization dedicated to providing underprivileged communities and vulnerable populations, particularly the elderly and children, around the world with opportunities and experiences in the arts. We run free arts-based events and fundraisers such as concerts and workshops to bring joy and meaning to these underserved groups and facilitate connections across all ages and backgrounds. ",
+      "email" : "info@unitedunderarts.org",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "United Under Arts",
+      "website" : "https://www.unitedunderarts.org/"
+    },
+    "-M6lmZZIgKcD_YAdOEEB" : {
+      "cause" : "Children",
+      "description" : "Motivate to Educate is a student lead initiative to provide underprivileged kids free tutoring and access to different classes/skills they wouldn’t normally get exposure to. This is a nonprofit organization geared towards allowing any child to learn what desire whether that be reading music or graphic design even if they don’t have the resources. ",
+      "email" : "motivatetoeducatetutors@gmail.com",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Opportunities" ],
+      "name" : "Motivate to Educate",
+      "website" : "https://motivatetoeducatet.wixsite.com/site"
+    },
+    "-M6ly-is1-ORzI0BWgmG" : {
+      "cause" : "Civil Rights and Social Action",
+      "description" : "Inspiring women in engineering & science + college student advice",
+      "email" : "",
+      "gender" : "Female",
+      "name" : "Passioneering",
+      "website" : "https://www.instagram.com/passioneering/"
+    },
+    "-M6lyUQnCbl2LDxUteCB" : {
+      "cause" : "Science and Technology",
+      "description" : "GeomHacks aims to empower students in their computer science pursuits while making sure they stay safe during quarantine.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "GeomHacks",
+      "website" : "http://geomhacks.com/"
+    },
+    "-M6lygaFiTyEW-MoiUbj" : {
+      "cause" : "Science and Technology",
+      "description" : "aking A Difference (MAD) in the lives of girls passionate about science, technology, engineering, and mathematics (STEM). Official Launch June 2020.",
+      "email" : "",
+      "gender" : "Female",
+      "name" : "Mad STEM",
+      "website" : "https://www.madstem.com/"
+    },
+    "-M6lyxJRhPnmeBAXUEdf" : {
+      "cause" : "Education",
+      "description" : "We try to help decrease the learning gap for children from low-income families by creating hands-on STEM projects for them.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "STEM Days",
+      "website" : "https://purbashamajee.wixsite.com/stemdays"
+    },
+    "-M6lztXjyQcDEx8r5IBG" : {
+      "cause" : "Education",
+      "description" : "Here at STEMTeen Seattle Chapter, we know that sometimes all it takes to change the world is a little support. We are part of a greater organization STEMTeen, but our mission is still the same: to bring free workshops and learning opportunities for all!",
+      "email" : "stemteenseattle@gmail.com",
+      "gender" : "Everyone",
+      "name" : "STEM Teen",
+      "website" : "https://stemteenseattle.wixsite.com/washington"
+    },
+    "-M6m-6mPMbwqla7ZAGeq" : {
+      "cause" : "Education",
+      "description" : "Our goal is to inspire future generations, from different socioeconomic backgrounds, that STEM is a growing field which they can take advantage of in order to change our future. ",
+      "email" : "stemcloudbusiness@gmail.com",
+      "gender" : "Everyone",
+      "name" : "STEM Cloud",
+      "website" : "https://stemcloud.wixsite.com/thefuture"
+    },
+    "-M6m-eFl1XCtb0JLgrr6" : {
+      "cause" : "Civil Rights and Social Action",
+      "description" : "Empowering youth to make their voices heard!",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Hear Youth Voices",
+      "website" : "https://www.instagram.com/hearyouthvoices/"
+    },
+    "-M6m-uw41rZOtuKEwfC7" : {
+      "cause" : "Economic Empowerment",
+      "description" : "A platform aiming to connect high school students with resources that will expose them to real-world STEAM opportunities.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "STEAM Find",
+      "website" : "https://steamfind.sharetribe.com/"
+    },
+    "-M6m05RDN2E5KsvMiPrG" : {
+      "cause" : "Education",
+      "description" : "Take a Class, Save a Life. 100% of proceeds go to COVID relief!",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Quarantine Coders",
+      "website" : "https://www.instagram.com/quarantinecoders/"
+    },
+    "-M6m0LVtAemRHDUE4wWM" : {
+      "cause" : "Education",
+      "description" : "The Quarantine Skillshare is working to help students who may need some extra help during this period. Many students relied on one on one help from teacheers, which is now unavailable. Here students can join livestreams where other students can help them figure out how to do certain subjects.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Quarantine Skillshare",
+      "website" : "https://quarantineskillshare.wixsite.com/quarantineskill"
+    },
+    "-M6m0TmvBbIHhEJD9Ar3" : {
+      "cause" : "Education",
+      "description" : "A free platform to connect young people with mentors for any degree, career, passion, and curiosoity. Changing the word one connection at a time.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Mentor Corps",
+      "website" : "https://www.instagram.com/mentor_corps/"
+    },
+    "-M6m0c0jgPvdjGEFSy8y" : {
+      "cause" : "Education",
+      "description" : "Teaching people to code through the media.",
+      "email" : "",
+      "gender" : "Everyone",
+      "name" : "Code Watcher",
+      "website" : "https://www.instagram.com/code_watcher/"
+    },
+    "-M6m0c0jgPvdjGEFSy8y" : {
+      "cause" : "Education",
+      "description" : "Hello everyone, we are HexaHacks, a non-profit striving to bring hackathons accessible to everyone and improve computer science education by making hard things easy. If you are interested in what we are doing and partner with us, go to https://hexahacks.tech or email us, any feedback is appreciated.",
+      "email" : "ask@hexahacks.tech",
+      "gender" : "Everyone",
+      "interests" : [ "Members", "Partnerships", "Sponsors", "Clients", "Opportunities" ],
+      "name" : "HexaHacks",
+      "website" : "https://hexahacks.tech/"
+    }
+  }
+}
