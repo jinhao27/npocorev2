@@ -8,17 +8,23 @@ function Organizations() {
 
   const getOrganizations = async () => {
     // SAVE MONGODB ORGS TO PROPS
-    // const organizations = await fetch("http://localhost:3000/api/get-organizations", {
-    //   mode: 'cors'
-    // });
-    fetch("http://localhost:3000/api/get-organizations", {
-      mode: 'no-cors'
-    }).then((response) => {
-      return response.data;
-    }).then((organizations) => {
-      setOrganizations(organizations);
-      setBaseOrganizations(organizations);
-    });
+    fetch("/api/get-organizations",{
+        method: 'GET',
+        mode: "no-cors",
+        cache: "no-cache",
+        credentials: "same-origin",
+        headers: {"Content-Type": "application/json"}
+      })
+      .then((response) => {
+          return response.json();
+      })
+      .then((organizations) => {
+          setOrganizations(organizations);
+          setBaseOrganizations(organizations);
+      })
+      .catch((err) => {
+          console.log("Exception:", err);
+      });
   }
 
   useEffect(() => {
