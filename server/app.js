@@ -180,18 +180,19 @@ app.route("/organizations/:id/post")
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.params.id == req.cookies.organization._id) {
       // CREATE POST
-      const newPost = new postModel({
+      const post = {
         title: req.body.title,
         content: req.body.content,
         datetimePosted: new Date(),
         creator: req.cookies.organization
-      });
+      };
+      const newPost = new postModel(post);
       newPost.save((err) => { if (err) throw err; });
 
-      // BUMPING NPO SCORE
+      // BUMPING NPO SCORE + ADDING POST
       organizationModel.findOneAndUpdate(
         { _id: req.cookies.organization._id },
-        { npoScore: postBump(req.cookies.organization.npoScore) },
+        { $push: { posts: post }, npoScore: postBump(req.cookies.organization.npoScore) },
         { new: true },
         (err, organization) => {
           if (err) throw err;
