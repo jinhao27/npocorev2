@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const axios = require("axios");
+const passwordHash = require('password-hash');
 const { organizationModel, postModel } = require("./models");
 
 app = express();
@@ -50,6 +51,46 @@ app.get("/posts", async (req, res) => {
   const posts = await postModel.find({}).sort({ datetimePosted: -1 });
 
   res.render("posts.html", context={ blockElements, cookies: req.cookies, posts });
+});
+
+app.route("/login")
+  .get((req, res) => {
+    res.render("login.html", context={ blockElements, cookies: req.cookies });
+  })
+  .post(async (req, res) => {
+    const organization = await organizationModel.findOne({ email: req.body.email });
+
+    if (organization) {
+      if (passwordHash.verify(req.body.password, organization.password)) {
+        res.cookie("organization", organization);
+        res.redirect("/");
+      } else {
+        res.send("Invalid credentials.");
+      }
+    } else {
+      res.send("Invalid credentials.");
+    }
+  });
+
+app.route("/register")
+  .get((req, res) => {
+    res.render("register.html", context={ blockElements, cookies: req.cookies });
+  })
+  .post(async (req, res) => {
+    // HASHING PASSWORD
+    req.body.password = passwordHash.generate(req.body.password);
+
+    const newOrganization = new organizationModel(req.body);
+    newOrganization.save((err, organization) => { if (err) throw err; });
+
+    res.cookie("organization", newOrganization);
+
+    res.redirect("/");
+  });
+
+app.get("/logout", (req, res) => {
+  res.clearCookie("organization");
+  res.redirect("/");
 });
 
 app.get("/organizations/:id", async (req, res) => {
@@ -125,41 +166,6 @@ app.route("/organizations/:id/update")
     }
   });
 
-app.route("/login")
-  .get((req, res) => {
-    res.render("login.html", context={ blockElements, cookies: req.cookies });
-  })
-  .post(async (req, res) => {
-    const organization = await organizationModel.findOne({
-      email: req.body.email,
-      password: req.body.password
-    });
-
-    if (organization) {
-      res.cookie("organization", organization);
-      res.redirect("/");
-    } else {
-      res.send("Invalid credentials.");
-    }
-  });
-
-app.route("/register")
-  .get((req, res) => {
-    res.render("register.html", context={ blockElements, cookies: req.cookies });
-  })
-  .post(async (req, res) => {
-    const newOrganization = new organizationModel(req.body);
-    newOrganization.save((err, organization) => { if (err) throw err; });
-
-    res.cookie("organization", req.body);
-
-    res.redirect("/");
-  });
-
-app.get("/logout", (req, res) => {
-  res.clearCookie("organization");
-  res.redirect("/");
-});
 
 require("./routes/api")(app);
 
