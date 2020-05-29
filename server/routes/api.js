@@ -5,7 +5,7 @@ const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBum
 module.exports = function(app) {
 
   app.get("/api/get-organizations", async (req, res) => {
-    const organizations = await organizationModel.find({});
+    const organizations = await organizationModel.find({}).sort({ npoScore: -1 });
     res.send(organizations);
   });
 
