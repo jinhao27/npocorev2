@@ -31,7 +31,7 @@ const db = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 
 // GLOBAL VARIABLES
-const googleApiKey = process.env.GOOGLE_API_KEY || "AIzaSyB8QXCiNJ2f7KrUILPUc4vPA89o3g7d6KA";
+const googleApiKey = process.env.GOOGLE_API_KEY;
 
 // INITALIZING ALL BLOCK ELEMENTS
 let blockElementsNames = ["imports", "navbar"];
