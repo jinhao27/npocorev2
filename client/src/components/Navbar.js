@@ -26,6 +26,9 @@ class Navbar extends React.Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/organizations">Organizations</Link>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/posts">Posts</a>
+              </li>
               <li className="nav-item">
                 <a className="btn btn-info npo-button" href="/login">Login/Register</a>
               </li>

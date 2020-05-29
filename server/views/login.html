@@ -26,7 +26,11 @@
             <li class="nav-item">
               <a class="nav-link" href="/organizations">Organizations</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/posts">Posts</a>
+            </li>
             <% if (cookies.organization) { %>
+              <a class="nav-link" href="/organizations/<%= cookies.organization._id %>">My Organization</a>
               <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
               </li>

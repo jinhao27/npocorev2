@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { organizationModel } = require("../models");
+const { organizationModel, postModel } = require("../models");
 
 module.exports = function(app) {
 

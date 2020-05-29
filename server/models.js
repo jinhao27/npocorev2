@@ -14,4 +14,11 @@ const organizationModel = mongoose.model("Organization", new mongoose.Schema({
   password: String
 }));
 
-module.exports = { organizationModel };
+const postModel = mongoose.model("Post", new mongoose.Schema({
+  title: String,
+  content: String,
+  datetimePosted: Date,
+  creator: Object
+}));
+
+module.exports = { organizationModel, postModel };

@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const axios = require("axios");
-const { organizationModel } = require("./models");
+const { organizationModel, postModel } = require("./models");
 
 app = express();
 
@@ -45,6 +45,41 @@ app.get("/", (req, res) => {
 app.get("/contact", (req, res) => {
   res.render("contact.html", context={ blockElements, cookies: req.cookies });
 });
+
+app.get("/posts", async (req, res) => {
+  const posts = await postModel.find({}).sort({ datetimePosted: -1 });
+
+  res.render("posts.html", context={ blockElements, cookies: req.cookies, posts });
+});
+
+app.get("/organizations/:id", async (req, res) => {
+  const organization = await organizationModel.findOne({ _id: req.params.id }).catch((err) => {
+    res.send("That organization does not exist.");
+  });
+
+  if (organization) {
+    res.render("organization.html", context={ blockElements, cookies: req.cookies, organization });
+  } else {
+    res.send("That organization does not exist.");
+  }
+});
+
+app.route("/organizations/:id/post")
+  .get((req, res) => {
+    res.render("make-post.html", context={ blockElements, cookies: req.cookies });
+  })
+  .post((req, res) => {
+    // CREATE POST
+    const newPost = new postModel({
+      title: req.body.title,
+      content: req.body.content,
+      datetimePosted: new Date(),
+      creator: req.cookies.organization
+    });
+    newPost.save((err) => { if (err) throw err; })
+
+    res.redirect("/posts");
+  });
 
 app.route("/login")
   .get((req, res) => {

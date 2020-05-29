@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>NPO Core - Contact</title>
+    <title>NPO Core - Index</title>
 
     <%- blockElements[0] %>
   </head>
@@ -30,9 +30,7 @@
               <a class="nav-link" href="/posts">Posts</a>
             </li>
             <% if (cookies.organization) { %>
-              <li class="nav-item">
-                <a class="nav-link" href="/organizations/<%= cookies.organization._id %>">My Organization</a>
-              </li>
+              <a class="nav-link" href="/organizations/<%= cookies.organization._id %>">My Organization</a>
               <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
               </li>
@@ -47,21 +45,17 @@
     </nav>
 
     <div class="container">
-      <h1>Contact</h1>
-
       <div class="form-container">
-        <h3>Send us a message!</h3>
-        <form action="mailto:hello@launchtechllc.com" method="post">
-          <label>Name:</label><br>
-          <input class="form-control" type="text" name="Name" placeholder="Name" required>
-          <br>
-          <label>Email:</label><br>
-          <input class="form-control" type="email" name="Email" placeholder="Email" required>
-          <br>
-          <label>Message:</label><br>
-          <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+        <h1>Make a Post</h1>
 
-          <input type="submit" value="Contact us!" class="solid-cta-button w-100 mt-4">
+        <form method="post">
+          <label>Title:</label><br>
+          <input class="form-control" type="text" name="title" placeholder="Title">
+
+          <label>Content:</label><br>
+          <textarea class="form-control" name="content" rows="5" placeholder="Content"></textarea>
+
+          <input class="mt-3 solid-cta-button w-100" type="submit" value="Post!">
         </form>
       </div>
     </div>
