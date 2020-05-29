@@ -4,12 +4,14 @@
     <meta charset="utf-8">
     <title>NPO Core - Login</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <%- blockElements[0] %>
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-light">
       <div class="container">
-        <a class="navbar-brand" href="/">NPO Core</a>
+        <a class="navbar-brand" href="/">
+          <img src="/static/img/npocore.png" alt="NPO Core Logo">
+        </a>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-target">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,16 +43,23 @@
     <div class="container">
       <h1>Login</h1>
 
-      <form method="post">
-        <label>Organization Email:</label>
-        <input name="email" className="form-control mb-2" type="email" required />
+      <div class="form-container">
+        <h1>Login</h1>
+        <form method="post">
+          <label>Organization Email:</label><br>
+          <input name="email" class="form-control" type="email" required />
+          <br>
+          <label>Organization Password:</label><br>
+          <input name="password" class="form-control" type="password" required />
+          <br>
 
-        <label>Organization Password:</label>
-        <input name="password" className="form-control mb-2" type="password" required />
+          <input class="solid-cta-button w-100" type="submit" value="Login">
 
-        <input type="submit" value="Login">
-        <a href="/register">Register</a>
-      </form>
+          <div class="text-center">
+            <small>Don't have an account? <a href="/register">Register Here</a></small>
+          </div>
+        </form>
+      </div>
     </div>
   </body>
 </html>
