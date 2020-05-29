@@ -53,6 +53,14 @@ app.get("/contact", (req, res) => {
   res.render("contact.html", context={ blockElements, cookies: req.cookies });
 });
 
+app.get("/featured", async (req, res) => {
+  let featured = {};
+  featured.organizations = await organizationModel.find({ featured: true });
+  featured.posts = await postModel.find({ featured: true });
+
+  res.render("featured.html", context={ blockElements, cookies: req.cookies, featured });
+})
+
 app.get("/map", async (req, res) => {
   const organizations = await organizationModel.find({});
   res.render("map.html", context={ blockElements, cookies: req.cookies, organizations, googleApiKey });

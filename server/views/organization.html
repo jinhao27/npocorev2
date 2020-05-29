@@ -24,6 +24,9 @@
               <a class="nav-link" href="/contact">Contact</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="/featured">Featured</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="/map">Map</a>
             </li>
             <li class="nav-item">
@@ -60,7 +63,7 @@
       </p>
       <p><strong>Cause:</strong> <%= organization.cause %></p>
       <p><strong>Gender:</strong> <%= organization.gender %></p>
-      <% if (organization.location) { %>
+      <% if (organization.location.name) { %>
         <p><strong>Location:</strong> <%= organization.location.name %></p>
       <% } %>
       <% if (organization.interests) { %>
@@ -79,7 +82,7 @@
           <% } %>
         </ul>
       <% } %>
-      <% if (organization.posts) { %>
+      <% if (organization.posts.length > 0) { %>
         <h3>Posts</h3>
         <div class="posts">
           <% for (post of organization.posts) { %>

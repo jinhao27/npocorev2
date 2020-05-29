@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>NPO Core - Contact</title>
+    <title>NPO Core - Index</title>
 
     <%- blockElements[0] %>
   </head>
@@ -36,9 +36,7 @@
               <a class="nav-link" href="/posts">Posts</a>
             </li>
             <% if (cookies.organization) { %>
-              <li class="nav-item">
-                <a class="nav-link" href="/organizations/<%= cookies.organization._id %>">My Organization</a>
-              </li>
+              <a class="nav-link" href="/organizations/<%= cookies.organization._id %>">My Organization</a>
               <li class="nav-item">
                 <a class="nav-link" href="/logout">Logout</a>
               </li>
@@ -53,23 +51,31 @@
     </nav>
 
     <div class="container">
-      <h1>Contact</h1>
+      <h1>Featured</h1>
 
-      <div class="form-container">
-        <h3>Send us a message!</h3>
-        <form action="mailto:hello@launchtechllc.com" method="post">
-          <label>Name:</label><br>
-          <input class="form-control" type="text" name="Name" placeholder="Name" required>
-          <br>
-          <label>Email:</label><br>
-          <input class="form-control" type="email" name="Email" placeholder="Email" required>
-          <br>
-          <label>Message:</label><br>
-          <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+      <% if (featured.organizations.length > 0) { %>
+        <h3>Featured Nonprofit Organizations</h3>
+        <div class="featured-grid">
+          <% for (organization of featured.organizations) { %>
+            <div class="featured">
+              <h3><%= organization.name %></h3>
+              <p><%= organization.description %></p>
+            </div>
+          <% } %>
+        </div>
+      <% } %>
 
-          <input type="submit" value="Contact us!" class="solid-cta-button w-100 mt-4">
-        </form>
-      </div>
+      <% if (featured.posts.length > 0) { %>
+        <h3>Featured Posts</h3>
+        <div class="featured-grid">
+          <% for (post of featured.posts) { %>
+            <div class="featured">
+              <h3><%= post.name %></h3>
+              <p><%= post.description %></p>
+            </div>
+          <% } %>
+        </div>
+      <% } %>
     </div>
   </body>
 </html>
