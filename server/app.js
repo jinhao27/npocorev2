@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 const axios = require("axios");
 const passwordHash = require('password-hash');
 const { organizationModel, postModel } = require("./models");
-const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump } = require("./nposcore-functions");
+const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBumpOrganizations } = require("./nposcore-functions");
 
 app = express();
 
@@ -44,6 +44,15 @@ for (var i = 0; i < blockElementsNames.length; i++) {
     blockElements.push(data);
   });
 }
+
+app.use(async (req, res, next) => {
+  if (req.cookies.organization) {
+    // RESETTING COOKIES
+    res.cookie("organization", await organizationModel.findOne({ _id: req.cookies.organization._id }));
+  }
+
+  next();
+})
 
 app.get("/", (req, res) => {
   res.render("index.html", context={ blockElements, cookies: req.cookies });
@@ -108,12 +117,27 @@ app.route("/register")
         data.logo = logo.name;
       }
     }
+    // GET LOCATION COORDINATES
+    let location = { name: req.body.location };
+    if (req.body.location) {
+      const locationJson = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.body.location}&key=${googleApiKey}`);
+      if (locationJson.data.results[0]) {
+        location = {
+          name: req.body.location,
+          lat: locationJson.data.results[0].geometry.location.lat,
+          lng: locationJson.data.results[0].geometry.location.lng
+        }
+      }
+    }
+
+    data.location = location;
 
     // HASHING PASSWORD
     data.password = passwordHash.generate(req.body.password);
 
     // ADDING NPO SCORE
     data.npoScore = 50;
+    data.bumpedInLastHour = false;
 
     const newOrganization = new organizationModel(data);
     newOrganization.save((err, organization) => {
@@ -244,6 +268,11 @@ app.route("/organizations/:id/update")
 
 
 require("./routes/api")(app);
+
+
+setInterval(function() {
+  downBumpOrganizations();
+}, 3600000);
 
 
 // Setting up server for production

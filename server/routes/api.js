@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const { organizationModel, postModel } = require("../models");
+const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBumpOrganizations } = require("../nposcore-functions");
 
 module.exports = function(app) {
 
@@ -10,7 +11,6 @@ module.exports = function(app) {
 
   app.post("/api/add-organization", (req, res) => {
     const organization = req.body;
-    console.log(organization);
     const newOrganization = new organizationModel({
       name: 'Calix Huang',
       email: 'calix.huang1@gmail.com',
@@ -30,6 +30,32 @@ module.exports = function(app) {
     });
 
     return organization;
-  })
+  });
+
+  app.post("/api/bump", async (req, res) => {
+    const organization = req.body;
+
+    if (organization._id == req.cookies.organization._id) {
+      if (!organization.bumpedInLastHour) {
+        await organizationModel.findOneAndUpdate(
+          { _id: organization._id },
+          { npoScore: hourlyBump(organization.npoScore), bumpedInLastHour: true },
+          { new: true },
+          (err, organization) => {
+            if (err) throw err;
+          }
+        )
+
+        // RESETTING COOKIES
+        res.cookie("organization",  await organizationModel.findOne({ _id: organization._id }))
+
+        res.status(200).send();
+      } else {
+        res.send("This organization has already been bumped in the last hour.");
+      }
+    } else {
+      res.send("You don't have permission to bump this organization.");
+    }
+  });
 
 }

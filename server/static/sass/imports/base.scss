@@ -63,6 +63,11 @@ body {
   }
 }
 
+.disabled {
+  background-color: rgb(157, 157, 157) !important;
+  border-color: rgb(157, 157, 157) !important;
+}
+
 .form-container {
   margin: 50px auto;
   background-color: white;

@@ -23,7 +23,8 @@ const organizationModel = mongoose.model("Organization", new mongoose.Schema({
   location: Object,
   links: Object,
   logo: String,
-  npoScore: Number
+  npoScore: Number,
+  bumpedInLastHour: Boolean
 }));
 
 const postModel = mongoose.model("Post", new mongoose.Schema({
