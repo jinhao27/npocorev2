@@ -62,7 +62,7 @@
           <input name="logo" type="file" accept='image/*'>
           <br>
           <label>Organization Location:</label><br>
-          <input name="location" class="form-control" type="text" value="<%= organization.location %>" required />
+          <input name="location" id="autocomplete" class="form-control" type="text" value="<%= organization.location %>" required />
           <br>
           <label class="mt-2">Gender: (that your organization targets)</label>
           <br>
@@ -161,4 +161,9 @@
       </div>
     </div>
   </body>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= googleApiKey %>&libraries=places"></script>
+  <script>
+    var input = document.getElementById('autocomplete');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+  </script>
 </html>

@@ -30,6 +30,9 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 
+// GLOBAL VARIABLES
+const googleApiKey = process.env.GOOGLE_API_KEY;
+
 // INITALIZING ALL BLOCK ELEMENTS
 let blockElementsNames = ["imports", "navbar"];
 let blockElements = [];
@@ -77,7 +80,7 @@ app.route("/login")
 
 app.route("/register")
   .get((req, res) => {
-    res.render("register.html", context={ blockElements, cookies: req.cookies });
+    res.render("register.html", context={ blockElements, cookies: req.cookies, googleApiKey });
   })
   .post(async (req, res) => {
     const data = req.body;
@@ -155,7 +158,7 @@ app.route("/organizations/:id/update")
   .get((req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.params.id == req.cookies.organization._id) {
-      res.render("organization-update.html", context={ blockElements, cookies: req.cookies, organization: req.cookies.organization });
+      res.render("organization-update.html", context={ blockElements, cookies: req.cookies, organization: req.cookies.organization, googleApiKey });
     } else {
       res.send("You do not have permission to update this organization.");
     }
@@ -163,6 +166,7 @@ app.route("/organizations/:id/update")
   .post((req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.params.id == req.cookies.organization._id) {
+      console.log(req.body.location);
       let updateObject = {
         name: req.body.name,
         email: req.body.email,
