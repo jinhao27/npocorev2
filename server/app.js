@@ -66,19 +66,48 @@ app.get("/organizations/:id", async (req, res) => {
 
 app.route("/organizations/:id/post")
   .get((req, res) => {
-    res.render("make-post.html", context={ blockElements, cookies: req.cookies });
+    // MAKE SURE USER IS LOGGED INTO THIS ORG
+    if (req.params.id == req.cookies.organization._id) {
+      res.render("make-post.html", context={ blockElements, cookies: req.cookies });
+    } else {
+      res.send("You do not have permission to view this page.");
+    }
   })
   .post((req, res) => {
-    // CREATE POST
-    const newPost = new postModel({
-      title: req.body.title,
-      content: req.body.content,
-      datetimePosted: new Date(),
-      creator: req.cookies.organization
-    });
-    newPost.save((err) => { if (err) throw err; })
+    // MAKE SURE USER IS LOGGED INTO THIS ORG
+    if (req.params.id == req.cookies.organization._id) {
+      // CREATE POST
+      const newPost = new postModel({
+        title: req.body.title,
+        content: req.body.content,
+        datetimePosted: new Date(),
+        creator: req.cookies.organization
+      });
+      newPost.save((err) => { if (err) throw err; })
 
-    res.redirect("/posts");
+      res.redirect("/posts");
+    } else {
+      res.send("You do not have permission to view this page.");
+    }
+  });
+
+app.route("/organizations/:id/update")
+  .get((req, res) => {
+    // MAKE SURE USER IS LOGGED INTO THIS ORG
+    if (req.params.id == req.cookies.organization._id) {
+      res.render("organization-update.html", context={ blockElements, cookies: req.cookies, organization: req.cookies.organization });
+    } else {
+      res.send("You do not have permission to update this organization.");
+    }
+  })
+  .post((req, res) => {
+    // MAKE SURE USER IS LOGGED INTO THIS ORG
+    if (req.params.id == req.cookies.organization._id) {
+      console.log(req.body);
+      res.redirect("/");
+    } else {
+      res.send("You do not have permission to update this organization.");
+    }
   });
 
 app.route("/login")
