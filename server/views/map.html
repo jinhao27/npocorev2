@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>NPO Core - Map</title>
+
+    <%- blockElements[0] %>
+  </head>
+  <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 600px;  /* The height is 400 pixels */
+        width: 100%;  /* The width is the width of the web page */
+       }
+    </style>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/static/img/npocore.png" alt="NPO Core Logo">
+        </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-target">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-target">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/map">Map</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/organizations">Organizations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/posts">Posts</a>
+            </li>
+            <% if (cookies.organization) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/organizations/<%= cookies.organization._id %>">My Organization</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            <% } else { %>
+              <li class="nav-item">
+                <a class="btn btn-info ml-2" href="/login">Login/Register</a>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Map</h1>
+
+      <div id="map"></div>
+    </div>
+  </body>
+  <script>
+      var map, infoWindow;
+      const organizations = <%- JSON.stringify(organizations || null) %>
+      function bindInfoWindow(marker, map, infowindow, html) {
+          marker.addListener('click', function() {
+              infowindow.setContent(html);
+              infowindow.open(map, this);
+          });
+      }
+
+      function predictEarthquakeStats(fromUserInput) {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            map.setCenter(new google.maps.LatLng(pos.lat, pos.lng));
+
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 32.715736, lng: -117.161087},
+          zoom: 4
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+        for (organization of organizations) {
+          if (typeof organization.location == "object") {
+            // Making a marker
+            var marker = new google.maps.Marker({position: {lat: organization.location.lat, lng: organization.location.lng}, map: map, title: "Title"});
+
+            // Making info popup window
+            var infowindow = new google.maps.InfoWindow();
+
+            // Adding info window to marker on click
+            bindInfoWindow(marker, map, infowindow, `<div><strong>Name:</strong> ${organization.name}<br><strong>Email:</strong> ${organization.email}<br><strong>Cause:</strong> ${organization.cause}<br><strong>Gender:</strong> ${organization.gender}<br><strong>Interests:</strong> ${organization.interests}<br></div>`);
+          }
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+    </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= googleApiKey %>&callback=initMap"
+  async defer></script>
+</html>

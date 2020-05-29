@@ -31,7 +31,7 @@ const db = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 
 // GLOBAL VARIABLES
-const googleApiKey = process.env.GOOGLE_API_KEY;
+const googleApiKey = process.env.GOOGLE_API_KEY || "AIzaSyB8QXCiNJ2f7KrUILPUc4vPA89o3g7d6KA";
 
 // INITALIZING ALL BLOCK ELEMENTS
 let blockElementsNames = ["imports", "navbar"];
@@ -51,6 +51,11 @@ app.get("/", (req, res) => {
 
 app.get("/contact", (req, res) => {
   res.render("contact.html", context={ blockElements, cookies: req.cookies });
+});
+
+app.get("/map", async (req, res) => {
+  const organizations = await organizationModel.find({});
+  res.render("map.html", context={ blockElements, cookies: req.cookies, organizations, googleApiKey });
 });
 
 app.get("/posts", async (req, res) => {
