@@ -46,7 +46,45 @@
 
     <div class="container">
       <h1><%= organization.name %></h1>
-      <a href="/organizations/<%= organization._id %>/post">Make Post</a>
+      <p>
+        <strong>Description:</strong> <%= organization.description %>
+      </p>
+      <p>
+        <strong>Email:</strong> <%= organization.email %>
+      </p>
+      <p><strong>Cause:</strong> <%= organization.cause %></p>
+      <p><strong>Gender:</strong> <%= organization.gender %></p>
+      <p><strong>Location:</strong> <%= organization.location %></p>
+      <% if (organization.interests) { %>
+        <h3>Interests</h3>
+        <ul>
+          <% for (interest of organization.interests) { %>
+            <li><%= interest %></li>
+          <% } %>
+        </ul>
+      <% } %>
+      <% if (organization.links) { %>
+        <h3>Links</h3>
+        <ul>
+          <% for (link of organization.links) { %>
+            <li><%= link %></li>
+          <% } %>
+        </ul>
+      <% } %>
+      <% if (organization.posts) { %>
+        <h3>Posts</h3>
+        <div class="posts">
+          <% for (post of organization.posts) { %>
+            <div class="post">
+              <h3><%= post.title %></h3>
+              <small>Posted: <%= post.datetimePosted %></small><br>
+              <small>By: <%= post.creator.name %></small>
+              <p><%= post.content %></p>
+            </div>
+          <% } %>
+        </div>
+      <% } %>
+      <a class="solid-cta-button" href="/organizations/<%= organization._id %>/post">Make Post</a>
     </div>
   </body>
 </html>
