@@ -1,3 +1,4 @@
+const fs = require("fs");
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
@@ -25,18 +26,29 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 
+// INITALIZING ALL BLOCK ELEMENTS
+let blockElementsNames = ["imports", "navbar"];
+let blockElements = [];
+for (var i = 0; i < blockElementsNames.length; i++) {
+  fs.readFile(__dirname + `/views/blocks/${blockElementsNames[i]}.html`, "utf-8", (err, data) => {
+    if (err) throw err;
+
+    blockElements.push(data);
+  });
+}
+
 
 app.get("/", (req, res) => {
-  res.render("index.html");
+  res.render("index.html", context={ blockElements, cookies: req.cookies });
 });
 
 app.get("/contact", (req, res) => {
-  res.render("contact.html");
+  res.render("contact.html", context={ blockElements, cookies: req.cookies });
 });
 
 app.route("/login")
   .get((req, res) => {
-    res.render("login.html");
+    res.render("login.html", context={ blockElements, cookies: req.cookies });
   })
   .post(async (req, res) => {
     const organization = await organizationModel.findOne({
@@ -54,7 +66,7 @@ app.route("/login")
 
 app.route("/register")
   .get((req, res) => {
-    res.render("register.html");
+    res.render("register.html", context={ blockElements, cookies: req.cookies });
   })
   .post(async (req, res) => {
     const newOrganization = new organizationModel(req.body);
