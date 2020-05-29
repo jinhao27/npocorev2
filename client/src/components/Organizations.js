@@ -8,7 +8,7 @@ function Organizations() {
 
   const getOrganizations = async () => {
     // SAVE MONGODB ORGS TO PROPS
-    fetch("/api/get-organizations",{
+    fetch("http://localhost:3000/api/get-organizations",{
         method: 'GET',
         mode: "no-cors",
         cache: "no-cache",
@@ -16,11 +16,11 @@ function Organizations() {
         headers: {"Content-Type": "application/json"}
       })
       .then((response) => {
-          return response.json();
+        return response.json();
       })
       .then((organizations) => {
-          setOrganizations(organizations);
-          setBaseOrganizations(organizations);
+        setOrganizations(organizations);
+        setBaseOrganizations(organizations);
       })
       .catch((err) => {
           console.log("Exception:", err);
@@ -133,7 +133,7 @@ function Organizations() {
             <option value="Opportunities">Opportunities</option>
           </select>
 
-          <button class="refresh-organizations" onClick={getOrganizations}>
+          <button className="refresh-organizations" onClick={getOrganizations}>
             <img src="/img/refresh.svg" alt=""/>
           </button>
         </div>
