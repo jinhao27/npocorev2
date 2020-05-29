@@ -86,8 +86,14 @@
           <% } %>
         </div>
       <% } %>
-      <a class="solid-cta-button" href="/organizations/<%= organization._id %>/update">Update Organization</a>
-      <a class="solid-cta-button" href="/organizations/<%= organization._id %>/post">Make Post</a>
+
+      <!-- ADMIN COMPONENTS -->
+      <% if (cookies.organization) { %>
+        <% if (cookies.organization._id == organization._id) { %>
+          <a class="solid-cta-button" href="/organizations/<%= organization._id %>/update">Update Organization</a>
+          <a class="solid-cta-button" href="/organizations/<%= organization._id %>/post">Make Post</a>
+        <% } %>
+      <% } %>
     </div>
   </body>
 </html>
