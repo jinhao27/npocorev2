@@ -103,7 +103,22 @@ app.route("/organizations/:id/update")
   .post((req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.params.id == req.cookies.organization._id) {
-      console.log(req.body);
+      organizationModel.findOneAndUpdate(
+        { _id: req.cookies.organization._id },
+        {
+          name: req.body.name,
+          email: req.body.email,
+          description: req.body.description,
+          gender: req.body.gender,
+          cause: req.body.cause,
+          interests: req.body.interests,
+        },
+        { new: true },
+        (err, organization) => {
+          if (err) throw err;
+        }
+      )
+
       res.redirect("/");
     } else {
       res.send("You do not have permission to update this organization.");

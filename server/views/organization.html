@@ -54,7 +54,9 @@
       </p>
       <p><strong>Cause:</strong> <%= organization.cause %></p>
       <p><strong>Gender:</strong> <%= organization.gender %></p>
-      <p><strong>Location:</strong> <%= organization.location %></p>
+      <% if (organization.location) { %>
+        <p><strong>Location:</strong> <%= organization.location %></p>
+      <% } %>
       <% if (organization.interests) { %>
         <h3>Interests</h3>
         <ul>
