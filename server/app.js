@@ -163,10 +163,22 @@ app.route("/organizations/:id/update")
       res.send("You do not have permission to update this organization.");
     }
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
+    // GET LOCATION COORDINATES
+    let location = { name: req.body.location };
+    if (req.body.location) {
+      const locationJson = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${req.body.location}&key=${googleApiKey}`);
+      if (locationJson.data.results[0]) {
+        location = {
+          name: req.body.location,
+          lat: locationJson.data.results[0].geometry.location.lat,
+          lng: locationJson.data.results[0].geometry.location.lng
+        }
+      }
+    }
+
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.params.id == req.cookies.organization._id) {
-      console.log(req.body.location);
       let updateObject = {
         name: req.body.name,
         email: req.body.email,
@@ -174,6 +186,7 @@ app.route("/organizations/:id/update")
         gender: req.body.gender,
         cause: req.body.cause,
         interests: req.body.interests,
+        location
       }
 
       // SAVING LOGO IF EXISTS
@@ -197,7 +210,7 @@ app.route("/organizations/:id/update")
         }
       )
 
-      res.redirect("/");
+      res.redirect(`/organizations/${req.cookies.organization._id}`);
     } else {
       res.send("You do not have permission to update this organization.");
     }

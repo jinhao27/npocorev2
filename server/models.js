@@ -20,7 +20,7 @@ const organizationModel = mongoose.model("Organization", new mongoose.Schema({
   },
   password: String,
   posts: Array,
-  location: String,
+  location: Object,
   links: Object,
   logo: String
 }));
