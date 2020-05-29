@@ -3,13 +3,21 @@ const mongoose = require("mongoose");
 const organizationModel = mongoose.model("Organization", new mongoose.Schema({
   cause: String,
   description: String,
-  email: String,
+  email: {
+    type: String,
+    unique: true,
+    dropDups: true
+  },
   gender: String,
   interests: {
     type: Array,
     required: false
   },
-  name: String,
+  name: {
+    type: String,
+    unique: true,
+    dropDups: true
+  },
   password: String,
   posts: Array,
   location: String,

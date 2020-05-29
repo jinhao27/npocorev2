@@ -83,23 +83,28 @@ app.route("/register")
     const data = req.body;
 
     // SAVING LOGO IF EXISTS
-    const logo = req.files.logo;
-    if (logo) {
-      logo.mv(`${__dirname}/static/media/logos/${logo.name}`, (err) => {
-        if (err) throw err;
-      });
-      data.logo = logo.name;
+    if (req.files) {
+      const logo = req.files.logo;
+      if (logo) {
+        logo.mv(`${__dirname}/static/media/logos/${logo.name}`, (err) => {
+          if (err) throw err;
+        });
+        data.logo = logo.name;
+      }
     }
 
     // HASHING PASSWORD
     data.password = passwordHash.generate(req.body.password);
 
     const newOrganization = new organizationModel(data);
-    newOrganization.save((err, organization) => { if (err) throw err; });
-
-    res.cookie("organization", newOrganization);
-
-    res.redirect("/");
+    newOrganization.save((err, organization) => {
+      if (err) {
+        res.send("That organization name/email already exists. Please use a different one.")
+      } else {
+        res.cookie("organization", newOrganization);
+        res.redirect("/");
+      }
+    });
   });
 
 app.get("/logout", (req, res) => {
@@ -168,13 +173,15 @@ app.route("/organizations/:id/update")
       }
 
       // SAVING LOGO IF EXISTS
-      const logo = req.files.logo;
-      if (logo) {
-        logo.mv(`${__dirname}/static/media/logos/${logo.name}`, (err) => {
-          if (err) throw err;
-        });
+      if (req.files) {
+        const logo = req.files.logo;
+        if (logo) {
+          logo.mv(`${__dirname}/static/media/logos/${logo.name}`, (err) => {
+            if (err) throw err;
+          });
 
-        updateObject.logo = logo.name;
+          updateObject.logo = logo.name;
+        }
       }
 
       organizationModel.findOneAndUpdate(
