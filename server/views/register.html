@@ -50,7 +50,7 @@
       <div class="form-container">
         <h1>Register</h1>
 
-        <form method="post">
+        <form enctype="multipart/form-data" method="post">
           <label>Organization Name:</label><br>
           <input name="name" class="form-control" type="text" required />
           <br>
@@ -62,6 +62,9 @@
           <br>
           <label>Organization Password:</label><br>
           <input name="password" class="form-control" type="password" required />
+          <br>
+          <label>Organization Logo:</label>
+          <input name="logo" type="file">
           <br>
           <label class="mt-2">Gender: (that your organization targets)</label>
           <br>

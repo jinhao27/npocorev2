@@ -13,7 +13,8 @@ const organizationModel = mongoose.model("Organization", new mongoose.Schema({
   password: String,
   posts: Array,
   location: String,
-  links: Object
+  links: Object,
+  logo: String
 }));
 
 const postModel = mongoose.model("Post", new mongoose.Schema({

@@ -1,9 +1,12 @@
 const fs = require("fs");
+const path = require("path");
 const express = require("express");
+const fileupload = require("express-fileupload");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const axios = require("axios");
 const passwordHash = require('password-hash');
+const helpers = require("./helpers");
 const { organizationModel, postModel } = require("./models");
 
 app = express();
@@ -14,6 +17,7 @@ app.use(cookieParser())
 // Setting JSON parsing methods for POST request data
 app.use(express.urlencoded()); // HTML forms
 app.use(express.json()); // API clients
+app.use(fileupload()); // FILES
 
 // Setting view rendering engine
 app.set('view engine', 'ejs');
@@ -77,10 +81,27 @@ app.route("/register")
     res.render("register.html", context={ blockElements, cookies: req.cookies });
   })
   .post(async (req, res) => {
-    // HASHING PASSWORD
-    req.body.password = passwordHash.generate(req.body.password);
+    const data = req.body;
 
-    const newOrganization = new organizationModel(req.body);
+    console.log(data);
+    console.log(req.file);
+    console.log(req.files);
+    console.log(req.body.logo);
+    console.log(typeof req.body.logo);
+
+    // SAVING LOGO IF EXISTS
+    const logo = req.files.logo;
+    if (logo) {
+      logo.mv(`${__dirname}/static/media/logos/${logo.name}`, (err) => {
+        if (err) throw err;
+      });
+      data.logo = logo.name;
+    }
+
+    // HASHING PASSWORD
+    data.password = passwordHash.generate(req.body.password);
+
+    const newOrganization = new organizationModel(data);
     newOrganization.save((err, organization) => { if (err) throw err; });
 
     res.cookie("organization", newOrganization);

@@ -12,6 +12,7 @@ package-lock.json
 
 # production
 /build
+/server/static/media/logos/*
 
 # misc
 .DS_Store
