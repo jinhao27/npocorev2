@@ -22,7 +22,8 @@ const organizationModel = mongoose.model("Organization", new mongoose.Schema({
   posts: Array,
   location: Object,
   links: Object,
-  logo: String
+  logo: String,
+  npoScore: Number
 }));
 
 const postModel = mongoose.model("Post", new mongoose.Schema({

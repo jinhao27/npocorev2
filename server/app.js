@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const axios = require("axios");
 const passwordHash = require('password-hash');
 const { organizationModel, postModel } = require("./models");
+const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump } = require("./nposcore-functions");
 
 app = express();
 
@@ -31,7 +32,7 @@ const db = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 
 // GLOBAL VARIABLES
-const googleApiKey = process.env.GOOGLE_API_KEY;
+const googleApiKey = process.env.GOOGLE_API_KEY || "AIzaSyC_M0CedI0ph0bDesNYQhuchNfFPzwZFyU";
 
 // INITALIZING ALL BLOCK ELEMENTS
 let blockElementsNames = ["imports", "navbar"];
@@ -43,7 +44,6 @@ for (var i = 0; i < blockElementsNames.length; i++) {
     blockElements.push(data);
   });
 }
-
 
 app.get("/", (req, res) => {
   res.render("index.html", context={ blockElements, cookies: req.cookies });
@@ -112,6 +112,9 @@ app.route("/register")
     // HASHING PASSWORD
     data.password = passwordHash.generate(req.body.password);
 
+    // ADDING NPO SCORE
+    data.npoScore = 50;
+
     const newOrganization = new organizationModel(data);
     newOrganization.save((err, organization) => {
       if (err) {
@@ -159,7 +162,17 @@ app.route("/organizations/:id/post")
         datetimePosted: new Date(),
         creator: req.cookies.organization
       });
-      newPost.save((err) => { if (err) throw err; })
+      newPost.save((err) => { if (err) throw err; });
+
+      // BUMPING NPO SCORE
+      organizationModel.findOneAndUpdate(
+        { _id: req.cookies.organization._id },
+        { npoScore: postBump(req.cookies.organization.npoScore) },
+        { new: true },
+        (err, organization) => {
+          if (err) throw err;
+        }
+      )
 
       res.redirect("/posts");
     } else {
