@@ -58,10 +58,13 @@
           <label>Organization Description:</label><br>
           <textarea name="description" class="form-control" rows="5" required><%= organization.description %></textarea>
           <br>
-          <label class="mt-2">Gender: (that your organization targets)</label>
-          <br>
           <label>Organization Logo:</label>
-          <input name="logo" type="file">
+          <input name="logo" type="file" accept='image/*'>
+          <br>
+          <label>Organization Location:</label><br>
+          <input name="location" class="form-control" type="text" value="<%= organization.location %>" required />
+          <br>
+          <label class="mt-2">Gender: (that your organization targets)</label>
           <br>
           <select name="gender" required>
             <% if (organization.gender == "Everyone") { %>
