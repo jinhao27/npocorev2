@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const axios = require("axios");
 const passwordHash = require('password-hash');
-const helpers = require("./helpers");
 const { organizationModel, postModel } = require("./models");
 
 app = express();
@@ -82,12 +81,6 @@ app.route("/register")
   })
   .post(async (req, res) => {
     const data = req.body;
-
-    console.log(data);
-    console.log(req.file);
-    console.log(req.files);
-    console.log(req.body.logo);
-    console.log(typeof req.body.logo);
 
     // SAVING LOGO IF EXISTS
     const logo = req.files.logo;
@@ -165,16 +158,28 @@ app.route("/organizations/:id/update")
   .post((req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.params.id == req.cookies.organization._id) {
+      let updateObject = {
+        name: req.body.name,
+        email: req.body.email,
+        description: req.body.description,
+        gender: req.body.gender,
+        cause: req.body.cause,
+        interests: req.body.interests,
+      }
+
+      // SAVING LOGO IF EXISTS
+      const logo = req.files.logo;
+      if (logo) {
+        logo.mv(`${__dirname}/static/media/logos/${logo.name}`, (err) => {
+          if (err) throw err;
+        });
+
+        updateObject.logo = logo.name;
+      }
+
       organizationModel.findOneAndUpdate(
         { _id: req.cookies.organization._id },
-        {
-          name: req.body.name,
-          email: req.body.email,
-          description: req.body.description,
-          gender: req.body.gender,
-          cause: req.body.cause,
-          interests: req.body.interests,
-        },
+        updateObject,
         { new: true },
         (err, organization) => {
           if (err) throw err;
