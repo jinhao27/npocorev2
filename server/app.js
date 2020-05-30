@@ -56,6 +56,7 @@ app.use(async (req, res, next) => {
 })
 
 app.get("/", (req, res) => {
+  console.log(req.cookies)
   res.render("index.html", context={ blockElements, cookies: req.cookies });
 });
 

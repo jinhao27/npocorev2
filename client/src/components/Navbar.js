@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import Cookies from 'js-cookie';
+import { useCookies } from 'react-cookie';
 
 // COMPONENTS
 import AddNPO from './AddNPO.js';
 
 function Navbar() {
   const [organization, setOrganization] = useState({});
+  const [cookies, setCookie] = useCookies(['name']);
 
   useEffect(async () => {
-    await setOrganization(Cookies.get("organization"));
-    console.log(organization);
+    await setOrganization(cookies.organization);
   }, []);
 
   return (
