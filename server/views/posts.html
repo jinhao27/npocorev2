@@ -64,7 +64,7 @@
         <h3>Featured Nonprofit Organizations</h3>
         <div class="featured-grid">
           <% for (organization of featured.organizations) { %>
-            <div class="featured">
+            <div class="featured-org">
               <h5><%= organization.name %></h5>
               <p><%= organization.description %></p>
             </div>
@@ -76,7 +76,7 @@
         <h3>Featured Posts</h3>
         <div class="featured-grid">
           <% for (post of featured.posts) { %>
-            <div class="featured">
+            <div class="featured-post">
               <h5><%= post.name %></h5>
               <p><%= post.description %></p>
             </div>
@@ -90,13 +90,28 @@
           <% for (post of posts) { %>
             <div class="post">
               <h3><%= post.title %></h3>
-              <small>Posted: <%= post.datetimePosted %></small><br>
-              <small>By: <%= post.creator.name %></small>
-              <p><%= post.content %></p>
+              <strong>By: <a href="/organizations/<%= post.creator._id %>"><%= post.creator.name %></a></strong>
+              <br>
+              <small>Posted: <%= post.datetimePosted.toLocaleDateString("en-US") %></small>
+              <p class="post-content mt-3"><%= post.content %></p>
+              <div class="text-right">
+                <button id="<%= post._id %>" class="btn btn-link p-0" onClick="readMore(this.id)">
+                  <small>Read More</small>
+                </button>
+              </div>
             </div>
           <% } %>
         <% } %>
       </div>
     </div>
   </body>
+  <script>
+    function readMore(id) {
+      const readMoreButton = document.getElementById(id);
+      // const readMoreButton = event.target;
+      // readMoreButton.parentNode.style.display = "none";
+      readMoreButton.parentNode.parentNode.querySelector("p").className = "";
+      readMoreButton.style.display = "none";
+    }
+  </script>
 </html>
