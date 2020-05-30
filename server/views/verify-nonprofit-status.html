@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>NPO Core - Register</title>
+
+    <%- blockElements[0] %>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/static/img/npocore.png" alt="NPO Core Logo">
+        </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-target">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-target">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/featured">Featured</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/map">Map</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/organizations">Organizations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/posts">Posts</a>
+            </li>
+            <% if (cookies.organization) { %>
+              <a class="nav-link" href="/organizations/<%= cookies.organization._id %>">My Organization</a>
+              <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+              </li>
+            <% } else { %>
+              <li class="nav-item">
+                <a class="btn btn-info ml-2" href="/login">Login/Register</a>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Verify nonprofit status</h1>
+
+      <div class="form-container">
+        <form enctype="multipart/form-data" method="post">
+          <label>Name:</label>
+          <input type="text" name="name" placeholder="Nonprofit Name">
+
+          <label>Email:</label>
+          <input type="email" name="email" placeholder="Nonprofit Email">
+
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

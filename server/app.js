@@ -91,6 +91,15 @@ app.get("/posts/:id", async (req, res) => {
   }
 });
 
+app.route("/organizations/verify-nonprofit-status")
+  .get((req, res) => {
+    res.render("verify-nonprofit-status.html", context={ blockElements, cookies: req.cookies });
+  })
+  .post((req, res) => {
+    console.log(req.body);
+    res.redirect("/");
+  });
+
 app.route("/login")
   .get((req, res) => {
     res.render("login.html", context={ blockElements, cookies: req.cookies });
