@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const axios = require("axios");
 const passwordHash = require('password-hash');
+const { sendEmail } = require("./helper-functions");
 const { organizationModel, postModel, passwordResetSessionModel } = require("./models");
 const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBumpOrganizations } = require("./nposcore-functions");
 
@@ -215,6 +216,13 @@ app.route("/organizations/:id/post")
         { new: true },
         (err, organization) => {
           if (err) throw err;
+
+          // NOTIFY ALL SUBSCRIPTIONS
+          if (organization.subscriptions) {
+            for (email of organization.subscriptions) {
+              sendEmail(`NPO Core - New post from ${organization.name}`, email, `Check out ${organization.name}'s newest post on NPO Core!\n\nhttp://${req.get("host")}/posts/${newPost._id}`);
+            }
+          }
         }
       )
 
