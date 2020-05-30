@@ -33,7 +33,7 @@ const db = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 
 // GLOBAL VARIABLES
-const googleApiKey = process.env.GOOGLE_API_KEY;
+const googleApiKey = process.env.GOOGLE_API_KEY || "AIzaSyC_M0CedI0ph0bDesNYQhuchNfFPzwZFyU";
 
 // INITALIZING ALL BLOCK ELEMENTS
 let blockElementsNames = ["imports", "navbar"];
@@ -153,6 +153,27 @@ app.route("/register")
     }
 
     data.location = location;
+
+    // HANDLING REFERRER (IF EXISTS)
+    const referrer = req.body.referrer;
+    if (referrer) {
+      const organization = await organizationModel.findOne({ name: referrer });
+      if (organization) {
+        organizationModel.findOneAndUpdate(
+          { name: referrer },
+          { npoScore: referralBump(organization.npoScore) },
+          { new: true },
+          (err, organization) => {
+            if (err) throw err;
+
+            sendEmail("NPO Core - Someone referred you!", organization.email, `${data.name} just referred you when registering! Go check it out!`);
+          }
+        )
+      } else {
+        res.send("That referrer organization does not exist.");
+        return;
+      }
+    }
 
     // HASHING PASSWORD
     data.password = passwordHash.generate(req.body.password);
