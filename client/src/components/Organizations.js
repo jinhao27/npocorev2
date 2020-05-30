@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 function Organizations() {
   const [baseOrganizations, setBaseOrganizations] = useState([]);
   const [organizations, setOrganizations] = useState([]);
+  const [showFilters, setShowFilters] = useState(false);
 
   const getOrganizations = async () => {
     // SAVE MONGODB ORGS TO PROPS
@@ -83,6 +84,15 @@ function Organizations() {
     readMoreButton.parentNode.parentNode.parentNode.querySelector("p").className = "";
   }
 
+
+  const toggleFilters = (event) => {
+    if (showFilters) {
+      setShowFilters(false);
+    } else {
+      setShowFilters(true);
+    }
+  }
+
   return (
     <div>
       <Helmet>
@@ -95,44 +105,56 @@ function Organizations() {
           If you would like your nonprofit organization removed from NPO Core, please <a href="/contact">contact us</a>.
         </small>
 
-        <div className="filters mt-3">
-          <input className="form-control search-bar" type="text" placeholder="Filter" onChange={filterOrganizationsBySearch} />
+        <br/>
 
-          <select onChange={filterOrganizationsByGender} required>
-            <option value="">Gender</option>
-            <option value="Everyone">Everyone</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Non-binary">Non-binary</option>
-          </select>
+        {showFilters ?
+          <button onClick={toggleFilters}>Filters &uarr;</button>
+          :
+          <button onClick={toggleFilters}>Filters &darr;</button>
+        }
 
-          <select onChange={filterOrganizationsByCause} required>
-            <option value="">Cause</option>
-            <option value="Animal Welfare">Animal Welfare</option>
-            <option value="Arts and Culture">Arts and Culture</option>
-            <option value="Children">Children</option>
-            <option value="Civil Rights and Social Action">Civil Rights and Social Action</option>
-            <option value="Disaster Relief">Disaster Relief</option>
-            <option value="Economic Empowerment">Economic Empowerment</option>
-            <option value="Education">Education</option>
-            <option value="Environment">Environment</option>
-            <option value="Health">Health</option>
-            <option value="Human Rights">Human Rights</option>
-            <option value="Politics">Politics</option>
-            <option value="Poverty Alleviation">Poverty Alleviation</option>
-            <option value="Science and Technology">Science and Technology</option>
-            <option value="Social Services">Social Services</option>
-          </select>
+        {showFilters ?
+          <div className="filters mt-3">
+            <input className="form-control search-bar" type="text" placeholder="Filter" onChange={filterOrganizationsBySearch} />
 
-          <select onChange={filterOrganizationsByInterest} required>
-            <option value="">Interest</option>
-            <option value="Members">Members</option>
-            <option value="Partnerships">Partnerships</option>
-            <option value="Sponsors">Sponsors</option>
-            <option value="Clients">Clients</option>
-            <option value="Opportunities">Opportunities</option>
-          </select>
-        </div>
+            <select onChange={filterOrganizationsByGender} required>
+              <option value="">Gender</option>
+              <option value="Everyone">Everyone</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Non-binary">Non-binary</option>
+            </select>
+
+            <select onChange={filterOrganizationsByCause} required>
+              <option value="">Cause</option>
+              <option value="Animal Welfare">Animal Welfare</option>
+              <option value="Arts and Culture">Arts and Culture</option>
+              <option value="Children">Children</option>
+              <option value="Civil Rights and Social Action">Civil Rights and Social Action</option>
+              <option value="Disaster Relief">Disaster Relief</option>
+              <option value="Economic Empowerment">Economic Empowerment</option>
+              <option value="Education">Education</option>
+              <option value="Environment">Environment</option>
+              <option value="Health">Health</option>
+              <option value="Human Rights">Human Rights</option>
+              <option value="Politics">Politics</option>
+              <option value="Poverty Alleviation">Poverty Alleviation</option>
+              <option value="Science and Technology">Science and Technology</option>
+              <option value="Social Services">Social Services</option>
+            </select>
+
+            <select onChange={filterOrganizationsByInterest} required>
+              <option value="">Interest</option>
+              <option value="Members">Members</option>
+              <option value="Partnerships">Partnerships</option>
+              <option value="Sponsors">Sponsors</option>
+              <option value="Clients">Clients</option>
+              <option value="Opportunities">Opportunities</option>
+            </select>
+          </div>
+          :
+          <span></span>
+        }
 
         <div className="organizations mt-5">
           {organizations ? organizations.map((organization, key) =>
