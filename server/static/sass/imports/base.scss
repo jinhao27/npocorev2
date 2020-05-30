@@ -11,6 +11,11 @@ $color-secondary-dark: rgb(238, 113, 21);
 body {
   background-color: #eee !important;
   overflow-x: hidden;
+  padding-bottom: 50px;
+}
+
+nav {
+  margin-bottom: 30px;
 }
 
 // NAVBAR

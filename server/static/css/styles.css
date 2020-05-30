@@ -5,7 +5,11 @@
 
 body {
   background-color: #eee !important;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  padding-bottom: 50px; }
+
+nav {
+  margin-bottom: 30px; }
 
 .navbar-nav {
   display: flex;
@@ -108,7 +112,7 @@ body {
 
 .featured-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
   grid-gap: 15px; }
   .featured-grid .featured-org, .featured-grid .featured-post {
     background-color: white;

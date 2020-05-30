@@ -73,19 +73,27 @@
       <% } %>
 
       <% if (featured.posts.length > 0) { %>
-        <h3>Featured Posts</h3>
-        <div class="featured-grid">
+        <h1>Featured Posts</h1>
+        <div class="featured-grid posts mt-4 mb-5">
           <% for (post of featured.posts) { %>
-            <div class="featured-post">
-              <h5><%= post.name %></h5>
-              <p><%= post.description %></p>
+            <div class="post">
+              <h3><%= post.title %></h3>
+              <strong>By: <a href="/organizations/<%= post.creator._id %>"><%= post.creator.name %></a></strong>
+              <br>
+              <small>Posted: <%= post.datetimePosted.toLocaleDateString("en-US") %></small>
+              <p class="post-content mt-3"><%= post.content %></p>
+              <div class="text-right">
+                <button id="<%= post._id %>" class="btn btn-link p-0" onClick="readMore(this.id)">
+                  <small>Read More</small>
+                </button>
+              </div>
             </div>
           <% } %>
         </div>
       <% } %>
 
       <h1>Posts</h1>
-      <div class="posts">
+      <div class="posts mt-4">
         <% if (posts) { %>
           <% for (post of posts) { %>
             <div class="post">
