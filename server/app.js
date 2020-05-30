@@ -155,17 +155,36 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-app.get("/organizations/:id", async (req, res) => {
-  const organization = await organizationModel.findOne({ _id: req.params.id }).catch((err) => {
-    res.send("That organization does not exist.");
-  });
+app.route("/organizations/:id")
+  .get(async (req, res) => {
+    const organization = await organizationModel.findOne({ _id: req.params.id }).catch((err) => {
+      res.send("That organization does not exist.");
+    });
 
-  if (organization) {
-    res.render("organization.html", context={ blockElements, cookies: req.cookies, organization });
-  } else {
-    res.send("That organization does not exist.");
-  }
-});
+    if (organization) {
+      res.render("organization.html", context={ blockElements, cookies: req.cookies, organization });
+    } else {
+      res.send("That organization does not exist.");
+    }
+  })
+  .post(async (req, res) => {
+    const email = req.body.email;
+    const organizationId = req.params.id;
+
+    const organization = await organizationModel.findOne({ _id: organizationId });
+    if (!organization.subscriptions.includes(email)) {
+      organizationModel.findOneAndUpdate(
+        { _id: organizationId },
+        { $push: { subscriptions: email } },
+        { new: true },
+        (err, organization) => {
+          if (err) throw err;
+        }
+      )
+    }
+
+    res.redirect(`/organizations/${organizationId}`);
+  })
 
 app.route("/organizations/:id/post")
   .get((req, res) => {

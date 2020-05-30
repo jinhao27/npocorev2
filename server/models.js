@@ -24,7 +24,11 @@ const organizationModel = mongoose.model("Organization", new mongoose.Schema({
   links: Object,
   logo: String,
   npoScore: Number,
-  bumpedInLastHour: Boolean
+  bumpedInLastHour: Boolean,
+  subscriptions: {
+    type: Array,
+    dropDups: true
+  }
 }));
 
 const postModel = mongoose.model("Post", new mongoose.Schema({

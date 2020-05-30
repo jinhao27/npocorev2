@@ -105,6 +105,12 @@
           <button id="disabledBump" class="solid-cta-button disabled" disabled>Already bumped this hour!</button>
           <button id="bump" class="solid-cta-button" onclick="bump()">Bump</button>
         <% } %>
+      <% } else { %>
+        <form method="post">
+          <label>Email:</label>
+          <input type="email" name="email" placeholder="Email">
+          <input type="submit" value="Subscribe!">
+        </form>
       <% } %>
     </div>
   </body>
