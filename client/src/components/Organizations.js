@@ -8,7 +8,7 @@ function Organizations() {
 
   const getOrganizations = async () => {
     // SAVE MONGODB ORGS TO PROPS
-    fetch("http://localhost:3000/api/get-organizations",{
+    fetch("/api/get-organizations",{
         method: 'GET',
         mode: "no-cors",
         cache: "no-cache",
@@ -142,16 +142,17 @@ function Organizations() {
           {organizations ? organizations.map((organization, key) =>
             <div className="organization" key={key}>
               <div className="organization-header">
-                <h5>{organization.name}</h5>
+                <h4>{organization.name}</h4>
                 <div className="organization-resources">
                   <a href="mailto:{organization.email}" target="_">
                     {organization.email ? <img src="/img/email.svg" alt="{organization.name} Email Address" /> : null}
                   </a>
-                  <a href={organization.website} target="_">
-                    <img src="/img/link.svg" alt="{organization.name} Website" />
+                  <a href={"/organizations/" + organization._id}>
+                    <img style={{transform: "translateY(-2px)"}} src="/img/link.svg" alt="{organization.name}" />
                   </a>
                 </div>
               </div>
+              {organization.location.name ? <div><strong>Location:</strong> {organization.location.name}</div> : <span></span>}
               <div><strong>Gender:</strong> {organization.gender}</div>
               <div><strong>Cause:</strong> {organization.cause}</div>
               <p className="organization-description"><strong>Description:</strong> {organization.description}</p>
