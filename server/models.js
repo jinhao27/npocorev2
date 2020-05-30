@@ -34,4 +34,20 @@ const postModel = mongoose.model("Post", new mongoose.Schema({
   creator: Object
 }));
 
-module.exports = { organizationModel, postModel };
+const passwordResetSessionModel = mongoose.model("PasswordResetSession", new mongoose.Schema({
+  sessionId: {
+    type: String,
+    dropDups: true
+  },
+  organization: {
+    type: Object,
+    dropDups: true
+  },
+  expireAt: {
+    type: Date,
+    default: Date.now,
+    index: { expires: '15m' },
+  }
+}));
+
+module.exports = { organizationModel, postModel, passwordResetSessionModel };

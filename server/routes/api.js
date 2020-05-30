@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { organizationModel, postModel } = require("../models");
+const { organizationModel, postModel, passwordResetSessionModel } = require("../models");
 const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBumpOrganizations } = require("../nposcore-functions");
 
 module.exports = function(app) {

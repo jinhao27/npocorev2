@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const axios = require("axios");
 const passwordHash = require('password-hash');
-const { organizationModel, postModel } = require("./models");
+const { organizationModel, postModel, passwordResetSessionModel } = require("./models");
 const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBumpOrganizations } = require("./nposcore-functions");
 
 app = express();
@@ -269,6 +269,7 @@ app.route("/organizations/:id/update")
 
 
 require("./routes/api")(app);
+require("./routes/forgot-password")(app);
 
 
 setInterval(function() {
