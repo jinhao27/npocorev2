@@ -92,7 +92,7 @@ function Organizations() {
       <div className="pb-5">
         <h1 className="mt-4">Organizations</h1>
         <small>
-          If you would like your nonprofit organization removed from NPO Core, please <Link to="/contact">contact us</Link>.
+          If you would like your nonprofit organization removed from NPO Core, please <a href="/contact">contact us</a>.
         </small>
 
         <div className="filters mt-3">
@@ -132,10 +132,6 @@ function Organizations() {
             <option value="Clients">Clients</option>
             <option value="Opportunities">Opportunities</option>
           </select>
-
-          <button className="refresh-organizations" onClick={getOrganizations}>
-            <img src="/img/refresh.svg" alt=""/>
-          </button>
         </div>
 
         <div className="organizations mt-5">
