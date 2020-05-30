@@ -82,6 +82,15 @@ app.get("/posts", async (req, res) => {
   res.render("posts.html", context={ blockElements, cookies: req.cookies, posts });
 });
 
+app.get("/posts/:id", async (req, res) => {
+  const post = await postModel.findOne({ _id: req.params.id });
+  if (post) {
+    res.render("post.html", context={ blockElements, cookies: req.cookies, post });
+  } else {
+    res.send("This post doesn't exist.");
+  }
+});
+
 app.route("/login")
   .get((req, res) => {
     res.render("login.html", context={ blockElements, cookies: req.cookies });
