@@ -4,7 +4,8 @@
   box-sizing: border-box; }
 
 body {
-  background-color: #eee !important; }
+  background-color: #eee !important;
+  overflow-x: hidden; }
 
 .navbar-nav {
   display: flex;
@@ -22,7 +23,7 @@ body {
   border: 2px solid #12c3c3; }
 
 #diagonal-bottom {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   width: 100%;
