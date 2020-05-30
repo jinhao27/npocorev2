@@ -24,21 +24,29 @@
               <a class="nav-link" href="/contact">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/featured">Featured</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/map">Map</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/organizations">Organizations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/posts">Posts</a>
             </li>
             <% if (cookies.organization) { %>
-              <a class="nav-link" href="/organizations/<%= cookies.organization._id %>">My Organization</a>
-              <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <% if (cookies.organization.logo) { %>
+                    <div class="image-cropper">
+                      <img class="nav-logo" src="/static/media/logos/<%= cookies.organization.logo %>" alt="">
+                    </div>
+                  <% } else { %>
+                    <div class="image-cropper">
+                      <img class="nav-logo" src="/static/img/no-logo.png" alt="">
+                    </div>
+                  <% } %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/organizations/<%= cookies.organization._id %>">View my organization</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
               </li>
             <% } else { %>
               <li class="nav-item">
@@ -68,7 +76,7 @@
           <input name="logo" type="file" accept='image/*'>
           <br>
           <label>Organization Location:</label><br>
-          <input name="location" id="autocomplete" class="form-control" type="text" value="<%= organization.location %>" />
+          <input name="location" id="autocomplete" class="form-control" type="text" value="<%= organization.location.name %>" />
           <br>
           <label class="mt-2">Gender: (that your organization targets)</label>
           <br>
@@ -135,29 +143,37 @@
           <br>
           <label class="mt-4">Looking for:</label><br>
           <div class="looking-for-checkboxes">
-            <% if (organization.interests.includes("Members")) { %>
-              <div><input name="interests" class="interest-checkbox" type="checkbox" value="Members" checked /> <label>Members</label></div>
+            <% if (organization.interests) { %>
+              <% if (organization.interests.includes("Members")) { %>
+                <div><input name="interests" class="interest-checkbox" type="checkbox" value="Members" checked /> <label>Members</label></div>
+              <% } else { %>
+                <div><input name="interests" class="interest-checkbox" type="checkbox" value="Members" /> <label>Members</label></div>
+              <% } %>
+              <% if (organization.interests.includes("Partnerships")) { %>
+                <div><input name="interests" class="interest-checkbox" type="checkbox" value="Partnerships" checked /> <label>Partnerships</label></div>
+              <% } else { %>
+                <div><input name="interests" class="interest-checkbox" type="checkbox" value="Partnerships" /> <label>Partnerships</label></div>
+              <% } %>
+              <% if (organization.interests.includes("Sponsors")) { %>
+                <div><input name="interests" class="interest-checkbox" type="checkbox" value="Sponsors" checked /> <label>Sponsors</label></div>
+              <% } else { %>
+                <div><input name="interests" class="interest-checkbox" type="checkbox" value="Sponsors" /> <label>Sponsors</label></div>
+              <% } %>
+              <% if (organization.interests.includes("Clients")) { %>
+                <div><input name="interests" class="interest-checkbox" type="checkbox" value="Clients" checked /> <label>Clients</label></div>
+              <% } else { %>
+                <div><input name="interests" class="interest-checkbox" type="checkbox" value="Clients" /> <label>Clients</label></div>
+              <% } %>
+              <% if (organization.interests.includes("Opportunities")) { %>
+                <div><input name="interests" class="interest-checkbox" type="checkbox" value="Opportunities" checked /> <label>Opportunities</label></div>
+              <% } else { %>
+                <div><input name="interests" class="interest-checkbox" type="checkbox" value="Opportunities" /> <label>Opportunities</label></div>
+              <% } %>
             <% } else { %>
               <div><input name="interests" class="interest-checkbox" type="checkbox" value="Members" /> <label>Members</label></div>
-            <% } %>
-            <% if (organization.interests.includes("Partnerships")) { %>
-              <div><input name="interests" class="interest-checkbox" type="checkbox" value="Partnerships" checked /> <label>Partnerships</label></div>
-            <% } else { %>
               <div><input name="interests" class="interest-checkbox" type="checkbox" value="Partnerships" /> <label>Partnerships</label></div>
-            <% } %>
-            <% if (organization.interests.includes("Sponsors")) { %>
-              <div><input name="interests" class="interest-checkbox" type="checkbox" value="Sponsors" checked /> <label>Sponsors</label></div>
-            <% } else { %>
               <div><input name="interests" class="interest-checkbox" type="checkbox" value="Sponsors" /> <label>Sponsors</label></div>
-            <% } %>
-            <% if (organization.interests.includes("Clients")) { %>
-              <div><input name="interests" class="interest-checkbox" type="checkbox" value="Clients" checked /> <label>Clients</label></div>
-            <% } else { %>
               <div><input name="interests" class="interest-checkbox" type="checkbox" value="Clients" /> <label>Clients</label></div>
-            <% } %>
-            <% if (organization.interests.includes("Opportunities")) { %>
-              <div><input name="interests" class="interest-checkbox" type="checkbox" value="Opportunities" checked /> <label>Opportunities</label></div>
-            <% } else { %>
               <div><input name="interests" class="interest-checkbox" type="checkbox" value="Opportunities" /> <label>Opportunities</label></div>
             <% } %>
           </div>

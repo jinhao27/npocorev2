@@ -12,6 +12,24 @@ body {
   background-color: #eee !important;
 }
 
+// NAVBAR
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+.nav-logo {
+  width: 40px;
+  display: inline;
+}
+
+.image-cropper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid $color-primary;
+}
+
 #diagonal-bottom {
   position: absolute;
   bottom: 0;

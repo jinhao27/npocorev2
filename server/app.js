@@ -56,7 +56,6 @@ app.use(async (req, res, next) => {
 })
 
 app.get("/", (req, res) => {
-  console.log(req.cookies)
   res.render("index.html", context={ blockElements, cookies: req.cookies });
 });
 
@@ -64,23 +63,14 @@ app.get("/contact", (req, res) => {
   res.render("contact.html", context={ blockElements, cookies: req.cookies });
 });
 
-app.get("/featured", async (req, res) => {
+app.get("/posts", async (req, res) => {
+  const posts = await postModel.find({}).sort({ datetimePosted: -1 });
+
   let featured = {};
   featured.organizations = await organizationModel.find({ featured: true });
   featured.posts = await postModel.find({ featured: true });
 
-  res.render("featured.html", context={ blockElements, cookies: req.cookies, featured });
-})
-
-app.get("/map", async (req, res) => {
-  const organizations = await organizationModel.find({});
-  res.render("map.html", context={ blockElements, cookies: req.cookies, organizations, googleApiKey });
-});
-
-app.get("/posts", async (req, res) => {
-  const posts = await postModel.find({}).sort({ datetimePosted: -1 });
-
-  res.render("posts.html", context={ blockElements, cookies: req.cookies, posts });
+  res.render("posts.html", context={ blockElements, cookies: req.cookies, posts, featured });
 });
 
 app.get("/posts/:id", async (req, res) => {
@@ -91,37 +81,6 @@ app.get("/posts/:id", async (req, res) => {
     res.send("This post doesn't exist.");
   }
 });
-
-app.get("/organizations/:id/verify-nonprofit-status", (req, res) => {
-    if (req.params.id == req.cookies.organization._id) {
-      if (!req.cookies.organization.verifiedNonprofit) {
-        res.render("verify-nonprofit-status.html", context={ blockElements, cookies: req.cookies, googleApiKey });
-      } else {
-        res.send("You are already a verified 501(c)(3) nonprofit!");
-      }
-    } else {
-      res.send("You don't have permission to view this page.");
-    }
-  });
-
-app.route("/login")
-  .get((req, res) => {
-    res.render("login.html", context={ blockElements, cookies: req.cookies });
-  })
-  .post(async (req, res) => {
-    const organization = await organizationModel.findOne({ email: req.body.email });
-
-    if (organization) {
-      if (passwordHash.verify(req.body.password, organization.password)) {
-        res.cookie("organization", organization);
-        res.redirect("/");
-      } else {
-        res.send("Invalid credentials.");
-      }
-    } else {
-      res.send("Invalid credentials.");
-    }
-  });
 
 app.route("/register")
   .get((req, res) => {
@@ -194,9 +153,33 @@ app.route("/register")
     });
   });
 
+app.route("/login")
+  .get((req, res) => {
+    res.render("login.html", context={ blockElements, cookies: req.cookies });
+  })
+  .post(async (req, res) => {
+    const organization = await organizationModel.findOne({ email: req.body.email });
+
+    if (organization) {
+      if (passwordHash.verify(req.body.password, organization.password)) {
+        res.cookie("organization", organization);
+        res.redirect("/");
+      } else {
+        res.send("Invalid credentials.");
+      }
+    } else {
+      res.send("Invalid credentials.");
+    }
+  });
+
 app.get("/logout", (req, res) => {
   res.clearCookie("organization");
   res.redirect("/");
+});
+
+app.get("/organizations/map", async (req, res) => {
+  const organizations = await organizationModel.find({});
+  res.render("map.html", context={ blockElements, cookies: req.cookies, organizations, googleApiKey });
 });
 
 app.route("/organizations/:id")
@@ -334,6 +317,18 @@ app.route("/organizations/:id/update")
       res.redirect(`/organizations/${req.cookies.organization._id}`);
     } else {
       res.send("You do not have permission to update this organization.");
+    }
+  });
+
+app.get("/organizations/:id/verify-nonprofit-status", (req, res) => {
+    if (req.params.id == req.cookies.organization._id) {
+      if (!req.cookies.organization.verifiedNonprofit) {
+        res.render("verify-nonprofit-status.html", context={ blockElements, cookies: req.cookies, googleApiKey });
+      } else {
+        res.send("You are already a verified 501(c)(3) nonprofit!");
+      }
+    } else {
+      res.send("You don't have permission to view this page.");
     }
   });
 

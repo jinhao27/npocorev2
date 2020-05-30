@@ -24,21 +24,29 @@
               <a class="nav-link" href="/contact">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/featured">Featured</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/map">Map</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="/organizations">Organizations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/posts">Posts</a>
             </li>
             <% if (cookies.organization) { %>
-              <a class="nav-link" href="/organizations/<%= cookies.organization._id %>">My Organization</a>
-              <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <% if (cookies.organization.logo) { %>
+                    <div class="image-cropper">
+                      <img class="nav-logo" src="/static/media/logos/<%= cookies.organization.logo %>" alt="">
+                    </div>
+                  <% } else { %>
+                    <div class="image-cropper">
+                      <img class="nav-logo" src="/static/img/no-logo.png" alt="">
+                    </div>
+                  <% } %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/organizations/<%= cookies.organization._id %>">View my organization</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
               </li>
             <% } else { %>
               <li class="nav-item">
@@ -51,8 +59,32 @@
     </nav>
 
     <div class="container">
-      <h1>Posts</h1>
+      <% if (featured.organizations.length > 0) { %>
+        <h1>Features</h1>
+        <h3>Featured Nonprofit Organizations</h3>
+        <div class="featured-grid">
+          <% for (organization of featured.organizations) { %>
+            <div class="featured">
+              <h5><%= organization.name %></h5>
+              <p><%= organization.description %></p>
+            </div>
+          <% } %>
+        </div>
+      <% } %>
 
+      <% if (featured.posts.length > 0) { %>
+        <h3>Featured Posts</h3>
+        <div class="featured-grid">
+          <% for (post of featured.posts) { %>
+            <div class="featured">
+              <h5><%= post.name %></h5>
+              <p><%= post.description %></p>
+            </div>
+          <% } %>
+        </div>
+      <% } %>
+
+      <h1>Posts</h1>
       <div class="posts">
         <% if (posts) { %>
           <% for (post of posts) { %>

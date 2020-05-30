@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-sm navbar-light">
   <div class="container">
-    <a class="navbar-brand" href="/">NPO Core</a>
+    <a class="navbar-brand" href="/">
+      <img src="/static/img/npocore.png" alt="NPO Core Logo">
+    </a>
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-target">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,11 +15,35 @@
           <a class="nav-link" href="/contact">Contact</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="/featured">Featured</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/map">Map</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/organizations">Organizations</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
         <% if (cookies.organization) { %>
-          <li class="nav-item">
-            <a class="btn btn-info ml-2" href="/logout">Logout</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <% if (cookies.organization.logo) { %>
+                <div class="image-cropper">
+                  <img class="nav-logo" src="/static/media/logos/<%= cookies.organization.logo %>" alt="">
+                </div>
+              <% } else { %>
+                <div class="image-cropper">
+                  <img class="nav-logo" src="/static/img/no-logo.png" alt="">
+                </div>
+              <% } %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/organizations/<%= cookies.organization._id %>">View my organization</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/logout">Logout</a>
+            </div>
           </li>
         <% } else { %>
           <li class="nav-item">
