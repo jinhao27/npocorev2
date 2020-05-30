@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const passwordHash = require("password-hash");
+const { sendEmail } = require("../helper-functions");
 const { organizationModel, postModel, passwordResetSessionModel } = require("../models");
 const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBumpOrganizations } = require("../nposcore-functions");
 const { v4: uuidv4 } = require('uuid');
@@ -14,12 +15,16 @@ module.exports = function(app) {
 
       // CHECK IF ORGANIZATION WITH THIS EMAIL EXISTS
       const exists = await organizationModel.exists({ email });
+      const sessionId = uuidv4();
       if (exists) {
         const newPasswordResetSessionModel = new passwordResetSessionModel({
-          sessionId: uuidv4(),
+          sessionId,
           organization: await organizationModel.findOne({ email })
         });
         newPasswordResetSessionModel.save((err) => { if (err) throw err; });
+
+        // SENDING NEW LINK
+        sendEmail("NPO Core - Password Reset Link", email, `This link expires in 15 minutes\n\nhttp://${req.get("host")}/auth/change-password/${sessionId}`);
 
         res.redirect("/auth/confirm-password");
       } else {
