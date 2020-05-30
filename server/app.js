@@ -33,7 +33,7 @@ const db = mongoose.connection;
 mongoose.set('useFindAndModify', false);
 
 // GLOBAL VARIABLES
-const googleApiKey = process.env.GOOGLE_API_KEY || "AIzaSyC_M0CedI0ph0bDesNYQhuchNfFPzwZFyU";
+const googleApiKey = process.env.GOOGLE_API_KEY;
 
 // INITALIZING ALL BLOCK ELEMENTS
 let blockElementsNames = ["imports", "navbar"];
@@ -91,13 +91,16 @@ app.get("/posts/:id", async (req, res) => {
   }
 });
 
-app.route("/organizations/verify-nonprofit-status")
-  .get((req, res) => {
-    res.render("verify-nonprofit-status.html", context={ blockElements, cookies: req.cookies });
-  })
-  .post((req, res) => {
-    console.log(req.body);
-    res.redirect("/");
+app.get("/organizations/:id/verify-nonprofit-status", (req, res) => {
+    if (req.params.id == req.cookies.organization._id) {
+      if (!req.cookies.organization.verifiedNonprofit) {
+        res.render("verify-nonprofit-status.html", context={ blockElements, cookies: req.cookies, googleApiKey });
+      } else {
+        res.send("You are already a verified 501(c)(3) nonprofit!");
+      }
+    } else {
+      res.send("You don't have permission to view this page.");
+    }
   });
 
 app.route("/login")

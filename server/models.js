@@ -28,7 +28,8 @@ const organizationModel = mongoose.model("Organization", new mongoose.Schema({
   subscriptions: {
     type: Array,
     dropDups: true
-  }
+  },
+  verifiedNonprofit: Boolean
 }));
 
 const postModel = mongoose.model("Post", new mongoose.Schema({
