@@ -17,7 +17,7 @@ function Navbar() {
     <nav className="navbar navbar-expand-sm navbar-light">
       <div className="container">
         <a className="navbar-brand" href="/">
-          <img className="npocore-logo" src="img/npocore.png" alt="" />
+          <img src="/static/img/npocore.png" alt="NPO Core Logo"/>
         </a>
         <button className="navbar-toggler" data-toggle="collapse" data-target="#navbar-target">
           <span className="navbar-toggler-icon"></span>
@@ -31,13 +31,7 @@ function Navbar() {
               <a className="nav-link" href="/contact">Contact</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/featured">Featured</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/map">Map</a>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/organizations">Organizations</Link>
+              <a className="nav-link" href="/organizations">Organizations</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/posts">Posts</a>
@@ -48,15 +42,24 @@ function Navbar() {
                 <a className="btn btn-info npo-button" href="/login">Login/Register</a>
               </li>
               :
-              <li className="nav-item">
-                <a className="nav-link" href={"/organizations/" + organization._id}>My Organization</a>
+              <li className="nav-item dropdown">
+                <a className="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {organization.logo ?
+                    <div className="image-cropper">
+                      <img className="nav-logo" src={"/static/media/logos/" + organization.logo} alt=""/>
+                    </div>
+                    :
+                    <div className="image-cropper">
+                      <img className="nav-logo" src="/static/img/no-logo.png" alt=""/>
+                    </div>
+                  }
+                </a>
+                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a className="dropdown-item" href={"/organizations/" + organization._id}>View my organization</a>
+                  <div className="dropdown-divider"></div>
+                  <a className="dropdown-item" href="/logout">Logout</a>
+                </div>
               </li>
-            }
-            {organization != undefined ?
-            <li className="nav-item">
-              <a className="nav-link" href="/logout">Logout</a>
-            </li>
-            : <span></span>
             }
           </ul>
         </div>

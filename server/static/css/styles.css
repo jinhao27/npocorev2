@@ -31,9 +31,6 @@ body {
   clip-path: polygon(0 78%, 100% 13%, 100% 100%, 0% 100%);
   z-index: -1; }
 
-.navbar-brand img {
-  height: 30px; }
-
 .solid-cta-button {
   background-color: #f28c41;
   color: white;

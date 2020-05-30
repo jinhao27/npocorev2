@@ -7,13 +7,31 @@ body {
   min-height: 100vh;
 }
 
+// NAVBAR
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+.nav-logo {
+  width: 40px;
+  display: inline;
+}
+
+.image-cropper {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid #12c3c3;
+}
+
 #diagonal-bottom {
   position: absolute;
   bottom: 0;
   right: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(18, 195, 195);
+  background-color: #12c3c3;
   clip-path: polygon(0 78%, 100% 13%, 100% 100%, 0% 100%);
   z-index: -1;
 }
