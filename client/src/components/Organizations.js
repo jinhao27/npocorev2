@@ -100,7 +100,7 @@ function Organizations() {
   return (
     <div>
       <Helmet>
-        <title>NPO Core - A List of Nonprofit Organizations for High School & College Students</title>
+        <title>NPO Core - Nonprofit Organizations</title>
         <meta name="description" content="Look at our huge, curated list of nonprofit organizations that we've built up! Find a nonprofit organization to join, partner with, or simply get in contact with here on NPO Core!" />
       </Helmet>
       <div className="pb-5">
