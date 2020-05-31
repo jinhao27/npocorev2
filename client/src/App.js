@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // COMPONENTS
 import Navbar from './components/Navbar.js';
 import Organizations from './components/Organizations.js';
+import Page404 from './components/Page404.js';
 
 function App() {
   return (
@@ -12,13 +13,14 @@ function App() {
         <div>
           <Navbar/>
 
-          <Switch>
-            <div className="container">
-              <div className="hover-container">
+          <div className="container">
+            <div className="hover-container">
+              <Switch>
                 <Route path="/organizations" component={Organizations}/>
-              </div>
+                <Route component={Page404} />
+              </Switch>
             </div>
-          </Switch>
+          </div>
         </div>
       </Router>
     </div>
