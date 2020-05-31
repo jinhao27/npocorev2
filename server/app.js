@@ -84,7 +84,7 @@ app.get("/posts/:id", async (req, res) => {
 
 app.route("/register")
   .get((req, res) => {
-    res.render("register.html", context={ blockElements, cookies: req.cookies, googleApiKey });
+    res.render("register.html", context={ blockElements, cookies: req.cookies, googleApiKey, error: "" });
   })
   .post(async (req, res) => {
     const data = req.body;
@@ -130,7 +130,7 @@ app.route("/register")
           }
         )
       } else {
-        res.render("errors/organization.html", context={ blockElements, cookies: req.cookies });
+        res.send("That referrer doesn't exist!");
       }
     }
 
@@ -163,7 +163,7 @@ app.route("/register")
     const newOrganization = new organizationModel(data);
     newOrganization.save((err, organization) => {
       if (err) {
-        res.send("That organization name/email already exists. Please use a different one.")
+        res.render("register.html", context={ blockElements, cookies: req.cookies, googleApiKey, error: "That organization name/email already exists. Please use a different one." });
       } else {
         res.cookie("organization", newOrganization);
         res.redirect(`/organizations/${newOrganization._id}`);
@@ -173,7 +173,7 @@ app.route("/register")
 
 app.route("/login")
   .get((req, res) => {
-    res.render("login.html", context={ blockElements, cookies: req.cookies });
+    res.render("login.html", context={ blockElements, cookies: req.cookies, error: "" });
   })
   .post(async (req, res) => {
     const organization = await organizationModel.findOne({ email: req.body.email });
@@ -183,10 +183,10 @@ app.route("/login")
         res.cookie("organization", organization);
         res.redirect(`/organizations/${organization._id}`);
       } else {
-        res.send("Invalid credentials.");
+        res.render("login.html", context={ blockElements, cookies: req.cookies, error: "Invalid credentials." });
       }
     } else {
-      res.send("Invalid credentials.");
+      res.render("login.html", context={ blockElements, cookies: req.cookies, error: "Invalid credentials." });
     }
   });
 
