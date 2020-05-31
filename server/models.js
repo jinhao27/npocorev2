@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const ms = require("ms");
 
 const organizationModel = mongoose.model("Organization", new mongoose.Schema({
   cause: String,
