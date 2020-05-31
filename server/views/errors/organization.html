@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>NPO Core - 404 Organization not found!</title>
+
+    <%- blockElements[0] %>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/static/img/npocore.png" alt="NPO Core Logo">
+        </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-target">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-target">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/organizations">Organizations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/posts">Posts</a>
+            </li>
+            <% if (cookies.organization) { %>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <% if (cookies.organization.logo) { %>
+                    <div class="image-cropper">
+                      <img class="nav-logo" src="/static/media/logos/<%= cookies.organization.logo %>" alt="">
+                    </div>
+                  <% } else { %>
+                    <div class="image-cropper">
+                      <img class="nav-logo" src="/static/img/no-logo.png" alt="">
+                    </div>
+                  <% } %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/organizations/<%= cookies.organization._id %>">View my organization</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+              </li>
+            <% } else { %>
+              <li class="nav-item">
+                <a class="btn btn-info ml-2" href="/login">Login/Register</a>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="form-container">
+        <h1>This organization doesn't exist!</h1>
+        <p>
+          We're sorry, we couldn't find the organization you were looking for! Please make sure you typed/went to the correct URL, or <a href="/contact">contact us</a> if you believe this is a real issue.
+        </p>
+        <a class="solid-cta-button w-100" href="/organizations/">Back to organizations</a>
+      </div>
+    </div>
+  </body>
+</html>

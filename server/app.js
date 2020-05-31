@@ -78,7 +78,7 @@ app.get("/posts/:id", async (req, res) => {
   if (post) {
     res.render("post.html", context={ blockElements, cookies: req.cookies, post });
   } else {
-    res.send("This post doesn't exist.");
+    res.render("errors/post.html", context={ blockElements, cookies: req.cookies, post });
   }
 });
 
@@ -130,8 +130,7 @@ app.route("/register")
           }
         )
       } else {
-        res.send("That referrer organization does not exist.");
-        return;
+        res.render("errors/organization.html", context={ blockElements, cookies: req.cookies });
       }
     }
 
@@ -202,16 +201,19 @@ app.get("/organizations/map", async (req, res) => {
 });
 
 app.route("/organizations/:id")
-  .get(async (req, res) => {
-    const organization = await organizationModel.findOne({ _id: req.params.id }).catch((err) => {
-      res.send("That organization does not exist.");
-    });
+  .get((req, res) => {
+    organizationModel.findOne({ _id: req.params.id })
+      .then((err, organization) => {
+        if (err) return err;
 
-    if (organization) {
-      res.render("organization.html", context={ blockElements, cookies: req.cookies, organization });
-    } else {
-      res.send("That organization does not exist.");
-    }
+        if (organization) {
+          res.render("organization.html", context={ blockElements, cookies: req.cookies, organization });
+        } else {
+          res.render("errors/organization.html", context={ blockElements, cookies: req.cookies });
+        }
+      }).catch((err) => {
+        res.render("errors/organization.html", context={ blockElements, cookies: req.cookies });
+      });
   })
   .post(async (req, res) => {
     const email = req.body.email;
@@ -235,15 +237,15 @@ app.route("/organizations/:id")
 app.route("/organizations/:id/post")
   .get((req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
-    if (req.params.id == req.cookies.organization._id) {
+    if (req.cookies.organization && req.cookies.organization && req.params.id == req.cookies.organization._id) {
       res.render("make-post.html", context={ blockElements, cookies: req.cookies });
     } else {
-      res.send("You do not have permission to view this page.");
+      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
     }
   })
   .post((req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
-    if (req.params.id == req.cookies.organization._id) {
+    if (req.cookies.organization && req.params.id == req.cookies.organization._id) {
       // CREATE POST
       const post = {
         title: req.body.title,
@@ -273,17 +275,17 @@ app.route("/organizations/:id/post")
 
       res.redirect("/posts");
     } else {
-      res.send("You do not have permission to view this page.");
+      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
     }
   });
 
 app.route("/organizations/:id/update")
   .get((req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
-    if (req.params.id == req.cookies.organization._id) {
+    if (req.cookies.organization && req.params.id == req.cookies.organization._id) {
       res.render("organization-update.html", context={ blockElements, cookies: req.cookies, organization: req.cookies.organization, googleApiKey });
     } else {
-      res.send("You do not have permission to update this organization.");
+      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
     }
   })
   .post(async (req, res) => {
@@ -319,7 +321,7 @@ app.route("/organizations/:id/update")
     }
 
     // MAKE SURE USER IS LOGGED INTO THIS ORG
-    if (req.params.id == req.cookies.organization._id) {
+    if (req.cookies.organization && req.params.id == req.cookies.organization._id) {
       let updateObject = {
         name: req.body.name,
         email: req.body.email,
@@ -354,19 +356,19 @@ app.route("/organizations/:id/update")
 
       res.redirect(`/organizations/${req.cookies.organization._id}`);
     } else {
-      res.send("You do not have permission to update this organization.");
+      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
     }
   });
 
 app.get("/organizations/:id/verify-nonprofit-status", (req, res) => {
-    if (req.params.id == req.cookies.organization._id) {
+    if (req.cookies.organization && req.params.id == req.cookies.organization._id) {
       if (!req.cookies.organization.verifiedNonprofit) {
         res.render("verify-nonprofit-status.html", context={ blockElements, cookies: req.cookies, googleApiKey });
       } else {
         res.send("You are already a verified 501(c)(3) nonprofit!");
       }
     } else {
-      res.send("You don't have permission to view this page.");
+      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
     }
   });
 
