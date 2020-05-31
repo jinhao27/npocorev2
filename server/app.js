@@ -148,7 +148,7 @@ app.route("/register")
         res.send("That organization name/email already exists. Please use a different one.")
       } else {
         res.cookie("organization", newOrganization);
-        res.redirect("/");
+        res.redirect(`/organizations/${newOrganization._id}`);
       }
     });
   });
@@ -163,7 +163,7 @@ app.route("/login")
     if (organization) {
       if (passwordHash.verify(req.body.password, organization.password)) {
         res.cookie("organization", organization);
-        res.redirect("/");
+        res.redirect(`/organizations/${organization._id}`);
       } else {
         res.send("Invalid credentials.");
       }
@@ -238,7 +238,7 @@ app.route("/organizations/:id/post")
       // BUMPING NPO SCORE + ADDING POST
       organizationModel.findOneAndUpdate(
         { _id: req.cookies.organization._id },
-        { $push: { posts: post }, npoScore: postBump(req.cookies.organization.npoScore) },
+        { $push: { posts: newPost }, npoScore: postBump(req.cookies.organization.npoScore) },
         { new: true },
         (err, organization) => {
           if (err) throw err;

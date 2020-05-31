@@ -30,3 +30,9 @@
     }
   }
 }
+
+@media (max-width: 500px) {
+  .posts {
+    grid-template-columns: repeat(auto-fill, 100%) !important;
+  }
+}

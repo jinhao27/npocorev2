@@ -134,3 +134,55 @@ nav {
       white-space: nowrap;
       overflow: hidden;
       margin-bottom: 0 !important; }
+
+@media (max-width: 500px) {
+  .posts {
+    grid-template-columns: repeat(auto-fill, 100%) !important; } }
+
+.organization-container {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  grid-gap: 40px;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.3);
+  width: 100%; }
+  .organization-container .left img {
+    width: 100%; }
+  .organization-container .left .admin-components a, .organization-container .left .admin-components button {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 5px; }
+  .organization-container .left .subscribe-form input {
+    margin-bottom: 5px; }
+  .organization-container .left .subscribe-form input[type=submit] {
+    display: block;
+    width: 100%;
+    font-size: 15px; }
+  .organization-container .right-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); }
+    .organization-container .right-grid p {
+      margin-bottom: 3px; }
+  .organization-container .right .interests {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px 0; }
+    .organization-container .right .interests small {
+      background-color: #f28c41;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 3px;
+      margin: 2.5px; }
+
+@media (max-width: 800px) {
+  .organization-container {
+    grid-template-columns: repeat(auto-fill, 100%); }
+    .organization-container .left {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 15px;
+      align-items: center; } }

@@ -59,72 +59,89 @@
     </nav>
 
     <div class="container">
-      <h1><%= organization.name %></h1>
-      <% if (organization.logo) { %>
-        <img src="/static/media/logos/<%= organization.logo %>" alt="">
-      <% } %>
-      <p>
-        <strong>Description:</strong> <%= organization.description %>
-      </p>
-      <p>
-        <strong>Email:</strong> <%= organization.email %>
-      </p>
-      <p><strong>Cause:</strong> <%= organization.cause %></p>
-      <p><strong>Gender:</strong> <%= organization.gender %></p>
-      <p><strong>NPO Score:</strong> <%= organization.npoScore %></p>
-      <p><strong>Verified 501(c)(3) Nonprofit:</strong> <%= organization.verifiedNonprofit %></p>
-      <% if (organization.location.name) { %>
-        <p><strong>Location:</strong> <%= organization.location.name %></p>
-      <% } %>
-      <script>console.log(<%- JSON.stringify(organization.location); %>)</script>
-      <% if (organization.interests) { %>
-        <h3>Interests</h3>
-        <ul>
-          <% for (interest of organization.interests) { %>
-            <li><%= interest %></li>
-          <% } %>
-        </ul>
-      <% } %>
-      <% if (organization.links) { %>
-        <h3>Links</h3>
-        <ul>
-          <% for (link of organization.links) { %>
-            <li><%= link %></li>
-          <% } %>
-        </ul>
-      <% } %>
-      <% if (organization.posts.length > 0) { %>
-        <h3>Posts</h3>
-        <div class="posts">
-          <% for (post of organization.posts) { %>
-            <div class="post">
-              <h3><%= post.title %></h3>
-              <small>Posted: <%= post.datetimePosted %></small><br>
-              <small>By: <%= post.creator.name %></small>
-              <p><%= post.content %></p>
-            </div>
+      <div class="organization-container">
+        <div class="left">
+          <div class="image-cropper">
+            <% if (organization.logo) { %>
+              <img src="/static/media/logos/<%= organization.logo %>" alt="">
+            <% } else { %>
+              <img src="/static/img/no-logo.png" alt="">
+            <% } %>
+          </div>
+
+          <!-- ADMIN COMPONENTS -->
+          <% if (cookies.organization) { %>
+            <% if (cookies.organization._id == organization._id) { %>
+              <div class="admin-components mt-4">
+                <% if (!cookies.organization.verifiedNonprofit) { %>
+                  <a class="solid-cta-button" href="/organizations/<%= organization._id %>/verify-nonprofit-status">Verify 501(c)(3) status</a>
+                <% } %>
+                <a class="solid-cta-button" href="/organizations/<%= organization._id %>/update">Update Organization</a>
+                <a class="solid-cta-button" href="/organizations/<%= organization._id %>/post">Make Post</a>
+                <button id="disabledBump" class="solid-cta-button disabled" disabled>Already bumped this hour!</button>
+                <button id="bump" class="solid-cta-button" onclick="bump()">Bump</button>
+              </div>
+            <% } %>
+          <% } else { %>
+            <form class="subscribe-form mt-4" method="post">
+              <input class="form-control" type="email" name="email" placeholder="Email">
+              <input class="solid-cta-button" type="submit" value="Subscribe!">
+            </form>
           <% } %>
         </div>
-      <% } %>
+        <div class="right">
+          <h1><%= organization.name %></h1>
+          <p><%= organization.description %></p>
+          <div class="right-grid">
+            <div>
+              <p><strong>Cause:</strong> <%= organization.cause %></p>
+              <p><strong>Gender:</strong> <%= organization.gender %></p>
+              <p><strong>Verified 501(c)(3) Nonprofit:</strong> <%= organization.verifiedNonprofit %></p>
 
-      <!-- ADMIN COMPONENTS -->
-      <% if (cookies.organization) { %>
-        <% if (cookies.organization._id == organization._id) { %>
-          <% if (!cookies.organization.verifiedNonprofit) { %>
-            <a class="solid-cta-button" href="/organizations/<%= organization._id %>/verify-nonprofit-status">Verify 501(c)(3) status</a>
+              <% if (cookies.organization) { %>
+                <% if (cookies.organization) { %>
+                  <p><strong>NPO Score:</strong> <%= organization.npoScore %></p>
+                <% } %>
+              <% } %>
+
+              <% if (organization.location.name) { %>
+                <p><strong>Location:</strong> <%= organization.location.name %></p>
+              <% } %>
+            </div>
+            <div></div>
+          </div>
+
+          <% if (organization.interests) { %>
+            <div class="interests">
+              <% for (interest of organization.interests) { %>
+                <small><%= interest %></small>
+              <% } %>
+            </div>
           <% } %>
-          <a class="solid-cta-button" href="/organizations/<%= organization._id %>/update">Update Organization</a>
-          <a class="solid-cta-button" href="/organizations/<%= organization._id %>/post">Make Post</a>
-          <button id="disabledBump" class="solid-cta-button disabled" disabled>Already bumped this hour!</button>
-          <button id="bump" class="solid-cta-button" onclick="bump()">Bump</button>
-        <% } %>
-      <% } else { %>
-        <form method="post">
-          <label>Email:</label>
-          <input type="email" name="email" placeholder="Email">
-          <input type="submit" value="Subscribe!">
-        </form>
-      <% } %>
+
+          <h3 class="mt-4">Posts</h3>
+          <% if (organization.posts.length > 0) { %>
+            <div class="featured-grid posts mt-3">
+              <% for (post of organization.posts) { %>
+                <div class="post">
+                  <h3><%= post.title %></h3>
+                  <strong>By: <a href="/organizations/<%= post.creator._id %>"><%= post.creator.name %></a></strong>
+                  <br>
+                  <small>Posted: <%= post.datetimePosted.toLocaleDateString("en-US") %></small>
+                  <p class="post-content mt-3"><%= post.content %></p>
+                  <div class="text-right">
+                    <button id="<%= post._id %>" class="btn btn-link p-0" onClick="readMore(this.id)">
+                      <small>Read More</small>
+                    </button>
+                  </div>
+                </div>
+              <% } %>
+            </div>
+          <% } else { %>
+            <small>No posts made yet!</small>
+          <% } %>
+        </div>
+      </div>
     </div>
   </body>
   <script>
@@ -156,6 +173,14 @@
       // SWITCH OUT BUTTON WITH DISABLED ONE
       document.getElementById("bump").style.display = "none";
       document.getElementById("disabledBump").style.display = "inline-block";
+    }
+
+    function readMore(id) {
+      const readMoreButton = document.getElementById(id);
+      // const readMoreButton = event.target;
+      // readMoreButton.parentNode.style.display = "none";
+      readMoreButton.parentNode.parentNode.querySelector("p").className = "";
+      readMoreButton.style.display = "none";
     }
   </script>
 </html>
