@@ -102,7 +102,7 @@
 
               <% if (cookies.organization) { %>
                 <% if (cookies.organization) { %>
-                  <p><strong>NPO Score:</strong> <%= organization.npoScore %></p>
+                  <p><strong>NPO Score:</strong> <%= organization.npoScore.toFixed(2) %></p>
                 <% } %>
               <% } %>
 
