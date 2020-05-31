@@ -32,15 +32,13 @@
             <% if (cookies.organization) { %>
               <li class="nav-item dropdown">
                 <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <% if (cookies.organization.logo) { %>
-                    <div class="image-cropper">
+                  <div class="image-cropper">
+                    <% if (cookies.organization.logo) { %>
                       <img class="nav-logo" src="/static/media/logos/<%= cookies.organization.logo %>" alt="">
-                    </div>
-                  <% } else { %>
-                    <div class="image-cropper">
+                    <% } else { %>
                       <img class="nav-logo" src="/static/img/no-logo.png" alt="">
-                    </div>
-                  <% } %>
+                    <% } %>
+                  </div>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/organizations/<%= cookies.organization._id %>">View my organization</a>
@@ -62,7 +60,7 @@
       <div class="organization-container">
         <div class="left">
           <div class="image-cropper-container">
-            <div class="image-cropper">
+            <div class="image-cropper" style="border-width: 5px;">
               <% if (organization.logo) { %>
                 <img src="/static/media/logos/<%= organization.logo %>" alt="">
               <% } else { %>
