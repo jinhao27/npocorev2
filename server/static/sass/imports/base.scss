@@ -24,6 +24,12 @@ nav {
   align-items: center;
 }
 
+@media (max-width: 768px) {
+  .navbar-nav {
+    align-items: flex-start;
+  }
+}
+
 .nav-logo {
   width: 40px;
   display: inline;
