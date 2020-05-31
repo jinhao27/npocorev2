@@ -20,12 +20,22 @@ nav {
   display: inline;
   background-color: white; }
 
+.image-cropper-container {
+  position: relative; }
+
 .image-cropper {
   width: 100%;
   position: relative;
   overflow: hidden;
   border-radius: 50%;
   border: 2px solid #12c3c3; }
+
+.nonprofit-badge {
+  position: absolute;
+  z-index: 10;
+  width: 30% !important;
+  right: 0;
+  bottom: 0; }
 
 #diagonal-bottom {
   position: fixed;

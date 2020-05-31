@@ -61,11 +61,16 @@
     <div class="container">
       <div class="organization-container">
         <div class="left">
-          <div class="image-cropper">
-            <% if (organization.logo) { %>
-              <img src="/static/media/logos/<%= organization.logo %>" alt="">
-            <% } else { %>
-              <img src="/static/img/no-logo.png" alt="">
+          <div class="image-cropper-container">
+            <div class="image-cropper">
+              <% if (organization.logo) { %>
+                <img src="/static/media/logos/<%= organization.logo %>" alt="">
+              <% } else { %>
+                <img src="/static/img/no-logo.png" alt="">
+              <% } %>
+            </div>
+            <% if (organization.verifiedNonprofit) { %>
+              <img class="nonprofit-badge" src="/static/img/icons/501c3.svg" alt="">
             <% } %>
           </div>
 
@@ -96,7 +101,6 @@
             <div>
               <p><strong>Cause:</strong> <%= organization.cause %></p>
               <p><strong>Gender:</strong> <%= organization.gender %></p>
-              <p><strong>Verified 501(c)(3) Nonprofit:</strong> <%= organization.verifiedNonprofit %></p>
 
               <% if (cookies.organization) { %>
                 <% if (cookies.organization) { %>
