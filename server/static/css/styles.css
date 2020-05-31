@@ -114,11 +114,15 @@ nav {
     grid-gap: 5px;
     width: 100%; }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .home-container {
     display: block; }
     .home-container img {
       display: none; } }
+
+@media (max-width: 500px) {
+  .cta-buttons {
+    grid-template-columns: repeat(auto-fill, 100%) !important; } }
 
 .featured-grid {
   display: grid;

@@ -12,6 +12,28 @@ body {
   display: inline;
   background-color: white; }
 
+.float-container {
+  margin: 50px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 500px;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.3); }
+
+@media (max-width: 600px) {
+  .float-container {
+    width: 100%; } }
+
+@media (max-width: 500px) {
+  .cta-buttons {
+    grid-template-columns: repeat(auto-fill, 100%) !important; } }
+
+.cta-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+  width: 100%; }
+
 .image-cropper {
   width: 100%;
   position: relative;

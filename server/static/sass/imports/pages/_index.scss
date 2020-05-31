@@ -30,12 +30,18 @@
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .home-container {
     display: block;
 
     & img {
       display: none;
     }
+  }
+}
+
+@media (max-width: 500px) {
+  .cta-buttons {
+    grid-template-columns: repeat(auto-fill, 100%) !important;
   }
 }
