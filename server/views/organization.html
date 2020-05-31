@@ -113,35 +113,38 @@
               <% } %>
             </div>
             <div>
-              <% if (organization.links) { %>
                 <div class="social-links">
-                  <% if (organization.links.instagram) { %>
-                    <a href="<%= organization.links.instagram %>" target="_blank">
-                      <img src="/static/img/icons/instagram.svg" alt="">
-                    </a>
-                  <% } %>
-                  <% if (organization.links.facebook) { %>
-                    <a href="<%= organization.links.facebook %>" target="_blank">
-                      <img src="/static/img/icons/facebook.svg" alt="">
-                    </a>
-                  <% } %>
-                  <% if (organization.links.twitter) { %>
-                    <a href="<%= organization.links.twitter %>" target="_blank">
-                      <img src="/static/img/icons/twitter.svg" alt="">
-                    </a>
-                  <% } %>
-                  <% if (organization.links.linkedin) { %>
-                    <a href="<%= organization.links.linkedin %>" target="_blank">
-                      <img src="/static/img/icons/linkedin.svg" alt="">
-                    </a>
-                  <% } %>
-                  <% if (organization.links.website) { %>
-                    <a href="<%= organization.links.website %>" target="_blank">
-                      <img src="/static/img/icons/website.svg" alt="">
-                    </a>
+                  <a href="mailto:<%= organization.email %>" target="_blank">
+                    <img src="/static/img/icons/email.svg" alt="">
+                  </a>
+                  <% if (organization.links) { %>
+                    <% if (organization.links.instagram) { %>
+                      <a href="<%= organization.links.instagram %>" target="_blank">
+                        <img src="/static/img/icons/instagram.svg" alt="">
+                      </a>
+                    <% } %>
+                    <% if (organization.links.facebook) { %>
+                      <a href="<%= organization.links.facebook %>" target="_blank">
+                        <img src="/static/img/icons/facebook.svg" alt="">
+                      </a>
+                    <% } %>
+                    <% if (organization.links.twitter) { %>
+                      <a href="<%= organization.links.twitter %>" target="_blank">
+                        <img src="/static/img/icons/twitter.svg" alt="">
+                      </a>
+                    <% } %>
+                    <% if (organization.links.linkedin) { %>
+                      <a href="<%= organization.links.linkedin %>" target="_blank">
+                        <img src="/static/img/icons/linkedin.svg" alt="">
+                      </a>
+                    <% } %>
+                    <% if (organization.links.website) { %>
+                      <a href="<%= organization.links.website %>" target="_blank">
+                        <img src="/static/img/icons/website.svg" alt="">
+                      </a>
+                    <% } %>
                   <% } %>
                 </div>
-              <% } %>
             </div>
           </div>
 
