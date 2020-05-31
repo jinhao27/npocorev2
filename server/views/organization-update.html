@@ -178,6 +178,43 @@
             <% } %>
           </div>
 
+          <br>
+          <label>Organization Links:</label><br>
+          <% if (organization.links) { %>
+            <% if (organization.links.instagram) { %>
+              <input name="instagram" class="form-control mb-2" type="url" placeholder="Instagram" value="<%= organization.links.instagram %>" />
+            <% } else { %>
+              <input name="instagram" class="form-control mb-2" type="url" placeholder="Instagram" />
+            <% } %>
+            <% if (organization.links.facebook) { %>
+              <input name="facebook" class="form-control mb-2" type="url" placeholder="Facebook" value="<%= organization.links.facebook %>" />
+            <% } else { %>
+              <input name="facebook" class="form-control mb-2" type="url" placeholder="Facebook" />
+            <% } %>
+            <% if (organization.links.twitter) { %>
+              <input name="twitter" class="form-control mb-2" type="url" placeholder="Twitter" value="<%= organization.links.twitter %>" />
+            <% } else { %>
+              <input name="twitter" class="form-control mb-2" type="url" placeholder="Twitter" />
+            <% } %>
+            <% if (organization.links.linkedin) { %>
+              <input name="linkedin" class="form-control mb-2" type="url" placeholder="LinkedIn" value="<%= organization.links.linkedin %>" />
+            <% } else { %>
+              <input name="linkedin" class="form-control mb-2" type="url" placeholder="LinkedIn" />
+            <% } %>
+            <% if (organization.links.instagram) { %>
+              <input name="website" class="form-control mb-2" type="url" placeholder="Website" value="<%= organization.links.website %>" />
+            <% } else { %>
+              <input name="website" class="form-control mb-2" type="url" placeholder="Website" />
+            <% } %>
+          <% } else { %>
+            <input name="instagram" class="form-control mb-2" type="url" placeholder="Instagram" />
+            <input name="facebook" class="form-control mb-2" type="url" placeholder="Facebook" />
+            <input name="twitter" class="form-control mb-2" type="url" placeholder="Twitter" />
+            <input name="linkedin" class="form-control mb-2" type="url" placeholder="LinkedIn" />
+            <input name="website" class="form-control mb-2" type="url" placeholder="Website" />
+          <% } %>
+          <br>
+
           <input class="solid-cta-button w-100" type="submit" value="Update!">
         </form>
       </div>

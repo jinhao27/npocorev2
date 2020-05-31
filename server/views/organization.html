@@ -112,7 +112,17 @@
                 <p><strong>Location:</strong> <%= organization.location.name %></p>
               <% } %>
             </div>
-            <div></div>
+            <div>
+              <% if (organization.links) { %>
+                <div class="social-links">
+                  <% if (organization.links.instagram) { %>
+                    <a href="<%= organization.links.instagram %>">
+                      <img src="/static/img/icons" alt="">
+                    </a>
+                  <% } %>
+                </div>
+              <% } %>
+            </div>
           </div>
 
           <% if (organization.interests) { %>

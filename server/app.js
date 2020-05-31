@@ -135,6 +135,25 @@ app.route("/register")
       }
     }
 
+    // HANDLING SOCIAL LINKS
+    let links = {};
+    if (req.body.instagram) {
+      links.instagram = req.body.instagram;
+    }
+    if (req.body.facebook) {
+      links.facebook = req.body.facebook;
+    }
+    if (req.body.twitter) {
+      links.twitter = req.body.twitter;
+    }
+    if (req.body.linkedin) {
+      links.linkedin = req.body.linkedin;
+    }
+    if (req.body.website) {
+      links.website = req.body.website;
+    }
+    data.links = links;
+
     // HASHING PASSWORD
     data.password = passwordHash.generate(req.body.password);
 
@@ -281,6 +300,24 @@ app.route("/organizations/:id/update")
       }
     }
 
+    // HANDLING SOCIAL LINKS
+    let links = {};
+    if (req.body.instagram) {
+      links.instagram = req.body.instagram;
+    }
+    if (req.body.facebook) {
+      links.facebook = req.body.facebook;
+    }
+    if (req.body.twitter) {
+      links.twitter = req.body.twitter;
+    }
+    if (req.body.linkedin) {
+      links.linkedin = req.body.linkedin;
+    }
+    if (req.body.website) {
+      links.website = req.body.website;
+    }
+
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.params.id == req.cookies.organization._id) {
       let updateObject = {
@@ -290,7 +327,8 @@ app.route("/organizations/:id/update")
         gender: req.body.gender,
         cause: req.body.cause,
         interests: req.body.interests,
-        location
+        location,
+        links
       }
 
       // SAVING LOGO IF EXISTS
