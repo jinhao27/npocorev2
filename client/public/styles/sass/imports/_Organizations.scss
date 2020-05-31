@@ -90,21 +90,35 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
-  & button {
-    background-color: transparent;
-    border: none;
-    margin-left: auto;
-    font-size: 22.5px;
-    color: rgb(124, 124, 124);
+  & a {
+    // width: 400px;
+    align-self: flex-end;
+    justify-self: flex-end;
+  }
+}
 
-    &:focus {
-      outline: none;
-    }
+.toggle-filter {
+  background-color: transparent;
+  border: none;
+  margin-left: auto;
+  font-size: 22.5px;
+  color: rgb(66, 66, 66);
+
+  &:focus {
+    outline: none;
   }
 }
 
 
 @media (max-width: 800px) {
+  .options {
+    grid-template-columns: repeat(auto-fill, 100%);
+
+    & a {
+      justify-self: flex-start;
+    }
+  }
+
   .filters {
     display: grid;
     grid-template-columns: repeat(auto-fill, 100%);

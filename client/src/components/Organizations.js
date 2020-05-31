@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 function Organizations() {
   const [baseOrganizations, setBaseOrganizations] = useState([]);
   const [organizations, setOrganizations] = useState([]);
+  const [featuredOrganizations, setFeaturedOrganizations] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
   const getOrganizations = async () => {
@@ -22,6 +23,10 @@ function Organizations() {
       .then((organizations) => {
         setOrganizations(organizations);
         setBaseOrganizations(organizations);
+
+        // GETTING FEATURED ORGANIZATIONS
+        const featuredOrganizationsArray = organizations.filter(organization => organization.featured == true);
+        setFeaturedOrganizations(featuredOrganizationsArray);
       })
       .catch((err) => {
           console.log("Exception:", err);
@@ -29,7 +34,6 @@ function Organizations() {
   }
 
   useEffect(() => {
-    document.title = "NPO Core - Organizations"; // Setting title
     getOrganizations(); // GET ALL ORGS ON LOAD
   }, []);
 
@@ -102,10 +106,71 @@ function Organizations() {
       <div className="pb-5">
         <div className="options">
           <h1 className="mt-4">Organizations</h1>
+          <a class="solid-cta-button" href="/organizations/map">Check out our organization map!</a>
+        </div>
+
+        {featuredOrganizations.length ?
+          <h3>Featured Organizations</h3>
+          :
+          <span></span>
+        }
+        <div className="organizations mt-5">
+          {featuredOrganizations ? featuredOrganizations.map((organization, key) =>
+            <div className="organization" key={key}>
+              <div className="image-cropper-container">
+                <div style={{ height: "50px" }} className="image-cropper">
+                  {organization.logo ?
+                    <img src={"http://localhost:3000/static/media/logos/" + organization.logo} alt="" />
+                    :
+                    <img src="http://localhost:3000/static/img/no-logo.png" alt="" />
+                  }
+                </div>
+                {organization.verifiedNonprofit ?
+                  <img class="nonprofit-badge" src="/static/img/icons/501c3.svg" alt=""/>
+                  :
+                  <span></span>
+                }
+              </div>
+              <div>
+                <div className="organization-header">
+                  <h4>{organization.name}</h4>
+                  <div className="organization-resources">
+                    <a href="mailto:{organization.email}" target="_">
+                      {organization.email ? <img src="/img/email.svg" alt="{organization.name} Email Address" /> : null}
+                    </a>
+                    <a href={"/organizations/" + organization._id}>
+                      <img style={{transform: "translateY(-2px)"}} src="/img/link.svg" alt="{organization.name}" />
+                    </a>
+                  </div>
+                </div>
+                {organization.location.name ? <div><strong>Location:</strong> {organization.location.name}</div> : <span></span>}
+                <div><strong>Gender:</strong> {organization.gender}</div>
+                <div><strong>Cause:</strong> {organization.cause}</div>
+                <p className="organization-description"><strong>Description:</strong> {organization.description}</p>
+                <div className="text-right mb-2">
+                  <button className="btn btn-link p-0" onClick={readMore}>
+                    <small>Read More</small>
+                  </button>
+                </div>
+                <div className="organization-interests">
+                  {(organization.interests || []).map((interest, key) =>
+                    <small>{interest}</small>
+                  )}
+                </div>
+              </div>
+            </div>
+          ) :
+          <div className="text-center">
+            <small>No organizations yet!</small>
+          </div>
+        }
+        </div>
+
+        <div className="mt-4 text-right">
           {showFilters ?
-            <button onClick={toggleFilters}>Filters &uarr;</button>
+            <button class="toggle-filter" onClick={toggleFilters}>Filters &uarr;</button>
             :
-            <button onClick={toggleFilters}>Filters &darr;</button>
+            <button class="toggle-filter" onClick={toggleFilters}>Filters &darr;</button>
           }
         </div>
 
@@ -151,10 +216,6 @@ function Organizations() {
           :
           <span></span>
         }
-
-        <div className="mt-4">
-          <a class="solid-cta-button" href="/organizations/map">Check out our organization map!</a>
-        </div>
 
         <div className="organizations mt-5">
           {organizations ? organizations.map((organization, key) =>
