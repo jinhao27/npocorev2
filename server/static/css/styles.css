@@ -116,7 +116,7 @@ nav {
   grid-gap: 15px; }
   .featured-grid .featured-org, .featured-grid .featured-post {
     background-color: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 40px rgba(0, 0, 0, 0.3); }
 
@@ -126,7 +126,7 @@ nav {
   grid-gap: 15px; }
   .posts .post {
     background-color: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 40px rgba(0, 0, 0, 0.3); }
     .posts .post-content {

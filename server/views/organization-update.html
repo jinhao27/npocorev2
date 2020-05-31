@@ -59,9 +59,9 @@
     </nav>
 
     <div class="container">
-      <h1>Update <%= organization.name %></h1>
-
       <div class="form-container">
+        <h1>Update <%= organization.name %></h1>
+
         <form enctype="multipart/form-data" method="post">
           <label>Organization Name:</label><br>
           <input name="name" class="form-control" type="text" value="<%= organization.name %>" required />
