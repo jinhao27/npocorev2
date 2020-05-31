@@ -159,11 +159,18 @@ function Organizations() {
         <div className="organizations mt-5">
           {organizations ? organizations.map((organization, key) =>
             <div className="organization" key={key}>
-              <div style={{ height: "50px" }} className="image-cropper">
-                {organization.logo ?
-                  <img src={"http://localhost:3000/static/media/logos/" + organization.logo} alt="" />
+              <div className="image-cropper-container">
+                <div style={{ height: "50px" }} className="image-cropper">
+                  {organization.logo ?
+                    <img src={"http://localhost:3000/static/media/logos/" + organization.logo} alt="" />
+                    :
+                    <img src="http://localhost:3000/static/img/no-logo.png" alt="" />
+                  }
+                </div>
+                {organization.verifiedNonprofit ?
+                  <img class="nonprofit-badge" src="/static/img/icons/501c3.svg" alt=""/>
                   :
-                  <img src="http://localhost:3000/static/img/no-logo.png" alt="" />
+                  <span></span>
                 }
               </div>
               <div>

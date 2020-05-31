@@ -21,6 +21,17 @@ body {
   .image-cropper img {
     width: 100%; }
 
+.image-cropper-container {
+  position: relative;
+  height: 50px; }
+
+.nonprofit-badge {
+  position: absolute;
+  z-index: 10;
+  width: 30% !important;
+  right: 0;
+  bottom: 0; }
+
 #diagonal-bottom {
   position: absolute;
   bottom: 0;
