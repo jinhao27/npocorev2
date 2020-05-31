@@ -59,19 +59,6 @@
     </nav>
 
     <div class="container">
-      <% if (featured.organizations.length > 0) { %>
-        <h1>Features</h1>
-        <h3>Featured Nonprofit Organizations</h3>
-        <div class="featured-grid">
-          <% for (organization of featured.organizations) { %>
-            <div class="featured-org">
-              <h5><%= organization.name %></h5>
-              <p><%= organization.description %></p>
-            </div>
-          <% } %>
-        </div>
-      <% } %>
-
       <% if (featured.posts.length > 0) { %>
         <h1>Featured Posts</h1>
         <div class="featured-grid posts mt-4 mb-5">

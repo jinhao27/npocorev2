@@ -46,7 +46,7 @@ for (var i = 0; i < blockElementsNames.length; i++) {
   });
 }
 
-app.use(async (req, res, next) => {
+app.use(async (err, req, res, next) => {
   if (req.cookies.organization) {
     // RESETTING COOKIES
     res.cookie("organization", await organizationModel.findOne({ _id: req.cookies.organization._id }));

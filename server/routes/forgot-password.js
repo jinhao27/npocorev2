@@ -8,7 +8,7 @@ const { v4: uuidv4 } = require('uuid');
 module.exports = function(app, blockElements) {
   app.route("/auth/forgot-password")
     .get((req, res) => {
-      res.render("forgot-password/forgot-password.html", context={ blockElements });
+      res.render("forgot-password/forgot-password.html", context={ blockElements, cookies: req.cookies });
     })
     .post(async (req, res) => {
       const email = req.body.email;
@@ -37,7 +37,7 @@ module.exports = function(app, blockElements) {
       const passwordResetSession = await passwordResetSessionModel.findOne({ sessionId: req.params.id });
 
       if (passwordResetSession) {
-        res.render("forgot-password/change-password.html", context={ passwordResetSession, blockElements });
+        res.render("forgot-password/change-password.html", context={ passwordResetSession, blockElements, cookies: req.cookies });
       } else {
         res.send("This password reset session doesn't exist.");
       }
@@ -64,10 +64,10 @@ module.exports = function(app, blockElements) {
     });
 
   app.get("/auth/confirm-password", (req, res) => {
-    res.render("forgot-password/confirm-password.html", context={ blockElements });
+    res.render("forgot-password/confirm-password.html", context={ blockElements, cookies: req.cookies });
   });
 
   app.get("/auth/success", (req, res) => {
-    res.render("forgot-password/success.html", context={ blockElements });
+    res.render("forgot-password/success.html", context={ blockElements, cookies: req.cookies });
   });
 }
