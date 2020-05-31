@@ -17,7 +17,386 @@ function Organizations() {
         headers: {"Content-Type": "application/json"}
       })
       .then((response) => {
-        return response.json();
+        // return response.json();
+        return [
+{
+"interests": null,
+"posts": [],
+"subscriptions": [],
+"_id": "5ed1e2d5f59ad3298c90a5d1",
+"name": "test2",
+"email": "test2@mail.com",
+"description": "test2",
+"password": "sha1$9963bd02$1$0ee5886713e0fe3acabdc0f407f01190cc39c64c",
+"location": {
+"name": "San Francisco, CA, USA"
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 84.5,
+"bumpedInLastHour": false,
+"__v": 0,
+"logo": "melodiesformath.png"
+},
+{
+"interests": [],
+"posts": [
+{
+"title": "new post",
+"content": "this is a new post\r\n",
+"datetimePosted": "2020-05-30T02:31:00.862Z",
+"creator": {
+"interests": [],
+"posts": [],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 52.5,
+"bumpedInLastHour": true,
+"__v": 0
+}
+},
+{
+"title": "a post",
+"content": "this is a post",
+"datetimePosted": "2020-05-30T02:31:49.423Z",
+"creator": {
+"interests": [],
+"posts": [
+{
+"title": "new post",
+"content": "this is a new post\r\n",
+"datetimePosted": "2020-05-30T02:31:00.862Z",
+"creator": {
+"interests": [],
+"posts": [],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 52.5,
+"bumpedInLastHour": true,
+"__v": 0
+}
+}
+],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 57.75,
+"bumpedInLastHour": true,
+"__v": 0
+}
+},
+{
+"title": "post",
+"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+"datetimePosted": "2020-05-30T23:26:20.002Z",
+"creator": {
+"interests": [],
+"posts": [
+{
+"title": "new post",
+"content": "this is a new post\r\n",
+"datetimePosted": "2020-05-30T02:31:00.862Z",
+"creator": {
+"interests": [],
+"posts": [],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 52.5,
+"bumpedInLastHour": true,
+"__v": 0
+}
+},
+{
+"title": "a post",
+"content": "this is a post",
+"datetimePosted": "2020-05-30T02:31:49.423Z",
+"creator": {
+"interests": [],
+"posts": [
+{
+"title": "new post",
+"content": "this is a new post\r\n",
+"datetimePosted": "2020-05-30T02:31:00.862Z",
+"creator": {
+"interests": [],
+"posts": [],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 52.5,
+"bumpedInLastHour": true,
+"__v": 0
+}
+}
+],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 57.75,
+"bumpedInLastHour": true,
+"__v": 0
+}
+}
+],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 63.525,
+"bumpedInLastHour": true,
+"verifiedNonprofit": false,
+"__v": 0
+}
+},
+{
+"title": "sadfd",
+"content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+"datetimePosted": "2020-05-30T23:26:46.512Z",
+"creator": {
+"interests": [],
+"posts": [
+{
+"title": "new post",
+"content": "this is a new post\r\n",
+"datetimePosted": "2020-05-30T02:31:00.862Z",
+"creator": {
+"interests": [],
+"posts": [],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 52.5,
+"bumpedInLastHour": true,
+"__v": 0
+}
+},
+{
+"title": "a post",
+"content": "this is a post",
+"datetimePosted": "2020-05-30T02:31:49.423Z",
+"creator": {
+"interests": [],
+"posts": [
+{
+"title": "new post",
+"content": "this is a new post\r\n",
+"datetimePosted": "2020-05-30T02:31:00.862Z",
+"creator": {
+"interests": [],
+"posts": [],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 52.5,
+"bumpedInLastHour": true,
+"__v": 0
+}
+}
+],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 57.75,
+"bumpedInLastHour": true,
+"__v": 0
+}
+}
+],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 63.525,
+"bumpedInLastHour": true,
+"verifiedNonprofit": false,
+"__v": 0
+}
+}
+],
+"subscriptions": [
+"calix.huang1@gmail.com"
+],
+"_id": "5ed1c3154b549a24cb29bd36",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$a9e0b675$1$88e95c5ff5da3b602894388a0b06ebbdefde4010",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Arts and Culture",
+"npoScore": 69.8775,
+"bumpedInLastHour": true,
+"verifiedNonprofit": false,
+"__v": 0
+},
+{
+"interests": [],
+"posts": [],
+"subscriptions": [],
+"_id": "5ed1e2e8f59ad3298c90a5d2",
+"name": "test3",
+"email": "test3@mail.com",
+"description": "test3",
+"password": "sha1$4953804f$1$3f7c1c6e47dcb64f0831a6d1ca66a1332ba250d2",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Animal Welfare",
+"npoScore": 50,
+"bumpedInLastHour": false,
+"__v": 0
+},
+{
+"interests": [],
+"posts": [],
+"subscriptions": [],
+"_id": "5ed1e319e55c552996187fcc",
+"name": "test4",
+"email": "test4@mail.com",
+"description": "test4",
+"password": "sha1$0cee834f$1$7f49da34badcc852f1ff69290965cd11406e4dc9",
+"location": {
+"name": ""
+},
+"gender": "Male",
+"cause": "Arts and Culture",
+"npoScore": 50,
+"bumpedInLastHour": false,
+"__v": 0
+},
+{
+"interests": [],
+"posts": [],
+"subscriptions": [],
+"_id": "5ed1e36e8b552a29a6b2577d",
+"name": "test5",
+"email": "test5@mail.com",
+"description": "test5",
+"password": "sha1$4b7faffc$1$a3458c30765113a4e0e08a267284f4361677880a",
+"location": {
+"name": ""
+},
+"gender": "Male",
+"cause": "Animal Welfare",
+"npoScore": 50,
+"bumpedInLastHour": false,
+"__v": 0
+}
+];
       })
       .then((organizations) => {
         setOrganizations(organizations);
@@ -159,30 +538,39 @@ function Organizations() {
         <div className="organizations mt-5">
           {organizations ? organizations.map((organization, key) =>
             <div className="organization" key={key}>
-              <div className="organization-header">
-                <h4>{organization.name}</h4>
-                <div className="organization-resources">
-                  <a href="mailto:{organization.email}" target="_">
-                    {organization.email ? <img src="/img/email.svg" alt="{organization.name} Email Address" /> : null}
-                  </a>
-                  <a href={"/organizations/" + organization._id}>
-                    <img style={{transform: "translateY(-2px)"}} src="/img/link.svg" alt="{organization.name}" />
-                  </a>
+              <div style={{ height: "50px" }} className="image-cropper">
+                {organization.logo ?
+                  <img src={"http://localhost:3000/static/media/logos/" + organization.logo} alt="" />
+                  :
+                  <img src="http://localhost:3000/static/img/no-logo.png" alt="" />
+                }
+              </div>
+              <div>
+                <div className="organization-header">
+                  <h4>{organization.name}</h4>
+                  <div className="organization-resources">
+                    <a href="mailto:{organization.email}" target="_">
+                      {organization.email ? <img src="/img/email.svg" alt="{organization.name} Email Address" /> : null}
+                    </a>
+                    <a href={"/organizations/" + organization._id}>
+                      <img style={{transform: "translateY(-2px)"}} src="/img/link.svg" alt="{organization.name}" />
+                    </a>
+                  </div>
                 </div>
-              </div>
-              {organization.location.name ? <div><strong>Location:</strong> {organization.location.name}</div> : <span></span>}
-              <div><strong>Gender:</strong> {organization.gender}</div>
-              <div><strong>Cause:</strong> {organization.cause}</div>
-              <p className="organization-description"><strong>Description:</strong> {organization.description}</p>
-              <div className="text-right mb-2">
-                <button className="btn btn-link p-0" onClick={readMore}>
-                  <small>Read More</small>
-                </button>
-              </div>
-              <div className="organization-interests">
-                {(organization.interests || []).map((interest, key) =>
-                  <small>{interest}</small>
-                )}
+                {organization.location.name ? <div><strong>Location:</strong> {organization.location.name}</div> : <span></span>}
+                <div><strong>Gender:</strong> {organization.gender}</div>
+                <div><strong>Cause:</strong> {organization.cause}</div>
+                <p className="organization-description"><strong>Description:</strong> {organization.description}</p>
+                <div className="text-right mb-2">
+                  <button className="btn btn-link p-0" onClick={readMore}>
+                    <small>Read More</small>
+                  </button>
+                </div>
+                <div className="organization-interests">
+                  {(organization.interests || []).map((interest, key) =>
+                    <small>{interest}</small>
+                  )}
+                </div>
               </div>
             </div>
           ) :

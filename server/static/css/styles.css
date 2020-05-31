@@ -17,7 +17,8 @@ nav {
 
 .nav-logo {
   width: 40px;
-  display: inline; }
+  display: inline;
+  background-color: white; }
 
 .image-cropper {
   width: 100%;

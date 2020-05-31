@@ -12,9 +12,11 @@ body {
   display: flex;
   align-items: center;
 }
+
 .nav-logo {
-  width: 40px;
+  width: 40px !important;
   display: inline;
+  background-color: white;
 }
 
 .image-cropper {
@@ -23,6 +25,10 @@ body {
   overflow: hidden;
   border-radius: 50%;
   border: 2px solid #12c3c3;
+
+  & img {
+    width: 100%;
+  }
 }
 
 #diagonal-bottom {
