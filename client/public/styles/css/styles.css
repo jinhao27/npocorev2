@@ -162,6 +162,18 @@ body {
       .filters .refresh-organizations img:hover {
         transform: rotate(-180deg); }
 
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); }
+  .options button {
+    background-color: transparent;
+    border: none;
+    margin-left: auto;
+    font-size: 22.5px;
+    color: #7c7c7c; }
+    .options button:focus {
+      outline: none; }
+
 @media (max-width: 800px) {
   .filters {
     display: grid;
