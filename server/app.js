@@ -372,7 +372,7 @@ app.get("/organizations/:id/verify-nonprofit-status", (req, res) => {
 
 
 require("./routes/api")(app);
-require("./routes/forgot-password")(app);
+require("./routes/forgot-password")(app, blockElements);
 
 
 setInterval(function() {

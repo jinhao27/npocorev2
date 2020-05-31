@@ -5,10 +5,10 @@ const { organizationModel, postModel, passwordResetSessionModel } = require("../
 const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBumpOrganizations } = require("../nposcore-functions");
 const { v4: uuidv4 } = require('uuid');
 
-module.exports = function(app) {
+module.exports = function(app, blockElements) {
   app.route("/auth/forgot-password")
     .get((req, res) => {
-      res.render("forgot-password/forgot-password.html");
+      res.render("forgot-password/forgot-password.html", context={ blockElements });
     })
     .post(async (req, res) => {
       const email = req.body.email;
@@ -37,7 +37,7 @@ module.exports = function(app) {
       const passwordResetSession = await passwordResetSessionModel.findOne({ sessionId: req.params.id });
 
       if (passwordResetSession) {
-        res.render("forgot-password/change-password.html", context={ passwordResetSession });
+        res.render("forgot-password/change-password.html", context={ passwordResetSession, blockElements });
       } else {
         res.send("This password reset session doesn't exist.");
       }
@@ -64,10 +64,10 @@ module.exports = function(app) {
     });
 
   app.get("/auth/confirm-password", (req, res) => {
-    res.render("forgot-password/confirm-password.html");
+    res.render("forgot-password/confirm-password.html", context={ blockElements });
   });
 
   app.get("/auth/success", (req, res) => {
-    res.render("forgot-password/success.html");
+    res.render("forgot-password/success.html", context={ blockElements });
   });
 }
