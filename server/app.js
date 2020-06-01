@@ -111,8 +111,11 @@ app.route("/register")
         }
       }
     }
-
     data.location = location;
+
+    // GENERATING IDNAME
+    console.log(req.body.name.toLowerCase().replace(" ", "-"));
+    data.idName = req.body.name.toLowerCase().replace(" ", "-");
 
     // HANDLING REFERRER (IF EXISTS)
     const referrer = req.body.referrer;
@@ -162,9 +165,11 @@ app.route("/register")
 
     const newOrganization = new organizationModel(data);
     newOrganization.save((err, organization) => {
+      console.log(newOrganization);
       if (err) {
         res.render("register.html", context={ blockElements, cookies: req.cookies, googleApiKey, error: "That organization name/email already exists. Please use a different one." });
       } else {
+        console.log("ye")
         res.cookie("organization", newOrganization);
         res.redirect(`/organizations/${newOrganization._id}`);
       }
@@ -200,20 +205,20 @@ app.get("/organizations/map", async (req, res) => {
   res.render("map.html", context={ blockElements, cookies: req.cookies, organizations, googleApiKey });
 });
 
-app.route("/organizations/:id")
+app.route("/:idName")
   .get((req, res) => {
-    organizationModel.findOne({ _id: req.params.id })
-      .then((err, organization) => {
-        if (err) return err;
-
-        if (organization) {
-          res.render("organization.html", context={ blockElements, cookies: req.cookies, organization });
-        } else {
-          res.render("errors/organization.html", context={ blockElements, cookies: req.cookies });
-        }
-      }).catch((err) => {
+    organizationModel.findOne({ idName: req.params.idName.substring(1) }, (err, organization) => {
+      if (err) {
         res.render("errors/organization.html", context={ blockElements, cookies: req.cookies });
-      });
+        return;
+      }
+
+      if (organization) {
+        res.render("organization.html", context={ blockElements, cookies: req.cookies, organization });
+      } else {
+        res.render("errors/organization.html", context={ blockElements, cookies: req.cookies });
+      }
+    });
   })
   .post(async (req, res) => {
     const email = req.body.email;

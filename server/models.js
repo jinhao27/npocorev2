@@ -19,6 +19,11 @@ const organizationModel = mongoose.model("Organization", new mongoose.Schema({
     unique: true,
     dropDups: true
   },
+  idName: {
+    type: String,
+    unique: true,
+    dropDups: true
+  },
   password: String,
   posts: Array,
   location: Object,
