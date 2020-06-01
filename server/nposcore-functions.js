@@ -1,23 +1,33 @@
 const { organizationModel } = require("./models");
 
+const capNpoScore = (npoScore) => {
+  if (npoScore > 100) {
+    return 100;
+  } else if (npoScore < 0) {
+    return 0;
+  } else {
+    return npoScore
+  }
+}
+
 const hourlyBump = (npoScore) => {
-  return npoScore * 1.01;
+  return capNpoScore(npoScore * 1.01);
 }
 
 const postBump = (npoScore) => {
-  return npoScore * 1.03;
+  return capNpoScore(npoScore * 1.03);
 }
 
 const featureBump = (npoScore) => {
-  return npoScore * 1.05;
+  return capNpoScore(npoScore * 1.05);
 }
 
 const referralBump = (npoScore) => {
-  return npoScore * 1.05;
+  return capNpoScore(npoScore * 1.05);
 }
 
 const hourlyDownBump = (npoScore) => {
-  return npoScore * 0.9995;
+  return capNpoScore(npoScore * 0.9995);
 }
 
 const downBumpOrganizations = async () => {
