@@ -1,23 +1,23 @@
 const { organizationModel } = require("./models");
 
 const hourlyBump = (npoScore) => {
-  return npoScore * 1.05;
+  return npoScore * 1.01;
 }
 
 const postBump = (npoScore) => {
-  return npoScore * 1.1;
+  return npoScore * 1.03;
 }
 
 const featureBump = (npoScore) => {
-  return npoScore * 1.2;
+  return npoScore * 1.05;
 }
 
 const referralBump = (npoScore) => {
-  return npoScore * 1.3;
+  return npoScore * 1.05;
 }
 
 const hourlyDownBump = (npoScore) => {
-  return npoScore * 0.995;
+  return npoScore * 0.9995;
 }
 
 const downBumpOrganizations = async () => {
