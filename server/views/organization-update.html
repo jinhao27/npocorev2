@@ -78,42 +78,54 @@
           <label>Organization Location:</label><br>
           <input name="location" id="autocomplete" class="form-control" type="text" value="<%= organization.location.name %>" />
           <br>
-          <label class="mt-2">Gender: (that your organization targets)</label>
+          <label class="mt-2">Target Audience:</label>
           <br>
-          <select name="gender" required>
-            <% if (organization.gender == "Everyone") { %>
-              <option value="Everyone">Everyone</option>
+          <select name="targetAudience" required>
+            <% if (organization.targetAudience == "Everyone") { %>
+              <option value="Everyone" selected>Everyone</option>
             <% } %>
-            <% if (organization.gender == "Male") { %>
-              <option value="Male">Male</option>
+            <% if (organization.targetAudience == "Kids") { %>
+              <option value="Kids" selected>Kids</option>
             <% } %>
-            <% if (organization.gender == "Female") { %>
-              <option value="Female">Female</option>
+            <% if (organization.targetAudience == "Teens") { %>
+              <option value="Teens" selected>Teens</option>
             <% } %>
-            <% if (organization.gender == "Non-binary") { %>
-              <option value="Non-binary">Non-binary</option>
+            <% if (organization.targetAudience == "Adults") { %>
+              <option value="Adults" selected>Adults</option>
+            <% } %>
+            <% if (organization.targetAudience == "Seniors") { %>
+              <option value="Seniors" selected>Seniors</option>
+            <% } %>
+            <% if (organization.targetAudience == "Groups") { %>
+              <option value="Groups" selected>Groups</option>
             <% } %>
           </select>
           <br>
           <label class="mt-2">Cause:</label><br>
           <select name="cause" required>
+            <% if (organization.cause == "Advocacy and Human Rights") { %>
+              <option value="Advocacy and Human Rights">Advocacy and Human Rights</option>
+            <% } %>
             <% if (organization.cause == "Animal Welfare") { %>
               <option value="Animal Welfare">Animal Welfare</option>
             <% } %>
             <% if (organization.cause == "Arts and Culture") { %>
               <option value="Arts and Culture">Arts and Culture</option>
             <% } %>
-            <% if (organization.cause == "Children") { %>
-              <option value="Children">Children</option>
+            <% if (organization.cause == "Children and Youth") { %>
+              <option value="Children and Youth">Children and Youth</option>
             <% } %>
             <% if (organization.cause == "Civil Rights and Social Action") { %>
               <option value="Civil Rights and Social Action">Civil Rights and Social Action</option>
             <% } %>
+            <% if (organization.cause == "Crisis Support") { %>
+              <option value="Crisis Support">Crisis Support</option>
+            <% } %>
             <% if (organization.cause == "Disaster Relief") { %>
               <option value="Disaster Relief">Disaster Relief</option>
             <% } %>
-            <% if (organization.cause == "Economic Empowerment") { %>
-              <option value="Economic Empowerment">Economic Empowerment</option>
+            <% if (organization.cause == "Emergency and Safety") { %>
+              <option value="Emergency and Safety">Emergency and Safety</option>
             <% } %>
             <% if (organization.cause == "Education") { %>
               <option value="Education">Education</option>
@@ -121,23 +133,35 @@
             <% if (organization.cause == "Environment") { %>
               <option value="Environment">Environment</option>
             <% } %>
+            <% if (organization.cause == "Female Empowerment") { %>
+              <option value="Female Empowerment">Female Empowerment</option>
+            <% } %>
             <% if (organization.cause == "Health") { %>
               <option value="Health">Health</option>
             <% } %>
-            <% if (organization.cause == "Human Rights") { %>
-              <option value="Human Rights">Human Rights</option>
+            <% if (organization.cause == "Homeless and Housing") { %>
+              <option value="Homeless and Housing">Homeless and Housing</option>
             <% } %>
             <% if (organization.cause == "Politics") { %>
               <option value="Politics">Politics</option>
             <% } %>
-            <% if (organization.cause == "Poverty Alleviation") { %>
-              <option value="Poverty Alleviation">Poverty Alleviation</option>
+            <% if (organization.cause == "LGBTQ+") { %>
+              <option value="LGBTQ+">LGBTQ+</option>
+            <% } %>
+            <% if (organization.cause == "Race and Ethnicity") { %>
+              <option value="Race and Ethnicity">Race and Ethnicity</option>
+            <% } %>
+            <% if (organization.cause == "Povery Alleviation") { %>
+              <option value="Povery Alleviation">Povery Alleviation</option>
             <% } %>
             <% if (organization.cause == "Science and Technology") { %>
               <option value="Science and Technology">Science and Technology</option>
             <% } %>
             <% if (organization.cause == "Social Services") { %>
               <option value="Social Services">Social Services</option>
+            <% } %>
+            <% if (organization.cause == "Veterans and Military Families") { %>
+              <option value="Veterans and Military Families">Veterans and Military Families</option>
             <% } %>
           </select>
           <br>

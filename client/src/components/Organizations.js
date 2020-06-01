@@ -50,11 +50,11 @@ function Organizations() {
     }
   }
 
-  const filterOrganizationsByGender = (event) => {
-    const genderValue = event.target.value;
+  const filterOrganizationsByTargetAudience = (event) => {
+    const targetAudienceValue = event.target.value;
 
-    if (genderValue) {
-      setOrganizations(baseOrganizations.filter(organization => organization.gender === genderValue));
+    if (targetAudienceValue) {
+      setOrganizations(baseOrganizations.filter(organization => organization.targetAudience === targetAudienceValue));
     } else {
       getOrganizations();
     }
@@ -144,7 +144,7 @@ function Organizations() {
                   </div>
                 </div>
                 {organization.location.name ? <div><strong>Location:</strong> {organization.location.name}</div> : <span></span>}
-                <div><strong>Gender:</strong> {organization.gender}</div>
+                <div><strong>Target Audience:</strong> {organization.targetAudience}</div>
                 <div><strong>Cause:</strong> {organization.cause}</div>
                 <p className="organization-description"><strong>Description:</strong> {organization.description}</p>
                 <div className="text-right mb-2">
@@ -178,30 +178,38 @@ function Organizations() {
           <div className="filters mt-3">
             <input className="form-control search-bar" type="text" placeholder="Filter" onChange={filterOrganizationsBySearch} />
 
-            <select onChange={filterOrganizationsByGender} required>
-              <option value="">Gender</option>
+            <select onChange={filterOrganizationsByTargetAudience} required>
+              <option value="">Target Audience</option>
               <option value="Everyone">Everyone</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Non-binary">Non-binary</option>
+              <option value="Kids">Kids</option>
+              <option value="Teens">Teens</option>
+              <option value="Adults">Adults</option>
+              <option value="Seniors">Seniors</option>
+              <option value="Groups">Groups</option>
             </select>
 
             <select onChange={filterOrganizationsByCause} required>
               <option value="">Cause</option>
+              <option value="Advocacy and Human Rights">Advocacy and Human Rights</option>
               <option value="Animal Welfare">Animal Welfare</option>
               <option value="Arts and Culture">Arts and Culture</option>
-              <option value="Children">Children</option>
+              <option value="Children and Youth">Children and Youth</option>
               <option value="Civil Rights and Social Action">Civil Rights and Social Action</option>
+              <option value="Crisis Support">Crisis Support</option>
               <option value="Disaster Relief">Disaster Relief</option>
-              <option value="Economic Empowerment">Economic Empowerment</option>
+              <option value="Emergency and Safety">Emergency and Safety</option>
               <option value="Education">Education</option>
               <option value="Environment">Environment</option>
+              <option value="Female Empowerment">Female Empowerment</option>
               <option value="Health">Health</option>
-              <option value="Human Rights">Human Rights</option>
+              <option value="Homeless and Housing">Homeless and Housing</option>
               <option value="Politics">Politics</option>
+              <option value="LGBTQ+">LGBTQ+</option>
+              <option value="Race and Ethnicity">Race and Ethnicity</option>
               <option value="Poverty Alleviation">Poverty Alleviation</option>
               <option value="Science and Technology">Science and Technology</option>
               <option value="Social Services">Social Services</option>
+              <option value="Veterans and Military Families">Veterans and Military Families</option>
             </select>
 
             <select onChange={filterOrganizationsByInterest} required>
@@ -247,7 +255,7 @@ function Organizations() {
                   </div>
                 </div>
                 {organization.location.name ? <div><strong>Location:</strong> {organization.location.name}</div> : <span></span>}
-                <div><strong>Gender:</strong> {organization.gender}</div>
+                <div><strong>Target Audience:</strong> {organization.targetAudience}</div>
                 <div><strong>Cause:</strong> {organization.cause}</div>
                 <p className="organization-description"><strong>Description:</strong> {organization.description}</p>
                 <div className="text-right mb-2">
