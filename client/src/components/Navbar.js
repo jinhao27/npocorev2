@@ -55,7 +55,7 @@ function Navbar() {
                   }
                 </a>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href={"/organizations/" + organization._id}>View my organization</a>
+                  <a className="dropdown-item" href={"/@" + organization.idName}>View my organization</a>
                   <div className="dropdown-divider"></div>
                   <a className="dropdown-item" href="/logout">Logout</a>
                 </div>

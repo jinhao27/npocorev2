@@ -138,7 +138,7 @@ function Organizations() {
                     <a href="mailto:{organization.email}" target="_">
                       {organization.email ? <img src="/img/email.svg" alt="{organization.name} Email Address" /> : null}
                     </a>
-                    <a href={"/organizations/" + organization._id}>
+                    <a href={"/@" + organization.idName}>
                       <img style={{transform: "translateY(-2px)"}} src="/img/link.svg" alt="{organization.name}" />
                     </a>
                   </div>
@@ -241,7 +241,7 @@ function Organizations() {
                     <a href="mailto:{organization.email}" target="_">
                       {organization.email ? <img src="/img/email.svg" alt="{organization.name} Email Address" /> : null}
                     </a>
-                    <a href={"/organizations/" + organization._id}>
+                    <a href={"/@" + organization.idName}>
                       <img style={{transform: "translateY(-2px)"}} src="/img/link.svg" alt="{organization.name}" />
                     </a>
                   </div>

@@ -43,7 +43,7 @@
                   <% } %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/organizations/<%= cookies.organization._id %>">View my organization</a>
+                  <a class="dropdown-item" href="/@<%= cookies.organization.idName %>">View my organization</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
@@ -61,7 +61,7 @@
     <div class="container">
       <h1><%= post.title %></h1>
       <div><small>Posted: <%= post.datetimePosted %></small></div>
-      <div><small>By: <a href="/organizations/<%= post.creator._id %>"><%= post.creator.name %></a></small></div>
+      <div><small>By: <a href="/@<%= post.creator.idName %>"><%= post.creator.name %></a></small></div>
       <p><%= post.content %></p>
     </div>
   </body>

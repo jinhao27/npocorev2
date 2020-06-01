@@ -41,7 +41,7 @@
                   </div>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/organizations/<%= cookies.organization._id %>">View my organization</a>
+                  <a class="dropdown-item" href="/@<%= cookies.organization.idName %>">View my organization</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
@@ -77,10 +77,10 @@
             <% if (cookies.organization._id == organization._id) { %>
               <div class="admin-components mt-4">
                 <% if (!cookies.organization.verifiedNonprofit) { %>
-                  <a class="solid-cta-button" href="/organizations/<%= organization._id %>/verify-nonprofit-status">Verify 501(c)(3) status</a>
+                  <a class="solid-cta-button" href="/@<%= organization.idName %>/verify-nonprofit-status">Verify 501(c)(3) status</a>
                 <% } %>
-                <a class="solid-cta-button" href="/organizations/<%= organization._id %>/update">Update Organization</a>
-                <a class="solid-cta-button" href="/organizations/<%= organization._id %>/post">Make Post</a>
+                <a class="solid-cta-button" href="/@<%= organization.idName %>/update">Update Organization</a>
+                <a class="solid-cta-button" href="/@<%= organization.idName %>/post">Make Post</a>
                 <button id="disabledBump" class="solid-cta-button disabled" disabled>Already bumped this hour!</button>
                 <button id="bump" class="solid-cta-button" onclick="bump()">Bump</button>
               </div>
@@ -160,7 +160,7 @@
               <% for (post of organization.posts) { %>
                 <div class="post">
                   <h3><%= post.title %></h3>
-                  <strong>By: <a href="/organizations/<%= post.creator._id %>"><%= post.creator.name %></a></strong>
+                  <strong>By: <a href="/@<%= post.creator.idName %>"><%= post.creator.name %></a></strong>
                   <br>
                   <small>Posted: <%= post.datetimePosted.toLocaleDateString("en-US") %></small>
                   <p class="post-content mt-3"><%= post.content %></p>

@@ -43,7 +43,7 @@
                   <% } %>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/organizations/<%= cookies.organization._id %>">View my organization</a>
+                  <a class="dropdown-item" href="/@<%= cookies.organization.idName %>">View my organization</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/logout">Logout</a>
                 </div>
@@ -65,7 +65,7 @@
           <% for (post of featured.posts) { %>
             <div class="post">
               <h3><%= post.title %></h3>
-              <strong>By: <a href="/organizations/<%= post.creator._id %>"><%= post.creator.name %></a></strong>
+              <strong>By: <a href="/@<%= post.creator.idName %>"><%= post.creator.name %></a></strong>
               <br>
               <small>Posted: <%= post.datetimePosted.toLocaleDateString("en-US") %></small>
               <p class="post-content mt-3"><%= post.content %></p>
@@ -85,7 +85,7 @@
           <% for (post of posts) { %>
             <div class="post">
               <h3><%= post.title %></h3>
-              <strong>By: <a href="/organizations/<%= post.creator._id %>"><%= post.creator.name %></a></strong>
+              <strong>By: <a href="/@<%= post.creator.idName %>"><%= post.creator.name %></a></strong>
               <br>
               <small>Posted: <%= post.datetimePosted.toLocaleDateString("en-US") %></small>
               <p class="post-content mt-3"><%= post.content %></p>

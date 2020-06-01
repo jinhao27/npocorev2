@@ -49,7 +49,10 @@ for (var i = 0; i < blockElementsNames.length; i++) {
 app.use(async (err, req, res, next) => {
   if (req.cookies.organization) {
     // RESETTING COOKIES
-    res.cookie("organization", await organizationModel.findOne({ _id: req.cookies.organization._id }));
+    const organization = await organizationModel.findOne({ _id: req.cookies.organization._id });
+    res.cookie("organization", organization);
+
+    console.log(organization)
   }
 
   next();
@@ -114,7 +117,6 @@ app.route("/register")
     data.location = location;
 
     // GENERATING IDNAME
-    console.log(req.body.name.toLowerCase().replace(" ", "-"));
     data.idName = req.body.name.toLowerCase().replace(" ", "-");
 
     // HANDLING REFERRER (IF EXISTS)
@@ -169,9 +171,8 @@ app.route("/register")
       if (err) {
         res.render("register.html", context={ blockElements, cookies: req.cookies, googleApiKey, error: "That organization name/email already exists. Please use a different one." });
       } else {
-        console.log("ye")
         res.cookie("organization", newOrganization);
-        res.redirect(`/organizations/${newOrganization._id}`);
+        res.redirect(`/@${newOrganization.idName}`);
       }
     });
   });
@@ -186,7 +187,7 @@ app.route("/login")
     if (organization) {
       if (passwordHash.verify(req.body.password, organization.password)) {
         res.cookie("organization", organization);
-        res.redirect(`/organizations/${organization._id}`);
+        res.redirect(`/@${organization.idName}`);
       } else {
         res.render("login.html", context={ blockElements, cookies: req.cookies, error: "Invalid credentials." });
       }
@@ -205,9 +206,9 @@ app.get("/organizations/map", async (req, res) => {
   res.render("map.html", context={ blockElements, cookies: req.cookies, organizations, googleApiKey });
 });
 
-app.route("/:idName")
+app.route("/@:idName")
   .get((req, res) => {
-    organizationModel.findOne({ idName: req.params.idName.substring(1) }, (err, organization) => {
+    organizationModel.findOne({ idName: req.params.idName }, (err, organization) => {
       if (err) {
         res.render("errors/organization.html", context={ blockElements, cookies: req.cookies });
         return;
@@ -222,12 +223,12 @@ app.route("/:idName")
   })
   .post(async (req, res) => {
     const email = req.body.email;
-    const organizationId = req.params.id;
+    const organizationIdName = req.params.idName;
 
-    const organization = await organizationModel.findOne({ _id: organizationId });
+    const organization = await organizationModel.findOne({ idName: organizationIdName });
     if (!organization.subscriptions.includes(email)) {
       organizationModel.findOneAndUpdate(
-        { _id: organizationId },
+        { _id: organizationIdName },
         { $push: { subscriptions: email } },
         { new: true },
         (err, organization) => {
@@ -236,13 +237,13 @@ app.route("/:idName")
       )
     }
 
-    res.redirect(`/organizations/${organizationId}`);
+    res.redirect(`/@${organization.idName}`);
   })
 
-app.route("/organizations/:id/post")
+app.route("/@:idName/post")
   .get((req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
-    if (req.cookies.organization && req.cookies.organization && req.params.id == req.cookies.organization._id) {
+    if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
       res.render("make-post.html", context={ blockElements, cookies: req.cookies });
     } else {
       res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
@@ -250,7 +251,7 @@ app.route("/organizations/:id/post")
   })
   .post((req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
-    if (req.cookies.organization && req.params.id == req.cookies.organization._id) {
+    if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
       // CREATE POST
       const post = {
         title: req.body.title,
@@ -284,10 +285,10 @@ app.route("/organizations/:id/post")
     }
   });
 
-app.route("/organizations/:id/update")
+app.route("/@:idName/update")
   .get((req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
-    if (req.cookies.organization && req.params.id == req.cookies.organization._id) {
+    if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
       res.render("organization-update.html", context={ blockElements, cookies: req.cookies, organization: req.cookies.organization, googleApiKey });
     } else {
       res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
@@ -326,7 +327,7 @@ app.route("/organizations/:id/update")
     }
 
     // MAKE SURE USER IS LOGGED INTO THIS ORG
-    if (req.cookies.organization && req.params.id == req.cookies.organization._id) {
+    if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
       let updateObject = {
         name: req.body.name,
         email: req.body.email,
@@ -334,6 +335,7 @@ app.route("/organizations/:id/update")
         gender: req.body.gender,
         cause: req.body.cause,
         interests: req.body.interests,
+        idName: req.body.name.toLowerCase().replace(" ", "-"),
         location,
         links
       }
@@ -359,14 +361,14 @@ app.route("/organizations/:id/update")
         }
       )
 
-      res.redirect(`/organizations/${req.cookies.organization._id}`);
+      res.redirect(`/@${req.cookies.organization.idName}`);
     } else {
       res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
     }
   });
 
-app.get("/organizations/:id/verify-nonprofit-status", (req, res) => {
-    if (req.cookies.organization && req.params.id == req.cookies.organization._id) {
+app.get("/@:idName/verify-nonprofit-status", (req, res) => {
+    if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
       if (!req.cookies.organization.verifiedNonprofit) {
         res.render("verify-nonprofit-status.html", context={ blockElements, cookies: req.cookies, googleApiKey });
       } else {
