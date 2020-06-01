@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 const ms = require("ms");
 
 const organizationModel = mongoose.model("Organization", new mongoose.Schema({
-  cause: String,
+  causes: Array,
   description: String,
   email: {
     type: String,
     unique: true,
     dropDups: true
   },
-  gender: String,
+  targetAudience: Array,
   interests: {
     type: Array,
     required: false
