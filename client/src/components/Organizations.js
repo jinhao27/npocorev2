@@ -8,6 +8,12 @@ function Organizations() {
   const [featuredOrganizations, setFeaturedOrganizations] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
+  // FILTERS
+  const [filterSearchText, setFilterSearchText] = useState("");
+  const [filterTargetAudience, setFilterTargetAudience] = useState("");
+  const [filterCause, setFilterCause] = useState("");
+  const [filterInterest, setFilterInterest] = useState("");
+
   const getOrganizations = async () => {
     // SAVE MONGODB ORGS TO PROPS
     fetch("/api/get-organizations",{
@@ -18,7 +24,97 @@ function Organizations() {
         headers: {"Content-Type": "application/json"}
       })
       .then((response) => {
-        return response.json();
+        // return response.json();
+        return [
+{
+"interests": [
+"Members",
+"Partnerships",
+"Sponsors"
+],
+"posts": [
+{
+"_id": "5ed331fe13e8584d2aca92de",
+"title": "test post",
+"content": "this is a test post",
+"datetimePosted": "2020-05-31T04:26:38.575Z",
+"creator": {
+"interests": [
+"Members",
+"Partnerships",
+"Sponsors"
+],
+"posts": [],
+"subscriptions": [],
+"_id": "5ed3315e11ee614d09be2c43",
+"name": "Test Organization",
+"email": "calix.huang1@gmail.com",
+"description": "This is a test organization for NPO Core! We focus on being a fake organization because we truly believe in testing NPO Core! Our mission is to test NPO Core and get deleted immediately after launch because we don't really exist or serve any other purpose than to test NPO Core!",
+"password": "sha1$4d3f9e39$1$3a10b3d67dfcfa3f247e197cc0f36afcf3a9b668",
+"location": {
+"name": ""
+},
+"gender": "Everyone",
+"cause": "Science and Technology",
+"logo": "ig-profile-pic.png",
+"npoScore": 55,
+"bumpedInLastHour": false,
+"__v": 0
+}
+}
+],
+"subscriptions": [],
+"_id": "5ed3315e11ee614d09be2c43",
+"verifiedNonprofit": true,
+"idName": "test-organization",
+"featured": true,
+"links": {
+"instagram": "https://instagram.com/test-organization",
+"facebook": "https://facebook.com/test-organization",
+"twitter": "https://twitter.com/test-organization",
+"linkedin": "https://linkedin.com/test-organization",
+"website": "https://testorganization.com"
+},
+"name": "Test Organization",
+"email": "calix.huang1@gmail.com",
+"description": "This is a test organization for NPO Core! We focus on being a fake organization because we truly believe in testing NPO Core! Our mission is to test NPO Core and get deleted immediately after launch because we don't really exist or serve any other purpose than to test NPO Core!",
+"password": "sha1$4d3f9e39$1$3a10b3d67dfcfa3f247e197cc0f36afcf3a9b668",
+"location": {
+"name": ""
+},
+"targetAudience": "Everyone",
+"cause": "Science and Technology",
+"logo": "ig-profile-pic.png",
+"npoScore": 65.04544838343112,
+"bumpedInLastHour": true,
+"__v": 0
+},
+{
+"interests": null,
+"posts": [],
+"subscriptions": [],
+"_id": "5ed59835aca3c4154290fe34",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$464aa5a4$1$737e04ea5bddf67423284cdeff389406cb693c52",
+"location": {
+"name": ""
+},
+"targetAudience": "Kids",
+"cause": "Emergency and Safety",
+"idName": "test",
+"npoScore": 50,
+"bumpedInLastHour": false,
+"__v": 0,
+"links": {
+"instagram": "https://github.com/launchtechllc/npocore/releases/tag/v1.16.2",
+"facebook": "https://github.com/launchtechllc/npocore/releases/tag/v1.16.2",
+"twitter": "https://github.com/launchtechllc/npocore/releases/tag/v1.16.2",
+"linkedin": "https://github.com/launchtechllc/npocore/releases/tag/v1.16.2"
+}
+}
+];
       })
       .then((organizations) => {
         setOrganizations(organizations);
@@ -37,48 +133,60 @@ function Organizations() {
     getOrganizations(); // GET ALL ORGS ON LOAD
   }, []);
 
+  useEffect(() => {
+    filterPipeline();
+  }, [filterSearchText, filterTargetAudience, filterCause, filterInterest]);
+
   // FILTERING FUNCTIONS
-  const filterOrganizationsBySearch = (event) => {
-    const currentSearchText = event.target.value.toLowerCase();
+  const filterPipeline = () => {
+    let filteredOrganizations = baseOrganizations;
+
+    filteredOrganizations = filterOrganizationsBySearch(filteredOrganizations);
+    filteredOrganizations = filterOrganizationsByTargetAudience(filteredOrganizations);
+    filteredOrganizations = filterOrganizationsByCause(filteredOrganizations);
+    filteredOrganizations = filterOrganizationsByInterest(filteredOrganizations);
+
+    setOrganizations(filteredOrganizations);
+  }
+
+  const filterOrganizationsBySearch = (organizationsToFilter) => {
+    const currentSearchText = filterSearchText.toLowerCase();
 
     if (currentSearchText === "") {
-      getOrganizations();
+      return organizationsToFilter;
     } else {
       // FILTERING ORGANIZATIONS BY LOWERCASE SEARCH FILTER
-      const filteredOrganizations = baseOrganizations.filter(organization => organization.name.toLowerCase().includes(currentSearchText));
-      setOrganizations(filteredOrganizations);
+      return organizationsToFilter.filter(organization => organization.name.toLowerCase().includes(currentSearchText));;
     }
   }
 
-  const filterOrganizationsByTargetAudience = (event) => {
-    const targetAudienceValue = event.target.value;
-
-    if (targetAudienceValue) {
-      setOrganizations(baseOrganizations.filter(organization => organization.targetAudience === targetAudienceValue));
+  const filterOrganizationsByTargetAudience = (organizationsToFilter) => {
+    if (filterTargetAudience) {
+      return organizationsToFilter.filter(organization => organization.targetAudience === filterTargetAudience);
     } else {
-      getOrganizations();
+      return organizationsToFilter;
     }
   }
 
-  const filterOrganizationsByCause = (event) => {
-    const causeValue = event.target.value;
-
-    if (causeValue) {
-      setOrganizations(baseOrganizations.filter(organization => organization.cause === causeValue));
+  const filterOrganizationsByCause = (organizationsToFilter) => {
+    if (filterCause) {
+      return organizationsToFilter.filter(organization => organization.cause === filterCause);
     } else {
-      getOrganizations();
+      return organizationsToFilter;
     }
   }
 
-  const filterOrganizationsByInterest = (event) => {
-    const interestValue = event.target.value;
-
-    if (interestValue) {
-      setOrganizations(baseOrganizations.filter(organization => {
-        return organization.interests.includes(interestValue)
-      }));
+  const filterOrganizationsByInterest = (organizationsToFilter) => {
+    if (filterInterest) {
+      return organizationsToFilter.filter(organization => {
+        if (organization.interests) {
+          return organization.interests.includes(filterInterest)
+        } else {
+          return false;
+        }
+      });
     } else {
-      getOrganizations();
+      return organizationsToFilter;
     }
   }
 
@@ -176,9 +284,9 @@ function Organizations() {
 
         {showFilters ?
           <div className="filters mt-3">
-            <input className="form-control search-bar" type="text" placeholder="Filter" onChange={filterOrganizationsBySearch} />
+            <input className="form-control search-bar" type="text" placeholder="Filter" onChange={event => setFilterSearchText(event.target.value)} />
 
-            <select onChange={filterOrganizationsByTargetAudience} required>
+            <select onChange={event => setFilterTargetAudience(event.target.value)} required>
               <option value="">Target Audience</option>
               <option value="Everyone">Everyone</option>
               <option value="Kids">Kids</option>
@@ -188,7 +296,7 @@ function Organizations() {
               <option value="Groups">Groups</option>
             </select>
 
-            <select onChange={filterOrganizationsByCause} required>
+            <select onChange={event => setFilterCause(event.target.value)} required>
               <option value="">Cause</option>
               <option value="Advocacy and Human Rights">Advocacy and Human Rights</option>
               <option value="Animal Welfare">Animal Welfare</option>
@@ -212,7 +320,7 @@ function Organizations() {
               <option value="Veterans and Military Families">Veterans and Military Families</option>
             </select>
 
-            <select onChange={filterOrganizationsByInterest} required>
+            <select onChange={event => setFilterInterest(event.target.value)} required>
               <option value="">Interest</option>
               <option value="Members">Members</option>
               <option value="Partnerships">Partnerships</option>
