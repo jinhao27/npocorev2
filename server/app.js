@@ -332,7 +332,7 @@ app.route("/@:idName/update")
         name: req.body.name,
         email: req.body.email,
         description: req.body.description,
-        gender: req.body.gender,
+        targetAudience: req.body.targetAudience,
         cause: req.body.cause,
         interests: req.body.interests,
         idName: req.body.name.toLowerCase().replace(" ", "-"),
