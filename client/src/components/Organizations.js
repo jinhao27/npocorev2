@@ -120,9 +120,9 @@ function Organizations() {
               <div className="image-cropper-container">
                 <div style={{ height: "50px" }} className="image-cropper">
                   {organization.logo ?
-                    <img src={"http://localhost:3000/static/media/logos/" + organization.logo} alt="" />
+                    <img src={"/static/media/logos/" + organization.logo} alt="" />
                     :
-                    <img src="http://localhost:3000/static/img/no-logo.png" alt="" />
+                    <img src="/static/img/no-logo.png" alt="" />
                   }
                 </div>
                 {organization.verifiedNonprofit ?
@@ -231,9 +231,9 @@ function Organizations() {
               <div className="image-cropper-container">
                 <div style={{ height: "50px" }} className="image-cropper">
                   {organization.logo ?
-                    <img src={"http://localhost:3000/static/media/logos/" + organization.logo} alt="" />
+                    <img src={"/static/media/logos/" + organization.logo} alt="" />
                     :
-                    <img src="http://localhost:3000/static/img/no-logo.png" alt="" />
+                    <img src="/static/img/no-logo.png" alt="" />
                   }
                 </div>
                 {organization.verifiedNonprofit ?

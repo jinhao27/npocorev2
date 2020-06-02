@@ -46,7 +46,7 @@ function Navbar() {
                 <a className="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {organization.logo ?
                     <div className="image-cropper">
-                      <img className="nav-logo" src={"http://localhost:3000/static/media/logos/" + organization.logo} alt=""/>
+                      <img className="nav-logo" src={"/static/media/logos/" + organization.logo} alt=""/>
                     </div>
                     :
                     <div className="image-cropper">
