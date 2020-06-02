@@ -93,8 +93,11 @@ app.route("/register")
     const data = req.body;
 
     // SAVING LOGO IF EXISTS
+    console.log(req.files);
     if (req.files) {
       const logo = req.files.logo;
+      console.log(req.files.logo);
+      console.log(`${__dirname}/static/media/logos/${logo.name}`);
       if (logo) {
         logo.mv(`${__dirname}/static/media/logos/${logo.name}`, (err) => {
           if (err) throw err;
@@ -102,6 +105,7 @@ app.route("/register")
         data.logo = logo.name;
       }
     }
+
     // GET LOCATION COORDINATES
     let location = { name: req.body.location };
     if (req.body.location) {
