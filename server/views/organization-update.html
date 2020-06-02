@@ -277,7 +277,7 @@
             <% } else { %>
               <input name="linkedin" class="form-control mb-2" type="url" placeholder="LinkedIn" />
             <% } %>
-            <% if (organization.links.instagram) { %>
+            <% if (organization.links.website) { %>
               <input name="website" class="form-control mb-2" type="url" placeholder="Website" value="<%= organization.links.website %>" />
             <% } else { %>
               <input name="website" class="form-control mb-2" type="url" placeholder="Website" />
@@ -300,8 +300,5 @@
   <script>
     var input = document.getElementById('autocomplete');
     var autocomplete = new google.maps.places.Autocomplete(input);
-
-    const organization = <%- JSON.stringify(organization) %>;
-    console.log(organization);
   </script>
 </html>
