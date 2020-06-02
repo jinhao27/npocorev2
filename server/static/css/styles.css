@@ -15,6 +15,9 @@ nav {
   display: flex;
   align-items: center; }
 
+.navbar-brand img {
+  width: 250px; }
+
 @media (max-width: 768px) {
   .navbar-nav {
     align-items: flex-start; } }
