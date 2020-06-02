@@ -7,6 +7,9 @@ body {
   display: flex;
   align-items: center; }
 
+.navbar-brand img {
+  width: 250px; }
+
 .nav-logo {
   width: 40px !important;
   display: inline;
