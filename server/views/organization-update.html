@@ -300,5 +300,8 @@
   <script>
     var input = document.getElementById('autocomplete');
     var autocomplete = new google.maps.places.Autocomplete(input);
+
+    const organization = <%- JSON.stringify(organization) %>;
+    console.log(organization);
   </script>
 </html>
