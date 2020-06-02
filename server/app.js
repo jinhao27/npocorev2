@@ -286,10 +286,10 @@ app.route("/@:idName/post")
   });
 
 app.route("/@:idName/update")
-  .get((req, res) => {
+  .get(async (req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
-      res.render("organization-update.html", context={ blockElements, cookies: req.cookies, organization: req.cookies.organization, googleApiKey });
+      res.render("organization-update.html", context={ blockElements, cookies: req.cookies, organization: await organizationModel.findOne({ _id: req.cookies.organization._id }), googleApiKey });
     } else {
       res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
     }
