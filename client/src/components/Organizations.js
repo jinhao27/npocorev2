@@ -24,97 +24,7 @@ function Organizations() {
         headers: {"Content-Type": "application/json"}
       })
       .then((response) => {
-        // return response.json();
-        return [
-{
-"interests": [
-"Members",
-"Partnerships",
-"Sponsors"
-],
-"posts": [
-{
-"_id": "5ed331fe13e8584d2aca92de",
-"title": "test post",
-"content": "this is a test post",
-"datetimePosted": "2020-05-31T04:26:38.575Z",
-"creator": {
-"interests": [
-"Members",
-"Partnerships",
-"Sponsors"
-],
-"posts": [],
-"subscriptions": [],
-"_id": "5ed3315e11ee614d09be2c43",
-"name": "Test Organization",
-"email": "calix.huang1@gmail.com",
-"description": "This is a test organization for NPO Core! We focus on being a fake organization because we truly believe in testing NPO Core! Our mission is to test NPO Core and get deleted immediately after launch because we don't really exist or serve any other purpose than to test NPO Core!",
-"password": "sha1$4d3f9e39$1$3a10b3d67dfcfa3f247e197cc0f36afcf3a9b668",
-"location": {
-"name": ""
-},
-"gender": "Everyone",
-"cause": "Science and Technology",
-"logo": "ig-profile-pic.png",
-"npoScore": 55,
-"bumpedInLastHour": false,
-"__v": 0
-}
-}
-],
-"subscriptions": [],
-"_id": "5ed3315e11ee614d09be2c43",
-"verifiedNonprofit": true,
-"idName": "test-organization",
-"featured": true,
-"links": {
-"instagram": "https://instagram.com/test-organization",
-"facebook": "https://facebook.com/test-organization",
-"twitter": "https://twitter.com/test-organization",
-"linkedin": "https://linkedin.com/test-organization",
-"website": "https://testorganization.com"
-},
-"name": "Test Organization",
-"email": "calix.huang1@gmail.com",
-"description": "This is a test organization for NPO Core! We focus on being a fake organization because we truly believe in testing NPO Core! Our mission is to test NPO Core and get deleted immediately after launch because we don't really exist or serve any other purpose than to test NPO Core!",
-"password": "sha1$4d3f9e39$1$3a10b3d67dfcfa3f247e197cc0f36afcf3a9b668",
-"location": {
-"name": ""
-},
-"targetAudience": "Everyone",
-"cause": "Science and Technology",
-"logo": "ig-profile-pic.png",
-"npoScore": 65.04544838343112,
-"bumpedInLastHour": true,
-"__v": 0
-},
-{
-"interests": null,
-"posts": [],
-"subscriptions": [],
-"_id": "5ed59835aca3c4154290fe34",
-"name": "test",
-"email": "test@mail.com",
-"description": "test",
-"password": "sha1$464aa5a4$1$737e04ea5bddf67423284cdeff389406cb693c52",
-"location": {
-"name": ""
-},
-"targetAudience": "Kids",
-"cause": "Emergency and Safety",
-"idName": "test",
-"npoScore": 50,
-"bumpedInLastHour": false,
-"__v": 0,
-"links": {
-"instagram": "https://github.com/launchtechllc/npocore/releases/tag/v1.16.2",
-"facebook": "https://github.com/launchtechllc/npocore/releases/tag/v1.16.2",
-"twitter": "https://github.com/launchtechllc/npocore/releases/tag/v1.16.2",
-"linkedin": "https://github.com/launchtechllc/npocore/releases/tag/v1.16.2"
-}
-}
-];
+        return response.json();
       })
       .then((organizations) => {
         setOrganizations(organizations);
@@ -228,7 +138,7 @@ function Organizations() {
               <div className="image-cropper-container">
                 <div style={{ height: "50px" }} className="image-cropper">
                   {organization.logo ?
-                    <img src={"/static/media/logos/" + organization.logo} alt="" />
+                    <img src={"https://npocore.s3-us-west-2.amazonaws.com/" + organization.logo} alt="" />
                     :
                     <img src="/static/img/no-logo.png" alt="" />
                   }
@@ -339,7 +249,7 @@ function Organizations() {
               <div className="image-cropper-container">
                 <div style={{ height: "50px" }} className="image-cropper">
                   {organization.logo ?
-                    <img src={"/static/media/logos/" + organization.logo} alt="" />
+                    <img src={"https://npocore.s3-us-west-2.amazonaws.com/" + organization.logo} alt="" />
                     :
                     <img src="/static/img/no-logo.png" alt="" />
                   }
