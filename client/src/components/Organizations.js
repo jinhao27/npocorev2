@@ -179,7 +179,7 @@ function Organizations() {
             </div>
           ) :
           <div className="text-center">
-            <small>No organizations yet!</small>
+            <small>No featured organizations yet!</small>
           </div>
         }
         </div>
