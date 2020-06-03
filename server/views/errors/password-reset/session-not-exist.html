@@ -2,9 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>NPO Core - Forgot Password</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>NPO Core - Password Reset Session not found!</title>
 
     <%- blockElements[0] %>
   </head>
@@ -62,23 +60,11 @@
 
     <div class="container">
       <div class="form-container">
-        <form method="post">
-          <h1>Forgot your Password?</h1>
-          <p>
-            We will send you an email with a special link to change your password!
-          </p>
-          <label>Email:</label>
-          <input class="form-control" type="email" name="email" placeholder="Email">
-          <br>
-          <input class="solid-cta-button w-100" type="submit" value="Reset Password">
-        </form>
+        <h1>This password reset session doesn't exist!</h1>
+        <p>
+          We're sorry, but this password reset session doesn't exist! Either it never existed in the first place, or it has expired already. If you still can't login to your account, please <a href="/auth/forgot-password">reset it again</a>.
+        </p>
       </div>
     </div>
   </body>
-  <script>
-    const error = <%- JSON.stringify(error) %>;
-    if (error) {
-      alertify.error(error);
-    }
-  </script>
 </html>
