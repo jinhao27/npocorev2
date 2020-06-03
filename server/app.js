@@ -6,6 +6,10 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const axios = require("axios");
 const passwordHash = require('password-hash');
+const mutilpart = require('connect-multiparty');
+const uploader = require('express-fileuploader');
+const S3Strategy = require('express-fileuploader-s3');
+const AWS = require('aws-sdk');
 const { sendEmail } = require("./helper-functions");
 const { organizationModel, postModel, passwordResetSessionModel } = require("./models");
 const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBumpOrganizations } = require("./nposcore-functions");
@@ -19,6 +23,25 @@ app.use(cookieParser())
 app.use(express.urlencoded()); // HTML forms
 app.use(express.json()); // API clients
 app.use(fileupload()); // FILES
+
+// AWS S3 CONFIGURATION
+const accessKeyId = process.env.ACCESS_KEY_ID;
+const secretAccessKey = process.env.SECRET_ACCESS_KEY;
+const s3Link = "https://npocore.s3-us-west-2.amazonaws.com/";
+
+const s3 = new AWS.S3({
+    accessKeyId,
+    secretAccessKey
+});
+
+const uploadFile = (file) => {
+    const params = {
+        Bucket: "npocore",
+        Key: file.name,
+        Body: file.data
+    };
+    s3.upload(params, (err, data) => { if (err) throw err; });
+};
 
 // Setting view rendering engine
 app.set('view engine', 'ejs');
@@ -51,19 +74,17 @@ app.use(async (err, req, res, next) => {
     // RESETTING COOKIES
     const organization = await organizationModel.findOne({ _id: req.cookies.organization._id });
     res.cookie("organization", organization);
-
-    console.log(organization)
   }
 
   next();
 })
 
 app.get("/", (req, res) => {
-  res.render("index.html", context={ blockElements, cookies: req.cookies });
+  res.render("index.html", context={ blockElements, cookies: req.cookies, s3Link });
 });
 
 app.get("/contact", (req, res) => {
-  res.render("contact.html", context={ blockElements, cookies: req.cookies });
+  res.render("contact.html", context={ blockElements, cookies: req.cookies, s3Link });
 });
 
 app.get("/posts", async (req, res) => {
@@ -73,38 +94,24 @@ app.get("/posts", async (req, res) => {
   featured.organizations = await organizationModel.find({ featured: true });
   featured.posts = await postModel.find({ featured: true });
 
-  res.render("posts.html", context={ blockElements, cookies: req.cookies, posts, featured });
+  res.render("posts.html", context={ blockElements, cookies: req.cookies, s3Link, posts, featured });
 });
 
 app.get("/posts/:id", async (req, res) => {
   const post = await postModel.findOne({ _id: req.params.id });
   if (post) {
-    res.render("post.html", context={ blockElements, cookies: req.cookies, post });
+    res.render("post.html", context={ blockElements, cookies: req.cookies, s3Link, post });
   } else {
-    res.render("errors/post.html", context={ blockElements, cookies: req.cookies, post });
+    res.render("errors/post.html", context={ blockElements, cookies: req.cookies, s3Link, post });
   }
 });
 
 app.route("/register")
   .get((req, res) => {
-    res.render("register.html", context={ blockElements, cookies: req.cookies, googleApiKey, error: "" });
+    res.render("register.html", context={ blockElements, cookies: req.cookies, s3Link, googleApiKey, error: "" });
   })
   .post(async (req, res) => {
     const data = req.body;
-
-    // SAVING LOGO IF EXISTS
-    console.log(req.files);
-    if (req.files) {
-      const logo = req.files.logo;
-      console.log(req.files.logo);
-      console.log(`${__dirname}/static/media/logos/${logo.name}`);
-      if (logo) {
-        logo.mv(`${__dirname}/static/media/logos/${logo.name}`, (err) => {
-          if (err) throw err;
-        });
-        data.logo = logo.name;
-      }
-    }
 
     // GET LOCATION COORDINATES
     let location = { name: req.body.location };
@@ -119,6 +126,15 @@ app.route("/register")
       }
     }
     data.location = location;
+
+    // SAVING LOGO IF EXISTS
+    if (req.files) {
+      const logo = req.files.logo;
+      if (logo) {
+        uploadFile(logo); // UPLOAD TO S3
+        data.logo = logo.name;
+      }
+    }
 
     // GENERATING IDNAME
     data.idName = req.body.name.toLowerCase().replace(" ", "-");
@@ -171,9 +187,8 @@ app.route("/register")
 
     const newOrganization = new organizationModel(data);
     newOrganization.save((err, organization) => {
-      console.log(newOrganization);
       if (err) {
-        res.render("register.html", context={ blockElements, cookies: req.cookies, googleApiKey, error: "That organization name/email already exists. Please use a different one." });
+        res.render("register.html", context={ blockElements, cookies: req.cookies, s3Link, googleApiKey, error: "That organization name/email already exists. Please use a different one." });
       } else {
         res.cookie("organization", newOrganization);
         res.redirect(`/@${newOrganization.idName}`);
@@ -183,7 +198,7 @@ app.route("/register")
 
 app.route("/login")
   .get((req, res) => {
-    res.render("login.html", context={ blockElements, cookies: req.cookies, error: "" });
+    res.render("login.html", context={ blockElements, cookies: req.cookies, s3Link, error: "" });
   })
   .post(async (req, res) => {
     const organization = await organizationModel.findOne({ email: req.body.email });
@@ -193,10 +208,10 @@ app.route("/login")
         res.cookie("organization", organization);
         res.redirect(`/@${organization.idName}`);
       } else {
-        res.render("login.html", context={ blockElements, cookies: req.cookies, error: "Invalid credentials." });
+        res.render("login.html", context={ blockElements, cookies: req.cookies, s3Link, error: "Invalid credentials." });
       }
     } else {
-      res.render("login.html", context={ blockElements, cookies: req.cookies, error: "Invalid credentials." });
+      res.render("login.html", context={ blockElements, cookies: req.cookies, s3Link, error: "Invalid credentials." });
     }
   });
 
@@ -207,21 +222,21 @@ app.get("/logout", (req, res) => {
 
 app.get("/organizations/map", async (req, res) => {
   const organizations = await organizationModel.find({});
-  res.render("map.html", context={ blockElements, cookies: req.cookies, organizations, googleApiKey });
+  res.render("map.html", context={ blockElements, cookies: req.cookies, s3Link, organizations, googleApiKey });
 });
 
 app.route("/@:idName")
   .get((req, res) => {
     organizationModel.findOne({ idName: req.params.idName }, (err, organization) => {
       if (err) {
-        res.render("errors/organization.html", context={ blockElements, cookies: req.cookies });
+        res.render("errors/organization.html", context={ blockElements, cookies: req.cookies, s3Link });
         return;
       }
 
       if (organization) {
-        res.render("organization.html", context={ blockElements, cookies: req.cookies, organization });
+        res.render("organization.html", context={ blockElements, cookies: req.cookies, s3Link, organization });
       } else {
-        res.render("errors/organization.html", context={ blockElements, cookies: req.cookies });
+        res.render("errors/organization.html", context={ blockElements, cookies: req.cookies, s3Link });
       }
     });
   })
@@ -248,9 +263,9 @@ app.route("/@:idName/post")
   .get((req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
-      res.render("make-post.html", context={ blockElements, cookies: req.cookies });
+      res.render("make-post.html", context={ blockElements, cookies: req.cookies, s3Link });
     } else {
-      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
+      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
   })
   .post((req, res) => {
@@ -285,7 +300,7 @@ app.route("/@:idName/post")
 
       res.redirect("/posts");
     } else {
-      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
+      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
   });
 
@@ -293,9 +308,9 @@ app.route("/@:idName/update")
   .get(async (req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
-      res.render("organization-update.html", context={ blockElements, cookies: req.cookies, organization: await organizationModel.findOne({ _id: req.cookies.organization._id }), googleApiKey });
+      res.render("organization-update.html", context={ blockElements, cookies: req.cookies, s3Link, organization: await organizationModel.findOne({ _id: req.cookies.organization._id }), googleApiKey });
     } else {
-      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
+      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
   })
   .post(async (req, res) => {
@@ -348,11 +363,8 @@ app.route("/@:idName/update")
       if (req.files) {
         const logo = req.files.logo;
         if (logo) {
-          logo.mv(`${__dirname}/static/media/logos/${logo.name}`, (err) => {
-            if (err) throw err;
-          });
-
-          updateObject.logo = logo.name;
+          uploadFile(logo); // UPLOAD TO S3
+          data.logo = logo.name;
         }
       }
 
@@ -367,19 +379,19 @@ app.route("/@:idName/update")
 
       res.redirect(`/@${req.cookies.organization.idName}`);
     } else {
-      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
+      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
   });
 
 app.get("/@:idName/verify-nonprofit-status", (req, res) => {
     if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
       if (!req.cookies.organization.verifiedNonprofit) {
-        res.render("verify-nonprofit-status.html", context={ blockElements, cookies: req.cookies, googleApiKey });
+        res.render("verify-nonprofit-status.html", context={ blockElements, cookies: req.cookies, s3Link, googleApiKey });
       } else {
         res.send("You are already a verified 501(c)(3) nonprofit!");
       }
     } else {
-      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies });
+      res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
   });
 

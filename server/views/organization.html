@@ -34,7 +34,7 @@
                 <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <div class="image-cropper">
                     <% if (cookies.organization.logo) { %>
-                      <img class="nav-logo" src="/static/media/logos/<%= cookies.organization.logo %>" alt="">
+                      <img class="nav-logo" src="<%= s3Link %><%= cookies.organization.logo %>" alt="">
                     <% } else { %>
                       <img class="nav-logo" src="/static/img/no-logo.png" alt="">
                     <% } %>
@@ -62,7 +62,7 @@
           <div class="image-cropper-container">
             <div class="image-cropper" style="border-width: 5px;">
               <% if (organization.logo) { %>
-                <img src="/static/media/logos/<%= organization.logo %>" alt="">
+                <img src="<%= s3Link %><%= organization.logo %>" alt="">
               <% } else { %>
                 <img src="/static/img/no-logo.png" alt="">
               <% } %>
