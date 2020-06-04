@@ -35,12 +35,12 @@ const s3 = new AWS.S3({
 });
 
 const uploadFile = (file) => {
-    const params = {
-        Bucket: "npocore",
-        Key: file.name,
-        Body: file.data
-    };
-    s3.upload(params, (err, data) => { if (err) throw err; });
+  const params = {
+      Bucket: "npocore",
+      Key: file.name,
+      Body: file.data
+  };
+  s3.upload(params, (err, data) => { if (err) throw err; });
 };
 
 // Setting view rendering engine
@@ -69,7 +69,7 @@ for (var i = 0; i < blockElementsNames.length; i++) {
   });
 }
 
-app.use(async (err, req, res, next) => {
+app.use(async function (req, res, next) {
   if (req.cookies.organization) {
     // RESETTING COOKIES
     const organization = await organizationModel.findOne({ _id: req.cookies.organization._id });
@@ -79,8 +79,8 @@ app.use(async (err, req, res, next) => {
     res.cookie("organization", organization);
   }
 
-  next();
-})
+  next()
+});
 
 app.get("/", (req, res) => {
   res.render("index.html", context={ blockElements, cookies: req.cookies, s3Link });
@@ -354,6 +354,7 @@ app.route("/@:idName/update")
     if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
       let updateObject = {
         name: req.body.name,
+        idName: req.body.name.toLowerCase().replace(" ", "-"),
         email: req.body.email,
         description: req.body.description,
         targetAudience: req.body.targetAudience,
@@ -381,7 +382,7 @@ app.route("/@:idName/update")
           if (err) {
             res.render("organization-update.html", context={ blockElements, cookies: req.cookies, s3Link, organization: req.cookies.organization, googleApiKey, error: "That organization name/email already exists." });
           } else {
-            res.cookie("organization", organization);
+            res.cookie("organization", organization, { overwrite: true });
             res.redirect(`/@${organization.idName}`);
           }
         }

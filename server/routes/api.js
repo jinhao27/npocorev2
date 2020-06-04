@@ -47,7 +47,7 @@ module.exports = function(app) {
         )
 
         // RESETTING COOKIES
-        res.cookie("organization",  await organizationModel.findOne({ _id: organization._id }))
+        res.cookie("organization", await organizationModel.findOne({ _id: organization._id }), { overwrite: true });
 
         res.status(200).send();
       } else {
