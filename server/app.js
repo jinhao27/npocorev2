@@ -73,6 +73,9 @@ app.use(async (err, req, res, next) => {
   if (req.cookies.organization) {
     // RESETTING COOKIES
     const organization = await organizationModel.findOne({ _id: req.cookies.organization._id });
+    
+    // REMOVING POSTS FROM COOKIES TO AVOID STORAGE OVERLOAD
+    organization.posts = undefined;
     res.cookie("organization", organization);
   }
 
@@ -205,6 +208,8 @@ app.route("/login")
 
     if (organization) {
       if (passwordHash.verify(req.body.password, organization.password)) {
+        // REMOVING POSTS FROM COOKIES TO AVOID STORAGE OVERLOAD
+        organization.posts = undefined;
         res.cookie("organization", organization);
         res.redirect(`/@${organization.idName}`);
       } else {
