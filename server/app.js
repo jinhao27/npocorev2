@@ -73,7 +73,7 @@ app.use(async (err, req, res, next) => {
   if (req.cookies.organization) {
     // RESETTING COOKIES
     const organization = await organizationModel.findOne({ _id: req.cookies.organization._id });
-    
+
     // REMOVING POSTS FROM COOKIES TO AVOID STORAGE OVERLOAD
     organization.posts = undefined;
     res.cookie("organization", organization);
@@ -313,7 +313,7 @@ app.route("/@:idName/update")
   .get(async (req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
-      res.render("organization-update.html", context={ blockElements, cookies: req.cookies, s3Link, organization: await organizationModel.findOne({ _id: req.cookies.organization._id }), googleApiKey });
+      res.render("organization-update.html", context={ blockElements, cookies: req.cookies, s3Link, organization: await organizationModel.findOne({ _id: req.cookies.organization._id }), googleApiKey, error: "" });
     } else {
       res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
@@ -378,11 +378,14 @@ app.route("/@:idName/update")
         updateObject,
         { new: true },
         (err, organization) => {
-          if (err) throw err;
+          if (err) {
+            res.render("organization-update.html", context={ blockElements, cookies: req.cookies, s3Link, organization: req.cookies.organization, googleApiKey, error: "That organization name/email already exists." });
+          } else {
+            res.cookie("organization", organization);
+            res.redirect(`/@${organization.idName}`);
+          }
         }
       )
-
-      res.redirect(`/@${req.cookies.organization.idName}`);
     } else {
       res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }

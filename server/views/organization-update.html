@@ -300,5 +300,10 @@
   <script>
     var input = document.getElementById('autocomplete');
     var autocomplete = new google.maps.places.Autocomplete(input);
+
+    const error = <%- JSON.stringify(error) %>;
+    if (error) {
+      alertify.error(error);
+    }
   </script>
 </html>
