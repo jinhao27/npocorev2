@@ -1,6 +1,10 @@
 $color-primary: rgb(242, 140, 65);
 $color-primary-dark: rgb(238, 113, 21);
 
+* {
+  word-break: break-all;
+}
+
 body {
   position: relative;
   background-color: #eee !important;
