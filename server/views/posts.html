@@ -90,9 +90,11 @@
               <small>Posted: <%= post.datetimePosted.toLocaleDateString("en-US") %></small>
               <p class="post-content mt-3"><%= post.content %></p>
               <div class="text-right">
-                <button id="<%= post._id %>" class="btn btn-link p-0" onClick="readMore(this.id)">
+                <button id="<%= post._id %>" class="btn btn-link p-0 mb-4" onClick="readMore(this.id)">
                   <small>Read More</small>
                 </button>
+                <br>
+                <a class="solid-cta-button" href="#">Check it out!</a>
               </div>
             </div>
           <% } %>
