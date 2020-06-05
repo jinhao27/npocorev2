@@ -90,7 +90,7 @@ app.get("/contact", (req, res) => {
   res.render("contact.html", context={ blockElements, cookies: req.cookies, s3Link });
 });
 
-app.get("/posts", async (req, res) => {
+app.get("/opportunities", async (req, res) => {
   const posts = await postModel.find({}).sort({ datetimePosted: -1 });
 
   let featured = {};

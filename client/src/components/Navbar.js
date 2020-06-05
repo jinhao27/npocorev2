@@ -34,7 +34,7 @@ function Navbar() {
               <a className="nav-link" href="/organizations">Organizations</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/posts">Posts</a>
+              <a className="nav-link" href="/opportunities">Opportunities</a>
             </li>
 
             {organization == undefined ?
