@@ -76,6 +76,13 @@
   }
 }
 
+.grid-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+  grid-gap: 15px;
+  margin: 0 !important;
+}
+
 
 @media (max-width: 800px) {
   .organization-container {
