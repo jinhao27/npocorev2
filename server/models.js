@@ -42,7 +42,8 @@ const postModel = mongoose.model("Post", new mongoose.Schema({
   title: String,
   content: String,
   datetimePosted: Date,
-  creator: Object
+  creator: Object,
+  button: Object
 }));
 
 const passwordResetSessionSchema = new mongoose.Schema({

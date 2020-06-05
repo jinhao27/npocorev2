@@ -100,7 +100,7 @@ app.get("/opportunities", async (req, res) => {
   res.render("posts.html", context={ blockElements, cookies: req.cookies, s3Link, posts, featured });
 });
 
-app.get("/posts/:id", async (req, res) => {
+app.get("/opportunities/:id", async (req, res) => {
   const post = await postModel.findOne({ _id: req.params.id });
   if (post) {
     res.render("post.html", context={ blockElements, cookies: req.cookies, s3Link, post });
@@ -281,7 +281,12 @@ app.route("/@:idName/post")
         title: req.body.title,
         content: req.body.content,
         datetimePosted: new Date(),
-        creator: req.cookies.organization
+        creator: req.cookies.organization,
+        button: {
+          text: req.body.buttonText,
+          link: req.body.buttonLink,
+          color: req.body.buttonColor
+        }
       };
       const newPost = new postModel(post);
       newPost.save((err) => { if (err) throw err; });
@@ -297,13 +302,13 @@ app.route("/@:idName/post")
           // NOTIFY ALL SUBSCRIPTIONS
           if (organization.subscriptions) {
             for (email of organization.subscriptions) {
-              sendEmail(`NPO Core - New post from ${organization.name}`, email, `Check out ${organization.name}'s newest post on NPO Core!\n\nhttp://${req.get("host")}/posts/${newPost._id}`);
+              sendEmail(`NPO Core - New post from ${organization.name}`, email, `Check out ${organization.name}'s newest post on NPO Core!\n\nhttp://${req.get("host")}/opportunities/${newPost._id}`);
             }
           }
         }
       )
 
-      res.redirect("/posts");
+      res.redirect("/opportunities");
     } else {
       res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }

@@ -94,7 +94,7 @@
                   <small>Read More</small>
                 </button>
                 <br>
-                <a class="solid-cta-button" href="#">Check it out!</a>
+                <a style="background-color: <%= post.button.color %>;border-color: <%= post.button.color %>;" class="solid-cta-button" href="<%= post.button.link %>" target="_blank"><%= post.button.text %></a>
               </div>
             </div>
           <% } %>

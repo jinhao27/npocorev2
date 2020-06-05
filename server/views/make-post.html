@@ -69,9 +69,48 @@
           <label>Content:</label><br>
           <textarea class="form-control" name="content" rows="5" placeholder="Content"></textarea>
           <br>
+          <label>CTA Button Customization:</label><br>
+          <div class="cta-button-options">
+            <input id="cta-button-text-input" class="form-control" type="text" name="buttonText" placeholder="Button Text" required>
+            <input id="cta-button-link-input" class="form-control" type="url" name="buttonLink" placeholder="Button URL" required>
+          </div>
+          <!-- <div class="cta-button-demo">
+            <a class="solid-cta-button" id="cta-button-demo" href="#" target="_blank"></a>
+            <input id="cta-button-color-input" type="color" name="buttonColor" required>
+          </div> -->
+          <div class="row">
+            <div class="col">
+              <a class="solid-cta-button" id="cta-button-demo" href="#" target="_blank"></a>
+            </div>
+            <div class="col">
+              <input id="cta-button-color-input" type="color" name="buttonColor" value="#f28c41" required>
+              <label id="cta-button-color-label"></label>
+            </div>
+          </div>
           <input class="solid-cta-button w-100" type="submit" value="Post!">
         </form>
       </div>
     </div>
   </body>
+  <script>
+    const ctaButtonDemo = document.getElementById("cta-button-demo");
+    const ctaButtonTextInput = document.getElementById("cta-button-text-input");
+    const ctaButtonLinkInput = document.getElementById("cta-button-link-input");
+    const ctaButtonColorInput = document.getElementById("cta-button-color-input");
+    const ctaButtonColorLabel = document.getElementById("cta-button-color-label");
+
+    ctaButtonDemo.style.border = "none";
+    updateCtaButton();
+
+    function updateCtaButton() {
+      ctaButtonDemo.innerHTML = ctaButtonTextInput.value || "[Empty]";
+      ctaButtonDemo.href = ctaButtonLinkInput.value;
+      ctaButtonDemo.style.backgroundColor = ctaButtonColorInput.value;
+      ctaButtonColorLabel.innerHTML = ctaButtonColorInput.value;
+    }
+
+    $("input").on("change keyup paste", function(){
+      updateCtaButton();
+    });
+  </script>
 </html>

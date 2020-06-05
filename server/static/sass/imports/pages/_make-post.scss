@@ -1,0 +1,21 @@
+.cta-button-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+.cta-button-demo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+
+  // align-items: static;
+}
+
+.row {
+  margin: 30px 0;
+
+  .col {
+    text-align: center;
+  }
+}
