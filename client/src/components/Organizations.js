@@ -194,10 +194,10 @@ function Organizations() {
 
         {showFilters ?
           <div className="filters mt-3">
-            <input className="form-control search-bar" type="text" placeholder="Filter" onChange={event => setFilterSearchText(event.target.value)} />
+            <input className="form-control search-bar" type="text" placeholder="Filter by Name" onChange={event => setFilterSearchText(event.target.value)} />
 
             <select onChange={event => setFilterTargetAudience(event.target.value)} required>
-              <option value="">Target Audience</option>
+              <option value="">All Target Audiences</option>
               <option value="Everyone">Everyone</option>
               <option value="Kids">Kids</option>
               <option value="Teens">Teens</option>
@@ -207,7 +207,7 @@ function Organizations() {
             </select>
 
             <select onChange={event => setFilterCause(event.target.value)} required>
-              <option value="">Cause</option>
+              <option value="">All Causes</option>
               <option value="Advocacy and Human Rights">Advocacy and Human Rights</option>
               <option value="Animal Welfare">Animal Welfare</option>
               <option value="Arts and Culture">Arts and Culture</option>
@@ -231,7 +231,7 @@ function Organizations() {
             </select>
 
             <select onChange={event => setFilterInterest(event.target.value)} required>
-              <option value="">Interest</option>
+              <option value="">All Interests</option>
               <option value="Members">Members</option>
               <option value="Partnerships">Partnerships</option>
               <option value="Sponsors">Sponsors</option>
