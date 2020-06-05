@@ -12,15 +12,14 @@
 }
 
 .posts {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-gap: 15px;
+  margin: 0 200px;
 
   & .post {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 5px 40px rgba(0,0,0,.3);
+    margin-bottom: 15px;
 
     &-content {
       text-overflow: ellipsis;
@@ -31,8 +30,20 @@
   }
 }
 
+@media (max-width: 1000px) {
+  .posts {
+    margin: 0 100px;
+  }
+}
+
+@media (max-width: 800px) {
+  .posts {
+    margin: 0 50px;
+  }
+}
+
 @media (max-width: 500px) {
   .posts {
-    grid-template-columns: repeat(auto-fill, 100%) !important;
+    margin: 0;
   }
 }
