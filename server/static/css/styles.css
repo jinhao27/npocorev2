@@ -120,6 +120,10 @@ nav {
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 5px;
     width: 100%; }
+  .home-container .ymg-logo {
+    display: inline-block;
+    width: 50px;
+    margin-left: 10px; }
 
 @media (max-width: 800px) {
   .home-container {
