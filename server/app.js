@@ -78,7 +78,11 @@ app.use(async function (req, res, next) {
     if (organization.posts) {
       organization.posts = undefined;
     }
-    res.cookie("organization", organization);
+
+    const oneDay = 24 * 3600 * 1000;
+    res.cookie("organization", organization, {
+      expires: new Date(Date.now() + oneDay)
+    });
   }
 
   next()
