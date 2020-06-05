@@ -75,7 +75,9 @@ app.use(async function (req, res, next) {
     const organization = await organizationModel.findOne({ _id: req.cookies.organization._id });
 
     // REMOVING POSTS FROM COOKIES TO AVOID STORAGE OVERLOAD
-    organization.posts = undefined;
+    if (organization.posts) {
+      organization.posts = undefined;
+    }
     res.cookie("organization", organization);
   }
 
