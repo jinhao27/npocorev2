@@ -24,29 +24,7 @@ function Organizations() {
         headers: {"Content-Type": "application/json"}
       })
       .then((response) => {
-        // return response.json();
-        return [
-          {
-"interests": [],
-"posts": [],
-"subscriptions": [],
-"_id": "5ed6f718f400e92037c7076d",
-"name": "testtestestsetse asfsd",
-"email": "test@mail.com",
-"description": "test",
-"password": "sha1$ad997b8f$1$73caf4603ae3adc2eb8ea3594eb324fbabb16764",
-"location": {
-"name": ""
-},
-"targetAudience": "Everyone",
-"cause": "Animal Welfare",
-"logo": "calix-center.jpeg",
-"idName": "test",
-"npoScore": 49.50236789011648,
-"bumpedInLastHour": false,
-"__v": 0
-}
-        ]
+        return response.json();
       })
       .then((organizations) => {
         setOrganizations(organizations);
