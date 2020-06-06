@@ -1,6 +1,6 @@
 .organizations {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-gap: 15px;
 
   .organization {
@@ -23,6 +23,13 @@
       display: grid;
       grid-template-columns: 80% 1fr;
       grid-gap: 15px;
+
+      & h4 {
+
+        & a {
+          word-break: normal;
+        }
+      }
     }
 
     &-description {

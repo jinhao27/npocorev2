@@ -24,7 +24,29 @@ function Organizations() {
         headers: {"Content-Type": "application/json"}
       })
       .then((response) => {
-        return response.json();
+        // return response.json();
+        return [
+          {
+"interests": [],
+"posts": [],
+"subscriptions": [],
+"_id": "5ed6f718f400e92037c7076d",
+"name": "testtestestsetse asfsd",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$ad997b8f$1$73caf4603ae3adc2eb8ea3594eb324fbabb16764",
+"location": {
+"name": ""
+},
+"targetAudience": "Everyone",
+"cause": "Animal Welfare",
+"logo": "calix-center.jpeg",
+"idName": "test",
+"npoScore": 49.50236789011648,
+"bumpedInLastHour": false,
+"__v": 0
+}
+        ]
       })
       .then((organizations) => {
         setOrganizations(organizations);
@@ -151,7 +173,7 @@ function Organizations() {
               </div>
               <div>
                 <div className="organization-header">
-                  <h4>{organization.name}</h4>
+                  <h4><a href={"/@" + organization.idName}>{organization.name}</a></h4>
                   <div className="organization-resources">
                     <a href="mailto:{organization.email}" target="_">
                       {organization.email ? <img src="/img/email.svg" alt="{organization.name} Email Address" /> : null}
@@ -262,7 +284,7 @@ function Organizations() {
               </div>
               <div>
                 <div className="organization-header">
-                  <h4>{organization.name}</h4>
+                  <h4><a style={{ color: "black" }} href={"/@" + organization.idName}>{organization.name}</a></h4>
                   <div className="organization-resources">
                     <a href="mailto:{organization.email}" target="_">
                       {organization.email ? <img src="/img/email.svg" alt="{organization.name} Email Address" /> : null}

@@ -144,7 +144,7 @@ body {
 
 .organizations {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-gap: 15px; }
   .organizations .organization {
     display: grid;
@@ -161,6 +161,8 @@ body {
       display: grid;
       grid-template-columns: 80% 1fr;
       grid-gap: 15px; }
+      .organizations .organization-header h4 a {
+        word-break: normal; }
     .organizations .organization-description {
       text-overflow: ellipsis;
       white-space: nowrap;
