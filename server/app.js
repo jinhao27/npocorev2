@@ -390,7 +390,7 @@ app.route("/@:idName/update")
         const logo = req.files.logo;
         if (logo) {
           uploadFile(logo); // UPLOAD TO S3
-          data.logo = logo.name;
+          updateObject.logo = logo.name;
         }
       }
 
