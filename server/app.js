@@ -168,8 +168,6 @@ app.route("/register")
           { new: true },
           (err, organization) => {
             if (err) throw err;
-
-            sendEmail("NPO Core - Someone referred you!", organization.email, `${data.name} just referred you when registering! Go check it out!`);
           }
         )
       } else {
@@ -317,7 +315,7 @@ app.route("/@:idName/post")
           // NOTIFY ALL SUBSCRIPTIONS
           if (organization.subscriptions) {
             for (email of organization.subscriptions) {
-              sendEmail(`NPO Core - New post from ${organization.name}`, email, `Check out ${organization.name}'s newest post on NPO Core!\n\nhttp://${req.get("host")}/opportunities/${newPost._id}`);
+              // sendEmail(`NPO Core - New post from ${organization.name}`, email, `Check out ${organization.name}'s newest post on NPO Core!\n\nhttp://${req.get("host")}/opportunities/${newPost._id}`);
             }
           }
         }
