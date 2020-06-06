@@ -115,6 +115,15 @@ app.get("/opportunities/:id", async (req, res) => {
   }
 });
 
+// NEWS
+app.get("/news/whats-new-in-npo-core-v2", (req, res) => {
+  res.render("news/npo-core-v2-features.html", context={ blockElements, cookies: req.cookies, s3Link });
+});
+
+app.get("/news/what-is-a-npo-score", (req, res) => {
+  res.render("news/what-is-npo-score.html", context={ blockElements, cookies: req.cookies, s3Link });
+});
+
 app.route("/register")
   .get((req, res) => {
     res.render("register.html", context={ blockElements, cookies: req.cookies, s3Link, googleApiKey, error: "" });

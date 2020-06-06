@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>NPO Core - Branding for Nonprofit Organizations, Opportunities for everyone!</title>
+
+    <%- blockElements[0] %>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/static/img/npocore.png" alt="NPO Core Logo">
+        </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-target">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-target">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/organizations">Organizations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/opportunities">Opportunities</a>
+            </li>
+            <% if (cookies.organization) { %>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <% if (cookies.organization.logo) { %>
+                    <div class="image-cropper">
+                      <img class="nav-logo" src="<%= s3Link %><%= cookies.organization.logo %>" alt="">
+                    </div>
+                  <% } else { %>
+                    <div class="image-cropper">
+                      <img class="nav-logo" src="/static/img/no-logo.png" alt="">
+                    </div>
+                  <% } %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/@<%= cookies.organization.idName %>">View my organization</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+              </li>
+            <% } else { %>
+              <li class="nav-item">
+                <a class="btn btn-info ml-2" href="/login">Login/Register</a>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <style>
+      * {
+        word-break: normal;
+      }
+      
+      ul {
+        margin-left: 15px;
+      }
+    </style>
+
+    <div class="container">
+      <div class="form-container">
+        <h1>What's new in NPO Core v2.0?</h1>
+        <p>
+          We wanted to make NPO Core more flexible and beneficial to registered NPOs, so we decided to make some major upgrades!
+        </p>
+        <p>
+          Here are some of the new features we've implemented in NPO Core v2.0!
+        </p>
+        <div class="ml-2">
+          <ul>
+            <li>Official accounts for registered NPOs</li>
+            <ul>
+              <li>Register and update the information on your NPO profile</li>
+              <li>Better branding and more information for each NPO</li>
+              <li>Add your logo</li>
+              <li>Add all your social media links</li>
+            </ul>
+            <li>Official 501(c)(3) nonprofit organization verification!</li>
+            <ul>
+              <li>Submit a form for us to verify your NPO</li>
+              <li>If it is official you will receive:</li>
+              <ul>
+                <li>A special badge on your organization</li>
+                <li>A huge NPO Score boost!</li>
+              </ul>
+            </ul>
+            <li>Opportunity postings</li>
+            <ul>
+              <li>Post and promote any organization updates or events!</li>
+              <li>Users can now subscribe to your organization!</li>
+              <li>Every time you post an opportunity, they will get an email notification!</li>
+            </ul>
+            <li>NPO Score</li>
+            <ul>
+              <li>More on NPO Scores <a href="/news/what-is-a-npo-score">here</a>!</li>
+            </ul>
+            <li>Geographical organization map</li>
+            <ul>
+              <li>Submit your NPO's location</li>
+              <li>Be placed on a geographical map</li>
+              <li>Allow users to find your NPO by location!</li>
+            </ul>
+            <li>Featured organizations/opportunity posts!</li>
+            <ul>
+              <li>We feature 3 organizations/posts every week!</li>
+              <li>Gives featured NPOs/opportunity posts:</li>
+              <ul>
+                <li>More reach</li>
+                <li>More advertising/screentime</li>
+              </ul>
+              <ul>
+                <li>How do you get featured?</li>
+                <ul>
+                  <li>Be active on NPO Core</li>
+                  <li>Refer other organizations to join on NPO Core</li>
+                  <li>Brand your profile well!</li>
+                </ul>
+              </ul>
+            </ul>
+            <li>More accurate organization filtering + searching</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

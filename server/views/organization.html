@@ -57,6 +57,12 @@
     </nav>
 
     <div class="container">
+      <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        What's new in NPO Core v2.0? <strong><a href="/news/whats-new-in-npo-core-v2" target="_blank">Check it out!</a></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <div class="organization-container">
         <div class="left">
           <div class="image-cropper-container">
@@ -102,7 +108,8 @@
 
               <% if (cookies.organization) { %>
                 <% if (cookies.organization) { %>
-                  <p><strong>NPO Score:</strong> <%= organization.npoScore.toFixed(2) %></p>
+                  <p class="mb-0"><strong>NPO Score:</strong> <%= organization.npoScore.toFixed(2) %></p>
+                  <small><a href="/news/what-is-a-npo-score" target="_blank">What is a NPO Score?</a></small>
                 <% } %>
               <% } %>
 

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>NPO Core - Branding for Nonprofit Organizations, Opportunities for everyone!</title>
+
+    <%- blockElements[0] %>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">
+          <img src="/static/img/npocore.png" alt="NPO Core Logo">
+        </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-target">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-target">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/organizations">Organizations</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/opportunities">Opportunities</a>
+            </li>
+            <% if (cookies.organization) { %>
+              <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <% if (cookies.organization.logo) { %>
+                    <div class="image-cropper">
+                      <img class="nav-logo" src="<%= s3Link %><%= cookies.organization.logo %>" alt="">
+                    </div>
+                  <% } else { %>
+                    <div class="image-cropper">
+                      <img class="nav-logo" src="/static/img/no-logo.png" alt="">
+                    </div>
+                  <% } %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/@<%= cookies.organization.idName %>">View my organization</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+              </li>
+            <% } else { %>
+              <li class="nav-item">
+                <a class="btn btn-info ml-2" href="/login">Login/Register</a>
+              </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <style>
+      * {
+        word-break: normal;
+      }
+
+      ul {
+        margin-left: 15px;
+      }
+    </style>
+
+    <div class="container">
+      <div class="form-container">
+        <h1>What's a NPO Score?</h1>
+        <p>
+          The NPO Score is a score given to all NPOs registered on NPO Core. It basically helps rate how good/active of an organization you are on NPO Core.
+        </p>
+        <p>
+          The higher the better. The higher your NPO Score, the higher you will be listed on the organizations page. This will give your organization much more reach to casual users, and will hopefully bring better results!
+        </p>
+        <p>
+          The NPO Score is a score based on scale from 0-100, and all NPOs on NPO Score start at a medium of 50.
+        </p>
+        <div class="ml-2">
+          <ul>
+            <li>How can I increase my NPO Score?</li>
+            <ul>
+              <li>Bump your organization every hour!</li>
+              <ul>
+                <li>On the admin view of your organization page, there is a button on the side called "Bump!" This button can be pressed once every hour, and will boost your NPO Score by 1%</li>
+              </ul>
+              <li>Post an opportunity!</li>
+              <ul>
+                <li>Everytime you post an opportunity, your NPO Score will be boosted by 3%</li>
+              </ul>
+              <li>Refer an organization to NPO Core!</li>
+              <ul>
+                <li>Refer an organization to NPO Core and get them to put in your organization name into the "Referrer" input on the registration form and your NPO Score will go up by 5%</li>
+              </ul>
+            </ul>
+            <li>How does my NPO Score decrease?</li>
+            <ul>
+              <li>Being inactive</li>
+              <ul>
+                <li>Every hour you <strong>don't</strong> bump your organization, your NPO Score will go down by 0.025%! Small change, but can build up over time!</li>
+              </ul>
+            </ul>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
