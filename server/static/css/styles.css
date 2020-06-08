@@ -146,7 +146,8 @@ nav {
 .featured-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
-  grid-gap: 15px; }
+  grid-gap: 15px;
+  margin: 0 !important; }
   .featured-grid .featured-org, .featured-grid .featured-post {
     background-color: white;
     padding: 20px;
