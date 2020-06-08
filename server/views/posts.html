@@ -73,6 +73,8 @@
                 <button id="<%= post._id %>" class="btn btn-link p-0" onClick="readMore(this.id)">
                   <small>Read More</small>
                 </button>
+                <br><br>
+                <a style="background-color: <%= post.button.color %>;border-color: <%= post.button.color %>;" class="solid-cta-button" href="<%= post.button.link %>" target="_blank"><%= post.button.text %></a>
               </div>
             </div>
           <% } %>
