@@ -8,8 +8,6 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
-
-  // align-items: static;
 }
 
 .row {
@@ -18,4 +16,22 @@
   .col {
     text-align: center;
   }
+}
+
+.demo-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  grid-gap: 15px;
+  align-items: center;
+
+  & .post {
+    height: auto;
+  }
+}
+
+.make-post-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 40px rgba(0,0,0,.3);
 }
