@@ -301,7 +301,8 @@ app.route("/@:idName/post")
           text: req.body.buttonText,
           link: req.body.buttonLink,
           color: req.body.buttonColor
-        }
+        },
+        type: req.body.type
       };
       const newPost = new postModel(post);
       newPost.save((err) => { if (err) throw err; });

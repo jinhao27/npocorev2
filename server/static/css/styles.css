@@ -11,6 +11,10 @@ body {
 nav {
   margin-bottom: 30px; }
 
+.bootstrap-select {
+  border: 2px solid #ccc;
+  border-radius: 5px; }
+
 .navbar-nav {
   display: flex;
   align-items: center; }
@@ -142,10 +146,6 @@ nav {
   .cta-buttons {
     grid-template-columns: repeat(auto-fill, 100%) !important; } }
 
-.show-tick {
-  border: 2px solid #ccc;
-  border-radius: 5px; }
-
 .featured-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
@@ -171,6 +171,16 @@ nav {
     white-space: nowrap;
     overflow: hidden;
     margin-bottom: 0 !important; }
+  .post-footer {
+    height: 50px;
+    position: relative; }
+    .post-footer .type {
+      position: absolute;
+      bottom: 0;
+      background-color: #12c3c3;
+      padding: 2.5px 5px;
+      border-radius: 3px;
+      color: white; }
 
 @media (max-width: 1000px) {
   .posts {

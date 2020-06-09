@@ -29,6 +29,21 @@
     overflow: hidden;
     margin-bottom: 0 !important;
   }
+
+  &-footer {
+    height: 50px;
+    position: relative;
+
+    & .type {
+      position: absolute;
+      bottom: 0;
+
+      background-color: $color-primary;
+      padding: 2.5px 5px;
+      border-radius: 3px;
+      color: white;
+    }
+  }
 }
 
 @media (max-width: 1000px) {
