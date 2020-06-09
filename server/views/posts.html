@@ -61,22 +61,30 @@
     <div class="container">
       <% if (featured.posts.length > 0) { %>
         <h1>Featured Posts</h1>
+        <p>
+          Here are some of the featured posts that you should definitely take a look at!
+        </p>
         <div class="featured-grid posts mt-4 mb-5">
           <% for (post of featured.posts) { %>
             <div class="post">
-              <h3><%= post.title %></h3>
-              <strong>By: <a href="/@<%= post.creator.idName %>"><%= post.creator.name %></a></strong>
-              <br>
-              <small>Posted: <%= post.datetimePosted.toLocaleDateString("en-US") %></small>
-              <p class="post-content mt-3"><%= post.content %></p>
-              <div class="text-right">
-                <button id="<%= post._id %>" class="btn btn-link p-0" onClick="readMore(this.id)">
-                  <small>Read More</small>
-                </button>
-              </div>
-              <div class="post-footer">
-                <small class="type"><%= post.type %></small>
-                <a style="background-color: <%= post.button.color %>;border-color: <%= post.button.color %>; float: right;" class="solid-cta-button" href="<%= post.button.link %>" target="_blank"><%= post.button.text %></a>
+              <% if (post.image) { %>
+                <img class="post-image" src="<%= s3Link %><%= post.image %>" alt="">
+              <% } %>
+              <div class="p-3">
+                <h3><%= post.title %></h3>
+                <strong>By: <a href="/@<%= post.creator.idName %>"><%= post.creator.name %></a></strong>
+                <br>
+                <small>Posted: <%= post.datetimePosted.toLocaleDateString("en-US") %></small>
+                <p class="post-content mt-3"><%= post.content %></p>
+                <div class="text-right">
+                  <button id="<%= post._id %>" class="btn btn-link p-0" onClick="readMore(this.id)">
+                    <small>Read More</small>
+                  </button>
+                </div>
+                <div class="post-footer">
+                  <small class="type"><%= post.type %></small>
+                  <a style="background-color: <%= post.button.color %>;border-color: <%= post.button.color %>; float: right;" class="solid-cta-button" href="<%= post.button.link %>" target="_blank"><%= post.button.text %></a>
+                </div>
               </div>
             </div>
           <% } %>
@@ -84,6 +92,9 @@
       <% } %>
 
       <h1>Opportunity Posts</h1>
+      <p>
+        Check out all of the opportunities that our registered NPOs have posted!
+      </p>
       <div class="posts mt-4">
         <% if (posts) { %>
           <% for (post of posts) { %>

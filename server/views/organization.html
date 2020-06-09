@@ -103,8 +103,8 @@
           <p><%= organization.description %></p>
           <div class="right-grid">
             <div>
-              <p><strong>Causes:</strong> <%= organization.causes %></p>
-              <p><strong>Target Audiences:</strong> <%= organization.targetAudiences %></p>
+              <p><strong>Target Audiences:</strong> <%= organization.targetAudiences.join(", ") %></p>
+              <p><strong>Causes:</strong> <%= organization.causes.join(", ") %></p>
 
               <% if (cookies.organization) { %>
                 <% if (cookies.organization) { %>
@@ -166,15 +166,20 @@
             <div class="grid-posts posts mt-3">
               <% for (post of organization.posts) { %>
                 <div class="post">
-                  <h3><%= post.title %></h3>
-                  <strong>By: <a href="/@<%= post.creator.idName %>"><%= post.creator.name %></a></strong>
-                  <br>
-                  <small>Posted: <%= post.datetimePosted.toLocaleDateString("en-US") %></small>
-                  <p class="post-content mt-3"><%= post.content %></p>
-                  <div class="text-right">
-                    <button id="<%= post._id %>" class="btn btn-link p-0" onClick="readMore(this.id)">
-                      <small>Read More</small>
-                    </button>
+                  <% if (post.image) { %>
+                    <img class="post-image" src="<%= s3Link %><%= post.image %>" alt="">
+                  <% } %>
+                  <div class="p-3">
+                    <h3><%= post.title %></h3>
+                    <strong>By: <a href="/@<%= post.creator.idName %>"><%= post.creator.name %></a></strong>
+                    <br>
+                    <small>Posted: <%= post.datetimePosted.toLocaleDateString("en-US") %></small>
+                    <p class="post-content mt-3"><%= post.content %></p>
+                    <div class="text-right">
+                      <button id="<%= post._id %>" class="btn btn-link p-0" onClick="readMore(this.id)">
+                        <small>Read More</small>
+                      </button>
+                    </div>
                   </div>
                 </div>
               <% } %>
