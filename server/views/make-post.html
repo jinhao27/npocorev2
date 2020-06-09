@@ -66,20 +66,27 @@
             Post about anything! Events, organization updates, or promotions, just post them here!
           </p>
 
-          <form method="post">
+          <form enctype="multipart/form-data" method="post">
             <label>Title:</label><br>
             <input id="title-text-input" class="form-control" type="text" name="title" placeholder="Title" required>
             <br>
             <label>Content:</label><br>
             <textarea id="content-text-input" class="form-control" name="content" rows="5" placeholder="Content" required></textarea>
             <br>
-            <label>Type of post:</label><br>
-            <select class="selectpicker" name="type" required>
-              <option value="Announcement">Announcement</option>
-              <option value="Opportunity">Opportunity</option>
-              <option value="Event">Event</option>
-              <option value="Job Opening">Job Opening</option>
-            </select>
+            <div class="py-1">
+              <label>Type of post:</label><br>
+              <select class="selectpicker" name="type" required>
+                <option value="Announcement">Announcement</option>
+                <option value="Opportunity">Opportunity</option>
+                <option value="Event">Event</option>
+                <option value="Job Opening">Job Opening</option>
+              </select>
+            </div>
+            <br>
+            <div class="py-1">
+              <label>Post Image:</label><br>
+              <input type="file" name="image">
+            </div>
             <br>
             <label>CTA Button Customization:</label><br>
             <div class="cta-button-options">

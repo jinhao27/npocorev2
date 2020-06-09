@@ -304,6 +304,16 @@ app.route("/@:idName/post")
         },
         type: req.body.type
       };
+
+      // SAVING IMAGE IF EXISTS
+      if (req.files) {
+        const image = req.files.image;
+        if (image) {
+          uploadFile(image); // UPLOAD TO S3
+          post.image = image.name;
+        }
+      }
+
       const newPost = new postModel(post);
       newPost.save((err) => { if (err) throw err; });
 
