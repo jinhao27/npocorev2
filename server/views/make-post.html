@@ -73,6 +73,8 @@
             <label>Content:</label><br>
             <textarea id="content-text-input" class="form-control" name="content" rows="5" placeholder="Content" required></textarea>
             <br>
+
+            <br>
             <label>CTA Button Customization:</label><br>
             <div class="cta-button-options">
               <input id="cta-button-text-input" class="form-control" type="text" name="buttonText" placeholder="Button Text" required>
@@ -140,9 +142,5 @@
     $("textarea").on("change keyup paste", function(){
       updateDemos();
     });
-
-    window.onbeforeunload = function(){
-      return 'Are you sure you want to leave?';
-    };
   </script>
 </html>

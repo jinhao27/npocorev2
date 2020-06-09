@@ -86,8 +86,7 @@
           <br>
           <label class="mt-3">Target Audience: *</label>
           <br>
-          <select name="targetAudience" required>
-            <option value="">----------</option>
+          <select class="selectpicker" name="targetAudiences" multiple required>
             <option value="Everyone">Everyone</option>
             <option value="Kids">Kids</option>
             <option value="Teens">Teens</option>
@@ -97,8 +96,7 @@
           </select>
           <br>
           <label class="mt-2">Cause: *</label><br>
-          <select name="cause" required>
-            <option value="">----------</option>
+          <select class="selectpicker" name="causes" multiple required>
             <option value="Advocacy and Human Rights">Advocacy and Human Rights</option>
             <option value="Animal Welfare">Animal Welfare</option>
             <option value="Arts and Culture">Arts and Culture</option>
@@ -122,14 +120,13 @@
           </select>
           <br>
           <label class="mt-4">Looking for:</label><br>
-          <div class="looking-for-checkboxes">
-            <div><input name="interests" class="interest-checkbox" type="checkbox" value="Members"/> <label>Members</label></div>
-            <div><input name="interests" class="interest-checkbox" type="checkbox" value="Partnerships"/> <label>Partnerships</label></div>
-            <div><input name="interests" class="interest-checkbox" type="checkbox" value="Sponsors"/> <label>Sponsors</label></div>
-            <div><input name="interests" class="interest-checkbox" type="checkbox" value="Clients"/> <label>Clients</label></div>
-            <div><input name="interests" class="interest-checkbox" type="checkbox" value="Opportunities"/> <label>Opportunities</label></div>
-          </div>
-
+          <select class="selectpicker" name="interests" multiple required>
+            <option value="Members">Members</option>
+            <option value="Partnerships">Partnerships</option>
+            <option value="Sponsors">Sponsors</option>
+            <option value="Clients">Clients</option>
+            <option value="Opportunities">Opportunities</option>
+          </select>
           <br>
           <label>Organization Links:</label><br>
           <input name="instagram" class="form-control mb-2" type="url" placeholder="Instagram" />
@@ -137,7 +134,7 @@
           <input name="twitter" class="form-control mb-2" type="url" placeholder="Twitter" />
           <input name="linkedin" class="form-control mb-2" type="url" placeholder="LinkedIn" />
           <input name="website" class="form-control mb-2" type="url" placeholder="Website" />
-          <br>
+          <br><br>
 
           <label class="mt-2">Legal: *</label>
           <div><input type="checkbox" required/> <label><small>I agree to the Launch Tech LLC <a href="https://www.launchtechllc.com/corporate/terms-of-service" target="_">Terms of Service</a>.</small></label></div>

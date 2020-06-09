@@ -72,7 +72,7 @@ function Organizations() {
 
   const filterOrganizationsByTargetAudience = (organizationsToFilter) => {
     if (filterTargetAudience) {
-      return organizationsToFilter.filter(organization => organization.targetAudience === filterTargetAudience);
+      return organizationsToFilter.filter(organization => organization.targetAudiences.includes(filterTargetAudience));
     } else {
       return organizationsToFilter;
     }
@@ -80,7 +80,7 @@ function Organizations() {
 
   const filterOrganizationsByCause = (organizationsToFilter) => {
     if (filterCause) {
-      return organizationsToFilter.filter(organization => organization.cause === filterCause);
+      return organizationsToFilter.filter(organization => organization.causes.includes(filterCause));
     } else {
       return organizationsToFilter;
     }
@@ -273,8 +273,8 @@ function Organizations() {
                   </div>
                 </div>
                 {organization.location.name ? <div><strong>Location:</strong> {organization.location.name}</div> : <span></span>}
-                <div><strong>Target Audience:</strong> {organization.targetAudience}</div>
-                <div><strong>Cause:</strong> {organization.cause}</div>
+                <div><strong>Target Audiences:</strong> {organization.targetAudiences.join(", ")}</div>
+                <div><strong>Causes:</strong> {organization.causes.join(", ")}</div>
                 <p className="organization-description"><strong>Description:</strong> {organization.description}</p>
                 <div className="text-right mb-2">
                   <button className="btn btn-link p-0" onClick={readMore}>

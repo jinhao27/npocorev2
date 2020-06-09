@@ -142,6 +142,10 @@ nav {
   .cta-buttons {
     grid-template-columns: repeat(auto-fill, 100%) !important; } }
 
+.show-tick {
+  border: 2px solid #ccc;
+  border-radius: 5px; }
+
 .featured-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;

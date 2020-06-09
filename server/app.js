@@ -70,19 +70,21 @@ for (var i = 0; i < blockElementsNames.length; i++) {
 }
 
 app.use(async function (req, res, next) {
-  if (req.cookies.organization) {
-    // RESETTING COOKIES
-    const organization = await organizationModel.findOne({ _id: req.cookies.organization._id });
+  if (!(req.originalUrl == "/logout")) {
+    if (req.cookies.organization) {
+      // RESETTING COOKIES
+      const organization = await organizationModel.findOne({ _id: req.cookies.organization._id });
 
-    // REMOVING POSTS FROM COOKIES TO AVOID STORAGE OVERLOAD
-    if (organization.posts) {
-      organization.posts = undefined;
+      // REMOVING POSTS FROM COOKIES TO AVOID STORAGE OVERLOAD
+      if (organization.posts) {
+        organization.posts = undefined;
+      }
+
+      const oneDay = 24 * 3600 * 1000;
+      res.cookie("organization", organization, {
+        expires: new Date(Date.now() + oneDay)
+      });
     }
-
-    const oneDay = 24 * 3600 * 1000;
-    res.cookie("organization", organization, {
-      expires: new Date(Date.now() + oneDay)
-    });
   }
 
   next()
@@ -375,8 +377,8 @@ app.route("/@:idName/update")
         idName: req.body.name.toLowerCase().replace(" ", "-"),
         email: req.body.email,
         description: req.body.description,
-        targetAudience: req.body.targetAudience,
-        cause: req.body.cause,
+        targetAudiences: req.body.targetAudiences,
+        causes: req.body.causes,
         interests: req.body.interests,
         idName: req.body.name.toLowerCase().replace(" ", "-"),
         location,
