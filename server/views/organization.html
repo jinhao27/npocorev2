@@ -180,6 +180,10 @@
                         <small>Read More</small>
                       </button>
                     </div>
+                    <div class="post-footer mt-2">
+                      <small class="type"><%= post.type %></small>
+                      <a style="background-color: <%= post.button.color %>;border-color: <%= post.button.color %>; float: right;" class="solid-cta-button" href="<%= post.button.link %>" target="_blank"><%= post.button.text %></a>
+                    </div>
                   </div>
                 </div>
               <% } %>
