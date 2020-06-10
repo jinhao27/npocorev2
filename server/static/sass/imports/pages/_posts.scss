@@ -37,19 +37,11 @@
     margin-bottom: 0 !important;
   }
 
-  &-footer {
-    height: 50px;
-    position: relative;
-
-    & .type {
-      position: absolute;
-      bottom: 0;
-
-      background-color: $color-primary;
-      padding: 2.5px 5px;
-      border-radius: 3px;
-      color: white;
-    }
+  & .type {
+    background-color: $color-primary;
+    padding: 2.5px 5px;
+    border-radius: 3px;
+    color: white;
   }
 }
 

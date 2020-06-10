@@ -75,7 +75,7 @@
             <br>
             <div class="py-1">
               <label>Type of post:</label><br>
-              <select class="selectpicker" name="type" required>
+              <select id="type-select-input" class="selectpicker" name="type" required>
                 <option value="Announcement">Announcement</option>
                 <option value="Opportunity">Opportunity</option>
                 <option value="Event">Event</option>
@@ -112,10 +112,8 @@
             <br>
             <small>Posted: <%= new Date().toLocaleDateString("en-US") %></small>
             <p id="content-demo" class="mt-3">[No content provided]</p>
-            <div class="text-right">
-              <br><br>
-              <a class="solid-cta-button" id="cta-button-demo" href="#" target="_blank"></a>
-            </div>
+            <p><small id="type-demo" class="type"></small></p>
+            <a class="solid-cta-button" id="cta-button-demo" href="#" target="_blank"></a>
           </div>
         </div>
       </div>
@@ -124,6 +122,7 @@
   <script>
     const titleTextInput = document.getElementById("title-text-input");
     const contentTextInput = document.getElementById("content-text-input");
+    const typeSelectInput = document.getElementById("type-select-input");
     const ctaButtonTextInput = document.getElementById("cta-button-text-input");
     const ctaButtonLinkInput = document.getElementById("cta-button-link-input");
     const ctaButtonColorInput = document.getElementById("cta-button-color-input");
@@ -132,6 +131,7 @@
     const ctaButtonDemo = document.getElementById("cta-button-demo");
     const titleDemo = document.getElementById("title-demo");
     const contentDemo = document.getElementById("content-demo");
+    const typeDemo = document.getElementById("type-demo");
 
     ctaButtonDemo.style.border = "none";
     updateDemos();
@@ -142,6 +142,9 @@
 
       // CONTENT INPUT
       contentDemo.innerHTML = contentTextInput.value || "[No content provided]";
+
+      // TYPE INPUT
+      typeDemo.innerHTML = typeSelectInput.value || "Announcement";
 
       // CTA BUTTON
       ctaButtonDemo.innerHTML = ctaButtonTextInput.value || "[No text provided]";
@@ -155,6 +158,10 @@
     });
 
     $("textarea").on("change keyup paste", function(){
+      updateDemos();
+    });
+
+    $("select").on("change keyup paste", function(){
       updateDemos();
     });
   </script>
