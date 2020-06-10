@@ -32,6 +32,11 @@ module.exports = function(app) {
     return organization;
   });
 
+  app.get("/api/get-posts", async (req, res) => {
+    const posts = await postModel.find({}).sort({ datetimePosted: -1 });
+    res.send(posts);
+  });
+
   app.post("/api/delete-post", async (req, res) => {
     const postId = req.query.postId;
     const post = await postModel.findOne({ _id: postId });

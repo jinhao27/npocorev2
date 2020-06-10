@@ -98,24 +98,15 @@ app.get("/contact", (req, res) => {
   res.render("contact.html", context={ blockElements, cookies: req.cookies, s3Link });
 });
 
-app.get("/opportunities", async (req, res) => {
-  const posts = await postModel.find({}).sort({ datetimePosted: -1 });
-
-  let featured = {};
-  featured.organizations = await organizationModel.find({ featured: true });
-  featured.posts = await postModel.find({ featured: true });
-
-  res.render("posts.html", context={ blockElements, cookies: req.cookies, s3Link, posts, featured });
-});
-
-app.get("/opportunities/:id", async (req, res) => {
-  const post = await postModel.findOne({ _id: req.params.id });
-  if (post) {
-    res.render("post.html", context={ blockElements, cookies: req.cookies, s3Link, post });
-  } else {
-    res.render("errors/post.html", context={ blockElements, cookies: req.cookies, s3Link, post });
-  }
-});
+// app.get("/opportunities", async (req, res) => {
+//   const posts = await postModel.find({}).sort({ datetimePosted: -1 });
+// 
+//   let featured = {};
+//   featured.organizations = await organizationModel.find({ featured: true });
+//   featured.posts = await postModel.find({ featured: true });
+//
+//   res.render("posts.html", context={ blockElements, cookies: req.cookies, s3Link, posts, featured });
+// });
 
 // NEWS
 app.get("/news/whats-new-in-npo-core-v2", (req, res) => {

@@ -3,20 +3,19 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 function Organizations() {
-  const [baseOrganizations, setBaseOrganizations] = useState([]);
-  const [organizations, setOrganizations] = useState([]);
-  const [featuredOrganizations, setFeaturedOrganizations] = useState([]);
+  const [basePosts, setBasePosts] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [featuredPosts, setFeaturedPosts] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
   // FILTERS
-  const [filterSearchText, setFilterSearchText] = useState("");
-  const [filterTargetAudience, setFilterTargetAudience] = useState("");
-  const [filterCause, setFilterCause] = useState("");
-  const [filterInterest, setFilterInterest] = useState("");
+  const [filterTitleSearchText, setFilterTitleSearchText] = useState("");
+  const [filterContentSearchText, setFilterContentSearchText] = useState("");
+  const [filterType, setFilterType] = useState("");
 
   const getOrganizations = async () => {
     // SAVE MONGODB ORGS TO PROPS
-    fetch("/api/get-organizations",{
+    fetch("/api/get-posts",{
         method: 'GET',
         mode: "no-cors",
         cache: "no-cache",
@@ -24,15 +23,107 @@ function Organizations() {
         headers: {"Content-Type": "application/json"}
       })
       .then((response) => {
-        return response.json();
+        // return response.json();
+        return [
+{
+"causes": [
+"Advocacy and Human Rights",
+"Animal Welfare"
+],
+"targetAudiences": [
+"Teens"
+],
+"interests": [
+"Partnerships",
+"Sponsors",
+"Clients"
+],
+"posts": [
+{
+"_id": "5ee085d81221757a525dc3fb",
+"title": "test",
+"content": "test",
+"datetimePosted": "2020-06-10T07:03:52.988Z",
+"creator": {
+"causes": [
+"Advocacy and Human Rights",
+"Animal Welfare"
+],
+"targetAudiences": [
+"Teens"
+],
+"interests": [
+"Partnerships",
+"Sponsors",
+"Clients"
+],
+"subscriptions": [],
+"_id": "5edfcc68bacc39467d54ebc2",
+"name": "test2",
+"email": "test2@mail.com",
+"description": "test2",
+"password": "sha1$56554a04$1$34756d649addc4c6ca40983fabd3c810f72c8b21",
+"location": {
+"name": ""
+},
+"idName": "test2",
+"npoScore": 56.2754405,
+"bumpedInLastHour": false,
+"__v": 0
+},
+"button": {
+"text": "test",
+"link": "https://www.launchtechllc.com/",
+"color": "#f28c41"
+},
+"type": "Event"
+}
+],
+"subscriptions": [],
+"_id": "5edfcc68bacc39467d54ebc2",
+"name": "test2",
+"email": "test2@mail.com",
+"description": "test2",
+"password": "sha1$56554a04$1$34756d649addc4c6ca40983fabd3c810f72c8b21",
+"location": {
+"name": ""
+},
+"idName": "test2",
+"npoScore": 57.963703715,
+"bumpedInLastHour": false,
+"__v": 0
+},
+{
+"causes": [],
+"targetAudiences": [],
+"interests": [
+"Sponsors",
+"Opportunities"
+],
+"posts": [],
+"subscriptions": [],
+"_id": "5edfcc4fbacc39467d54ebc1",
+"name": "test",
+"email": "test@mail.com",
+"description": "test",
+"password": "sha1$82184bf9$1$e7427694bbb0456add075cf1854d944d61c61b45",
+"location": {
+"name": ""
+},
+"idName": "test",
+"npoScore": 50,
+"bumpedInLastHour": false,
+"__v": 0
+}
+];
       })
-      .then((organizations) => {
-        setOrganizations(organizations);
-        setBaseOrganizations(organizations);
+      .then((posts) => {
+        setPosts(posts);
+        setBasePosts(posts);
 
         // GETTING FEATURED ORGANIZATIONS
-        const featuredOrganizationsArray = organizations.filter(organization => organization.featured == true);
-        setFeaturedOrganizations(featuredOrganizationsArray);
+        const featuredPostsArray = posts.filter(post => post.featured == true);
+        setFeaturedPosts(featuredPostsArray);
       })
       .catch((err) => {
           console.log("Exception:", err);
@@ -45,58 +136,46 @@ function Organizations() {
 
   useEffect(() => {
     filterPipeline();
-  }, [filterSearchText, filterTargetAudience, filterCause, filterInterest]);
+  }, [filterTitleSearchText, filterContentSearchText, filterType]);
 
   // FILTERING FUNCTIONS
   const filterPipeline = () => {
-    let filteredOrganizations = baseOrganizations;
+    let filteredPosts = basePosts;
 
-    filteredOrganizations = filterOrganizationsBySearch(filteredOrganizations);
-    filteredOrganizations = filterOrganizationsByTargetAudience(filteredOrganizations);
-    filteredOrganizations = filterOrganizationsByCause(filteredOrganizations);
-    filteredOrganizations = filterOrganizationsByInterest(filteredOrganizations);
+    filteredPosts = filterPostsByTitleSearch(filteredPosts);
+    filteredPosts = filterPostsByContentSearch(filteredPosts);
+    filteredPosts = filterPostsByType(filteredPosts);
 
-    setOrganizations(filteredOrganizations);
+    setPosts(filteredPosts);
   }
 
-  const filterOrganizationsBySearch = (organizationsToFilter) => {
-    const currentSearchText = filterSearchText.toLowerCase();
+  const filterPostsByTitleSearch = (postsToFilter) => {
+    const currentTitleSearchText = filterTitleSearchText.toLowerCase();
 
-    if (currentSearchText === "") {
-      return organizationsToFilter;
+    if (currentTitleSearchText === "") {
+      return postsToFilter;
     } else {
       // FILTERING ORGANIZATIONS BY LOWERCASE SEARCH FILTER
-      return organizationsToFilter.filter(organization => organization.name.toLowerCase().includes(currentSearchText));;
+      return postsToFilter.filter(post => post.title.toLowerCase().includes(currentTitleSearchText));
     }
   }
 
-  const filterOrganizationsByTargetAudience = (organizationsToFilter) => {
-    if (filterTargetAudience) {
-      return organizationsToFilter.filter(organization => organization.targetAudiences.includes(filterTargetAudience));
+  const filterPostsByContentSearch = (postsToFilter) => {
+    const currentContentSearchText = filterContentSearchText.toLowerCase();
+
+    if (currentContentSearchText === "") {
+      return postsToFilter;
     } else {
-      return organizationsToFilter;
+      // FILTERING ORGANIZATIONS BY LOWERCASE SEARCH FILTER
+      return postsToFilter.filter(post => post.content.toLowerCase().includes(currentContentSearchText));
     }
   }
 
-  const filterOrganizationsByCause = (organizationsToFilter) => {
-    if (filterCause) {
-      return organizationsToFilter.filter(organization => organization.causes.includes(filterCause));
+  const filterPostsByType = (postsToFilter) => {
+    if (filterType) {
+      return postsToFilter.filter(post => post.type.includes(filterType));
     } else {
-      return organizationsToFilter;
-    }
-  }
-
-  const filterOrganizationsByInterest = (organizationsToFilter) => {
-    if (filterInterest) {
-      return organizationsToFilter.filter(organization => {
-        if (organization.interests) {
-          return organization.interests.includes(filterInterest)
-        } else {
-          return false;
-        }
-      });
-    } else {
-      return organizationsToFilter;
+      return postsToFilter;
     }
   }
 
@@ -118,22 +197,16 @@ function Organizations() {
   return (
     <div>
       <Helmet>
-        <title>NPO Core - Nonprofit Organizations</title>
-        <meta name="description" content="Look at our huge, curated list of nonprofit organizations that we've built up! Find a nonprofit organization to join, partner with, or simply get in contact with here on NPO Core!" />
+        <title>NPO Core - Nonprofit Organization Opportunity Posts - Opportunities for everyone!</title>
       </Helmet>
       <div className="pb-5">
-        <div className="options">
-          <h1 className="mt-4">Organizations</h1>
-          <a className="solid-cta-button" href="/organizations/map">Check out our organization map!</a>
-        </div>
-
-        {featuredOrganizations.length ?
-          <h3>Featured Organizations</h3>
+        {featuredPosts.length ?
+          <h3>Featured Opportunity Posts</h3>
           :
           <span></span>
         }
         <div className="organizations mt-5">
-          {featuredOrganizations ? featuredOrganizations.map((organization, key) =>
+          {featuredPosts ? featuredPosts.map((organization, key) =>
             <div className="organization" key={key}>
               <div className="image-cropper-container">
                 <div style={{ height: "50px" }} className="image-cropper">
@@ -194,49 +267,16 @@ function Organizations() {
 
         {showFilters ?
           <div className="filters mt-3">
-            <input className="form-control search-bar" type="text" placeholder="Filter by Name" onChange={event => setFilterSearchText(event.target.value)} />
+            <input className="form-control search-bar" type="text" placeholder="Filter by Title" onChange={event => setFilterTitleSearchText(event.target.value)} />
 
-            <select onChange={event => setFilterTargetAudience(event.target.value)} required>
+            <input className="form-control search-bar" type="text" placeholder="Filter by Content" onChange={event => setFilterContentSearchText(event.target.value)} />
+
+            <select onChange={event => setFilterType(event.target.value)} required>
               <option value="">All Target Audiences</option>
-              <option value="Everyone">Everyone</option>
-              <option value="Kids">Kids</option>
-              <option value="Teens">Teens</option>
-              <option value="Adults">Adults</option>
-              <option value="Seniors">Seniors</option>
-              <option value="Groups">Groups</option>
-            </select>
-
-            <select onChange={event => setFilterCause(event.target.value)} required>
-              <option value="">All Causes</option>
-              <option value="Advocacy and Human Rights">Advocacy and Human Rights</option>
-              <option value="Animal Welfare">Animal Welfare</option>
-              <option value="Arts and Culture">Arts and Culture</option>
-              <option value="Children and Youth">Children and Youth</option>
-              <option value="Civil Rights and Social Action">Civil Rights and Social Action</option>
-              <option value="Crisis Support">Crisis Support</option>
-              <option value="Disaster Relief">Disaster Relief</option>
-              <option value="Emergency and Safety">Emergency and Safety</option>
-              <option value="Education">Education</option>
-              <option value="Environment">Environment</option>
-              <option value="Female Empowerment">Female Empowerment</option>
-              <option value="Health">Health</option>
-              <option value="Homeless and Housing">Homeless and Housing</option>
-              <option value="Politics">Politics</option>
-              <option value="LGBTQ+">LGBTQ+</option>
-              <option value="Race and Ethnicity">Race and Ethnicity</option>
-              <option value="Poverty Alleviation">Poverty Alleviation</option>
-              <option value="Science and Technology">Science and Technology</option>
-              <option value="Social Services">Social Services</option>
-              <option value="Veterans and Military Families">Veterans and Military Families</option>
-            </select>
-
-            <select onChange={event => setFilterInterest(event.target.value)} required>
-              <option value="">All Interests</option>
-              <option value="Members">Members</option>
-              <option value="Partnerships">Partnerships</option>
-              <option value="Sponsors">Sponsors</option>
-              <option value="Clients">Clients</option>
-              <option value="Opportunities">Opportunities</option>
+              <option value="Announcement">Announcement</option>
+              <option value="Event">Event</option>
+              <option value="Opportunity">Opportunity</option>
+              <option value="Job Opening">Job Opening</option>
             </select>
           </div>
           :
@@ -244,7 +284,7 @@ function Organizations() {
         }
 
         <div className="organizations mt-5">
-          {organizations ? organizations.map((organization, key) =>
+          {posts ? posts.map((organization, key) =>
             <div className="organization" key={key}>
               <div className="image-cropper-container">
                 <div style={{ height: "50px" }} className="image-cropper">
