@@ -43,21 +43,9 @@ module.exports = function(app) {
 
     if (post) {
       if (req.cookies.organization && req.cookies.organization._id == post.creator._id) {
-        const organization = await organizationModel.findOne({ _id: post.creator._id });
-        const updatedCreatorPosts = organization.posts.filter(orgPost => orgPost._id != postId);
-
         await postModel.deleteOne({ _id: post.id }, (err, post) => {
           if (err) throw err;
         });
-
-        await organizationModel.findOneAndUpdate(
-          { _id: organization._id },
-          { posts: updatedCreatorPosts },
-          { new: true },
-          (err, organization) => {
-            if (err) throw err;
-          }
-        )
 
         res.status(200).send("Post successfully deleted!");
       } else {

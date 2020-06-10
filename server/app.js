@@ -75,11 +75,6 @@ app.use(async function (req, res, next) {
       // RESETTING COOKIES
       const organization = await organizationModel.findOne({ _id: req.cookies.organization._id });
 
-      // REMOVING POSTS FROM COOKIES TO AVOID STORAGE OVERLOAD
-      if (organization.posts) {
-        organization.posts = undefined;
-      }
-
       const oneDay = 24 * 3600 * 1000;
       res.cookie("organization", organization, {
         expires: new Date(Date.now() + oneDay)
@@ -97,16 +92,6 @@ app.get("/", (req, res) => {
 app.get("/contact", (req, res) => {
   res.render("contact.html", context={ blockElements, cookies: req.cookies, s3Link });
 });
-
-// app.get("/opportunities", async (req, res) => {
-//   const posts = await postModel.find({}).sort({ datetimePosted: -1 });
-// 
-//   let featured = {};
-//   featured.organizations = await organizationModel.find({ featured: true });
-//   featured.posts = await postModel.find({ featured: true });
-//
-//   res.render("posts.html", context={ blockElements, cookies: req.cookies, s3Link, posts, featured });
-// });
 
 // NEWS
 app.get("/news/whats-new-in-npo-core-v2", (req, res) => {
@@ -237,19 +222,15 @@ app.get("/organizations/map", async (req, res) => {
 });
 
 app.route("/@:idName")
-  .get((req, res) => {
-    organizationModel.findOne({ idName: req.params.idName }, (err, organization) => {
-      if (err) {
-        res.render("errors/organization.html", context={ blockElements, cookies: req.cookies, s3Link });
-        return;
-      }
+  .get(async (req, res) => {
+    const organization = await organizationModel.findOne({ idName: req.params.idName });
+    const posts = await postModel.find({ "creator.idName": organization.idName });
 
-      if (organization) {
-        res.render("organization.html", context={ blockElements, cookies: req.cookies, s3Link, organization });
-      } else {
-        res.render("errors/organization.html", context={ blockElements, cookies: req.cookies, s3Link });
-      }
-    });
+    if (organization) {
+      res.render("organization.html", context={ blockElements, cookies: req.cookies, s3Link, organization, posts });
+    } else {
+      res.render("errors/organization.html", context={ blockElements, cookies: req.cookies, s3Link });
+    }
   })
   .post(async (req, res) => {
     const email = req.body.email;
@@ -311,7 +292,7 @@ app.route("/@:idName/post")
       // BUMPING NPO SCORE + ADDING POST
       organizationModel.findOneAndUpdate(
         { _id: req.cookies.organization._id },
-        { $push: { posts: newPost }, npoScore: postBump(req.cookies.organization.npoScore) },
+        { npoScore: postBump(req.cookies.organization.npoScore) },
         { new: true },
         (err, organization) => {
           if (err) throw err;

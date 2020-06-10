@@ -23,50 +23,7 @@ function Organizations() {
         headers: {"Content-Type": "application/json"}
       })
       .then((response) => {
-        // return response.json();
-        return [
-{
-"_id": "5ee085d81221757a525dc3fb",
-"title": "test",
-"content": "test",
-"featured": true,
-"datetimePosted": "2020-06-10T07:03:52.988Z",
-"creator": {
-"causes": [
-"Advocacy and Human Rights",
-"Animal Welfare"
-],
-"targetAudiences": [
-"Teens"
-],
-"interests": [
-"Partnerships",
-"Sponsors",
-"Clients"
-],
-"subscriptions": [],
-"_id": "5edfcc68bacc39467d54ebc2",
-"name": "test2",
-"email": "test2@mail.com",
-"description": "test2",
-"password": "sha1$56554a04$1$34756d649addc4c6ca40983fabd3c810f72c8b21",
-"location": {
-"name": ""
-},
-"idName": "test2",
-"npoScore": 56.2754405,
-"bumpedInLastHour": false,
-"__v": 0
-},
-"button": {
-"text": "test",
-"link": "https://www.launchtechllc.com/",
-"color": "#f28c41"
-},
-"type": "Event",
-"__v": 0
-}
-]
+        return response.json();
       })
       .then((posts) => {
         setPosts(posts);

@@ -162,9 +162,9 @@
           <% } %>
 
           <h3 class="mt-4">Posts</h3>
-          <% if (organization.posts.length > 0) { %>
+          <% if (posts.length > 0) { %>
             <div class="grid-posts posts mt-3">
-              <% for (post of organization.posts) { %>
+              <% for (post of posts) { %>
                 <div class="post" id="<%= post._id %>">
                   <% if (post.image) { %>
                     <img class="post-image" src="<%= s3Link %><%= post.image %>" alt="">
