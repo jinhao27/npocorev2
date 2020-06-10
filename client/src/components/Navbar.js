@@ -31,10 +31,10 @@ function Navbar() {
               <a className="nav-link" href="/contact">Contact</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/organizations">Organizations</a>
+              <Link className="nav-link" to="/organizations">Organizations</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/opportunities">Opportunities</a>
+              <Link className="nav-link" to="/opportunities">Opportunities</Link>
             </li>
 
             {organization == undefined ?
