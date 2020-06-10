@@ -284,48 +284,26 @@ function Organizations() {
         }
 
         <div className="organizations mt-5">
-          {posts ? posts.map((organization, key) =>
-            <div className="organization" key={key}>
-              <div className="image-cropper-container">
-                <div style={{ height: "50px" }} className="image-cropper">
-                  {organization.logo ?
-                    <img src={"https://npocore.s3-us-west-2.amazonaws.com/" + organization.logo} alt="" />
-                    :
-                    <img src="/static/img/no-logo.png" alt="" />
-                  }
-                </div>
-                {organization.verifiedNonprofit ?
-                  <img className="nonprofit-badge" src="/static/img/icons/501c3.svg" alt=""/>
-                  :
-                  <span></span>
-                }
-              </div>
-              <div>
-                <div className="organization-header">
-                  <h4><a style={{ color: "black" }} href={"/@" + organization.idName}>{organization.name}</a></h4>
-                  <div className="organization-resources">
-                    <a href="mailto:{organization.email}" target="_">
-                      {organization.email ? <img src="/img/email.svg" alt="{organization.name} Email Address" /> : null}
-                    </a>
-                    <a href={"/@" + organization.idName}>
-                      <img style={{transform: "translateY(-2px)"}} src="/img/link.svg" alt="{organization.name}" />
-                    </a>
-                  </div>
-                </div>
-                {organization.location.name ? <div><strong>Location:</strong> {organization.location.name}</div> : <span></span>}
-                <div><strong>Target Audiences:</strong> {organization.targetAudiences.join(", ")}</div>
-                <div><strong>Causes:</strong> {organization.causes.join(", ")}</div>
-                <p className="organization-description"><strong>Description:</strong> {organization.description}</p>
-                <div className="text-right mb-2">
-                  <button className="btn btn-link p-0" onClick={readMore}>
+          {posts ? posts.map((post, key) =>
+            <div class="post" key={key}>
+              {post.image ?
+                <img class="post-image" src={s3Link + post.image} alt=""/>
+                :
+                <span></span>
+              }
+              <div class="p-3">
+                <h3>{post.title}</h3>
+                <strong>By: <a href={"/@" + post.creator.idName}>{post.creator.name}</a></strong>
+                <br/>
+                <small>Posted: {post.datetimePosted.toLocaleDateString("en-US")}</small>
+                <p class="post-content mt-3">{post.content}</p>
+                <div class="text-right">
+                  <button id={post._id} class="btn btn-link p-0" onClick="readMore(this.id)">
                     <small>Read More</small>
                   </button>
                 </div>
-                <div className="organization-interests">
-                  {(organization.interests || []).map((interest, key) =>
-                    <small>{interest}</small>
-                  )}
-                </div>
+                <p><small class="type">{post.type}</small></p>
+                <a style={{ "background-color": post.button.color, "border-color": post.button.color }} class="solid-cta-button" href={post.button.link} target="_blank">{post.button.text}</a>
               </div>
             </div>
           ) :
