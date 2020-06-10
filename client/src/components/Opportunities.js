@@ -23,7 +23,50 @@ function Organizations() {
         headers: {"Content-Type": "application/json"}
       })
       .then((response) => {
-        return response.json();
+        // return response.json();
+        return [
+{
+"_id": "5ee085d81221757a525dc3fb",
+"title": "test",
+"content": "test",
+"featured": true,
+"datetimePosted": "2020-06-10T07:03:52.988Z",
+"creator": {
+"causes": [
+"Advocacy and Human Rights",
+"Animal Welfare"
+],
+"targetAudiences": [
+"Teens"
+],
+"interests": [
+"Partnerships",
+"Sponsors",
+"Clients"
+],
+"subscriptions": [],
+"_id": "5edfcc68bacc39467d54ebc2",
+"name": "test2",
+"email": "test2@mail.com",
+"description": "test2",
+"password": "sha1$56554a04$1$34756d649addc4c6ca40983fabd3c810f72c8b21",
+"location": {
+"name": ""
+},
+"idName": "test2",
+"npoScore": 56.2754405,
+"bumpedInLastHour": false,
+"__v": 0
+},
+"button": {
+"text": "test",
+"link": "https://www.launchtechllc.com/",
+"color": "#f28c41"
+},
+"type": "Event",
+"__v": 0
+}
+]
       })
       .then((posts) => {
         setPosts(posts);
@@ -125,7 +168,7 @@ function Organizations() {
                 <h3>{post.title}</h3>
                 <strong>By: <a href={"/@" + post.creator.idName}>{post.creator.name}</a></strong>
                 <br/>
-                <small>Posted: {post.datetimePosted}</small>
+                <small>Posted: { new Date(post.datetimePosted).toLocaleDateString("en-US") }</small>
                 <p className="post-content mt-3">{post.content}</p>
                 <div className="text-right">
                   <button id={post._id} className="btn btn-link p-0" onClick={readMore}>
@@ -186,7 +229,7 @@ function Organizations() {
                 <h3>{post.title}</h3>
                 <strong>By: <a href={"/@" + post.creator.idName}>{post.creator.name}</a></strong>
                 <br/>
-                <small>Posted: {post.datetimePosted}</small>
+                <small>Posted: { new Date(post.datetimePosted).toLocaleDateString("en-US") }</small>
                 <p className="post-content mt-3">{post.content}</p>
                 <div className="text-right">
                   <button id={post._id} className="btn btn-link p-0" onClick={readMore}>
@@ -199,7 +242,7 @@ function Organizations() {
             </div>
           ) :
           <div className="text-center">
-            <small>No organizations yet!</small>
+            <small>No opportunity posts yet!</small>
           </div>
         }
         </div>
