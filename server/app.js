@@ -199,8 +199,6 @@ app.route("/login")
 
     if (organization) {
       if (passwordHash.verify(req.body.password, organization.password)) {
-        // REMOVING POSTS FROM COOKIES TO AVOID STORAGE OVERLOAD
-        organization.posts = undefined;
         res.cookie("organization", organization);
         res.redirect(`/@${organization.idName}`);
       } else {
