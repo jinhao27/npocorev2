@@ -135,7 +135,7 @@
             var infowindow = new google.maps.InfoWindow();
 
             // Adding info window to marker on click
-            bindInfoWindow(marker, map, infowindow, `<div><strong>Name:</strong> ${organization.name}<br><strong>Email:</strong> ${organization.email}<br><strong>Cause:</strong> ${organization.cause}<br><strong>Gender:</strong> ${organization.gender}<br><strong>Interests:</strong> ${organization.interests}<br></div>`);
+            bindInfoWindow(marker, map, infowindow, `<div><strong>Name:</strong> ${organization.name}<br><strong>Email:</strong> ${organization.email}<br><strong>Target Audiences:</strong> ${organization.targetAudiences}<br><strong>Causes:</strong> ${organization.causes}<br><strong>Interests:</strong> ${organization.interests}<br><strong>Profile:</strong> <a href='/@${organization.idName}'>@${organization.idName}</a></div>`);
           }
         }
       }
