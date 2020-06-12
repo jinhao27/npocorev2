@@ -9,20 +9,6 @@ module.exports = function(app) {
     res.send(organizations);
   });
 
-  app.post("/api/add-organization", (req, res) => {
-    const organization = req.body;
-    const newOrganization = new organizationModel({
-      name: 'Calix Huang',
-      email: 'calix.huang1@gmail.com',
-      description: 'asdf',
-      website: 'https://www.calix.dev/',
-      gender: 'Male',
-      cause: 'Animal Welfare',
-      interests: [ 'Sponsors', 'Clients' ]
-    });
-    newOrganization.save((err, organization) => { if (err) throw err; });
-  });
-
   app.get("/api/get-organization", async (req, res) => {
     const organization = organizationModel.findOne({
       email: req.query.email,
