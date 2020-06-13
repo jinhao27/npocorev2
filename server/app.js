@@ -133,7 +133,7 @@ app.route("/register")
     }
 
     // GENERATING IDNAME
-    data.idName = " ";
+    data.idName = "";
 
     for (let i = 0; i < req.body.name.length; i++) {
       if (req.body.name.charAt(i) != " ") {
