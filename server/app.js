@@ -133,7 +133,16 @@ app.route("/register")
     }
 
     // GENERATING IDNAME
-    data.idName = req.body.name.toLowerCase().replace(" ", "-");
+    data.idName = " ";
+
+    for (let i = 0; i < req.body.name.length; i++) {
+      if (req.body.name.charAt(i) != " ") {
+          data.idName += req.body.name.charAt(i);
+        } else {
+          data.idName += "-";
+        }
+    }
+    // data.idName = req.body.name.toLowerCase().replace(" ", "-");
 
     // HANDLING REFERRER (IF EXISTS)
     const referrer = req.body.referrer;
