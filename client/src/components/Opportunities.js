@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-const VisibilitySensor = require('react-visibility-sensor');
 
 function Organizations() {
   const [basePosts, setBasePosts] = useState([]);
@@ -183,22 +182,20 @@ function Organizations() {
                 :
                 <span></span>
               }
-              <VisibilitySensor>
-                <div className="p-3">
-                  <h3>{post.title}</h3>
-                  <strong>By: <a href={"/@" + post.creator.idName}>{post.creator.name}</a></strong>
-                  <br/>
-                  <small>Posted: { new Date(post.datetimePosted).toLocaleDateString("en-US") }</small>
-                  <p className="post-content mt-3">{post.content}</p>
-                  <div className="text-right">
-                    <button id={post._id} className="btn btn-link p-0" onClick={readMore}>
-                      <small>Read More</small>
-                    </button>
-                  </div>
-                  <p><small className="type">{post.type}</small></p>
-                  <a style={{ "backgroundColor": post.button.color, "borderColor": post.button.color }} className="solid-cta-button" href={post.button.link} target="_blank">{post.button.text}</a>
+              <div className="p-3">
+                <h3>{post.title}</h3>
+                <strong>By: <a href={"/@" + post.creator.idName}>{post.creator.name}</a></strong>
+                <br/>
+                <small>Posted: { new Date(post.datetimePosted).toLocaleDateString("en-US") }</small>
+                <p className="post-content mt-3">{post.content}</p>
+                <div className="text-right">
+                  <button id={post._id} className="btn btn-link p-0" onClick={readMore}>
+                    <small>Read More</small>
+                  </button>
                 </div>
-              </VisibilitySensor>
+                <p><small className="type">{post.type}</small></p>
+                <a style={{ "backgroundColor": post.button.color, "borderColor": post.button.color }} className="solid-cta-button" href={post.button.link} target="_blank">{post.button.text}</a>
+              </div>
             </div>
           ) :
           <div className="text-center">
