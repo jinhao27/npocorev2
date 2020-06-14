@@ -35,7 +35,6 @@
     "nodemailer": "^6.4.8",
     "nodemailer-smtp-transport": "^2.7.4",
     "password-hash": "^1.2.2",
-    "react-visibility-sensor": "^5.1.1",
     "uuid": "^8.1.0"
   }
 }
