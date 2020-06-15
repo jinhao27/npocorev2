@@ -127,11 +127,6 @@ function Organizations() {
           <a className="solid-cta-button" href="/organizations/map">Check out our organization map!</a>
         </div>
 
-        {featuredOrganizations.length ?
-          <h3>Featured Organizations</h3>
-          :
-          <span></span>
-        }
         <div className="organizations mt-5">
           {featuredOrganizations ? featuredOrganizations.map((organization, key) =>
             <div className="organization" key={key}>
