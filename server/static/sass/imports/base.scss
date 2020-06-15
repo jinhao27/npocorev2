@@ -28,6 +28,24 @@ nav {
 .navbar-nav {
   display: flex;
   align-items: center;
+
+  .image-cropper-container {
+    position: relative;
+    height: 50px;
+  }
+
+  .image-cropper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid $color-primary;
+
+    & img {
+      height: 100%;
+    }
+  }
 }
 
 .navbar-brand img {
@@ -44,18 +62,6 @@ nav {
   width: 40px;
   display: inline;
   background-color: white;
-}
-
-.image-cropper-container {
-  position: relative;
-}
-
-.image-cropper {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  border-radius: 50%;
-  border: 2px solid $color-primary;
 }
 
 .nonprofit-badge {

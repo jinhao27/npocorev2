@@ -18,6 +18,18 @@ nav {
 .navbar-nav {
   display: flex;
   align-items: center; }
+  .navbar-nav .image-cropper-container {
+    position: relative;
+    height: 50px; }
+  .navbar-nav .image-cropper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #12c3c3; }
+    .navbar-nav .image-cropper img {
+      height: 100%; }
 
 .navbar-brand img {
   width: 250px; }
@@ -30,16 +42,6 @@ nav {
   width: 40px;
   display: inline;
   background-color: white; }
-
-.image-cropper-container {
-  position: relative; }
-
-.image-cropper {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  border-radius: 50%;
-  border: 2px solid #12c3c3; }
 
 .nonprofit-badge {
   position: absolute;
@@ -195,15 +197,25 @@ nav {
 
 .organization-container {
   display: grid;
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: 200px 1fr;
   grid-gap: 40px;
   background-color: white;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 5px 40px rgba(0, 0, 0, 0.3);
   width: 100%; }
-  .organization-container .left img {
-    width: 100%; }
+  .organization-container .left .image-cropper-container {
+    position: relative;
+    height: 200px; }
+  .organization-container .left .image-cropper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid #12c3c3; }
+    .organization-container .left .image-cropper img {
+      height: 100%; }
   .organization-container .left .admin-components a, .organization-container .left .admin-components button {
     display: block;
     width: 100%;
@@ -250,13 +262,23 @@ nav {
     grid-template-columns: repeat(auto-fill, 100%); }
     .organization-container .left {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 200px 1fr;
       grid-gap: 15px;
       align-items: center; }
+      .organization-container .left .image-cropper-container {
+        height: 200px; }
     .organization-container .right-grid {
       grid-template-columns: repeat(auto-fill, 100%); }
       .organization-container .right-grid .social-links {
         padding: 15px 0; } }
+
+@media (max-width: 500px) {
+  .left {
+    grid-template-columns: repeat(auto-fill, 100%) !important; }
+    .left .image-cropper-container {
+      height: 200px;
+      width: 200px;
+      margin: 0 auto; } }
 
 .cta-button-options {
   display: grid;

@@ -1,6 +1,6 @@
 .organization-container {
   display: grid;
-  grid-template-columns: 20% 1fr;
+  grid-template-columns: 200px 1fr;
   grid-gap: 40px;
 
   background-color: white;
@@ -10,9 +10,22 @@
   width: 100%;
 
   .left {
+    .image-cropper-container {
+      position: relative;
+      height: 200px;
+    }
 
-    & img {
+    .image-cropper {
+      height: 100%;
       width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 2px solid $color-primary;
+
+      & img {
+        height: 100%;
+      }
     }
 
     & .admin-components {
@@ -91,9 +104,13 @@
 
     .left {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 200px 1fr;
       grid-gap: 15px;
       align-items: center;
+
+      .image-cropper-container {
+        height: 200px;
+      }
     }
 
     .right-grid {
@@ -102,6 +119,18 @@
       .social-links {
         padding: 15px 0;
       }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .left {
+    grid-template-columns: repeat(auto-fill, 100%) !important;
+
+    .image-cropper-container {
+      height: 200px;
+      width: 200px;
+      margin: 0 auto;
     }
   }
 }
