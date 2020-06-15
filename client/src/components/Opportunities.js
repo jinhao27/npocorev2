@@ -23,7 +23,91 @@ function Organizations() {
         headers: {"Content-Type": "application/json"}
       })
       .then((response) => {
-        return response.json();
+        // return response.json();
+        return [
+{
+"_id": "5ee168c8a6a9a59bbfadc667",
+"title": "test post",
+"content": "this is a test post! yayayayayayay",
+"datetimePosted": "2020-06-10T23:12:08.896Z",
+"creator": {
+"causes": [
+"Advocacy and Human Rights",
+"Animal Welfare"
+],
+"targetAudiences": [
+"Teens"
+],
+"interests": [
+"Partnerships",
+"Sponsors",
+"Clients"
+],
+"posts": [
+{
+"_id": "5ee085d81221757a525dc3fb",
+"title": "test",
+"content": "test",
+"datetimePosted": "2020-06-10T07:03:52.988Z",
+"creator": {
+"causes": [
+"Advocacy and Human Rights",
+"Animal Welfare"
+],
+"targetAudiences": [
+"Teens"
+],
+"interests": [
+"Partnerships",
+"Sponsors",
+"Clients"
+],
+"subscriptions": [],
+"_id": "5edfcc68bacc39467d54ebc2",
+"name": "test2",
+"email": "test2@mail.com",
+"description": "test2",
+"password": "sha1$56554a04$1$34756d649addc4c6ca40983fabd3c810f72c8b21",
+"location": {
+"name": ""
+},
+"idName": "test2",
+"npoScore": 56.2754405,
+"bumpedInLastHour": false,
+"__v": 0
+},
+"button": {
+"text": "test",
+"link": "https://www.launchtechllc.com/",
+"color": "#f28c41"
+},
+"type": "Event"
+}
+],
+"subscriptions": [],
+"_id": "5edfcc68bacc39467d54ebc2",
+"name": "test2",
+"email": "test2@mail.com",
+"description": "test2",
+"password": "sha1$56554a04$1$34756d649addc4c6ca40983fabd3c810f72c8b21",
+"location": {
+"name": ""
+},
+"idName": "test2",
+"npoScore": 59.70261482645,
+"bumpedInLastHour": false,
+"__v": 0
+},
+"button": {
+"text": "test button",
+"link": "https://www.launchtechllc.com/",
+"color": "#f0c09e"
+},
+"type": "Opportunity",
+"image": "test.png",
+"__v": 0
+}
+]
       })
       .then((posts) => {
         setPosts(posts);
@@ -116,11 +200,13 @@ function Organizations() {
         <div className="organizations mt-5">
           {featuredPosts ? featuredPosts.map((post, key) =>
             <div className="post" key={key}>
-              {post.image ?
-                <img className="post-image" src={"https://npocore.s3-us-west-2.amazonaws.com/" + post.image} alt=""/>
-                :
-                <span></span>
-              }
+              <div className="post-header">
+                {post.image ?
+                  <img className="post-header-image" src={"https://npocore.s3-us-west-2.amazonaws.com/" + post.image} alt=""/>
+                  :
+                  <span></span>
+                }
+              </div>
               <div className="p-3">
                 <h3>{post.title}</h3>
                 <strong>By: <a href={"/@" + post.creator.idName}>{post.creator.name}</a></strong>
@@ -177,11 +263,13 @@ function Organizations() {
         <div className="posts mt-4">
           {posts ? posts.map((post, key) =>
             <div className="post" key={key}>
-              {post.image ?
-                <img className="post-image" src={"https://npocore.s3-us-west-2.amazonaws.com/" + post.image} alt=""/>
-                :
-                <span></span>
-              }
+              <div className="post-header">
+                {post.image ?
+                  <img className="post-header-image" src={"https://npocore.s3-us-west-2.amazonaws.com/" + post.image} alt=""/>
+                  :
+                  <span></span>
+                }
+              </div>
               <div className="p-3">
                 <h3>{post.title}</h3>
                 <strong>By: <a href={"/@" + post.creator.idName}>{post.creator.name}</a></strong>
