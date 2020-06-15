@@ -243,11 +243,13 @@ function Organizations() {
             <div className="organization" key={key}>
               <div className="image-cropper-container">
                 <div style={{ height: "50px" }} className="image-cropper">
-                  {organization.logo ?
-                    <img src={"https://npocore.s3-us-west-2.amazonaws.com/" + organization.logo} alt="" />
-                    :
-                    <img src="/static/img/no-logo.png" alt="" />
-                  }
+                  <a href={"/@" + organization.idName}>
+                    {organization.logo ?
+                      <img src={"https://npocore.s3-us-west-2.amazonaws.com/" + organization.logo} alt="" />
+                      :
+                      <img src="/static/img/no-logo.png" alt="" />
+                    }
+                  </a>
                 </div>
                 {organization.verifiedNonprofit ?
                   <img className="nonprofit-badge" src="/static/img/icons/501c3.svg" alt=""/>
