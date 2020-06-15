@@ -116,13 +116,13 @@ function Organizations() {
         <div className="organizations mt-5">
           {featuredPosts ? featuredPosts.map((post, key) =>
             <div className="post" key={key}>
+            {post.image ?
               <div className="post-header">
-                {post.image ?
-                  <img className="post-header-image" src={"https://npocore.s3-us-west-2.amazonaws.com/" + post.image} alt=""/>
-                  :
-                  <span></span>
-                }
+                <img className="post-header-image" src={"https://npocore.s3-us-west-2.amazonaws.com/" + post.image} alt=""/>
               </div>
+              :
+              <span></span>
+            }
               <div className="p-3">
                 <h3>{post.title}</h3>
                 <strong>By: <a href={"/@" + post.creator.idName}>{post.creator.name}</a></strong>
