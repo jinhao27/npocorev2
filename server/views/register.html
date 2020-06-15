@@ -64,22 +64,27 @@
 
         <form enctype="multipart/form-data" method="post">
           <label>Organization Name: *</label><br>
-          <input name="name" class="form-control" type="text" required />
+          <input name="name" class="form-control" type="text" placeholder="Name" required />
           <br>
           <label>Organization Email: *</label><br>
-          <input name="email" class="form-control" type="email" required />
+          <input name="email" class="form-control" type="email" placeholder="Email" required />
           <br>
           <label>Organization Description: *</label><br>
-          <textarea name="description" class="form-control" rows="5" required></textarea>
+          <textarea name="description" class="form-control" rows="5" placeholder="Message" required></textarea>
           <br>
           <label>Organization Password: *</label><br>
-          <input name="password" class="form-control" type="password" required />
+          <input name="password" class="form-control" type="password" placeholder="Password" required />
           <br>
           <label>Organization Location:</label><br>
           <input name="location" id="autocomplete" class="form-control" type="text" placeholder="Location" />
           <br>
-          <label>Referrer (name of organization that referred you to NPO Core):</label><br>
-          <input name="referrer" class="form-control" type="text" placeholder="Referrer" />
+          <label>Referrer (organization that referred you to NPO Core):</label><br>
+          <select class="selectpicker" name="referrer">
+            <option value="">None</option>
+            <% for (orgName of orgNames) { %>
+              <option value="<%= orgName %>"><%= orgName %></option>
+            <% } %>
+          </select>
           <br>
           <label>Organization Logo:</label>
           <input name="logo" type="file" accept='image/*'>

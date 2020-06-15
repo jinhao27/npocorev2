@@ -103,8 +103,10 @@ app.get("/news/what-is-a-npo-score", (req, res) => {
 });
 
 app.route("/register")
-  .get((req, res) => {
-    res.render("register.html", context={ blockElements, cookies: req.cookies, s3Link, googleApiKey, error: "" });
+  .get(async (req, res) => {
+    const organizations = await organizationModel.find({});
+    const orgNames = organizations.map(organization => organization.name);
+    res.render("register.html", context={ blockElements, cookies: req.cookies, s3Link, googleApiKey, orgNames, error: "" });
   })
   .post(async (req, res) => {
     const data = req.body;
