@@ -45,8 +45,10 @@ function Navbar() {
               <li className="nav-item dropdown">
                 <a className="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {organization.logo ?
-                    <div className="image-cropper">
-                      <img className="nav-logo" src={"https://npocore.s3-us-west-2.amazonaws.com/" + organization.logo} alt=""/>
+                    <div class="image-cropper-container">
+                      <div class="image-cropper">
+                        <img className="nav-logo" src={"https://npocore.s3-us-west-2.amazonaws.com/" + organization.logo} alt=""/>
+                      </div>
                     </div>
                     :
                     <div className="image-cropper">

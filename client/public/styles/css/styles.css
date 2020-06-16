@@ -44,6 +44,9 @@ body {
   border-radius: 50%;
   border: 2px solid #12c3c3; }
   .image-cropper img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     height: 100%; }
 
 .image-cropper-container {

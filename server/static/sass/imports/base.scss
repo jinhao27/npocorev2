@@ -36,13 +36,16 @@ nav {
 
   .image-cropper {
     height: 100%;
-    width: 100%;
+    width: 50px;
     position: relative;
     overflow: hidden;
     border-radius: 50%;
     border: 2px solid $color-primary;
 
     & img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       height: 100%;
     }
   }
@@ -59,7 +62,6 @@ nav {
 }
 
 .nav-logo {
-  width: 40px;
   display: inline;
   background-color: white;
 }

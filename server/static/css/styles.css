@@ -23,12 +23,15 @@ nav {
     height: 50px; }
   .navbar-nav .image-cropper {
     height: 100%;
-    width: 100%;
+    width: 50px;
     position: relative;
     overflow: hidden;
     border-radius: 50%;
     border: 2px solid #12c3c3; }
     .navbar-nav .image-cropper img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       height: 100%; }
 
 .navbar-brand img {
@@ -39,7 +42,6 @@ nav {
     align-items: flex-start; } }
 
 .nav-logo {
-  width: 40px;
   display: inline;
   background-color: white; }
 
@@ -215,6 +217,9 @@ nav {
     border-radius: 50%;
     border: 2px solid #12c3c3; }
     .organization-container .left .image-cropper img {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       height: 100%; }
   .organization-container .left .admin-components a, .organization-container .left .admin-components button {
     display: block;

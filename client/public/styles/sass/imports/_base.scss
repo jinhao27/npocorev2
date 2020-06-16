@@ -60,6 +60,9 @@ body {
   border: 2px solid #12c3c3;
 
   & img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     height: 100%;
   }
 }
