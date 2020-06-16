@@ -4,11 +4,12 @@ const { sendEmail } = require("../helper-functions");
 const { organizationModel, postModel, passwordResetSessionModel } = require("../models");
 const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBumpOrganizations } = require("../nposcore-functions");
 const { v4: uuidv4 } = require('uuid');
+const s3Link = "https://npocore.s3-us-west-2.amazonaws.com/";
 
 module.exports = function(app, blockElements) {
   app.route("/auth/forgot-password")
     .get((req, res) => {
-      res.render("forgot-password/forgot-password.html", context={ blockElements, cookies: req.cookies, error: "" });
+      res.render("forgot-password/forgot-password.html", context={ blockElements, cookies: req.cookies, s3Link, error: "" });
     })
     .post(async (req, res) => {
       const email = req.body.email;
@@ -28,7 +29,7 @@ module.exports = function(app, blockElements) {
 
         res.redirect("/auth/confirm-password");
       } else {
-        res.render("forgot-password/forgot-password.html", context={ blockElements, cookies: req.cookies, error: "No organization with this email exists." });
+        res.render("forgot-password/forgot-password.html", context={ blockElements, cookies: req.cookies, s3Link, error: "No organization with this email exists." });
       }
     });
 
@@ -37,9 +38,9 @@ module.exports = function(app, blockElements) {
       const passwordResetSession = await passwordResetSessionModel.findOne({ sessionId: req.params.id });
 
       if (passwordResetSession) {
-        res.render("forgot-password/change-password.html", context={ passwordResetSession, blockElements, cookies: req.cookies, error: "" });
+        res.render("forgot-password/change-password.html", context={ passwordResetSession, blockElements, s3Link, cookies: req.cookies, s3Link, error: "" });
       } else {
-        res.render("errors/password-reset/session-not-exist.html", context={ passwordResetSession, blockElements, cookies: req.cookies })
+        res.render("errors/password-reset/session-not-exist.html", context={ passwordResetSession, blockElements, s3Link, cookies: req.cookies, s3Link })
       }
     })
     .post(async (req, res) => {
@@ -59,15 +60,15 @@ module.exports = function(app, blockElements) {
 
         res.redirect("/auth/success");
       } else {
-        res.render("forgot-password/change-password.html", context={ passwordResetSession, blockElements, cookies: req.cookies, error: "Passwords don't match. Please try again." });
+        res.render("forgot-password/change-password.html", context={ passwordResetSession, blockElements, cookies: req.cookies, s3Link, error: "Passwords don't match. Please try again." });
       }
     });
 
   app.get("/auth/confirm-password", (req, res) => {
-    res.render("forgot-password/confirm-password.html", context={ blockElements, cookies: req.cookies });
+    res.render("forgot-password/confirm-password.html", context={ blockElements, cookies: req.cookies, s3Link });
   });
 
   app.get("/auth/success", (req, res) => {
-    res.render("forgot-password/success.html", context={ blockElements, cookies: req.cookies });
+    res.render("forgot-password/success.html", context={ blockElements, cookies: req.cookies, s3Link });
   });
 }
