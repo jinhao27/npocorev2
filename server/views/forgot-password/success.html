@@ -34,15 +34,15 @@
             <% if (cookies.organization) { %>
               <li class="nav-item dropdown">
                 <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <% if (cookies.organization.logo) { %>
+                  <div class="image-cropper-container">
                     <div class="image-cropper">
-                      <img class="nav-logo" src="<%= s3Link %><%= cookies.organization.logo %>" alt="">
+                      <% if (cookies.organization.logo) { %>
+                        <img class="nav-logo" src="<%= s3Link %><%= cookies.organization.logo %>" alt="">
+                      <% } else { %>
+                        <img class="nav-logo" src="/static/img/no-logo.png" alt="">
+                      <% } %>
                     </div>
-                  <% } else { %>
-                    <div class="image-cropper">
-                      <img class="nav-logo" src="/static/img/no-logo.png" alt="">
-                    </div>
-                  <% } %>
+                  </div>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="/@<%= cookies.organization.idName %>">View my organization</a>
