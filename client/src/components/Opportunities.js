@@ -19,6 +19,7 @@ function Organizations() {
       const request = await fetch(`/api/get-posts?skip=${posts.length}`)
       const postsJson = await request.json()
       setPosts(posts => ([...posts, ...postsJson]));
+      setBasePosts(basePosts => ([...basePosts, ...postsJson]));
     }
 
     fetchPosts();
@@ -32,6 +33,15 @@ function Organizations() {
     }
 
     window.addEventListener("scroll", handleScroll);
+
+    // GET FEATURED POSTS
+    fetch(`/api/get-featured-posts`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((featuredPostsJson) => {
+        setFeaturedPosts(featuredPostsJson);
+      });
   }, []);
 
   useEffect(() => {

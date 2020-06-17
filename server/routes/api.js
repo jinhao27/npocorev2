@@ -24,6 +24,11 @@ module.exports = function(app) {
     res.send(posts);
   });
 
+  app.get("/api/get-featured-posts", async (req, res) => {
+    const posts = await postModel.find({ featured: true }).sort({ datetimePosted: -1 });
+    res.send(posts);
+  });
+
   app.post("/api/delete-post", async (req, res) => {
     const postId = req.query.postId;
     const post = await postModel.findOne({ _id: postId });
