@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 function Organizations() {
   const [basePosts, setBasePosts] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [skip, setSkip] = useState(0);
   const [featuredPosts, setFeaturedPosts] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
@@ -13,33 +14,24 @@ function Organizations() {
   const [filterContentSearchText, setFilterContentSearchText] = useState("");
   const [filterType, setFilterType] = useState("");
 
-  const getOrganizations = async () => {
-    // SAVE MONGODB ORGS TO PROPS
-    fetch("/api/get-posts",{
-        method: 'GET',
-        mode: "no-cors",
-        cache: "no-cache",
-        credentials: "same-origin",
-        headers: {"Content-Type": "application/json"}
-      })
-      .then((response) => {
-        return response.json();
-      })
-      .then((posts) => {
-        setPosts(posts);
-        setBasePosts(posts);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const request = await fetch(`/api/get-posts?skip=${posts.length}`)
+      const postsJson = await request.json()
+      setPosts(posts => ([...posts, ...postsJson]));
+    }
 
-        // GETTING FEATURED ORGANIZATIONS
-        const featuredPostsArray = posts.filter(post => post.featured == true);
-        setFeaturedPosts(featuredPostsArray);
-      })
-      .catch((err) => {
-        console.log("Exception:", err);
-      });
-  }
+    fetchPosts();
+  }, [skip]);
 
   useEffect(() => {
-    getOrganizations(); // GET ALL ORGS ON LOAD
+    const handleScroll = (e) => {
+      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+        setSkip(Math.random() * 10);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
@@ -92,7 +84,6 @@ function Organizations() {
     readMoreButton.parentNode.style.display = "none";
     readMoreButton.parentNode.parentNode.parentNode.querySelector("p").className = "";
   }
-
 
   const toggleFilters = (event) => {
     if (showFilters) {
