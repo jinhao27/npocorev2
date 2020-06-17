@@ -5,7 +5,8 @@ const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBum
 module.exports = function(app) {
 
   app.get("/api/get-organizations", async (req, res) => {
-    const organizations = await organizationModel.find({}).sort({ npoScore: -1 });
+    const skip = req.query.skip && /^\d+$/.test(req.query.skip) ? Number(req.query.skip) : 0
+    const organizations = await organizationModel.find({}, undefined, { skip, limit: 6 }).sort({ npoScore: -1 });
     res.send(organizations);
   });
 

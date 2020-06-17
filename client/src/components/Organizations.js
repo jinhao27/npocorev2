@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 function Organizations() {
   const [baseOrganizations, setBaseOrganizations] = useState([]);
   const [organizations, setOrganizations] = useState([]);
+  const [skip, setSkip] = useState(0);
   const [featuredOrganizations, setFeaturedOrganizations] = useState([]);
   const [showFilters, setShowFilters] = useState(false);
 
@@ -40,7 +41,24 @@ function Organizations() {
   }
 
   useEffect(() => {
-    getOrganizations(); // GET ALL ORGS ON LOAD
+    const fetchOrganizations = async () => {
+      const request = await fetch(`/api/get-organizations?skip=${organizations.length}`)
+      const organizationsJson = await request.json()
+      setOrganizations(organizations => ([...organizations, ...organizationsJson]));
+      setBaseOrganizations(baseOrganizations => ([...baseOrganizations, ...organizationsJson]));
+    }
+
+    fetchOrganizations();
+  }, [skip]);
+
+  useEffect(() => {
+    const handleScroll = (e) => {
+      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+        setSkip(Math.random() * 10);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
