@@ -59,6 +59,15 @@ function Organizations() {
     }
 
     window.addEventListener("scroll", handleScroll);
+
+    // GET FEATURED ORGANIZATIONS
+    fetch(`/api/get-featured-organizations`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((featuredOrganizationsJson) => {
+        setFeaturedOrganizations(featuredOrganizationsJson);
+      });
   }, []);
 
   useEffect(() => {

@@ -10,6 +10,11 @@ module.exports = function(app) {
     res.send(organizations);
   });
 
+  app.get("/api/get-featured-organizations", async (req, res) => {
+    const organizations = await organizationModel.find({ featured: true }).sort({ datetimePosted: -1 });
+    res.send(organizations);
+  });
+
   app.get("/api/get-organization", async (req, res) => {
     const organization = organizationModel.findOne({
       email: req.query.email,
