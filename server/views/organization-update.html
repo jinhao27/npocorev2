@@ -80,7 +80,7 @@
           <br>
           <label class="mt-2">Target Audience:</label>
           <br>
-          <select class="selectpicker" name="targetAudiences" multiple required>
+          <select class="selectpicker" name="targetAudiences" multiple data-max-options="3" required>
             <% if (organization.targetAudiences.includes("Everyone")) { %>
               <option value="Everyone" selected>Everyone</option>
             <% } else { %>
@@ -114,7 +114,7 @@
           </select>
           <br>
           <label class="mt-2">Cause:</label><br>
-          <select class="selectpicker" name="causes" multiple required>
+          <select class="selectpicker" name="causes" data-live-search="true" multiple data-max-options="3" required>
             <% if (organization.cause == "Advocacy and Human Rights") { %>
               <option value="Advocacy and Human Rights" selected>Advocacy and Human Rights</option>
             <% } else { %>
