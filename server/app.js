@@ -9,6 +9,7 @@ const passwordHash = require('password-hash');
 const mutilpart = require('connect-multiparty');
 const uploader = require('express-fileuploader');
 const rateLimit = require("express-rate-limit");
+const { check, validationResult } = require('express-validator');
 const S3Strategy = require('express-fileuploader-s3');
 const AWS = require('aws-sdk');
 const { sendEmail } = require("./helper-functions");
@@ -31,6 +32,7 @@ const limiter = rateLimit({
 app.use(express.urlencoded()); // HTML forms
 app.use(express.json()); // API clients
 app.use(fileupload()); // FILES
+// app.use(expressSanitizer()); // EXPRESS INPUT SANTIZATION
 
 // AWS S3 CONFIGURATION
 const accessKeyId = process.env.ACCESS_KEY_ID;
@@ -116,7 +118,19 @@ app.route("/register")
     const orgNames = organizations.map(organization => organization.name);
     res.render("register.html", context={ blockElements, cookies: req.cookies, s3Link, googleApiKey, orgNames, error: "" });
   })
-  .post(limiter, async (req, res) => {
+  .post(limiter, [
+    check('name').trim().escape(),
+    check('email').isEmail().trim().escape(),
+    check('message').trim().escape(),
+    check('location').trim().escape(),
+    check('referrer').trim().escape(),
+    check('logo').trim().escape(),
+    check('instagram').trim().escape(),
+    check('facebook').trim().escape(),
+    check('twitter').trim().escape(),
+    check('linkedin').trim().escape(),
+    check('website').trim().escape()
+  ], async (req, res) => {
     const data = req.body;
 
     // GET LOCATION COORDINATES
@@ -213,7 +227,9 @@ app.route("/login")
   .get((req, res) => {
     res.render("login.html", context={ blockElements, cookies: req.cookies, s3Link, error: "" });
   })
-  .post(limiter, async (req, res) => {
+  .post(limiter, [
+    check('email').isEmail().trim().escape()
+  ], async (req, res) => {
     const organization = await organizationModel.findOne({ email: req.body.email });
 
     if (organization) {
@@ -249,7 +265,9 @@ app.route("/@:idName")
       res.render("errors/organization.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
   })
-  .post(limiter, async (req, res) => {
+  .post(limiter, [
+    check('email').isEmail().trim().escape()
+  ], async (req, res) => {
     const email = req.body.email;
     const organizationIdName = req.params.idName;
 
@@ -277,7 +295,12 @@ app.route("/@:idName/post")
       res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
   })
-  .post(limiter, (req, res) => {
+  .post(limiter, [
+    check('title').trim().escape(),
+    check('content').trim().escape(),
+    check('buttonText').trim().escape(),
+    check('buttonLink').trim().escape()
+  ], (req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
       // CREATE POST
@@ -338,7 +361,19 @@ app.route("/@:idName/update")
       res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
   })
-  .post(limiter, async (req, res) => {
+  .post(limiter, [
+    check('name').trim().escape(),
+    check('email').isEmail().trim().escape(),
+    check('message').trim().escape(),
+    check('location').trim().escape(),
+    check('referrer').trim().escape(),
+    check('logo').trim().escape(),
+    check('instagram').trim().escape(),
+    check('facebook').trim().escape(),
+    check('twitter').trim().escape(),
+    check('linkedin').trim().escape(),
+    check('website').trim().escape()
+  ], async (req, res) => {
     // GET LOCATION COORDINATES
     let location = { name: req.body.location };
     if (req.body.location) {
