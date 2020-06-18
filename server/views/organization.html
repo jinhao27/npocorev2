@@ -174,7 +174,11 @@
                   <div class="p-3">
                     <h3>
                       <%= post.title %>
-                      <button style="font-size: 30px; line-height: 1; float: right; padding: 0;" class="btn" id="x" onclick="deletePost('<%= post._id %>')">&times;</button>
+                      <% if (cookies.organization) { %>
+                        <% if (cookies.organization.idName == organization.idName) { %>
+                          <button style="font-size: 30px; line-height: 1; float: right; padding: 0;" class="btn" id="x" onclick="deletePost('<%= post._id %>')">&times;</button>
+                        <% } %>
+                      <% } %>
                     </h3>
                     <strong>By: <a href="/@<%= post.creator.idName %>"><%= post.creator.name %></a></strong>
                     <br>
