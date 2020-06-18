@@ -257,9 +257,9 @@ app.get("/organizations/map", async (req, res) => {
 app.route("/@:idName")
   .get(async (req, res) => {
     const organization = await organizationModel.findOne({ idName: req.params.idName });
-    const posts = await postModel.find({ "creator.idName": organization.idName });
 
     if (organization) {
+      const posts = await postModel.find({ "creator.idName": organization.idName });
       res.render("organization.html", context={ blockElements, cookies: req.cookies, s3Link, organization, posts });
     } else {
       res.render("errors/organization.html", context={ blockElements, cookies: req.cookies, s3Link });
