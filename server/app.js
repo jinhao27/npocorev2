@@ -31,7 +31,6 @@ const limiter = rateLimit({
 app.use(express.urlencoded()); // HTML forms
 app.use(express.json()); // API clients
 app.use(fileupload()); // FILES
-app.use(limiter);
 
 // AWS S3 CONFIGURATION
 const accessKeyId = process.env.ACCESS_KEY_ID;
@@ -94,10 +93,6 @@ app.use(async function (req, res, next) {
   next()
 });
 
-app.post("/post-test", (req, res) => {
-  res.send("post test");
-});
-
 app.get("/", (req, res) => {
   res.render("index.html", context={ blockElements, cookies: req.cookies, s3Link });
 });
@@ -121,7 +116,7 @@ app.route("/register")
     const orgNames = organizations.map(organization => organization.name);
     res.render("register.html", context={ blockElements, cookies: req.cookies, s3Link, googleApiKey, orgNames, error: "" });
   })
-  .post(async (req, res) => {
+  .post(limiter, async (req, res) => {
     const data = req.body;
 
     // GET LOCATION COORDINATES
@@ -218,7 +213,7 @@ app.route("/login")
   .get((req, res) => {
     res.render("login.html", context={ blockElements, cookies: req.cookies, s3Link, error: "" });
   })
-  .post(async (req, res) => {
+  .post(limiter, async (req, res) => {
     const organization = await organizationModel.findOne({ email: req.body.email });
 
     if (organization) {
@@ -254,7 +249,7 @@ app.route("/@:idName")
       res.render("errors/organization.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
   })
-  .post(async (req, res) => {
+  .post(limiter, async (req, res) => {
     const email = req.body.email;
     const organizationIdName = req.params.idName;
 
@@ -282,7 +277,7 @@ app.route("/@:idName/post")
       res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
   })
-  .post((req, res) => {
+  .post(limiter, (req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
       // CREATE POST
@@ -343,7 +338,7 @@ app.route("/@:idName/update")
       res.render("errors/permission.html", context={ blockElements, cookies: req.cookies, s3Link });
     }
   })
-  .post(async (req, res) => {
+  .post(limiter, async (req, res) => {
     // GET LOCATION COORDINATES
     let location = { name: req.body.location };
     if (req.body.location) {
