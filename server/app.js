@@ -121,12 +121,17 @@ app.route("/register")
     res.render("register.html", context={ blockElements, cookies: req.cookies, s3Link, googleApiKey, orgNames, error: "" });
   })
   .post(limiter, [
-    check('name').trim().escape(),
-    check('email').isEmail().trim().escape(),
-    check('message').trim().escape(),
-    check('location').trim().escape(),
-    check('referrer').trim().escape(),
-    check('logo').trim().escape()
+    check('name').isLength({ max: 50 }).trim().escape(),
+    check('email').isLength({ max: 50 }).isEmail().trim().escape(),
+    check('description').isLength({ max: 300 }).trim().escape(),
+    check('location').isLength({ max: 200 }).trim().escape(),
+    check('referrer').isLength({ max: 50 }).trim().escape(),
+    check('logo').trim().escape(),
+    check('instagram').isLength({ max: 100 }),
+    check('facebook').isLength({ max: 100 }),
+    check('twitter').isLength({ max: 100 }),
+    check('linkedin').isLength({ max: 100 }),
+    check('website').isLength({ max: 100 })
   ], async (req, res) => {
     const data = req.body;
 
@@ -301,10 +306,10 @@ app.route("/@:idName/post")
     }
   })
   .post(limiter, [
-    check('title').trim().escape(),
-    check('content').trim().escape(),
-    check('buttonText').trim().escape(),
-    check('buttonLink').trim().escape()
+    check('title').isLength({ max: 50 }).trim().escape(),
+    check('content').isLength({ max: 500 }).trim().escape(),
+    check('buttonText').isLength({ max: 20 }).trim().escape(),
+    check('buttonLink').isLength({ max: 100 }).trim().escape()
   ], (req, res) => {
     // MAKE SURE USER IS LOGGED INTO THIS ORG
     if (req.cookies.organization && req.params.idName == req.cookies.organization.idName) {
@@ -375,12 +380,17 @@ app.route("/@:idName/update")
     }
   })
   .post(limiter, [
-    check('name').trim().escape(),
-    check('email').isEmail().trim().escape(),
-    check('message').trim().escape(),
-    check('location').trim().escape(),
-    check('referrer').trim().escape(),
-    check('logo').trim().escape()
+    check('name').isLength({ max: 50 }).trim().escape(),
+    check('email').isLength({ max: 50 }).isEmail().trim().escape(),
+    check('description').isLength({ max: 300 }).trim().escape(),
+    check('location').isLength({ max: 200 }).trim().escape(),
+    check('referrer').isLength({ max: 50 }).trim().escape(),
+    check('logo').trim().escape(),
+    check('instagram').isLength({ max: 100 }),
+    check('facebook').isLength({ max: 100 }),
+    check('twitter').isLength({ max: 100 }),
+    check('linkedin').isLength({ max: 100 }),
+    check('website').isLength({ max: 100 })
   ], async (req, res) => {
     // GET LOCATION COORDINATES
     let location = { name: req.body.location };

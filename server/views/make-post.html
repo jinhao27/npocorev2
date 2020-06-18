@@ -68,10 +68,10 @@
 
           <form enctype="multipart/form-data" method="post">
             <label>Title:</label><br>
-            <input id="title-text-input" class="form-control" type="text" name="title" placeholder="Title" required>
+            <input id="title-text-input" class="form-control" type="text" name="title" placeholder="Title" maxlength="50" required>
             <br>
             <label>Content:</label><br>
-            <textarea id="content-text-input" class="form-control" name="content" rows="5" placeholder="Content" required></textarea>
+            <textarea id="content-text-input" class="form-control" name="content" rows="5" placeholder="Content" maxlength="500" required></textarea>
             <br>
             <div class="py-1">
               <label>Type of post:</label><br>
@@ -90,8 +90,8 @@
             <br>
             <label>CTA Button Customization:</label><br>
             <div class="cta-button-options">
-              <input id="cta-button-text-input" class="form-control" type="text" name="buttonText" placeholder="Button Text" required>
-              <input id="cta-button-link-input" class="form-control" type="url" name="buttonLink" placeholder="Button URL" required>
+              <input id="cta-button-text-input" class="form-control" type="text" name="buttonText" placeholder="Button Text" maxlength="20" required>
+              <input id="cta-button-link-input" class="form-control" type="url" name="buttonLink" placeholder="Button URL" maxlength="100" required>
             </div>
             <div class="my-3">
               <label>Button color:</label><br>

@@ -64,19 +64,19 @@
 
         <form enctype="multipart/form-data" method="post">
           <label>Organization Name: *</label><br>
-          <input name="name" class="form-control" type="text" placeholder="Name" required />
+          <input name="name" class="form-control" type="text" placeholder="Name" maxlength="50" required />
           <br>
           <label>Organization Email: *</label><br>
-          <input name="email" class="form-control" type="email" placeholder="Email" required />
+          <input name="email" class="form-control" type="email" placeholder="Email" maxlength="50" required />
           <br>
           <label>Organization Description: *</label><br>
-          <textarea name="description" class="form-control" rows="5" placeholder="Message" required></textarea>
+          <textarea name="description" class="form-control" rows="5" maxlength="300" placeholder="Message" required></textarea>
           <br>
           <label>Organization Password: *</label><br>
-          <input name="password" class="form-control" type="password" placeholder="Password" required />
+          <input name="password" class="form-control" type="password" maxlength="50" placeholder="Password" required />
           <br>
           <label>Organization Location:</label><br>
-          <input name="location" id="autocomplete" class="form-control" type="text" placeholder="Location" />
+          <input name="location" id="autocomplete" class="form-control" type="text" placeholder="Location" maxlength="200" />
           <br>
           <label>Referrer (organization that referred you to NPO Core):</label><br>
           <select class="selectpicker mb-3" name="referrer">
@@ -140,15 +140,15 @@
                 <img style="width: 17.5px;" src="/static/img/icons/instagram.svg" alt="">
               </span>
             </div>
-            <input name="instagram" class="form-control" type="text" placeholder="Instagram" />
+            <input name="instagram" class="form-control" type="url" maxlength="150" placeholder="Instagram" />
           </div>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
               <span class="input-group-text">
-                <img style="width: 17.5px;" src="/static/img/icons/facebook.svg" alt="">
+                <img style="width: 17.5px;" src="/static/img/icons/facebook.svg" maxlength="150" alt="">
               </span>
             </div>
-            <input name="facebook" class="form-control" type="text" placeholder="Facebook" />
+            <input name="facebook" class="form-control" type="url" maxlength="150" placeholder="Facebook" />
           </div>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -156,7 +156,7 @@
                 <img style="width: 17.5px;" src="/static/img/icons/twitter.svg" alt="">
               </span>
             </div>
-            <input name="twitter" class="form-control" type="text" placeholder="Twitter" />
+            <input name="twitter" class="form-control" type="url" maxlength="150" placeholder="Twitter" />
           </div>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -164,12 +164,12 @@
                 <img style="width: 17.5px;" src="/static/img/icons/linkedin.svg" alt="">
               </span>
             </div>
-            <input name="linkedin" class="form-control" type="url" placeholder="LinkedIn" />
+            <input name="linkedin" class="form-control" type="url" maxlength="150" placeholder="LinkedIn" />
           </div>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
               <span class="input-group-text">
-                <img style="width: 17.5px;" src="/static/img/icons/website.svg" alt="">
+                <img style="width: 17.5px;" src="/static/img/icons/website.svg" maxlength="150" alt="">
               </span>
             </div>
             <input name="website" class="form-control" type="url" placeholder="Website" />
