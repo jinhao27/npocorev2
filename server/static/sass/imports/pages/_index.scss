@@ -37,19 +37,24 @@
 .copyright {
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 
 @media (max-width: 800px) {
+  body {
+    padding-bottom: 0 !important;
+  }
+
   .home-container {
     display: block;
     padding: 50px 0;
+  }
 
-    & img {
-      display: none;
-    }
+  .copyright {
+    text-align: center;
+    margin: 0 auto;
+    position: static;
+    transform: none;
   }
 }
 

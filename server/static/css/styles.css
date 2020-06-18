@@ -135,16 +135,19 @@ nav {
 
 .copyright {
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%); }
+  bottom: 0; }
 
 @media (max-width: 800px) {
+  body {
+    padding-bottom: 0 !important; }
   .home-container {
     display: block;
     padding: 50px 0; }
-    .home-container img {
-      display: none; } }
+  .copyright {
+    text-align: center;
+    margin: 0 auto;
+    position: static;
+    transform: none; } }
 
 @media (max-width: 500px) {
   .cta-buttons {
