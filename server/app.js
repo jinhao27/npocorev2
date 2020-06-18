@@ -8,6 +8,7 @@ const axios = require("axios");
 const passwordHash = require('password-hash');
 const mutilpart = require('connect-multiparty');
 const uploader = require('express-fileuploader');
+const rateLimit = require("express-rate-limit");
 const S3Strategy = require('express-fileuploader-s3');
 const AWS = require('aws-sdk');
 const { sendEmail } = require("./helper-functions");
@@ -19,10 +20,18 @@ app = express();
 // Configuring cookie parser with express
 app.use(cookieParser())
 
+// Setting rate limit for express
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 15,
+  message: "You've been making too many requests to the server. Please try again in 15 minutes."
+});
+
 // Setting JSON parsing methods for POST request data
 app.use(express.urlencoded()); // HTML forms
 app.use(express.json()); // API clients
 app.use(fileupload()); // FILES
+app.use(limiter);
 
 // AWS S3 CONFIGURATION
 const accessKeyId = process.env.ACCESS_KEY_ID;
@@ -83,6 +92,10 @@ app.use(async function (req, res, next) {
   }
 
   next()
+});
+
+app.post("/post-test", (req, res) => {
+  res.send("post test");
 });
 
 app.get("/", (req, res) => {
