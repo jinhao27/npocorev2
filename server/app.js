@@ -16,6 +16,8 @@ const { sendEmail } = require("./helper-functions");
 const { organizationModel, postModel, passwordResetSessionModel } = require("./models");
 const { hourlyBump, postBump, featureBump, referralBump, hourlyDownBump, downBumpOrganizations } = require("./nposcore-functions");
 
+const imageFileExtensions = ["png", "jpg", "jpeg", "svg"];
+
 app = express();
 
 // Configuring cookie parser with express
@@ -150,9 +152,17 @@ app.route("/register")
     // SAVING LOGO IF EXISTS
     if (req.files) {
       const logo = req.files.logo;
+
       if (logo) {
-        uploadFile(logo); // UPLOAD TO S3
-        data.logo = logo.name;
+        // VALIDATING FILE TYPE
+        const fileExtension = logo.name.split(".")[1];
+        if (imageFileExtensions.includes(fileExtension)) {
+          uploadFile(logo); // UPLOAD TO S3
+          data.logo = logo.name;
+        } else {
+          res.send("Invalid image file input.");
+          return;
+        }
       }
     }
 
@@ -320,9 +330,17 @@ app.route("/@:idName/post")
       // SAVING IMAGE IF EXISTS
       if (req.files) {
         const image = req.files.image;
+
         if (image) {
-          uploadFile(image); // UPLOAD TO S3
-          post.image = image.name;
+          // VALIDATING FILE TYPE
+          const fileExtension = image.name.split(".")[1];
+          if (imageFileExtensions.includes(fileExtension)) {
+            uploadFile(image); // UPLOAD TO S3
+            post.image = image.name;
+          } else {
+            res.send("Invalid image file input.");
+            return;
+          }
         }
       }
 
@@ -423,9 +441,17 @@ app.route("/@:idName/update")
       // SAVING LOGO IF EXISTS
       if (req.files) {
         const logo = req.files.logo;
+
         if (logo) {
-          uploadFile(logo); // UPLOAD TO S3
-          updateObject.logo = logo.name;
+          // VALIDATING FILE TYPE
+          const fileExtension = logo.name.split(".")[1];
+          if (imageFileExtensions.includes(fileExtension)) {
+            uploadFile(logo); // UPLOAD TO S3
+            updateObject.logo = logo.name;
+          } else {
+            res.send("Invalid image file input.");
+            return;
+          }
         }
       }
 
