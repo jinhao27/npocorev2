@@ -126,12 +126,7 @@ app.route("/register")
     check('message').trim().escape(),
     check('location').trim().escape(),
     check('referrer').trim().escape(),
-    check('logo').trim().escape(),
-    check('instagram').trim().escape(),
-    check('facebook').trim().escape(),
-    check('twitter').trim().escape(),
-    check('linkedin').trim().escape(),
-    check('website').trim().escape()
+    check('logo').trim().escape()
   ], async (req, res) => {
     const data = req.body;
 
@@ -385,12 +380,7 @@ app.route("/@:idName/update")
     check('message').trim().escape(),
     check('location').trim().escape(),
     check('referrer').trim().escape(),
-    check('logo').trim().escape(),
-    check('instagram').trim().escape(),
-    check('facebook').trim().escape(),
-    check('twitter').trim().escape(),
-    check('linkedin').trim().escape(),
-    check('website').trim().escape()
+    check('logo').trim().escape()
   ], async (req, res) => {
     // GET LOCATION COORDINATES
     let location = { name: req.body.location };

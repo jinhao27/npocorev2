@@ -250,37 +250,72 @@
           <br>
           <label>Organization Links:</label><br>
           <% if (organization.links) { %>
-            <% if (organization.links.instagram) { %>
-              <input name="instagram" class="form-control mb-2" type="url" placeholder="Instagram" value="<%= organization.links.instagram %>" />
-            <% } else { %>
-              <input name="instagram" class="form-control mb-2" type="url" placeholder="Instagram" />
-            <% } %>
-            <% if (organization.links.facebook) { %>
-              <input name="facebook" class="form-control mb-2" type="url" placeholder="Facebook" value="<%= organization.links.facebook %>" />
-            <% } else { %>
-              <input name="facebook" class="form-control mb-2" type="url" placeholder="Facebook" />
-            <% } %>
-            <% if (organization.links.twitter) { %>
-              <input name="twitter" class="form-control mb-2" type="url" placeholder="Twitter" value="<%= organization.links.twitter %>" />
-            <% } else { %>
-              <input name="twitter" class="form-control mb-2" type="url" placeholder="Twitter" />
-            <% } %>
-            <% if (organization.links.linkedin) { %>
-              <input name="linkedin" class="form-control mb-2" type="url" placeholder="LinkedIn" value="<%= organization.links.linkedin %>" />
-            <% } else { %>
-              <input name="linkedin" class="form-control mb-2" type="url" placeholder="LinkedIn" />
-            <% } %>
-            <% if (organization.links.website) { %>
-              <input name="website" class="form-control mb-2" type="url" placeholder="Website" value="<%= organization.links.website %>" />
-            <% } else { %>
-              <input name="website" class="form-control mb-2" type="url" placeholder="Website" />
-            <% } %>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <img style="width: 17.5px;" src="/static/img/icons/instagram.svg" alt="">
+                </span>
+              </div>
+              <% if (organization.links.instagram) { %>
+                <input name="instagram" class="form-control" type="url" placeholder="Instagram" value="<%= organization.links.instagram %>" />
+              <% } else { %>
+                <input name="instagram" class="form-control" type="url" placeholder="Instagram" />
+              <% } %>
+            </div>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <img style="width: 17.5px;" src="/static/img/icons/facebook.svg" alt="">
+                </span>
+              </div>
+              <% if (organization.links.facebook) { %>
+                <input name="facebook" class="form-control" type="url" placeholder="Facebook" value="<%= organization.links.facebook %>" />
+              <% } else { %>
+                <input name="facebook" class="form-control" type="url" placeholder="Facebook" />
+              <% } %>
+            </div>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <img style="width: 17.5px;" src="/static/img/icons/twitter.svg" alt="">
+                </span>
+              </div>
+              <% if (organization.links.twitter) { %>
+                <input name="twitter" class="form-control" type="url" placeholder="Twitter" value="<%= organization.links.twitter %>" />
+              <% } else { %>
+                <input name="twitter" class="form-control" type="url" placeholder="Twitter" />
+              <% } %>
+            </div>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <img style="width: 17.5px;" src="/static/img/icons/linkedin.svg" alt="">
+                </span>
+              </div>
+              <% if (organization.links.linkedin) { %>
+                <input name="linkedin" class="form-control" type="url" placeholder="LinkedIn" value="<%= organization.links.linkedin %>" />
+              <% } else { %>
+                <input name="linkedin" class="form-control" type="url" placeholder="LinkedIn" />
+              <% } %>
+            </div>
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <img style="width: 17.5px;" src="/static/img/icons/website.svg" alt="">
+                </span>
+              </div>
+              <% if (organization.links.website) { %>
+                <input name="website" class="form-control" type="url" placeholder="Website" value="<%= organization.links.website %>" />
+              <% } else { %>
+                <input name="website" class="form-control" type="url" placeholder="Website" />
+              <% } %>
+            </div>
           <% } else { %>
-            <input name="instagram" class="form-control mb-2" type="url" placeholder="Instagram" />
-            <input name="facebook" class="form-control mb-2" type="url" placeholder="Facebook" />
-            <input name="twitter" class="form-control mb-2" type="url" placeholder="Twitter" />
-            <input name="linkedin" class="form-control mb-2" type="url" placeholder="LinkedIn" />
-            <input name="website" class="form-control mb-2" type="url" placeholder="Website" />
+            <input name="instagram" class="form-control" type="url" placeholder="Instagram" />
+            <input name="facebook" class="form-control" type="url" placeholder="Facebook" />
+            <input name="twitter" class="form-control" type="url" placeholder="Twitter" />
+            <input name="linkedin" class="form-control" type="url" placeholder="LinkedIn" />
+            <input name="website" class="form-control" type="url" placeholder="Website" />
           <% } %>
           <br>
 

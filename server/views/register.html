@@ -79,7 +79,7 @@
           <input name="location" id="autocomplete" class="form-control" type="text" placeholder="Location" />
           <br>
           <label>Referrer (organization that referred you to NPO Core):</label><br>
-          <select class="selectpicker" name="referrer">
+          <select class="selectpicker mb-3" name="referrer">
             <option value="">None</option>
             <% for (orgName of orgNames) { %>
               <option value="<%= orgName %>"><%= orgName %></option>
@@ -132,14 +132,49 @@
             <option value="Clients">Clients</option>
             <option value="Opportunities">Opportunities</option>
           </select>
-          <br>
-          <label>Organization Links:</label><br>
-          <input name="instagram" class="form-control mb-2" type="url" placeholder="Instagram" />
-          <input name="facebook" class="form-control mb-2" type="url" placeholder="Facebook" />
-          <input name="twitter" class="form-control mb-2" type="url" placeholder="Twitter" />
-          <input name="linkedin" class="form-control mb-2" type="url" placeholder="LinkedIn" />
-          <input name="website" class="form-control mb-2" type="url" placeholder="Website" />
           <br><br>
+          <label>Organization Links:</label><br>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <img style="width: 17.5px;" src="/static/img/icons/instagram.svg" alt="">
+              </span>
+            </div>
+            <input name="instagram" class="form-control" type="text" placeholder="Instagram" />
+          </div>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <img style="width: 17.5px;" src="/static/img/icons/facebook.svg" alt="">
+              </span>
+            </div>
+            <input name="facebook" class="form-control" type="text" placeholder="Facebook" />
+          </div>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <img style="width: 17.5px;" src="/static/img/icons/twitter.svg" alt="">
+              </span>
+            </div>
+            <input name="twitter" class="form-control" type="text" placeholder="Twitter" />
+          </div>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <img style="width: 17.5px;" src="/static/img/icons/linkedin.svg" alt="">
+              </span>
+            </div>
+            <input name="linkedin" class="form-control" type="url" placeholder="LinkedIn" />
+          </div>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <img style="width: 17.5px;" src="/static/img/icons/website.svg" alt="">
+              </span>
+            </div>
+            <input name="website" class="form-control" type="url" placeholder="Website" />
+          </div>
+          <br>
 
           <label class="mt-2">Legal: *</label>
           <div><input type="checkbox" required/> <label><small>I agree to the Launch Tech LLC <a href="https://www.launchtechllc.com/corporate/terms-of-service" target="_">Terms of Service</a>.</small></label></div>
