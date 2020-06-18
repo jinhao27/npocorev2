@@ -184,8 +184,16 @@ function Organizations() {
                   </div>
                 </div>
                 {organization.location.name ? <div><strong>Location:</strong> {organization.location.name}</div> : <span></span>}
-                <div><strong>Target Audiences:</strong> {organization.targetAudiences.join(", ")}</div>
-                <div><strong>Causes:</strong> {organization.causes.join(", ")}</div>
+                {organization.targetAudiences ?
+                  <div><strong>Target Audiences:</strong> {organization.targetAudiences.join(", ")}</div>
+                  :
+                  <span></span>
+                }
+                {organization.causes ?
+                  <div><strong>Causes:</strong> {organization.causes.join(", ")}</div>
+                  :
+                  <span></span>
+                }
                 <p className="organization-description"><strong>Description:</strong> {organization.description}</p>
                 <div className="text-right mb-2">
                   <button className="btn btn-link p-0" onClick={readMore}>
