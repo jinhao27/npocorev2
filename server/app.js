@@ -37,8 +37,8 @@ app.use(fileupload()); // FILES
 // app.use(expressSanitizer()); // EXPRESS INPUT SANTIZATION
 
 // AWS S3 CONFIGURATION
-const accessKeyId = process.env.ACCESS_KEY_ID || "AKIAZSHQMZHOEJEXNF3M";
-const secretAccessKey = process.env.SECRET_ACCESS_KEY || "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";
+const accessKeyId = process.env.ACCESS_KEY_ID;
+const secretAccessKey = process.env.SECRET_ACCESS_KEY;
 const s3Link = "https://npocore.s3-us-west-2.amazonaws.com/";
 
 const s3 = new AWS.S3({
