@@ -136,7 +136,7 @@ function Organizations() {
                   </button>
                 </div>
                 <p><small className="type">{post.type}</small></p>
-                <a style={{ "backgroundColor": post.button.color, "borderColor": post.button.color }} className="solid-cta-button" href={post.button.link} target="_blank">{post.button.text}</a>
+                <a style={{ "backgroundColor": post.button.color || "#f28c41", "borderColor": post.button.color || "#f28c41" }} className="solid-cta-button" href={post.button.link || "#"} target="_blank">{post.button.text || "Button"}</a>
               </div>
             </div>
           ) :
