@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -62,7 +65,7 @@
       <div class="form-container" data-aos="fade-up">
         <h1>Register</h1>
 
-        <form enctype="multipart/form-data" method="post">
+        <form enctype="multipart/form-data" action = "?" method="post" id="registerForm">
           <label>Organization Name: *</label><br>
           <input name="name" class="form-control" type="text" placeholder="Name" maxlength="50" required />
           <br>
@@ -179,6 +182,10 @@
           <label class="mt-2">Legal: *</label>
           <div><input type="checkbox" required/> <label><small>I agree to the Launch Tech LLC <a href="https://www.launchtechllc.com/corporate/terms-of-service" target="_">Terms of Service</a>.</small></label></div>
 
+          <div class="g-recaptcha" data-sitekey="6LeF-KYZAAAAAIKF4fPW9aRi2xJNLM1Yx0ss6ID3"></div>
+          <br/>
+          <input type="submit" value="Submit">
+
           <input class="solid-cta-button w-100" type="submit" value="Register!">
           <div class="text-center">
             <small>Already have an account? <a href="/login">Login here</a></small>
@@ -197,4 +204,42 @@
       alertify.error(error);
     }
   </script>
+
+<script>
+  document.getElementById('registerForm').addEventListener('submit', submitForm);
+
+  const submitForm = (event) => {
+    event.preventDefault();
+    
+    // form fields
+    const orgName = document.querySelector("#orgName").value;
+    const orgEmail = document.querySelector("#orgEmail").value;
+    const orgDescrip = document.querySelector("#orgDescrip").value;
+    const orgPass = document.querySelector("#orgPass").value;
+    const orgLocation = document.querySelector("#orgLocation").value;
+    const instagram = document.querySelector("#instagram").value;
+    const facebook = document.querySelector("#facebook").value;
+    const twitter = document.querySelector("#twitter").value;
+    const linkedin = document.querySelector("#linkedin").value;
+    const website = document.querySelector("#website").value;
+    const captcha = document.querySelector("#g-recaptcha-response").value;
+
+    // fetches to /registerCaptcha
+    fetch('/registerCaptcha', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*', 
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({orgName:orgName, orgEmail:orgEmail, orgDescrip:orgDescrip, orgPass:orgPass, orgLocation:orgLocation, instagram:instagram, facebook:facebook, twitter:twitter, linkedin:linkedin, website:website, captcha:captcha});
+    })
+    .then((res) => res.json())
+    .then((data => {
+      // for testing 
+      console.log(data);
+      alert(data.msg);
+    }))
+  }
+</script>
+
 </html>

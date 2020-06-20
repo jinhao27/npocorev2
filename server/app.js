@@ -9,6 +9,8 @@ const passwordHash = require('password-hash');
 const mutilpart = require('connect-multiparty');
 const uploader = require('express-fileuploader');
 const rateLimit = require("express-rate-limit");
+const request = require('request')
+const bodyParser = require('body-parser');
 const { check, validationResult } = require('express-validator');
 const S3Strategy = require('express-fileuploader-s3');
 const AWS = require('aws-sdk');
@@ -494,6 +496,40 @@ setInterval(function() {
   downBumpOrganizations();
 }, 3600000);
 
++// Recaptcha middleware
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + "/register.html")
+});
+
+app.post('/registerCaptcha', (req, res) => {
+  if (
+    req.body.captcha === undefined ||
+    req.body.captcha === '' || 
+    req.body.captcha === null
+  ) {
+    return res.json({"success": false, "msg": "Please select captcha"})
+  }
+
+  // Secret key 
+  const secretKey = '6LeF-KYZAAAAAGyWkOuqLELDekTzaf-7C0rrAsf6';
+
+  // Verify URL
+  const veryifyUrl = `https://google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;
+
+  // Make request to VerifyUrl
+  request(veryifyUrl, (err, response, body) => {
+    body = JSON.parse(body);
+
+    if (body.success !== undefined && !body.success) {
+      return res.json({"success": false, "msg": "Failed captcha verification"})
+    }
+
+    return res.json({"success": true, "msg": "Captcha passed"})
+  })
+})
 
 // Setting up server for production
 const devProduction = true;  // Variable to allow React.js redirects if testing production functionality
